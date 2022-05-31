@@ -5,7 +5,7 @@
 
 ![링크] https://jade-frill-5b8.notion.site/GitHub-b8e39ce43cc54cceaddcafdf2fd67e13
 
+## 1-1  
 
 
-
-# 2. COMMIT 메시지 작성 규칙
+# 3. COMMIT 메시지 작성 규칙
