@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+ul{
+	   list-style:none;	   
+}
+
+/*전체 가운데 정렬*/
+.signup-form-container {
+	margin-top: 2em !important;
+	margin-bottom: 5.5em !important;
+	width: 523px;;
+	margin: 0 auto;
+	text-align: center;
+	display: flex;
+}
+
+
+.woocommerce-form-row.form-row.mb-0.register {
+	margin: 0 auto;
+	padding: 10px 0 20px 0;
+	display: block;
+}
+
+
+/*btn */
+.btn.btn-primary.btn-register {
+    /* margin: 0 0 0 60px; */
+    width: 37%;
+    border-radius: 5px;
+    float: right;
+}
+
+
+/*카테고리 글자*/
+.reg_signup {
+	color: rgb(89, 89, 89);
+    width: 115px;
+    font-size: 20px;
+    position: relative;
+    top:5.5px;
+}
+
+/*비밀번호확인~상세주소 정렬*/
+.woocommerce-form-row.woocommerce-form-row--wide.form-row.form-row-wide.more{
+	margin: 0 0 40px 0;
+}
+
+/*input태그*/
+.woocommerce-Input.woocommerce-Input--text.input-text {
+    width: 400px;
+    border-radius: 10px;
+    border-style: solid !important;
+    border-color: rgb(203, 189, 137) !important;
+}
+
+.woocommerce-Input.woocommerce-Input--text.input-text:focus {
+	outline: none;
+	border-color: rgb(151 141 103) !important;
+}
+
+/*우편번호 input*/
+.woocommerce-Input.woocommerce-Input--text.input-text.unique{
+    width: 280px;
+    margin: 0 10px 0 0;
+    border-radius: 10px;
+    border-style: solid !important;
+    border-color: rgb(203, 189, 137) !important;
+}
+
+/*ID&PS 알림 글자*/
+.check-id-ps {
+	font-size: 14px;
+	color: #d15561;
+	position: relative;
+	left: 330px;
+	z-index: 1;
+	width: 200px;
+	bottom: 20px;
+	margin: 0px;
+	padding: 0px;
+} 
+
+/* 수정 형식 맨아래 높이 조절 */
+p.woocommerce-form-row.woocommerce-form-row--wide.form-row.form-row-wide.more.bottom {
+    margin-bottom: 6px;
+}
+
+input.woocommerce-Input.woocommerce-Input--text.input-text.unique.post {
+	margin-right: -2px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    width: 289px;
+}
+	
+button.btn.btn-primary.post {
+    border-radius: 10px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    width: 114px;
+    background: #cbbd89;
+}
+
+input.searchingPostcode {
+    border-radius: 10px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    width: 114px;
+    background: #cbbd89;
+    border-color: #cbbd8900;
+    color: white;
+}
+
+input.searchingPostcode:hover {
+	background: #978d67;
+	cursor: grabbing;
+}

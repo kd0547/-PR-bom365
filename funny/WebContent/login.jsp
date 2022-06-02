@@ -6,12 +6,6 @@
 <html>
 <head>
 <title>로그인</title>
-<script type="text/javascript">
-	function signUp() { // 회원가입
-		document.loginForm.action.value = "signUp";
-		document.loginForm.submit();
-	}
-</script>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -64,7 +58,8 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-							<span><a href="index.html">Home</a></span> / <span>로그인</span>
+<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+							<span><a href="main.jsp">Home</a></span> / <span>로그인</span>
 						</p>
 					</div>
 				</div>
@@ -74,21 +69,22 @@
 		<h1 id="menuTitle">로그인</h1>
 		<div class="col-md-12 total-wrap" id="login">
 			<div class="col-sm-4 text-center total">
-				<form action="" method="post" name="loginForm">
+<!-- action수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+				<form action="main.jsp" method="post" name="loginForm">
 					<table id="tableStyle">
 						<tr>
 							<td id="tableCol">아이디</td>
-							<td><input type="text" class="form-control"></td>
+							<td><input type="text" class="form-control" name="supporter_id"></td>
 						</tr>
 						<tr>
 							<td>비밀번호</td>
-							<td><input type="password" class="form-control"></td>
+							<td><input type="password" class="form-control" name="supporter_password"></td>
 						</tr>
 					</table>
 					<table id="tableStyle" style="margin-top: 20px;">
 						<tr>
 							<td><input type="submit" class="btn btn-primary" value="&nbsp;로그인&nbsp;"></td>
-							<td><input type="button" class="btn btn-primary" onclick="signUp()" value="회원가입"></td>
+							<td><a href="signup.jsp" class="btn btn-primary login">회원가입</a></td>
 						</tr>
 					</table>
 				</form>

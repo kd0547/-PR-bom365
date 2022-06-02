@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>후원신청완료</title>
+<title>등록완료</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -58,7 +58,8 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-							<span><a href="supportRequest.jsp">후원신청</a></span> / <span>후원완료</span>
+<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+							<span><a href="boardRequest.jsp">봉사신청</a></span> / <span>등록완료</span>
 						</p>
 					</div>
 				</div>
@@ -72,10 +73,10 @@
 						<p class="icon-addcart">
 							<span><i class="icon-check"></i></span>
 						</p>
-						<h3 class="mb-4">ㆍ후원 신청 완료ㆍ<br>후원해 주셔서 정말 감사합니다.</h3>
+						<h3 class="mb-4">ㆍ봉사 신청 완료ㆍ<br>지원해 주셔서 정말 감사합니다.</h3>
 						<p>
 <!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<a href="main.jsp" class="btn btn-primary" id="complete">메인으로 돌아가기</a>
+							<a href="boardList.jsp" class="btn btn-primary" id="complete">글목록으로 돌아가기</a>
 						</p>
 					</div>
 				</div>
