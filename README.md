@@ -1,5 +1,7 @@
 ## 1.팀 프로젝트 환경 구성하기 
 
+### 1-0 흐름?
+
 
 [주의사항] </br>
 * 로컬 저장소에서 프로젝트를 Import하기 때문에 기존 funny 폴더가 이클립스 Project Explore에 있다면 해당 파일에서 작업중이던 파일을 저장해 다른 곳에 옮겨두세요 모든 설정이 끝나고 작업중이던 파일을 복사하면 됩니다! 
@@ -54,7 +56,7 @@ IOS가 없어 외부 사이트에 의존할 수 밖에 없었습니다.
 ### 2-2 파일 다운로드 
 #### [파일 다운로드 방법](https://jade-frill-5b8.notion.site/github-8cc4f41cf067407981ffe687f351cdf2)
 
-
+### 2-2 파일 Pull Request
 #### [원본 저장소에 Pull Request](https://jade-frill-5b8.notion.site/pull-request-b67a6502701842f983875705e090a544)
 
 
@@ -63,3 +65,4 @@ IOS가 없어 외부 사이트에 의존할 수 밖에 없었습니다.
 
 
 ## 3. COMMIT 메시지 작성 규칙
+
