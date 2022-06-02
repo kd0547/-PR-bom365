@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+.twins-wrap {
+    width: 100%;
+    text-align: center;
+    padding-top: 0;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.sub-title {
+    text-align: center;
+    margin: 0 0 40px 0;
+}
+
+.subscript {
+    color: #978d67;
+}
+
+.btn.btn-primary.support {
+    margin: 79px 0px;
+    display: inline-block;
+    width: 200px;
+    background: #cbbd89;
+    border-radius: 9px;
+}
+
+
+
+	

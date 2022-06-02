@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>후원신청완료</title>
+<title>봉사신청</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,7 +42,6 @@
 
 <!-- Theme style  -->
 <link rel="stylesheet" href="css/style.css">
-
 </head>
 <body>
 
@@ -52,35 +51,49 @@
 
 		<!-- Page Header-->
 		<mytag:pageHeader pageSector=" " />
-
 		<div class="breadcrumbs">
 			<div class="container">
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-							<span><a href="supportRequest.jsp">후원신청</a></span> / <span>후원완료</span>
+<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+							<span><a href="boardList.jsp">봉사자모집</a></span> / <span>봉사신청</span>
 						</p>
 					</div>
 				</div>
+			</div>
+		</div>
+		<h1 id="menuTitle">봉사신청</h1>
+		<hr>
+
+		<div style="text-align: center; margin-top: 2em; margin-bottom: 7em;">
+			<div class="col-sm-4 text-left total writeForm"
+				style="display: inline-block;">
+<!-- action수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- 카테고리는 관리자 아니라면 자동으로 '일반' 설정//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+				<form action="boardDone.jsp" method="post">
+					<div class="form-group">
+						<h5>제목</h5>
+						<input type="text" class="form-control gap"
+							placeholder="제목을 입력해 주세요." name="board_title">
+
+						<div class="form-group">
+							<h5>신청 내용</h5>
+							<textarea name="board_content" cols="30" rows="10"
+								class="form-control gap">
+ㆍ 희망 날짜
+→
+							ㆍ 방문 예정 시각
+→
+							</textarea>
+						</div>
+					</div>
+					<input type="submit" value="글 작성하기"
+						class="btn btn-primary inputSubmit">
+				</form>
 			</div>
 		</div>
 
-		<div class="colorlib-product">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-10 offset-sm-1 text-center">
-						<p class="icon-addcart">
-							<span><i class="icon-check"></i></span>
-						</p>
-						<h3 class="mb-4">ㆍ후원 신청 완료ㆍ<br>후원해 주셔서 정말 감사합니다.</h3>
-						<p>
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<a href="main.jsp" class="btn btn-primary" id="complete">메인으로 돌아가기</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
 
 		<!-- Page Footer-->
 		<mytag:pageFooter />

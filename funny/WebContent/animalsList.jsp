@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>봄365</title>
+<title>입양하기</title>
 
 <meta charset="utf-8">
 <meta name="viewport"
@@ -48,98 +48,109 @@
 <link rel="stylesheet" href="css/animalsList.css">
 
 <!-- Material Icons -->
-   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 
 </head>
 
 <body>
 
-<!-- Page Header-->
-		
-		
+
+
 	<div class="colorlib-loader"></div>
 	<div id="page">
+
+		<!-- Page Header-->
 		<mytag:pageHeader pageSector=" " />
 		<div class="breadcrumbs">
 			<div class="container">
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-							<span><a href="index.html">입양하기</a></span> / <span>동물소개</span>
+<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+							<span><a href="main.jsp">HOME</a></span> / <span>입양하기</span>
 						</p>
 					</div>
 				</div>
 			</div>
 		</div>
-	
 
-<!-- select-animals -->
+		<h1 id="menuTitle">입양하기</h1>
+
+		<!-- select-animals -->
 
 
-	<div class="select-animals-container">
-			<form class="" id="validate-form" action="/kams/adopt" method="get">
+		<div class="select-animals-container">
+			<form id="validate-form" method="post">
 				<div class="row mb-1 mx-2">
 					<div class="col-lg-10">
 						<div class="row">
 							<div class="col-sm-12 col-lg mb-3 mb-lg-0">
-								<label class="d-block"> 
-									<span class="h4 d-block text-dark font-weight-semi-bold mb-0">동물구분</span> 
-									<small class="d-block text-secondary">개/고양이/기타</small>
+								<label class="d-block"> <span
+									class="h4 d-block text-dark font-weight-semi-bold mb-0">동물구분</span>
+									<small class="d-block text-secondary">개/고양이</small>
 								</label>
 								<div class="js-form-message">
 									<div class="js-focus-state form-group">
-										<select name="species" class="form-control custom-select" data-msg="동물구분을 선택해 주세요" data-error-class="u-has-error" data-success-class="u-has-success">
+										<select name="animal_species" class="form-control custom-select"
+											data-msg="동물구분을 선택해 주세요" data-error-class="u-has-error"
+											data-success-class="u-has-success">
 											<option value="">All</option>
-						
+
 											<option value="개">개</option>
 											<option value="고양이">고양이</option>
-											<option value="기타">기타</option>
-											<span class="material-icons">import_export</span>
 										</select>
-										
 									</div>
 								</div>
 							</div>
 							<div class="col-sm-12 col-lg mb-3 mb-lg-0">
-								<label class="d-block"> 
-									<span class="h4 d-block text-dark font-weight-semi-bold mb-0">성별</span> 
+								<label class="d-block"> <span
+									class="h4 d-block text-dark font-weight-semi-bold mb-0">성별</span>
 									<small class="d-block text-secondary">암컷/수컷</small>
 								</label>
 								<div class="js-form-message">
 									<div class="js-focus-state form-group">
-										<select name="sex" class="form-control custom-select" data-msg="성별을 선택해 주세요" data-error-class="u-has-error" data-success-class="u-has-success">
+										<select name="animal_gender" class="form-control custom-select"
+											data-msg="성별을 선택해 주세요" data-error-class="u-has-error"
+											data-success-class="u-has-success">
 											<option value="">All</option>
 											<option value="암컷">암컷</option>
 											<option value="수컷">수컷</option>
 										</select>
 									</div>
-								</div>			
+								</div>
 							</div>
 							<div class="col-sm-12 col-lg mb-3 mb-lg-0">
-								<label class="d-block"> 
-									<span class="h4 d-block text-dark font-weight-semi-bold mb-0">크기</span> 
+								<label class="d-block"> <span
+									class="h4 d-block text-dark font-weight-semi-bold mb-0">크기</span>
 									<small class="d-block text-secondary">대/중/소 </small>
 								</label>
 								<div class="js-form-message">
 									<div class="js-focus-state form-group">
-										<select name="weight" class="form-control custom-select" data-msg="크기을 선택해 주세요" data-error-class="u-has-error" data-success-class="u-has-success">
+										<select name="animal_weight" class="form-control custom-select"
+											data-msg="크기을 선택해 주세요" data-error-class="u-has-error"
+											data-success-class="u-has-success">
+<!-- value수정하기 (뭐라고 짓는게 나을까요)//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 											<option value="">All</option>
-				 							<option value="8">소(8kg 미만)</option>
+											<option value="8">소(8kg 미만)</option>
 											<option value="818">중(8~18kg 미만)</option>
-				 							<option value="18">대(18kg이상)</option>
+											<option value="18">대(18kg이상)</option>
 										</select>
 									</div>
-								</div>			
+								</div>
 							</div>
 							<div class="col-sm-12 col-lg mb-3 mb-lg-0">
-								<label class="d-block"> 
-									<span class="h4 d-block text-dark font-weight-semi-bold mb-0">연령</span> 
+								<label class="d-block"> <span
+									class="h4 d-block text-dark font-weight-semi-bold mb-0">연령</span>
 									<small class="d-block text-secondary">puppy/junior/adult/senior</small>
 								</label>
 								<div class="js-form-message">
 									<div class="js-focus-state form-group">
-										<select name="birth" class="form-control custom-select" data-msg="연령을 선택해 주세요" data-error-class="u-has-error" data-success-class="u-has-success">
+										<select name="animal_age" class="form-control custom-select"
+											data-msg="연령을 선택해 주세요" data-error-class="u-has-error"
+											data-success-class="u-has-success">
+<!-- value수정하기 (뭐라고 짓는게 나을까요)//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 											<option value="">All</option>
 											<option value="6">Puppy(~ 6개월)</option>
 											<option value="724">Junior(7개월 ~ 2살)</option>
@@ -147,161 +158,196 @@
 											<option value="108">Senior(9살 ~)</option>
 										</select>
 									</div>
-								</div>			
+								</div>
 							</div>
-						
+
 							<div class="col-12 g-pt-15">
 								<div class="input-group">
-									<input type="text" class="form-control" name="name" id="name" placeholder="이름(이름을 모를경우 비워두셔도 됩니다.)" aria-label="이름 검색" aria-describedby="searchName">
-								</div>				
-							</div>	
+									<input type="text" class="form-control" name="keyword" id="name"
+										placeholder="이름 (이름을 모를경우 비워두셔도 됩니다.)" >
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="col-lg-2 g-pt-30 g-pt-60--lg search">
 						<div class="g-pb-15 g-pb-sm-0 search-refresh">
-							<!-- <button type="reset" id="query-reset" class="btn btn-sm btn-block btn-outline-primary transition-3d-hover mb-1">초기화</button> -->
-							<!-- <a href="/kams/adopt" class="btn btn-sm btn-block btn-outline-primary transition-3d-hover mb-1">초기화</a> -->
-							<a href="/kams/adopt" class="btn btn-sm btn-block g-brd-0 text-secondary g-font-size-14 g-px-0 mb-1 reset">
-								<i class="icon-refresh"></i> <span class="g-text-underline search-refresh">검색 설정 초기화</span></a>
+<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+							<a href="animalsList.jsp"
+								class="btn btn-sm btn-block g-brd-0 text-secondary g-font-size-14 g-px-0 mb-1 reset">
+								<i class="icon-refresh"></i> <span
+								class="g-text-underline search-refresh">검색 설정 초기화</span>
+							</a>
 						</div>
 						<div class="g-pt-15--lg">
-							<button type="submit" class="btn btn-sm btn-block btn-primary btn-search-animals">검색</button>
+							<button type="submit"
+								class="btn btn-sm btn-block btn-primary btn-search-animals">검색</button>
 						</div>
 					</div>
 				</div>
 			</form>
 		</div>
-		
-		
-<!-- animals list -->
 
 
-				<div class="row animals-photos">
-					<div class="col-md-3 col-lg-3 mb-4 text-center animals-photos-text">
-						<div class="product-entry border">
-							<a href="#" class="prod-img">
-								<img src="images/sample.png" class="img-fluid animals" alt="Free html5 bootstrap 4 template">
-							</a>
-							<div class="desc">
-								<h2><a href="#">강록</a></h2>
-								<span class="animal_spacies">개</span></br>
-								<span class="animal_gender">수컷(중성화O)</span></br>
-							    <span class="animal_age">2살 4개월 <span class="animal_weight">/ 21.0kg</span></span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-lg-3 mb-4 text-center">
-						<div class="product-entry border">
-							<a href="#" class="prod-img">
-								<img src="images/sample.png" class="img-fluid animals" alt="Free html5 bootstrap 4 template">
-							</a>
-							<div class="desc">
-								<h2><a href="#">남희</a></h2>
-								<span class="animal_spacies">개</span></br>
-								<span class="animal_gender">암컷(중성화O)</span></br>
-							    <span class="animal_age">6개월 <span class="animal_weight">/ 6.5kg</span></span>
-							</div>
-						</div>
-					</div>
-						<div class="col-md-3 col-lg-3 mb-4 text-center">
-						<div class="product-entry border">
-							<a href="#" class="prod-img">
-								<img src="images/sample.png" class="img-fluid animals" alt="Free html5 bootstrap 4 template">
-							</a>
-							<div class="desc">
-								<h2><a href="#">레슬리</a></h2>
-								<span class="animal_spacies">개</span></br>
-								<span class="animal_gender">수컷(중성화O)</span></br>
-							    <span class="animal_age">1살 2개월 <span class="animal_weight">/ 7.9kg</span></span>
-							</div>
-						</div>
-					</div>
-						<div class="col-md-3 col-lg-3 mb-4 text-center">
-						<div class="product-entry border">
-							<a href="#" class="prod-img">
-								<img src="images/sample.png" class="img-fluid animals" alt="Free html5 bootstrap 4 template">
-							</a>
-							<div class="desc">
-								<h2><a href="#">루시</a></h2>
-								<span class="animal_spacies">개</span></br>
-								<span class="animal_gender">암컷(중성화O)</span></br>
-							    <span class="animal_age">4살 2개월 <span class="animal_weight">/ 7.5kg</span></span>
-							</div>
-						</div>
-					</div>
-						<div class="col-md-3 col-lg-3 mb-4 text-center">
-						<div class="product-entry border">
-							<a href="#" class="prod-img">
-								<img src="images/sample.png" class="img-fluid animals" alt="Free html5 bootstrap 4 template">
-							</a>
-							<div class="desc">
-								<h2><a href="#">마리</a></h2>
-								<span class="animal_spacies">고양이</span></br>
-								<span class="animal_gender">암컷(중성화O)</span></br>
-							    <span class="animal_age">5살 10개월 <span class="animal_weight">/ 4.6kg</span></span>
-							</div>
-						</div>
-					</div>
-						<div class="col-md-3 col-lg-3 mb-4 text-center">
-						<div class="product-entry border">
-							<a href="#" class="prod-img">
-								<img src="images/sample.png" class="img-fluid animals" alt="Free html5 bootstrap 4 template">
-							</a>
-							<div class="desc">
-								<h2><a href="#">쿠로</a></h2>
-								<span class="animal_spacies">고양이</span></br>
-								<span class="animal_gender">수컷(중성화)</span></br>
-							    <span class="animal_age">4살 1개월<span class="animal_weight">/ 2.8kg</span></span>
-							</div>
-						</div>
-					</div>
-						<div class="col-md-3 col-lg-3 mb-4 text-center">
-						<div class="product-entry border">
-							<a href="#" class="prod-img">
-								<img src="images/sample.png" class="img-fluid animals" alt="Free html5 bootstrap 4 template">
-							</a>
-							<div class="desc">
-								<h2><a href="#">홀리</a></h2>
-								<span class="animal_spacies">고양이</span></br>
-								<span class="animal_gender">암컷(중성화O)</span></br>
-							    <span class="animal_age">8살 1개월 <span class="animal_weight">/ 5.1kg</span></span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-lg-3 mb-4 text-center">
-						<div class="product-entry border">
-							<a href="#" class="prod-img">
-								<img src="images/sample.png" class="img-fluid animals" alt="Free html5 bootstrap 4 template">
-							</a>
-							<div class="desc">
-								<h2><a href="#">보석</a></h2>
-								<span class="animal_spacies">개(믹스)</span></br>
-								<span class="animal_gender">수컷(중성화O)</span></br>
-							    <span class="animal_age">10살 2개월 <span class="animal_weight">/ 3.3kg</span></span>
-							</div>
-						</div>
+		<!-- animals list -->
+
+
+		<div class="row animals-photos">
+<!-- 값들 수정//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- 데이터 불러온뒤 for문으로 구현//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+			<div class="col-md-3 col-lg-3 mb-4 text-center animals-photos-text">
+				<div class="product-entry border">
+<!-- href 수정//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+					<a href="anilmalOne.jsp" class="prod-img">
+<!-- src 수정//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+					<img src="images_sample/강록.png"
+						class="img-fluid animals" alt="Free html5 bootstrap 4 template">
+					</a>
+					<div class="desc">
+						<h2>
+<!-- href 수정//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- 데이터 수정//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+							<a href="anilmalOne.jsp">강록</a>
+						</h2>
+						<span class="animal_spacies">개</span><br> <span
+							class="animal_gender">수컷(중성화O)</span><br> <span
+							class="animal_age">2살 4개월 <span class="animal_weight">/
+								21.0kg</span></span>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<div class="block-27">
-		               <ul>
-			               <li><a href="#"><i class="ion-ios-arrow-back"></i></a></li>
-		                  <li class="active"><span>1</span></li>
-		                  <li><a href="#">2</a></li>
-		                  <li><a href="#">3</a></li>
-		                  <li><a href="#">4</a></li>
-		                  <li><a href="#">5</a></li>
-		                  <li><a href="#"><i class="ion-ios-arrow-forward"></i></a></li>
-		               </ul>
-		            </div>
+			</div>
+<!-- 페이지 채우기 용//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+			<div class="col-md-3 col-lg-3 mb-4 text-center">
+				<div class="product-entry border">
+					<a href="anilmalOne.jsp" class="prod-img"> <img src="images_sample/남희.png"
+						class="img-fluid animals" alt="Free html5 bootstrap 4 template">
+					</a>
+					<div class="desc">
+						<h2>
+							<a href="anilmalOne.jsp">남희</a>
+						</h2>
+						<span class="animal_spacies">개</span><br> <span
+							class="animal_gender">암컷(중성화O)</span><br> <span
+							class="animal_age">6개월 <span class="animal_weight">/
+								6.5kg</span></span>
 					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-lg-3 mb-4 text-center">
+				<div class="product-entry border">
+					<a href="anilmalOne.jsp" class="prod-img"> <img src="images_sample/레슬리.png"
+						class="img-fluid animals" alt="Free html5 bootstrap 4 template">
+					</a>
+					<div class="desc">
+						<h2>
+							<a href="anilmalOne.jsp">레슬리</a>
+						</h2>
+						<span class="animal_spacies">개</span><br> <span
+							class="animal_gender">수컷(중성화O)</span><br> <span
+							class="animal_age">1살 2개월 <span class="animal_weight">/
+								7.9kg</span></span>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-lg-3 mb-4 text-center">
+				<div class="product-entry border">
+					<a href="anilmalOne.jsp" class="prod-img"> <img src="images_sample/루시.png"
+						class="img-fluid animals" alt="Free html5 bootstrap 4 template">
+					</a>
+					<div class="desc">
+						<h2>
+							<a href="anilmalOne.jsp">루시</a>
+						</h2>
+						<span class="animal_spacies">개</span><br> <span
+							class="animal_gender">암컷(중성화O)</span><br> <span
+							class="animal_age">4살 2개월 <span class="animal_weight">/
+								7.5kg</span></span>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-lg-3 mb-4 text-center">
+				<div class="product-entry border">
+					<a href="anilmalOne.jsp" class="prod-img"> <img src="images_sample/마리.png"
+						class="img-fluid animals" alt="Free html5 bootstrap 4 template">
+					</a>
+					<div class="desc">
+						<h2>
+							<a href="anilmalOne.jsp">마리</a>
+						</h2>
+						<span class="animal_spacies">고양이</span><br> <span
+							class="animal_gender">암컷(중성화O)</span><br> <span
+							class="animal_age">5살 10개월 <span class="animal_weight">/
+								4.6kg</span></span>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-lg-3 mb-4 text-center">
+				<div class="product-entry border">
+					<a href="anilmalOne.jsp" class="prod-img"> <img src="images_sample/쿠로.png"
+						class="img-fluid animals" alt="Free html5 bootstrap 4 template">
+					</a>
+					<div class="desc">
+						<h2>
+							<a href="anilmalOne.jsp">쿠로</a>
+						</h2>
+						<span class="animal_spacies">고양이</span><br> <span
+							class="animal_gender">수컷(중성화)</span><br> <span
+							class="animal_age">4살 1개월<span class="animal_weight">/
+								2.8kg</span></span>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-lg-3 mb-4 text-center">
+				<div class="product-entry border">
+					<a href="anilmalOne.jsp" class="prod-img"> <img src="images_sample/홀리.png"
+						class="img-fluid animals" alt="Free html5 bootstrap 4 template">
+					</a>
+					<div class="desc">
+						<h2>
+							<a href="anilmalOne.jsp">홀리</a>
+						</h2>
+						<span class="animal_spacies">고양이</span><br> <span
+							class="animal_gender">암컷(중성화O)</span><br> <span
+							class="animal_age">8살 1개월 <span class="animal_weight">/
+								5.1kg</span></span>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-lg-3 mb-4 text-center">
+				<div class="product-entry border">
+					<a href="anilmalOne.jsp" class="prod-img"> <img src="images_sample/보석.jpg"
+						class="img-fluid animals" alt="Free html5 bootstrap 4 template">
+					</a>
+					<div class="desc">
+						<h2>
+							<a href="anilmalOne.jsp">보석</a>
+						</h2>
+						<span class="animal_spacies">개(믹스)</span><br> <span
+							class="animal_gender">수컷(중성화O)</span><br> <span
+							class="animal_age">10살 2개월 <span class="animal_weight">/
+								3.3kg</span></span>
+					</div>
+				</div>
+			</div>
+<!-- 여기까지 페이지 채우기 용//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+		</div>
+<!-- 페이지네이션 구현한다면 유지//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+		<div class="pagenation">
+			<div class="col-md-12 text-center">
+				<div class="block-27">
+					<ul>
+						<li><a href="#"><i class="ion-ios-arrow-back"></i></a></li>
+						<li class="active"><span>1</span></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#"><i class="ion-ios-arrow-forward"></i></a></li>
+					</ul>
 				</div>
 			</div>
 		</div>
 
-
-			<!-- Page Footer-->
+		<!-- Page Footer-->
 		<mytag:pageFooter />
 
 	</div>

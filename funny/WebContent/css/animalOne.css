@@ -1,0 +1,73 @@
+
+/*ī�װ� �����̳�*/
+ul.list-unstyled.mb-0{
+	padding: 30px 0 0 0;
+}
+
+/*�����̸�+ī�װ� �����̳�*/
+div.about-wrap{
+	width:400px;
+	margin: auto 0;
+	padding: 0 0 0 50px;
+}
+
+/*ī�װ�*/
+.media.mb-1{
+	text-align: center;
+	font-size: 24px;
+	margin:20px 0;
+}
+
+/*ī�װ�����*/
+.h6{
+	font-size:24px;
+	margin:0px;
+	object-fit: cover;
+}
+
+/*h6�±� container*/
+.h6-container{
+	margin: auto 0;
+	width: 180px;
+	text-align: left;
+}
+
+.text-muted{
+	width: 130px;
+	text-align: left;
+}
+
+span.animal-name{
+	font-size:32px;
+	margin: 5px 10px;
+}
+
+.img-fluid.w-100{
+	border-radius: 30px;
+}
+
+.animal-name{
+	font-size:24px;
+}
+
+
+span.animal-name{
+	margin: 20px 0;
+	
+}
+
+/*��*/
+.my-5{
+	width: 350px;
+}
+
+a.btn.btn-primary.adopt {
+    margin: 140px 0 0 0;
+    width: 88%;
+    border-radius: 7px;
+    background: #cbbd89;
+}
+
+
+
+

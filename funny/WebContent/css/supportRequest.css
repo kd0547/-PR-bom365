@@ -1,0 +1,30 @@
+
+
+.input-container{
+		padding: 20px 0;
+	left: 30px;
+}
+
+/*카테고리*/
+label.reg_signup{
+		margin: 0;
+		text-align: right;
+		width:100px;
+		padding: 0 10px 0 0;
+}
+
+.menuTitle{
+	text-align: center;
+}		
+
+.btn.btn-primary.supprot{
+	width: 100px;
+	margin: 20px 0 0 40px;
+	position: relative;
+	left: 18px;
+}
+
+.woocommerce-form.woocommerce-form-register.register{
+	left: -30px;
+	position: relative;
+}

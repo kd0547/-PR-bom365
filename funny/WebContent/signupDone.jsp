@@ -58,7 +58,7 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-							<span><a href="index.html">Home</a></span> / <span>회원가입</span>
+							<span><a href="signup.jsp">회원가입</a></span> / <span>가입완료</span>
 						</p>
 					</div>
 				</div>
@@ -74,7 +74,7 @@
 						</p>
 						<h3 class="mb-4">🎉 가입 완료되었습니다! 🎉</h3>
 						<p>
-							<a href="main.jsp" class="btn btn-primary" id="complete">로그인하러 가기</a>
+							<a href="login.jsp" class="btn btn-primary" id="complete">로그인하러 가기</a>
 						</p>
 					</div>
 				</div>

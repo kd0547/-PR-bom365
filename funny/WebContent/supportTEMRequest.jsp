@@ -5,7 +5,8 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>후원신청완료</title>
+<title>일시후원신청</title>
+
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -40,14 +41,21 @@
 <!-- Flaticons  -->
 <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
 
-<!-- Theme style  -->
+<!-- contact css  -->
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/signup_mypage.css">
+<link rel="stylesheet" href="css/supportRequest.css">
+
+<!-- Material Icons -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
+
 <body>
 
-	<div class="colorlib-loader"></div>
 
+	<div class="colorlib-loader"></div>
 	<div id="page">
 
 		<!-- Page Header-->
@@ -58,35 +66,48 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-							<span><a href="supportRequest.jsp">후원신청</a></span> / <span>후원완료</span>
+<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+							<span><a href="support.jsp">후원신청</a></span> / <span>일시후원</span>
 						</p>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="colorlib-product">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-10 offset-sm-1 text-center">
-						<p class="icon-addcart">
-							<span><i class="icon-check"></i></span>
-						</p>
-						<h3 class="mb-4">ㆍ후원 신청 완료ㆍ<br>후원해 주셔서 정말 감사합니다.</h3>
-						<p>
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<a href="main.jsp" class="btn btn-primary" id="complete">메인으로 돌아가기</a>
-						</p>
-					</div>
+
+		<h1 id="menuTitle">일시후원신청</h1>
+
+		<div class="signup-form-container">
+<!-- action수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+			<form action="supportDone.jsp" method="post"
+				class="woocommerce-form woocommerce-form-register register ">
+				<div class="input-container">
+					<label class="reg_signup">은행&nbsp;</label> <input type="text"
+						class="woocommerce-Input woocommerce-Input--text input-text"
+						name="temporary_bank">
 				</div>
-			</div>
+				<div class="input-container">
+					<label class="reg_signup">계좌번호&nbsp;</label> <input type="text"
+						class="woocommerce-Input woocommerce-Input--text input-text"
+						name="temporary_acoount">
+				</div>
+				<div class="input-container">
+					<label class="reg_signup">금액&nbsp;</label> <input type="text"
+						class="woocommerce-Input woocommerce-Input--text input-text"
+						name="temporary_amount">
+				</div>
+				<input type="submit" class="btn btn-primary supprot"
+					value="&nbsp;신청하기&nbsp;">
+			</form>
+
+
+
 		</div>
+
 
 		<!-- Page Footer-->
 		<mytag:pageFooter />
-
 	</div>
-
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
@@ -114,7 +135,8 @@
 	<script src="js/jquery.stellar.min.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
-
 </body>
-</html>
 
+
+
+</html>

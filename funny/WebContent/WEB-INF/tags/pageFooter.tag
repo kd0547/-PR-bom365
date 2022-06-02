@@ -7,14 +7,15 @@
 	<div class="container">
 		<div class="row row-pb-md">
 			<div>
-				<a href="index.html"><img src="images/footLogo.png"
+<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+				<a href="main.jsp"><img src="images/footLogo.png"
 					alt="brandLogo" width="180px" height="60px" /></a>
 			</div>
 			<div class="col footer-col">
 				<h4>Contact Information</h4>
 				<ul class="colorlib-footer-links">
-					<li><a href="tel://821079797979">+82 10-7979-7979</a></li>
-					<li><a href="funnyc@mail.com">funnyc@mail.com</a></li>
+					<li>+82 10-7979-7979</li>
+					<li>funnyc@mail.com</li>
 					<li>경기 용인시 처인구 포곡읍 에버랜드로 199</li>
 				</ul>
 			</div>

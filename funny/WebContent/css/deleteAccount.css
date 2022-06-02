@@ -1,0 +1,55 @@
+@charset "EUC-KR";
+
+/*
+.delete-message{
+	margin: 20px 0px;
+	width: 600px;
+	display: inline-block;
+	background-color: blue;
+}
+
+.message-container{
+	width: 100%;
+	text-align:center;
+}
+
+*/
+
+.container-htag{
+	width:100%;
+	text-align: center;
+}
+
+
+
+.delete-message-h2{
+	padding: 20px 0px;
+	text-align: center;
+	right: 145px;
+}
+
+.delete-message-h4{
+	width: 600px;
+	padding: 30px 0 40px 0;
+	right: 145px;
+	position:relative;
+	 text-align: center;
+}
+
+div#deleteAccount {
+  	width: 100%;
+    text-align: center;
+    margin-top: 1em;
+}
+
+.col-md-12.total-wrap.withdrawal {
+    margin: 0px 0 9em 0 !important;
+}
+
+form.withdrawalForm2 {
+    display: inline-block;
+    background: #be393900;
+    font-size: 20px;
+    width: 350px;
+    margin-top: 1em;
+}
