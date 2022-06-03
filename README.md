@@ -1,13 +1,9 @@
 ## 1.팀 프로젝트 환경 구성하기 
 
-### 1-0  Flow
+
 [git 공유 흐름?](https://drive.google.com/file/d/1DBgr3Qsy5K0FAlXdRBB4KP8mKyVZihoe/view?usp=sharing)
 
 [git flow](https://jade-frill-5b8.notion.site/Git-Flow-81926030787645cc83af3a07e149d061)
-
-
-
-
 
 
 
@@ -48,8 +44,8 @@ IOS가 없어 외부 사이트에 의존할 수 밖에 없었습니다.
 [win OS인 경우]</br>
 [프로젝트에 JAR 적용 방법](https://veneas.tistory.com/entry/Eclipse-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90-jar-%ED%8C%8C%EC%9D%BC-%EC%B6%94%EA%B0%80%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95-%EC%9E%90%EB%B0%94-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%B6%94%EA%B0%80)
 
-### 1-2 git 연동  
-#### [git 연동](https://jade-frill-5b8.notion.site/GitHub-b8e39ce43cc54cceaddcafdf2fd67e13)
+### 1-2 github 연동  
+#### [github 연동 설정](https://jade-frill-5b8.notion.site/GitHub-b8e39ce43cc54cceaddcafdf2fd67e13)
 
 
 
@@ -74,12 +70,15 @@ IOS가 없어 외부 사이트에 의존할 수 밖에 없었습니다.
 * Develop branch - 개발중인 버전 
 
 ### 3-2 branch flow
-초기 flow</br>
-[branch flow](https://drive.google.com/file/d/111jBVqB6p011tJl1JId_34WnLQG2ggDU/view?usp=sharing)
+???? -  
+[링크](https://drive.google.com/file/d/111jBVqB6p011tJl1JId_34WnLQG2ggDU/view?usp=sharing)
 
 
 ### 3-3 branch 생성 및 사용 방법
 
+#### 3-3-1 로컬 저장소에 branch 생성 
+
+#### 3-3-2 내 깃허브에 branch 생성 
 
 
 
