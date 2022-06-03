@@ -1,14 +1,19 @@
 ## 1.팀 프로젝트 환경 구성하기 
 
 ### 1-0  Flow
-초기 flow입니다. 
-[branch flow](https://drive.google.com/file/d/111jBVqB6p011tJl1JId_34WnLQG2ggDU/view?usp=sharing)
+[git 공유 흐름?](https://drive.google.com/file/d/1DBgr3Qsy5K0FAlXdRBB4KP8mKyVZihoe/view?usp=sharing)
 
-[git flow](https://uxgjs.tistory.com/183)
-
-[프로젝트 흐름?](https://drive.google.com/file/d/1DBgr3Qsy5K0FAlXdRBB4KP8mKyVZihoe/view?usp=sharing)
+[git flow](https://jade-frill-5b8.notion.site/Git-Flow-81926030787645cc83af3a07e149d061)
 
 
+
+
+
+
+
+
+ ### 1-1  개발환경 체크 
+ 
 [주의사항] </br>
 * 로컬 저장소에서 프로젝트를 Import하기 때문에 기존 funny 폴더가 이클립스 Project Explore에 있다면 해당 파일에서 작업중이던 파일을 저장해 다른 곳에 옮겨두세요 모든 설정이 끝나고 작업중이던 파일을 복사하면 됩니다! 
 * 폴더 이름이Webapp이면 Import시 오류가 발생합니다 버전을 확인해주세요
@@ -17,11 +22,8 @@
 [IOS인 경우]</br>
 이클립스에서 Git을 사용하기 때문에 IOS도 이클립스 버전, git 로컬 저장소 생성,git Bash 설치 등을 제외하면 윈도우 환경과 비슷합니다. </br>
 IOS가 없어 외부 사이트에 의존할 수 밖에 없었습니다. 
-
-
-
-
- ### 1-1  개발환경 체크 
+ 
+ 
  #### * 개발환경
 * 톰캣 - Apache TomCat v9.0
 * JDK - JDK or JRE 1.8 버전 
@@ -66,7 +68,15 @@ IOS가 없어 외부 사이트에 의존할 수 밖에 없었습니다.
 #### [원본 저장소에 Pull Request](https://jade-frill-5b8.notion.site/pull-request-b67a6502701842f983875705e090a544)
 
 
-## 3. branch 생성
+## 3. branch 생성(수정중)
+* main branch - 오류없는 버전 (실행시켜도 에러가 없는 버전)
+* Develop branch - 개발중인 버전 
+
+초기 flow</br>
+[branch flow](https://drive.google.com/file/d/111jBVqB6p011tJl1JId_34WnLQG2ggDU/view?usp=sharing)
+
+
+* branch 이해 -
 [참고 링크](https://jade-frill-5b8.notion.site/branch-f32dc919d483401280c4dd38b3c1ec17)
 
 
