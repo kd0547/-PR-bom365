@@ -1,6 +1,7 @@
 ## 1.팀 프로젝트 환경 구성하기 
 
-### 1-0 흐름?
+### 1-0 branch Flow
+[링크](https://drive.google.com/file/d/111jBVqB6p011tJl1JId_34WnLQG2ggDU/view?usp=sharing)
 
 
 [주의사항] </br>
