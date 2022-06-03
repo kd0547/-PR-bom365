@@ -1,7 +1,12 @@
 ## 1.팀 프로젝트 환경 구성하기 
 
-### 1-0 branch Flow
-[링크](https://drive.google.com/file/d/111jBVqB6p011tJl1JId_34WnLQG2ggDU/view?usp=sharing)
+### 1-0  Flow
+초기 flow입니다. 
+[branch flow](https://drive.google.com/file/d/111jBVqB6p011tJl1JId_34WnLQG2ggDU/view?usp=sharing)
+
+[git flow](https://uxgjs.tistory.com/183)
+
+[프로젝트 흐름?](https://drive.google.com/file/d/1DBgr3Qsy5K0FAlXdRBB4KP8mKyVZihoe/view?usp=sharing)
 
 
 [주의사항] </br>
@@ -62,7 +67,7 @@ IOS가 없어 외부 사이트에 의존할 수 밖에 없었습니다.
 
 
 ## 3. branch 생성
-
+[참고 링크](https://jade-frill-5b8.notion.site/branch-f32dc919d483401280c4dd38b3c1ec17)
 
 
 ## 3. COMMIT 메시지 작성 규칙
