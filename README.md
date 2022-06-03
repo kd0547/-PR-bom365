@@ -69,11 +69,18 @@ IOS가 없어 외부 사이트에 의존할 수 밖에 없었습니다.
 
 
 ## 3. branch 생성(수정중)
+###3-1 branch 이름 
 * main branch - 오류없는 버전 (실행시켜도 에러가 없는 버전)
 * Develop branch - 개발중인 버전 
 
+###3-2 branch flow
 초기 flow</br>
 [branch flow](https://drive.google.com/file/d/111jBVqB6p011tJl1JId_34WnLQG2ggDU/view?usp=sharing)
+
+
+###3-3 branch 생성 및 사용 방법
+
+
 
 
 * branch 이해 -
