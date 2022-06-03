@@ -51,6 +51,7 @@ IOS가 없어 외부 사이트에 의존할 수 밖에 없었습니다.
 
 
 ## 2. 파일 업로드 & 다운로드 방법 
+버전관리가 되면 main or develop branch인지 확인하셔야됩니다. 
 
 ### 2-1 파일 업로드 
 #### [파일 업로드 방법](https://jade-frill-5b8.notion.site/github-703a7ab684af428a946d264b5acf09c8)
