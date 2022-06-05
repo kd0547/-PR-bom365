@@ -9,7 +9,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+<mytag:icon />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -80,12 +80,7 @@
 						<div class="form-group">
 							<h5>신청 내용</h5>
 							<textarea name="board_content" cols="30" rows="10"
-								class="form-control gap">
-ㆍ 희망 날짜
-→
-							ㆍ 방문 예정 시각
-→
-							</textarea>
+								class="form-control gap" placeholder="희망 날짜와 시간을 반드시 포함해주세요."></textarea>
 						</div>
 					</div>
 					<input type="submit" value="글 작성하기"
