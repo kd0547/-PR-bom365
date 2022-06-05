@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+<mytag:icon />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -115,8 +115,8 @@
 				<img src="images_sample/supportEX1.jpg" class="img-fluid animals"
 					alt="Free html5 bootstrap 4 template">
 				<h4>보호 · 입양</h4>
-				<p>카라가 구조한 동물들은 카라 더봄센터로 입소하여 살처분의 위험 없이 청결한 환경에서 따뜻한 보살핌을 받습니다.
-					동물들은 카라의 엄격한 입양심사를 통해 평생가족을 찾습니다.</p>
+				<p>봄365가 구조한 동물들은 센터로 입소하여 살처분의 위험 없이 청결한 환경에서 따뜻한 보살핌을 받습니다.
+					동물들은 봄365의 엄격한 입양심사를 통해 평생가족을 찾습니다.</p>
 			</div>
 			<div class="col footer-col colorlib-widget">
 				<img src="images_sample/supportEX2.jpg" class="img-fluid animals"

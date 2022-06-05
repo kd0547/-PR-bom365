@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="funny">
+    <wb-module deploy-name="bom365">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="funny"/>
-        <property name="java-output-path" value="/funny/build/classes"/>
+        <property name="java-output-path" value="/bom365/build/classes"/>
+        <property name="context-root" value="bom365"/>
     </wb-module>
 </project-modules>
