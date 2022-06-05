@@ -24,7 +24,6 @@
 <link rel="stylesheet" href="css/ionicons.min.css">
 <!-- Bootstrap  -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
-
 <!-- Magnific Popup -->
 <link rel="stylesheet" href="css/magnific-popup.css">
 
