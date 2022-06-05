@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>탈퇴완료</title>
+<title>봉사신청</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,7 +42,6 @@
 
 <!-- Theme style  -->
 <link rel="stylesheet" href="css/style.css">
-
 </head>
 <body>
 
@@ -52,36 +51,44 @@
 
 		<!-- Page Header-->
 		<mytag:pageHeader pageSector=" " />
-
 		<div class="breadcrumbs">
 			<div class="container">
 				<div class="row">
 					<div class="col">
 						<p class="bread">
 <!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<span><a href="mypage.jsp">My Page</a></span> / <span>탈퇴완료</span>
+							<span><a href="boardList.jsp">상세글</a></span> / <span>글수정</span>
 						</p>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="colorlib-product">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-10 offset-sm-1 text-center">
-						<p class="icon-addcart">
-							<span><i class="icon-check"></i></span>
-						</p>
-						<h3 class="mb-4">탈퇴 완료되었습니다.<br>그동안 이용해 주셔서 감사합니다.</h3>
-						<p>
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<a href="main.jsp" class="btn btn-primary" id="complete">메인으로 돌아가기</a>
-						</p>
+		<div style="text-align: center; margin-top: 2em; margin-bottom: 7em;">
+			<div class="col-sm-4 text-left total writeForm"
+				style="display: inline-block;">
+<!-- action수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- 카테고리는 관리자 아니라면 자동으로 '일반' 설정//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+				<form action="boardOne.jsp" method="post">
+					<div class="form-group">
+						<h5>제목</h5>
+<!-- value 수정//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+						<input type="text" class="form-control gap"
+							value="안녕하세요 반갑습니다." name="board_title">
+
+						<div class="form-group">
+							<h5>신청 내용</h5>
+<!-- 값 수정//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+							<textarea name="board_content" cols="30" rows="10"
+								class="form-control gap">처음 뵙겠습니다!</textarea>
+						</div>
 					</div>
-				</div>
+					<input type="submit" value="수정하기"
+						class="btn btn-primary inputSubmit">
+				</form>
 			</div>
 		</div>
+
 
 		<!-- Page Footer-->
 		<mytag:pageFooter />

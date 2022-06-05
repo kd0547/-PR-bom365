@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+<mytag:icon />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -197,7 +197,7 @@
 			<div class="col-md-3 col-lg-3 mb-4 text-center animals-photos-text">
 				<div class="product-entry border">
 <!-- href 수정//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-					<a href="anilmalOne.jsp" class="prod-img">
+					<a href="animalOne.jsp" class="prod-img">
 <!-- src 수정//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 					<img src="images_sample/강록.png"
 						class="img-fluid animals" alt="Free html5 bootstrap 4 template">
@@ -206,7 +206,7 @@
 						<h2>
 <!-- href 수정//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <!-- 데이터 수정//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<a href="anilmalOne.jsp">강록</a>
+							<a href="animalOne.jsp">강록</a>
 						</h2>
 						<span class="animal_spacies">개</span><br> <span
 							class="animal_gender">수컷(중성화O)</span><br> <span
@@ -218,12 +218,12 @@
 <!-- 페이지 채우기 용//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 			<div class="col-md-3 col-lg-3 mb-4 text-center">
 				<div class="product-entry border">
-					<a href="anilmalOne.jsp" class="prod-img"> <img src="images_sample/남희.png"
+					<a href="animalOne.jsp" class="prod-img"> <img src="images_sample/남희.png"
 						class="img-fluid animals" alt="Free html5 bootstrap 4 template">
 					</a>
 					<div class="desc">
 						<h2>
-							<a href="anilmalOne.jsp">남희</a>
+							<a href="animalOne.jsp">남희</a>
 						</h2>
 						<span class="animal_spacies">개</span><br> <span
 							class="animal_gender">암컷(중성화O)</span><br> <span
@@ -234,12 +234,12 @@
 			</div>
 			<div class="col-md-3 col-lg-3 mb-4 text-center">
 				<div class="product-entry border">
-					<a href="anilmalOne.jsp" class="prod-img"> <img src="images_sample/레슬리.png"
+					<a href="animalOne.jsp" class="prod-img"> <img src="images_sample/레슬리.png"
 						class="img-fluid animals" alt="Free html5 bootstrap 4 template">
 					</a>
 					<div class="desc">
 						<h2>
-							<a href="anilmalOne.jsp">레슬리</a>
+							<a href="animalOne.jsp">레슬리</a>
 						</h2>
 						<span class="animal_spacies">개</span><br> <span
 							class="animal_gender">수컷(중성화O)</span><br> <span
@@ -250,12 +250,12 @@
 			</div>
 			<div class="col-md-3 col-lg-3 mb-4 text-center">
 				<div class="product-entry border">
-					<a href="anilmalOne.jsp" class="prod-img"> <img src="images_sample/루시.png"
+					<a href="animalOne.jsp" class="prod-img"> <img src="images_sample/루시.png"
 						class="img-fluid animals" alt="Free html5 bootstrap 4 template">
 					</a>
 					<div class="desc">
 						<h2>
-							<a href="anilmalOne.jsp">루시</a>
+							<a href="animalOne.jsp">루시</a>
 						</h2>
 						<span class="animal_spacies">개</span><br> <span
 							class="animal_gender">암컷(중성화O)</span><br> <span
@@ -266,12 +266,12 @@
 			</div>
 			<div class="col-md-3 col-lg-3 mb-4 text-center">
 				<div class="product-entry border">
-					<a href="anilmalOne.jsp" class="prod-img"> <img src="images_sample/마리.png"
+					<a href="animalOne.jsp" class="prod-img"> <img src="images_sample/마리.png"
 						class="img-fluid animals" alt="Free html5 bootstrap 4 template">
 					</a>
 					<div class="desc">
 						<h2>
-							<a href="anilmalOne.jsp">마리</a>
+							<a href="animalOne.jsp">마리</a>
 						</h2>
 						<span class="animal_spacies">고양이</span><br> <span
 							class="animal_gender">암컷(중성화O)</span><br> <span
@@ -282,12 +282,12 @@
 			</div>
 			<div class="col-md-3 col-lg-3 mb-4 text-center">
 				<div class="product-entry border">
-					<a href="anilmalOne.jsp" class="prod-img"> <img src="images_sample/쿠로.png"
+					<a href="animalOne.jsp" class="prod-img"> <img src="images_sample/쿠로.png"
 						class="img-fluid animals" alt="Free html5 bootstrap 4 template">
 					</a>
 					<div class="desc">
 						<h2>
-							<a href="anilmalOne.jsp">쿠로</a>
+							<a href="animalOne.jsp">쿠로</a>
 						</h2>
 						<span class="animal_spacies">고양이</span><br> <span
 							class="animal_gender">수컷(중성화)</span><br> <span
@@ -298,12 +298,12 @@
 			</div>
 			<div class="col-md-3 col-lg-3 mb-4 text-center">
 				<div class="product-entry border">
-					<a href="anilmalOne.jsp" class="prod-img"> <img src="images_sample/홀리.png"
+					<a href="animalOne.jsp" class="prod-img"> <img src="images_sample/홀리.png"
 						class="img-fluid animals" alt="Free html5 bootstrap 4 template">
 					</a>
 					<div class="desc">
 						<h2>
-							<a href="anilmalOne.jsp">홀리</a>
+							<a href="animalOne.jsp">홀리</a>
 						</h2>
 						<span class="animal_spacies">고양이</span><br> <span
 							class="animal_gender">암컷(중성화O)</span><br> <span
@@ -314,12 +314,12 @@
 			</div>
 			<div class="col-md-3 col-lg-3 mb-4 text-center">
 				<div class="product-entry border">
-					<a href="anilmalOne.jsp" class="prod-img"> <img src="images_sample/보석.jpg"
+					<a href="animalOne.jsp" class="prod-img"> <img src="images_sample/보석.jpg"
 						class="img-fluid animals" alt="Free html5 bootstrap 4 template">
 					</a>
 					<div class="desc">
 						<h2>
-							<a href="anilmalOne.jsp">보석</a>
+							<a href="animalOne.jsp">보석</a>
 						</h2>
 						<span class="animal_spacies">개(믹스)</span><br> <span
 							class="animal_gender">수컷(중성화O)</span><br> <span

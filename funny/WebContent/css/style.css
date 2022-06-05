@@ -8926,6 +8926,7 @@ a#complete {
 .form-control.gap {
 	margin-bottom: 1.5em;
 	width: 100%;
+	resize: none;
 }
 .btn.btn-primary.inputSubmit {
 	width: 22%;
@@ -9012,4 +9013,44 @@ h3.h3support {
 }
 .row.row-pb-md.support {
     padding-block: 2em !important;
+}
+textarea.form-control.gap.comment.comment {
+    height: 60px;
+    resize: none;
+    width: 723px;
+    background: #cbbd8938 !important;
+    border: 2px solid rgb(203, 189, 137) !important;
+    margin-right: -2px;
+    border-radius: 5px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+input.btn.btn-primary.inputSubmit.comment {
+    width: 155px;
+    border-radius: 5px;
+    border-top-left-radius: 0px;
+    background: #cbbd89;
+    border-bottom-left-radius: 0px;
+    height: 60px;
+    font-size: 20px;
+}
+input.btn.btn-primary.inputSubmit.comment:hover {
+	background: #978d67 !important;
+}
+.form-group.boardOne {
+    display: flex;
+    margin-bottom: 0;
+}
+h5.h5-detail.title.info {
+    text-align: right;
+    width: 100%;
+    color: #5959596b;
+}
+a.commentDel {
+    font-size: 13px;
+    color: #d15561;
+}
+a.btn.btn-primary.boardUD {
+    width: 130px;
+    border-radius: 5px;
 }
