@@ -61,20 +61,28 @@ IOS가 없어 외부 사이트에 의존할 수 밖에 없었습니다.
 #### [원본 저장소에 Pull Request](https://jade-frill-5b8.notion.site/pull-request-b67a6502701842f983875705e090a544)
 
 
-## 3. git-flow 사용 
+## 3. git-flow  
 ### 3-1 git-flow와 github-flow 차이 
 [링크](https://ujuc.github.io/2015/12/16/git-flow-github-flow-gitlab-flow/)
 
 
-### 3-2 git-flow 전략
+### 3-2 git-flow 전략 예시 
 우아한 형제들 기술 블로그에서 git-flow 전략에 대한 설명을 하고 있어서 팀 프로젝트에 적용해보면 좋을 것 같습니다. 
-[우하한 형제들 git-flow 전략](https://techblog.woowahan.com/2553/) </be>
+[우하한 형제들 git-flow 전략](https://techblog.woowahan.com/2553/) </br>
 
-### 3
+### 3-3 Git Repository 구성 살펴보기
+Local Repository에서 작업을 완료한 후 origin Repository push 합니다. 
+그리고 GitHub에서 Origin Repository에 push한 브랜치를 Upstream Repository로 merge하는 Pull Request를 생성하고 
+주 3회 있는 회의에서 팀원들과 회의 후 merge 합니다. 
+다시 새로운 작업을 진행할 때 Local Repository에서 Upstream Repository를 pull 합니다. 
+
+[Git Repository 구성](https://drive.google.com/file/d/1DBgr3Qsy5K0FAlXdRBB4KP8mKyVZihoe/view?usp=sharing)
 
 
 
-### git flow 이용
+
+
+### git flow 사용
 사용중인 Repository와 Branch 
 * Repositories
   - upstream (Upstream Repository)
@@ -87,7 +95,7 @@ IOS가 없어 외부 사이트에 의존할 수 밖에 없었습니다.
 ## 4. branch 생성(수정중)
 
 
-[git 저장소 구성](https://drive.google.com/file/d/1DBgr3Qsy5K0FAlXdRBB4KP8mKyVZihoe/view?usp=sharing)
+
 
 [git flow](https://jade-frill-5b8.notion.site/Git-Flow-81926030787645cc83af3a07e149d061)
 
@@ -98,8 +106,7 @@ IOS가 없어 외부 사이트에 의존할 수 밖에 없었습니다.
 * [팀원 이름으로 만든 branch] - (예정)
 
 ### 4-2 branch flow
-???? -  
-[링크](https://drive.google.com/file/d/111jBVqB6p011tJl1JId_34WnLQG2ggDU/view?usp=sharing)
+
 
 #### git-flow 
 git-flow (https://techblog.woowahan.com/2553/)
