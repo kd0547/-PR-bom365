@@ -1,13 +1,5 @@
 ## 1.팀 프로젝트 환경 구성하기 
 
-
-[git 공유 흐름?](https://drive.google.com/file/d/1DBgr3Qsy5K0FAlXdRBB4KP8mKyVZihoe/view?usp=sharing)
-
-[git flow](https://jade-frill-5b8.notion.site/Git-Flow-81926030787645cc83af3a07e149d061)
-
-
-
-
  ### 1-1  개발환경 체크 
  
 [주의사항] </br>
@@ -51,7 +43,7 @@ IOS가 없어 외부 사이트에 의존할 수 밖에 없었습니다.
 
 
 ## 2. 파일 업로드 & 다운로드 방법 
-버전관리가 되면 main or develop branch인지 확인하셔야됩니다. 
+### 버전을 관리하게 되면 main or develop branch인지 확인하셔야됩니다. 
 
 [주의사항] 
 파일 업로드 전 Pull로 원본 저장소와 동기화 해야합니다!
@@ -69,15 +61,48 @@ IOS가 없어 외부 사이트에 의존할 수 밖에 없었습니다.
 #### [원본 저장소에 Pull Request](https://jade-frill-5b8.notion.site/pull-request-b67a6502701842f983875705e090a544)
 
 
-## 3. branch 생성(수정중)
-### 3-1 branch 이름 
+## 3. git-flow 사용 
+### 3-1 git-flow와 github-flow 차이 
+[링크](https://ujuc.github.io/2015/12/16/git-flow-github-flow-gitlab-flow/)
+
+
+### 3-2 git-flow 전략
+우아한 형제들 기술 블로그에서 git-flow 전략에 대한 설명을 하고 있어서 팀 프로젝트에 적용해보면 좋을 것 같습니다. 
+[우하한 형제들 git-flow 전략](https://techblog.woowahan.com/2553/) </be>
+
+### 3
+
+
+
+### git flow 이용
+사용중인 Repository와 Branch 
+* Repositories
+  - upstream (Upstream Repository)
+  - origin (Origin Repository)
+
+* Branches
+  - main (서버에서 실행시켜도 문제가 없는 버전)
+  - develop (개발중인 버전)
+
+## 4. branch 생성(수정중)
+
+
+[git 저장소 구성](https://drive.google.com/file/d/1DBgr3Qsy5K0FAlXdRBB4KP8mKyVZihoe/view?usp=sharing)
+
+[git flow](https://jade-frill-5b8.notion.site/Git-Flow-81926030787645cc83af3a07e149d061)
+
+
+### 4-1 branch 이름 
 * main branch - 오류없는 버전 (실행시켜도 에러가 없는 버전)
 * Develop branch - 개발중인 버전 
+* [팀원 이름으로 만든 branch] - (예정)
 
-### 3-2 branch flow
+### 4-2 branch flow
 ???? -  
 [링크](https://drive.google.com/file/d/111jBVqB6p011tJl1JId_34WnLQG2ggDU/view?usp=sharing)
 
+#### git-flow 
+git-flow (https://techblog.woowahan.com/2553/)
 
 ### 3-3 branch 생성 및 사용 방법
 
@@ -90,9 +115,12 @@ IOS가 없어 외부 사이트에 의존할 수 밖에 없었습니다.
 #### 3-3-2 내 깃허브에 branch 생성 
 
 
+#### 추가 예정
 
 * branch 이해 -
 [참고 링크](https://jade-frill-5b8.notion.site/branch-f32dc919d483401280c4dd38b3c1ec17)
+* 깃flow을 위한 GUI 툴 [GFC](https://www.sourcetreeapp.com/)(미정)
+
 
 
 ## 3. COMMIT 메시지 작성 규칙
