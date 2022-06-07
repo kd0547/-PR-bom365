@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="mytag"%>
 <!DOCTYPE HTML>
 <html>
@@ -62,7 +61,7 @@
 	<div id="page">
 
 		<!-- Page Header-->
-		<mytag:pageHeader pageSector=" " />
+		<mytag:pageHeader/>
 		<div class="breadcrumbs">
 			<div class="container">
 				<div class="row">

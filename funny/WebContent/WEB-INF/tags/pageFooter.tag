@@ -1,7 +1,4 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="mytag"%>
-<%@ attribute name="pageSector"%>
 
 <footer id="colorlib-footer" role="contentinfo">
 	<div class="container">
