@@ -42,7 +42,6 @@
 <!-- Theme style  -->
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/boardOne.css">
-<!-- 취소해도 작동,,,//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <script type="text/javascript">
     function del(){
         ans=confirm("정말 삭제하시겠습니까?");
@@ -50,7 +49,7 @@
             document.withdrawal.submit();
         }
         else{
-            return;
+        	event.preventDefault();
         }
     }
 </script>
