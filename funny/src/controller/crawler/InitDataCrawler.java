@@ -77,13 +77,13 @@ public class InitDataCrawler extends CrawlingUtil{
 			
 			list.add(new AnimalVO(
 					getName(element),
-					getNameSpecies(getSpecies(element)),
 					getAnimalType(getSpecies(element)),
+					getNameSpecies(getSpecies(element)),
 					getGender(element),
 					getAge(getAWC(element)),
 					getWeight(getAWC(element)),
 					getImgSrc(element),
-					getAtag(element)
+					"false"
 					));
 			
 			
