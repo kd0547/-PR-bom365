@@ -2,15 +2,11 @@
 <!-- 취소해도 작동,,,//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <script type="text/javascript">
     function del(){
-    	var ans=confirm("회원님의 정보는 복구되지않습니다. \n정말 탈퇴하시겠습니까?");
+        ans=confirm("회원님의 정보는 복구되지않습니다. \n정말 탈퇴하시겠습니까?");
         if(ans==true){
-			
-        	var trans = document.getElementById("trans");
-        	trans.method = "POST";
-        	trans.action = "/bom365/withdrawalDone.jsp";
-            trans.submit();
+            document.withdrawal.submit();
         }
-        else {
+        else{
         	event.preventDefault();
         }
     }
@@ -24,7 +20,7 @@
 		</h5>
 	</div>
 <!-- action수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-	<form id="trans" name="withdrawal" class="withdrawalForm2">
+	<form action="withdrawalDone.jsp" method="post" name="withdrawal" class="withdrawalForm2">
 		<table id="tableStyle">
 			<tr>
 				<td>비밀번호</td>
