@@ -11,7 +11,7 @@
             trans.submit();
         }
         else {
-        	return;
+        	event.preventDefault();
         }
     }
 </script>
