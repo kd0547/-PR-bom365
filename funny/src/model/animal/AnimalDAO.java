@@ -24,7 +24,7 @@ public class AnimalDAO {
 				pstmt.setString(4, data.getAnimal_type());
 				pstmt.setString(5, data.getAnimal_gender());
 				pstmt.setString(6, data.getAnimal_age());
-				pstmt.setInt(7, data.getAnimal_weight());
+				pstmt.setFloat(7, data.getAnimal_weight());
 				pstmt.setString(8, data.getAnimal_image());
 				pstmt.executeUpdate();
 			}
