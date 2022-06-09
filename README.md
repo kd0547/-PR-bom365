@@ -112,7 +112,7 @@ git-flow (https://techblog.woowahan.com/2553/)
 [깃허브에서 브랜치 사용하기](https://jade-frill-5b8.notion.site/branch-37316ce5e31c43cc903e37d10b2b2bdd)
 
 
-### 4-4 branch 사용 예시
+### 4-4 branch 사용 예시(추가중)
 
 
 
@@ -154,8 +154,8 @@ git-flow (https://techblog.woowahan.com/2553/)
 * 관련: 해당 commit에 관련된 이슈 번호
 * 참고: 참고할 이슈가 있는 경우 사용
 
-
-
+### 5-4 작성 예시 (추가중)
+#### 자기코드번호+m/v/c+타입
 
 #### 추가 예정
 
