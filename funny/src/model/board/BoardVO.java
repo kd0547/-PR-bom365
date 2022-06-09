@@ -7,6 +7,7 @@ public class BoardVO {
 	private String board_title;
 	private String board_content;
 	private String category;
+	private int board_commentCnt;
 	
 	public int getBoard_number() {
 		return board_number;
@@ -44,10 +45,17 @@ public class BoardVO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	
+	public int getBoard_commentCnt() {
+		return board_commentCnt;
+	}
+	public void setBoard_commentCnt(int board_commentCnt) {
+		this.board_commentCnt = board_commentCnt;
+	}
+
 	@Override
 	public String toString() {
-		return "boardVO [board_number=" + board_number + ", supporter_id=" + supporter_id + ", board_date=" + board_date
-				+ ", board_title=" + board_title + ", board_content=" + board_content + ", category=" + category + "]";
+		return "BoardVO [board_number=" + board_number + ", supporter_id=" + supporter_id + ", board_date=" + board_date
+				+ ", board_title=" + board_title + ", board_content=" + board_content + ", category=" + category
+				+ ", board_commentCnt=" + board_commentCnt + "]";
 	}
 }

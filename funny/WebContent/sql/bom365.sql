@@ -63,7 +63,7 @@ CREATE TABLE support_regular (
 	regular_amount			NUMBER					NOT NULL,
 	regular_bank				VARCHAR2(20)		NOT NULL,
 	regular_account		VARCHAR2(20)		NOT NULL,
-	regular_date				DATE						NOT NULL,
+	regular_date				VARCHAR2(20)		NOT NULL,
 	
 	CONSTRAINTS FK_MEMBER_TO_REGULAR FOREIGN KEY (supporter_id) REFERENCES  supporter (supporter_id)
 	--후원중인 회원은 탈퇴 불가
@@ -74,8 +74,7 @@ CREATE TABLE support_temporary (
 	temporary_number	NUMBER					CONSTRAINT support_temporary PRIMARY KEY,
 	supporter_id				VARCHAR2(20),
 	temporary_amount	NUMBER					NOT NULL,
-	temporary_bank		VARCHAR2(20)		NOT NULL,
-	temporary_account	VARCHAR2(20)		NOT NULL,
+	temporary_date			VARCHAR2(20)		NOT NULL,
 	
 	CONSTRAINTS FK_supporter_TO_temporary FOREIGN KEY (supporter_id) REFERENCES  supporter (supporter_id)
 	ON DELETE SET NULL		-- 일시후원자가 회원 탈퇴해도 후원목록 남아있음
@@ -85,10 +84,11 @@ CREATE TABLE support_temporary (
 CREATE TABLE board (
 	board_number			NUMBER					CONSTRAINT board PRIMARY KEY,
 	supporter_id				VARCHAR2(20),
-	board_date				DATE						NOT NULL,
+	board_date				VARCHAR2(20)		NOT NULL,
 	board_title					VARCHAR2(50)		NOT NULL,
 	board_content			VARCHAR2(90)		NOT NULL,
 	category						VARCHAR2(20)		NOT NULL,
+	board_commentCnt	NUMBER					DEFAULT 0 NOT NULL,
 	
 	CONSTRAINTS FK_supporter_TO_board FOREIGN KEY (supporter_id) REFERENCES  supporter (supporter_id)
 	ON DELETE SET NULL,		-- 작성자가  회원 탈퇴해도 게시글 남아있음
@@ -101,7 +101,7 @@ CREATE TABLE board_comment (
 	board_number			NUMBER					NOT NULL,
 	supporter_id				VARCHAR2(20)		NOT NULL,
 	comment_content		VARCHAR2(50)		NOT NULL,
-	comment_date			DATE						NOT NULL,
+	comment_date			VARCHAR2(20)		NOT NULL,
 	
 	CONSTRAINTS FK_board_TO_comment FOREIGN KEY (board_number) REFERENCES  board (board_number)
 	ON DELETE CASCADE,			-- 게시글 삭제시 댓글 삭제
