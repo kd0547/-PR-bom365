@@ -105,14 +105,14 @@ git-flow (https://techblog.woowahan.com/2553/)
 
 
 ###  4-2 로컬에서 branch 사용하기
-로컬 브랜치에서 사용하는 방법을 올렸습니다.
+로컬 브랜치에서 사용하는 방법을 올렸습니다.</
 [로컬 브랜치 사용하기](https://jade-frill-5b8.notion.site/06c7833df9b343f9a1768d01fb7d7b3d)
 
 ### 4-3 깃허브 저장소에서 branch 사용하기
 [깃허브에서 브랜치 사용하기](https://jade-frill-5b8.notion.site/branch-37316ce5e31c43cc903e37d10b2b2bdd)
 
 
-
+### 4-4 branch 사용 예시
 
 
 
