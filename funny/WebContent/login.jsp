@@ -57,8 +57,7 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<span><a href="main.jsp">Home</a></span> / <span>로그인</span>
+							<span><a href="index.jsp">Home</a></span> / <span>로그인</span>
 						</p>
 					</div>
 				</div>
@@ -68,8 +67,7 @@
 		<h1 id="menuTitle">로그인</h1>
 		<div class="col-md-12 total-wrap" id="login">
 			<div class="col-sm-4 text-center total">
-<!-- action수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-				<form action="main.jsp" method="post" name="loginForm">
+				<form action="login.me" method="post" name="loginForm">
 					<table id="tableStyle">
 						<tr>
 							<td id="tableCol">아이디</td>

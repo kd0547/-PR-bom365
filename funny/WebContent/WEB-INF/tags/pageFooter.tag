@@ -4,8 +4,7 @@
 	<div class="container">
 		<div class="row row-pb-md">
 			<div>
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-				<a href="main.jsp"><img src="images/footLogo.png" alt="brandLogo" width="183.3px" height="62.5px"></a>
+				<a href="main.do"><img src="images/footLogo.png" alt="brandLogo" width="183.3px" height="62.5px"></a>
 			</div>
 			<div class="col footer-col">
 				<h4>Contact Information</h4>

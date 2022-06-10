@@ -60,14 +60,15 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<span><a href="main.jsp">Home</a></span> / <span>봉사자모집</span>
+							<span><a href="index.jsp">Home</a></span> / <span>봉사자모집</span>
 						</p>
 					</div>
 				</div>
 			</div>
 		</div>
+		
 		<h1 id="menuTitle">봉사자모집</h1>
+		
 		<!-- BoardList -->
 		<div class="boardListFirstDiv">
 			<div style="display: inline-block;">
@@ -77,74 +78,71 @@
 							<td class="removeBorderTop"></td>
 							<td colspan="2" class="removeBorderTop"
 								style="padding-inline: 120px;">
-<!-- 로그인상태 아니라면 숨김//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-								<a href="boardRequest.jsp"
-								class="btn btn-primary inputSubmit apply">지원하기</a>
-<!-- action 수정//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-								<form method="post" action="boardList.jsp"
-									style="float: right;">
+								
+								<!-- 로그인했을시에만 글 작성 가능 -->
+								<c:choose>
+									<c:when test="${supporter_id==null}">
+										<a href="login.jsp" class="btn btn-primary inputSubmit apply">로그인
+											후 지원하기</a>
+									</c:when>
+									<c:otherwise>
+										<a href="boardRequest.jsp"
+											class="btn btn-primary inputSubmit apply">지원하기</a>
+									</c:otherwise>
+								</c:choose>
+								
+								<!-- 검색 -->
+								<form method="post" action="boardSearch.do" style="float: right;">
 									<input type="text" name="keyword" class="searchKeyword">
 									<input type="submit" value="검색"
 										class="btn btn-primary inputSubmit searchButton">
 								</form>
+								
 							</td>
 							<td class="removeBorderTop"></td>
 						</tr>
+						
 						<tr>
 							<td class="removeBorderTop"></td>
 							<td colspan="2" class="removeBorderTop" style="float: right;"><h6>
 									정렬 :&nbsp; 
-<!-- href 수정//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-									<a href="BoardList.jsp">댓글순</a>&nbsp;|&nbsp;
-<!-- 로그인이안돼있다면 숨김//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- href 수정//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-									<a href="BoardList.jsp">내글보기</a>&nbsp;
+									<a href="boardCategory.do?category=recent">최신순</a>&nbsp;|&nbsp;
+									<a href="boardCategory.do?category=comment">댓글순</a>&nbsp;
+									<!-- 로그인이안돼있다면 숨김 -->
+									<c:if test="${supporter_id!=null}">
+										|&nbsp;<a href="boardCategory.do?category=mine">내글보기</a>&nbsp;
+									</c:if>
 								</h6></td>
 							<td class="removeBorderTop"></td>
 						</tr>
+						
 						<tr class="boardHead">
-							<td style="width: 5em;">번호</td>
-							<td style="width: 30em;">제목</td>
-							<td style="width: 5em;">작성자</td>
-							<td style="width: 5em;">날짜</td>
+							<td style="width: 7em;">번호</td>
+							<td style="width: 28em;">제목</td>
+							<td style="width: 7em;">작성자</td>
+							<td style="width: 7em;">날짜</td>
 						</tr>
 					</tbody>
+					
 					<tbody class="boardTbottom">
-						<tr>
-<!-- 값들 수정//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- 데이터 불러온뒤 for문으로 구현//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<td>4</td>
-<!-- href 수정//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<td class="fontSize-17"><a href="boardOne.jsp">안녕하세요 반갑습니다.</a></td>
-							<td>김개똥</td>
-							<td>22.05.30</td>
-						</tr>
-<!-- 페이지 채우기 용//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-						<tr>
-							<td>3</td>
-							<td class="fontSize-17"><a href="boardOne.jsp">오늘 날씨가 참 좋네요</a></td>
-							<td>김말똥</td>
-							<td>22.04.21</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td class="fontSize-17"><a href="boardOne.jsp">가나다라마바사아자차카타파하</a></td>
-							<td>김소똥</td>
-							<td>22.04.10</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td class="fontSize-17"><a href="boardOne.jsp">abcdEFDHijklMNOPqrsyUVXXyz</a></td>
-							<td>김닭똥</td>
-							<td>22.02.12</td>
-						</tr>
-<!-- 여기까지 페이지 채우기 용//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+						<c:forEach var="v" items="${boardList}">
+							<tr>
+								<td>${v.board_number}</td>
+								<td class="fontSize-17">
+									<a href="boardDetail.do?board_number=${v.board_number}">${v.board_title}&nbsp;
+										<b style="color: #978d678c;">[${v.board_commentCnt}]</b>
+									</a>
+								</td>
+								<td>${v.supporter_id}</td>
+								<td>${v.board_date}</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
 		</div>
 <!-- 페이지네이션 구현한다면 유지//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-		<div style="margin-bottom: 3em;">
+<!-- 		<div style="margin-bottom: 3em;">
 			<div class="col-md-12 text-center">
 				<div class="block-27">
 					<ul>
@@ -158,7 +156,7 @@
 					</ul>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 		<!-- Page Footer-->
 		<mytag:pageFooter />

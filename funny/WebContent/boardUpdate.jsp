@@ -55,8 +55,7 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<span><a href="boardList.jsp">상세글</a></span> / <span>글수정</span>
+							<span><a href="boardDetail.do?board_number=${boardDetail.board.board_number}">상세글</a></span> / <span>글수정</span>
 						</p>
 					</div>
 				</div>
@@ -66,20 +65,16 @@
 		<div style="text-align: center; margin-top: 2em; margin-bottom: 7em;">
 			<div class="col-sm-4 text-left total writeForm"
 				style="display: inline-block;">
-<!-- action수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- 카테고리는 관리자 아니라면 자동으로 '일반' 설정//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-				<form action="boardOne.jsp" method="post">
+				<form action="boardUpdate.do?board_number=${boardDetail.board.board_number}" method="post">
 					<div class="form-group">
 						<h5>제목</h5>
-<!-- value 수정//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 						<input type="text" class="form-control gap"
-							value="안녕하세요 반갑습니다." name="board_title">
+							value="${boardDetail.board.board_title}" name="board_title">
 
 						<div class="form-group">
-							<h5>신청 내용</h5>
-<!-- 값 수정//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+							<h5>내용</h5>
 							<textarea name="board_content" cols="30" rows="10"
-								class="form-control gap">처음 뵙겠습니다!</textarea>
+								class="form-control gap">${boardDetail.board.board_content}</textarea>
 						</div>
 					</div>
 					<input type="submit" value="수정하기"

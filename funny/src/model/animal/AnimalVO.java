@@ -8,10 +8,15 @@ public class AnimalVO {
 	private String animal_type;
 	private String animal_gender;
 	private String animal_age;
+<<<<<<< HEAD
 	private float animal_weight;
+=======
+	private double animal_weight;
+>>>>>>> refs/remotes/origin/main
 	private String animal_image;
 	private String isAdoption;
 	
+<<<<<<< HEAD
 	
 	
 	public AnimalVO() {
@@ -32,6 +37,25 @@ public class AnimalVO {
 	}
 
 
+=======
+	public AnimalVO() {
+		
+	}
+	
+	public AnimalVO(String animal_name, String animal_species, String animal_type,
+			String animal_gender, String animal_age, double animal_weight, String animal_image, String isAdoption) {
+
+		this.animal_name = animal_name;
+		this.animal_species = animal_species;
+		this.animal_type = animal_type;
+		this.animal_gender = animal_gender;
+		this.animal_age = animal_age;
+		this.animal_weight = animal_weight;
+		this.animal_image = animal_image;
+		this.isAdoption = isAdoption;
+	}
+	
+>>>>>>> refs/remotes/origin/main
 	public int getAnimal_number() {
 		return animal_number;
 	}
@@ -74,10 +98,18 @@ public class AnimalVO {
 	public void setAnimal_age(String animal_age) {
 		this.animal_age = animal_age;
 	}
+<<<<<<< HEAD
 	public float getAnimal_weight() {
+=======
+	public double getAnimal_weight() {
+>>>>>>> refs/remotes/origin/main
 		return animal_weight;
 	}
+<<<<<<< HEAD
 	public void setAnimal_weight(float animal_weight) {
+=======
+	public void setAnimal_weight(double animal_weight) {
+>>>>>>> refs/remotes/origin/main
 		this.animal_weight = animal_weight;
 	}
 	public String getAnimal_image() {

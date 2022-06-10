@@ -1,5 +1,4 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
-<!-- 취소해도 작동,,,//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <script type="text/javascript">
     function del(){
         var ans=confirm("회원님의 정보는 복구되지않습니다. \n정말 탈퇴하시겠습니까?");
@@ -33,7 +32,7 @@
 		</table>
 		<table id="tableStyle" style="margin-top: 20px;">
 			<tr>
-				<td><input type="submit" class="btn btn-primary"
+				<td><input type="submit" class="btn btn-primary del"
 					value="&nbsp;Delete My Account&nbsp;" onclick="del()"></td>
 			</tr>
 			<tr>

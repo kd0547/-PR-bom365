@@ -42,7 +42,7 @@
 <!-- Theme style  -->
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/boardOne.css">
-<!-- 취소해도 작동,,,//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
 <script type="text/javascript">
     function del(){
         ans=confirm("정말 삭제하시겠습니까?");
@@ -50,7 +50,7 @@
             document.withdrawal.submit();
         }
         else{
-            return;
+        	event.preventDefault();
         }
     }
 </script>
@@ -68,97 +68,87 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<span><a href="boardList.jsp">봉사자모집</a></span> / <span>상세글</span>
+							<span><a href="boardList.do">봉사자모집</a></span> / <span>상세글</span>
 						</p>
 					</div>
 				</div>
 			</div>
 		</div>
-<!-- 본인 게시물일때 수정하기/삭제하기 버튼추가//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+		
 		<div style="text-align: center; margin-top: 2em; margin-bottom: 7em;">
 			<div class="col-sm-4 text-left total writeForm"
 				style="display: inline-block;">
 				<div class="form-group">
+				
 					<div class="form-group boardOne">
 						<h5 class="h5-detail title" style="width: 100%;">제목</h5>
-						<h5 class="h5-detail title info">김개똥 | 2022.05.30</h5>
+						<h5 class="h5-detail title info">${boardDetail.board.supporter_id} | ${boardDetail.board.board_date}</h5>
 					</div>
+					
 					<div class="title-box">
-<!-- 제목 수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<h5 style="padding: 14px;">안녕하세요 반갑습니다.</h5>
+							<h5 style="padding: 14px;">${boardDetail.board.board_title}</h5>
 					</div>
+					
 					<div class="form-group">
 						<h5 class="h5-detail comment">내용</h5>
-<!-- 내용 수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 						<div class="comment-box">
-							<h5 style="padding: 14px;">처음 뵙겠습니다!</h5>
+							<h5 style="padding: 14px;">${boardDetail.board.board_content}</h5>
 						</div>
 					</div>
-<!-- 본인 글에만 노출//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-					<div style="float: right;">
-<!-- 내용 수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-						<a href="boardUpdate.jsp" class="btn btn-primary boardUD">수정하기</a> <a href="boardList.jsp"
-							class="btn btn-primary boardUD" onclick="del()">삭제하기</a>
-					</div>
+					
+					<!-- 본인 글에만 노출 -->
+					<c:if test="${boardDetail.board.supporter_id==supporter_id}">
+						<div style="float: right;">
+							<a href="boardUpdatePage.do?board_number=${boardDetail.board.board_number}" class="btn btn-primary boardUD">수정하기</a>
+							<a href="boardDelete.do?board_number=${boardDetail.board.board_number}" class="btn btn-primary boardUD" onclick="del()">삭제하기</a>
+						</div>
+					</c:if>
+					
 				</div>
 			</div>
 			
 			<!-- 댓글 -->
-
 			<hr>
-
 			<div class="col-sm-4 text-left total writeForm"
 				style="display: inline-block;">
-
-<!-- 개수 수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-				<h3 class="head">3 Reviews</h3>
-				<div class="review">
-					<div class="desc">
-						<h4>
-<!-- 데이터 불러온뒤 for문으로 구현//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- 이름 수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<span class="text-left">한지민</span>
-						</h4>
-<!-- 내용 수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-						<p class="p-comment">좋은글 잘보고 갑니다~^^* 오늘도 화이팅 ㅎㅎ!</p>
-<!-- 날짜 수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-						<span class="text-right" style="color: #5959596b;">2022.05.30
-<!-- 로그인한 유저의 댓글이면 삭제 노출//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- href 수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-						<a href="boardOne.jsp" class="commentDel">&nbsp;&nbsp;&nbsp;삭제</a></span>
+				<h3 class="head">${boardDetail.board.board_commentCnt} Reviews</h3>
+				
+				<c:forEach var="v" items="${boardDetail.comments}">
+					<div class="review">
+						<div class="desc">
+							<p class="p-comment" style="font-size: 18px;">${v.comment_content}</p>
+							<span class="text-right" style="color: #5959596b;">${v.supporter_id}&nbsp;|&nbsp;${v.comment_date}
+								<!-- 본인 댓글에만 노출 -->
+								<c:if test="${v.supporter_id==supporter_id}">
+									<a href="commentDelete.do?comment_number=${v.comment_number}&board_number=${boardDetail.board.board_number}"
+										class="commentDel">&nbsp;&nbsp;&nbsp;삭제</a>
+								</c:if>
+							</span>
+						</div>
 					</div>
-				</div>
-<!-- 데이터 불러온뒤 for문으로 구현//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-				<div class="review">
-					<div class="desc">
-						<h4>
-							<span class="text-left">김우빈</span>
-						</h4>
-						<p class="p-comment">너무 좋은 글이네요...~~^^~ 언제나 함께하는 느낌이라는~!! 정모때
-							봅시다덜~!!!^^</p>
-						<span class="text-right" style="color: #5959596b;">2022.06.01</span>
-					</div>
-				</div>
-				<div class="review">
-					<div class="desc">
-						<h4>
-							<span class="text-left">손예진</span>
-						</h4>
+				</c:forEach>
 
-						<p class="p-comment">퍼가요~♡</p>
-						<span class="text-right" style="color: #5959596b;">2022.06.01</span>
-					</div>
-				</div>
-<!-- 여기까지 페이지 채우기 용//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+				<form action="commentInsert.do" method="post" style="display: flex;">
+					<input type="hidden" name="board_number" value="${boardDetail.board.board_number}">
+					
+					<!-- 로그인 시에만 댓글 작성 가능 -->
+					<c:choose>
+						<c:when test="${supporter_id==null}">
+							<textarea name="comment_content" cols="10" rows="3"
+								class="form-control gap comment comment"
+								placeholder="댓글을 작성하려면 로그인 해주세요" disabled></textarea>
+							<input type="submit" value="댓글등록"
+								class="btn btn-primary inputSubmit comment" disabled>
+						</c:when>
+						<c:otherwise>
+							<textarea name="comment_content" cols="10" rows="3"
+								class="form-control gap comment comment"
+								placeholder="댓글을 남겨보세요."></textarea>
+							<input type="submit" value="댓글등록"
+								class="btn btn-primary inputSubmit comment">
+						</c:otherwise>
+					</c:choose>
 
-<!-- 로그인 안되어있다면 disabled//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- action 수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-				<form action="boardOne.jsp" method="post" style="display: flex;">
-					<textarea name="comment_context" cols="10" rows="3"
-						class="form-control gap comment comment" placeholder="댓글을 남겨보세요."></textarea>
-					<input type="submit" value="댓글등록"
-						class="btn btn-primary inputSubmit comment">
 				</form>
 			</div>
 		</div>

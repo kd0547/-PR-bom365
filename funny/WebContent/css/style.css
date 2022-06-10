@@ -9054,3 +9054,16 @@ a.btn.btn-primary.boardUD {
     width: 130px;
     border-radius: 5px;
 }
+.btn.btn-primary.del:focus, .btn.btn-primary.del:active {
+    background: #cbbd89 !important;
+}
+.btn.btn-primary.del:hover {
+    background: #5e5840 !important;
+}
+.btn.btn-primary.boardUD:focus, .btn.btn-primary.boardUD:active {
+	background: #978d67  !important;
+	color: #fff  !important;
+}
+.btn.btn-primary.boardUD:hover {
+	background: #5e5840 !important;
+}
