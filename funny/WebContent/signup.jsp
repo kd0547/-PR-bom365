@@ -98,7 +98,7 @@
 						required>
 				</p>
 <!-- ajax 구현//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-				<h3 class="check-id-ps">*이미 사용중인 아이디 입니다.</h3>
+				<h3  class="check-id-ps">*이미 사용중인 아이디 입니다.</h3>
 
 				<p
 					class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide more">
