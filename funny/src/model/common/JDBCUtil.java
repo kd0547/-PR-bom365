@@ -15,9 +15,10 @@ public class JDBCUtil {
 		Connection conn = null;
 		try {
 			Class.forName(driver);
-//			System.out.println("드라이버를 찾았습니다");
+			System.out.println("드라이버를 찾았습니다");
 			conn = DriverManager.getConnection(url, user, password);
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("db연결실패");
 		}
 		return conn;

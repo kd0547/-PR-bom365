@@ -20,9 +20,4 @@ public class BoardSet {
 	public void setComments(ArrayList<Board_commentVO> comments) {
 		this.comments = comments;
 	}
-	
-	@Override
-	public String toString() {
-		return "CommentSet [board=" + board + ", comments=" + comments + "]";
-	}
 }

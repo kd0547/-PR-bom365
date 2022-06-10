@@ -8,9 +8,26 @@ public class AnimalVO {
 	private String animal_type;
 	private String animal_gender;
 	private String animal_age;
-	private int animal_weight;
+	private double animal_weight;
 	private String animal_image;
 	private String isAdoption;
+	
+	public AnimalVO() {
+		
+	}
+	
+	public AnimalVO(String animal_name, String animal_species, String animal_type,
+			String animal_gender, String animal_age, double animal_weight, String animal_image, String isAdoption) {
+
+		this.animal_name = animal_name;
+		this.animal_species = animal_species;
+		this.animal_type = animal_type;
+		this.animal_gender = animal_gender;
+		this.animal_age = animal_age;
+		this.animal_weight = animal_weight;
+		this.animal_image = animal_image;
+		this.isAdoption = isAdoption;
+	}
 	
 	public int getAnimal_number() {
 		return animal_number;
@@ -54,10 +71,10 @@ public class AnimalVO {
 	public void setAnimal_age(String animal_age) {
 		this.animal_age = animal_age;
 	}
-	public int getAnimal_weight() {
+	public double getAnimal_weight() {
 		return animal_weight;
 	}
-	public void setAnimal_weight(int animal_weight) {
+	public void setAnimal_weight(double animal_weight) {
 		this.animal_weight = animal_weight;
 	}
 	public String getAnimal_image() {

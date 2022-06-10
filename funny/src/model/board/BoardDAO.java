@@ -22,10 +22,11 @@ public class BoardDAO {
 		ㆍ d :	delete				-	게시글 삭제하기
 	*/
 	
-    Connection conn = null;
-    PreparedStatement pstmt = null;
-
-    String sql_insert = "insert into board values ((select nvl(max(board_number),0)+1 from board),?,to_char(sysdate, 'yyyy.mm.dd hh24:mi'),?,?,?)";
+    Connection conn;
+    PreparedStatement pstmt;
+    ResultSet rs;
+    
+    String sql_insert = "insert into board values ((select nvl(max(board_number),0)+1 from board),?,to_char(sysdate, 'yyyy.mm.dd hh24:mi'),?,?,?,default)";
     String sql_selectAll = "select * from board order by board_number desc";
     String sql_selectOne = "select * from board where board_number=?";
     String sql_selectCom = "select * from board_comment where board_number=? order by comment_date";
@@ -69,7 +70,7 @@ public class BoardDAO {
         ArrayList<BoardVO> datas = new ArrayList<BoardVO>();
         try {
             pstmt = conn.prepareStatement(sql_selectAll);
-            ResultSet rs = pstmt.executeQuery();
+            rs = pstmt.executeQuery();
             while (rs.next()) {
                 BoardVO vo = new BoardVO();
                 vo.setBoard_number(rs.getInt("board_number"));
@@ -96,7 +97,7 @@ public class BoardDAO {
         try {
             pstmt = conn.prepareStatement(sql_selectOne);
             pstmt.setInt(1,data.getBoard_number());
-            ResultSet rs = pstmt.executeQuery();
+            rs = pstmt.executeQuery();
             rs.next();
             BoardVO vo = new BoardVO();
             vo.setBoard_number(rs.getInt("board_number"));
@@ -113,6 +114,7 @@ public class BoardDAO {
 			ResultSet rs2 = pstmt.executeQuery();
 			while (rs2.next()) {
 				Board_commentVO bc = new Board_commentVO();
+				bc.setComment_number(rs2.getString("comment_number"));
 				bc.setSupporter_id(rs2.getString("supporter_id"));
 				bc.setComment_content(rs2.getString("comment_content"));
 				bc.setComment_date(rs2.getString("comment_date"));
@@ -137,7 +139,7 @@ public class BoardDAO {
             pstmt = conn.prepareStatement(sql_selectSearch);
             pstmt.setString(1,keyword);
             pstmt.setString(2,keyword);
-            ResultSet rs = pstmt.executeQuery();
+            rs = pstmt.executeQuery();
             while (rs.next()) {
                 BoardVO vo = new BoardVO();
                 vo.setBoard_number(rs.getInt("board_number"));
@@ -164,7 +166,7 @@ public class BoardDAO {
         try {
             pstmt = conn.prepareStatement(sql_selectMine);
             pstmt.setString(1,data.getSupporter_id());
-            ResultSet rs = pstmt.executeQuery();
+            rs = pstmt.executeQuery();
             while (rs.next()) {
                 BoardVO vo = new BoardVO();
                 vo.setBoard_number(rs.getInt("board_number"));
@@ -190,7 +192,7 @@ public class BoardDAO {
         ArrayList<BoardVO> datas = new ArrayList<BoardVO>();
         try {
             pstmt = conn.prepareStatement(sql_selectComCnt);
-            ResultSet rs = pstmt.executeQuery();
+            rs = pstmt.executeQuery();
             while (rs.next()) {
                 BoardVO vo = new BoardVO();
                 vo.setBoard_number(rs.getInt("board_number"));

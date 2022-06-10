@@ -5,13 +5,20 @@ select * from support_regular;
 select * from support_temporary;
 select * from board;
 select * from board_comment;
--- drop table supporter;
--- drop table animal;
--- drop table application;
--- drop table support_regular;
--- drop table support_temporary;
--- drop table board;
--- drop table board_comment;
+ drop table supporter;
+ drop table animal;
+ drop table application;
+ drop table support_regular;
+ drop table support_temporary;
+ drop table board;
+ drop table board_comment;
+-- truncate table supporter;
+-- truncate table animal;
+-- truncate table application;
+-- truncate table support_regular;
+-- truncate table support_temporary;
+-- truncate table board;
+-- truncate table board_comment;
 
 -- 회원
 CREATE TABLE supporter (  
@@ -20,18 +27,18 @@ CREATE TABLE supporter (
 	supporter_password	VARCHAR2(20)		NOT NULL,
 	phone_number			VARCHAR2(20)		NOT NULL,
 	post_code					VARCHAR2(5)			NOT NULL,
-	detailed_address		VARCHAR2(50)		NOT NULL
+	detailed_address		VARCHAR2(100)		NOT NULL
 );
 
 -- 동물
 CREATE TABLE animal (   
 	animal_number			NUMBER					CONSTRAINT PK_animal PRIMARY KEY,
 	supporter_id				VARCHAR2(20),
-	animal_name				VARCHAR2(20)		NOT NULL,
-	animal_species			VARCHAR2(20)		NOT NULL,
-	animal_type				VARCHAR2(20)		NOT NULL,
-	animal_gender			VARCHAR2(20)		NOT NULL,
-	animal_age				VARCHAR2(10) 		NOT NULL,
+	animal_name				VARCHAR2(50)		NOT NULL,
+	animal_species			VARCHAR2(50)		NOT NULL,
+	animal_type				VARCHAR2(50)		NOT NULL,
+	animal_gender			VARCHAR2(50)		NOT NULL,
+	animal_age				VARCHAR2(50) 		NOT NULL,
 	animal_weight			NUMBER					NOT NULL,
 	animal_image			VARCHAR2(200)		NOT NULL,
 	isAdoption					VARCHAR2(10)  		DEFAULT 'false' NOT NULL,
@@ -47,7 +54,7 @@ CREATE TABLE application (
 	application_number	NUMBER					CONSTRAINT application PRIMARY KEY,
 	animal_number			NUMBER					NOT NULL,
 	supporter_id				VARCHAR2(20),
-	application_title			VARCHAR2(50) 		NOT NULL,
+	application_title			VARCHAR2(100) 		NOT NULL,
 	application_content	VARCHAR2(4000)	NOT NULL,
 	
 	CONSTRAINTS FK_animal_TO_application FOREIGN KEY (animal_number) REFERENCES  animal (animal_number)
@@ -61,7 +68,7 @@ CREATE TABLE support_regular (
 	regular_number			NUMBER					CONSTRAINT support_regular PRIMARY KEY,
 	supporter_id				VARCHAR2(20)		NOT NULL,
 	regular_amount			NUMBER					NOT NULL,
-	regular_bank				VARCHAR2(20)		NOT NULL,
+	regular_bank				VARCHAR2(50)		NOT NULL,
 	regular_account		VARCHAR2(20)		NOT NULL,
 	regular_date				VARCHAR2(20)		NOT NULL,
 	
@@ -85,8 +92,8 @@ CREATE TABLE board (
 	board_number			NUMBER					CONSTRAINT board PRIMARY KEY,
 	supporter_id				VARCHAR2(20),
 	board_date				VARCHAR2(20)		NOT NULL,
-	board_title					VARCHAR2(50)		NOT NULL,
-	board_content			VARCHAR2(90)		NOT NULL,
+	board_title					VARCHAR2(100)		NOT NULL,
+	board_content			VARCHAR2(200)		NOT NULL,
 	category						VARCHAR2(20)		NOT NULL,
 	board_commentCnt	NUMBER					DEFAULT 0 NOT NULL,
 	
@@ -100,7 +107,7 @@ CREATE TABLE board_comment (
 	comment_number		VARCHAR2(20)		PRIMARY KEY,
 	board_number			NUMBER					NOT NULL,
 	supporter_id				VARCHAR2(20)		NOT NULL,
-	comment_content		VARCHAR2(50)		NOT NULL,
+	comment_content		VARCHAR2(100)		NOT NULL,
 	comment_date			VARCHAR2(20)		NOT NULL,
 	
 	CONSTRAINTS FK_board_TO_comment FOREIGN KEY (board_number) REFERENCES  board (board_number)
