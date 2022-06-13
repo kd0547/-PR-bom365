@@ -20,6 +20,7 @@ public class SupporterDAO {
 
 	String sql_insert = "insert into supporter values(?,?,?,?,?,?)";
 	String sql_selectLoginCheck = "select * from supporter where supporter_id=?";
+	String sql_idCheck = "select supporter_id from supporter where supporter_id=?";
 	
 	// 회원가입
 	public boolean insert(SupporterVO vo) { 
@@ -69,5 +70,34 @@ public class SupporterDAO {
 			JDBCUtil.disconnect(pstmt, conn);
 		}
 		return data;
+	}
+	/*
+	 * ID 중복을 검사하기 위해 DB에서 값을 SELECT 한다
+	 * 
+	 * param 중복 검사할 ID
+	 * return true - 유저 중복, false - 유저 없음
+	 */
+	public boolean SupporterIdCheck(String SupporterId) {
+		
+		boolean result = false;
+		
+		try {
+			conn = JDBCUtil.connect();
+			pstmt = conn.prepareStatement(sql_idCheck);
+			pstmt.setString(1, SupporterId);
+			
+			if(pstmt.execute()) {
+				result = true;
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("SupporterDAO의 SupporterIdCheck()에서 문제발생!");
+			e.printStackTrace();
+			
+		} finally {
+			JDBCUtil.disconnect(pstmt, conn);
+		}
+		
+		return result;
 	}
 }

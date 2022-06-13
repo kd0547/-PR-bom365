@@ -8,9 +8,14 @@ public class AnimalVO {
 	private String animal_type;
 	private String animal_gender;
 	private String animal_age;
+
 	private double animal_weight;
+
 	private String animal_image;
 	private String isAdoption;
+	
+
+	
 	
 	public AnimalVO() {
 		
@@ -29,6 +34,7 @@ public class AnimalVO {
 		this.isAdoption = isAdoption;
 	}
 	
+
 	public int getAnimal_number() {
 		return animal_number;
 	}
@@ -71,10 +77,16 @@ public class AnimalVO {
 	public void setAnimal_age(String animal_age) {
 		this.animal_age = animal_age;
 	}
+
+
 	public double getAnimal_weight() {
+
 		return animal_weight;
 	}
+
+
 	public void setAnimal_weight(double animal_weight) {
+
 		this.animal_weight = animal_weight;
 	}
 	public String getAnimal_image() {
