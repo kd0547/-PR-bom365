@@ -1,6 +1,7 @@
 package controller.crawler;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,56 +71,10 @@ public class InitDataCrawler extends CrawlingUtil{
 					));
 			
 			
-			/*
-			
-			System.out.println(getImgSrc(element));
-			System.out.println(getAtag(element));
-			System.out.println(getName(element));
-			System.out.println(getAnimalType(getSpecies(element)));
-			System.out.println(getNameSpecies(getSpecies(element)));
-			System.out.println(getGender(element));
-			System.out.println(getWeight(getAWC(element)));
-			System.out.println(getAge(getAWC(element)));
-			System.out.println(size);
-			*/
-			
-			/*
-			
-			animalVOs[i].setAnimal_name(getName(element));
-			animalVOs[i].setAnimal_type(getAnimalType(getSpecies(element)));
-			animalVOs[i].setAnimal_species(getNameSpecies(getSpecies(element)));
-			
-			//나이 몸무게 성별
-			animalVOs[i].setAnimal_age(getAge(getAWC(element)));
-			animalVOs[i].setAnimal_weight(getWeight(getAWC(element)));
-			animalVOs[i].setAnimal_gender(getGender(element));
-			
-			//이미지, A 태그
-			animalVOs[i].setIsAdoption(getAtag(element));
-			animalVOs[i].setAnimal_image(getImgSrc(element));
-			
-			/*
-			System.out.println(getImgSrc(element));
-			System.out.println(getAtag(element));
-			System.out.println(getName(element));
-			System.out.println(getAnimalType(getSpecies(element)));
-			System.out.println(getNameSpecies(getSpecies(element)));
-			System.out.println(getGender(element));
-			System.out.println(getWeight(getAWC(element)));
-			System.out.println(getAge(getAWC(element)));
-			System.out.println();
-			*/
 		}
 		return list;
 		
-				
-		/*
-		animal.put("name", USER_AGENT);
-		animal.put("Species", USER_AGENT);
-		animal.put("gender",USER_AGENT);
-		animal.put("age", USER_AGENT);
-		animal.put("weight", USER_AGENT);
-		*/
+		
 		
 	}
 	public String getNameSpecies(String Species) {
@@ -128,9 +83,9 @@ public class InitDataCrawler extends CrawlingUtil{
 	}
 	public String getAnimalType(String Species) {
 		
-		return Species.replaceAll("\\(+[가-힣]+\\)", "").trim();
+		return Species.replaceAll("\\(+[가-힣 | \\s ]+\\)", "").trim();
 	}
-	
+
 	
 	public String  getAge(String AWC) {
 		String[] weight;
