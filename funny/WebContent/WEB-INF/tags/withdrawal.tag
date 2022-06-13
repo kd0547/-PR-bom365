@@ -1,9 +1,13 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <script type="text/javascript">
     function del(){
-        ans=confirm("회원님의 정보는 복구되지않습니다. \n정말 탈퇴하시겠습니까?");
+        var ans=confirm("회원님의 정보는 복구되지않습니다. \n정말 탈퇴하시겠습니까?");
         if(ans==true){
-            document.withdrawal.submit();
+			
+        	var trans = document.getElementById("trans");
+        	trans.method = "POST";
+        	trans.action = "/bom365/withdrawalDone.jsp";
+            trans.submit();
         }
         else{
         	event.preventDefault();
@@ -19,7 +23,7 @@
 		</h5>
 	</div>
 <!-- action수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-	<form action="withdrawalDone.jsp" method="post" name="withdrawal" class="withdrawalForm2">
+	<form id="trans" name="withdrawal" class="withdrawalForm2">
 		<table id="tableStyle">
 			<tr>
 				<td>비밀번호</td>
@@ -31,6 +35,8 @@
 				<td><input type="submit" class="btn btn-primary del"
 					value="&nbsp;Delete My Account&nbsp;" onclick="del()"></td>
 			</tr>
+			<tr>
 		</table>
 	</form>
+	<!-- action수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 </div>

@@ -12,6 +12,7 @@
 <mytag:icon />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link
 	href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Jua&display=swap"
 	rel="stylesheet">
@@ -49,7 +50,7 @@
 <!-- Material Icons -->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -85,7 +86,7 @@
 				class="woocommerce-form woocommerce-form-register register ">
 				<p
 					class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide more">
-					<label class="reg_signup">이름&nbsp;</label> <input type="text"
+					<label class="reg_signup">이름&nbsp;</label> <input id="name" type="text"
 						class="woocommerce-Input woocommerce-Input--text input-text"
 						name="supporter_name" required>
 				</p>
@@ -93,18 +94,22 @@
 				<p
 					class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide"
 					style="padding-left: 6px;">
-					<label class="reg_signup">아이디&nbsp;</label> <input type="text"
+					<label class="reg_signup">아이디&nbsp;</label> <input id="id" type="text"
 						class="woocommerce-Input woocommerce-Input--text input-text"
 						required>
 				</p>
 <!-- ajax 구현//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-				<h3  class="check-id-ps">*이미 사용중인 아이디 입니다.</h3>
+				
+				<div id="text-box" >
+				
+				</div>
+				
 
 				<p
 					class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide more">
 					<label class="reg_signup">비밀번호&nbsp;</label> 
 <!-- id="pw1"사용하여 ajax구현//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-					<input type="password"
+					<input id="pwd" type="password"
 						class="woocommerce-Input woocommerce-Input--text input-text"
 						id="pw1" name="supporter_password" placeholder="비밀번호는 안전하게"
 						required>
@@ -115,7 +120,7 @@
 					style="padding-left: 6px;">
 					<label class="reg_signup">비밀번호확인&nbsp;</label>
 <!-- id="pw2"사용하여 ajax구현//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-					<input type="password"
+					<input id="pwdcheck" type="password"
 						class="woocommerce-Input woocommerce-Input--text input-text"
 						id="pw2" required>
 				</p>
@@ -151,6 +156,68 @@
 				</p>
 			</form>
 		</div>
+		<script>
+				
+					$("#id_test").blur(()=>{
+						var id = $("#id_test").val();
+						$.ajax(
+							{
+								type:"POST",
+								//USER DAO랑 가까운 JAVA OR JSP 파일로 데이터 전송
+								url:"/idOverlap",
+								data : "id=" + id,
+								success : function(data,textStatus,xhr){
+									if(data == "true") {
+										removeNode();
+										createNode("*이미 사용중인 아이디 입니다.");
+									} else {
+										removeNode();
+										createNode ("*사용 가능한 아이디 입니다.");
+									}
+								} ,
+								error : function (request,status,err) {
+									console.log("code:"+request.status);
+								},
+
+			
+
+
+							}
+						)
+					})
+					
+					function createNode (str) {
+						let createText = document.getElementById("text-box");
+						removeNode()
+						if(createText.childElementCount == 0){
+							let h3 = document.createElement('h3');
+							h3.setAttribute('class','check-id-ps');
+							h3.innerText = str;
+
+							createText.appendChild(h3);
+						}
+						
+					}
+					function removeNode() {
+						let removeText = document.getElementById("text-box");
+						let h3 = removeText.children[0];
+						if(removeText.childElementCount) {
+							removeText.removeChild(h3);
+						}
+					}
+					$(window).ready(()=>{
+						var id_test = document.getElementById("text-box");
+
+						if(!id_test.childElementCount) {
+							id_test.style.height = "21px";
+						}
+					})
+				</script>
+		
+		<script>
+			
+			
+		</script>
 
 
 		<!-- Page Footer-->

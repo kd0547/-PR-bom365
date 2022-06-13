@@ -92,26 +92,51 @@ Local Repository에서 작업을 완료한 후 origin Repository push 합니다.
   - main (서버에서 실행시켜도 문제가 없는 버전)
   - develop (개발중인 버전)
 
+<<<<<<< HEAD
+## 4. branch 생성(수정중)
+
+
+
+
+[git flow](https://jade-frill-5b8.notion.site/Git-Flow-81926030787645cc83af3a07e149d061)
+
+=======
 #### git-flow 
 git-flow (https://techblog.woowahan.com/2553/)
 [git flow](https://jade-frill-5b8.notion.site/Git-Flow-81926030787645cc83af3a07e149d061)
 
 ## 4. branch 사용하기 
+>>>>>>> refs/remotes/origin/main
 
 ### 4-1 branch 이름 
 * main branch - 오류없는 버전 (실행시켜도 에러가 없는 버전)
 * Develop branch - 개발중인 버전 
+<<<<<<< HEAD
+* [팀원 이름으로 만든 branch] - (예정)
+
+### 4-2 branch flow
+=======
 * fixed branch - 버그 수정 버전 
+>>>>>>> refs/remotes/origin/main
 
 
+<<<<<<< HEAD
+#### git-flow 
+git-flow (https://techblog.woowahan.com/2553/)
+
+### 3-3 branch 생성 및 사용 방법
+=======
 ###  4-2 로컬에서 branch 사용하기
 로컬 브랜치에서 사용하는 방법을 올렸습니다.</br>
 [로컬 브랜치 사용하기](https://jade-frill-5b8.notion.site/06c7833df9b343f9a1768d01fb7d7b3d)
+>>>>>>> refs/remotes/origin/main
 
 ### 4-3 깃허브 저장소에서 branch 사용하기
 [깃허브에서 브랜치 사용하기](https://jade-frill-5b8.notion.site/branch-37316ce5e31c43cc903e37d10b2b2bdd)
 
 
+<<<<<<< HEAD
+=======
 ### 4-4 branch 사용 예시(추가중)
 
 
@@ -157,9 +182,17 @@ git-flow (https://techblog.woowahan.com/2553/)
 ### 5-4 작성 예시 (추가중)
 #### 자기코드번호+m/v/c+타입
 
+>>>>>>> refs/remotes/origin/main
 #### 추가 예정
 
 * branch 이해 -
 [참고 링크](https://jade-frill-5b8.notion.site/branch-f32dc919d483401280c4dd38b3c1ec17)
 * 깃flow을 위한 GUI 툴 [GFC](https://www.sourcetreeapp.com/)(미정)
+<<<<<<< HEAD
+
+
+
+## 3. COMMIT 메시지 작성 규칙
+=======
+>>>>>>> refs/remotes/origin/main
 

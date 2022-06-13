@@ -19,6 +19,7 @@ public class AnimalDAO {
 		try {
 			pstmt = conn.prepareStatement(sql_insertAll);
 			for (AnimalVO data : datas) {
+
 				pstmt.setString(1, data.getAnimal_name());
 				pstmt.setString(2, data.getAnimal_species());
 				pstmt.setString(3, data.getAnimal_type());
@@ -26,6 +27,7 @@ public class AnimalDAO {
 				pstmt.setString(5, data.getAnimal_age());
 				pstmt.setDouble(6, data.getAnimal_weight());
 				pstmt.setString(7, data.getAnimal_image());
+
 				pstmt.executeUpdate();
 			}
 		} catch (Exception e) {
