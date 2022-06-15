@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="mytag"%>
 <!DOCTYPE HTML>
 <html>
@@ -10,7 +11,6 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <mytag:icon />
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Jua&display=swap"
 	rel="stylesheet">
@@ -127,14 +127,24 @@
 					<tbody class="boardTbottom">
 						<c:forEach var="v" items="${boardList}">
 							<tr>
-								<td>${v.board_number}</td>
-								<td class="fontSize-17">
-									<a href="boardDetail.do?board_number=${v.board_number}">${v.board_title}&nbsp;
-										<b style="color: #978d678c;">[${v.board_commentCnt}]</b>
-									</a>
-								</td>
-								<td>${v.supporter_id}</td>
-								<td>${v.board_date}</td>
+								<c:choose>
+									<c:when test="${v.supporter_id=='admin'}">
+										<td>공지</td>
+										<td colspan="3" class="boardTitle"><a
+											href="boardDetail.do?board_number=${v.board_number}"
+											style="color: #b74a55;">[필독]&nbsp;&nbsp;&nbsp;${v.board_title}</a></td>
+									</c:when>
+									<c:otherwise>
+										<td>${v.board_number}</td>
+										<td class="boardTitle"><a
+											href="boardDetail.do?board_number=${v.board_number}"
+											style="color: #978d67;">${v.board_title}&nbsp; <b
+												style="color: #978d678c;">[${v.board_commentCnt}]</b>
+										</a></td>
+										<td>${v.supporter_id}</td>
+										<td>${v.board_date}</td>
+									</c:otherwise>
+								</c:choose>
 							</tr>
 						</c:forEach>
 					</tbody>

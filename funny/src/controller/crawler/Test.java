@@ -4,7 +4,7 @@ import java.util.List;
 import org.jsoup.nodes.Document;
 
 import model.animal.AnimalDAO;
-import model.animal.AnimalVO;
+import model.animal.AnimalDTO;
 
 
 public class Test {
@@ -20,7 +20,7 @@ public class Test {
 		for(int i =1;i<=5;i++) {
 			crawling.getConnection(crawling.getURL(i, "개"));
 			Document doc =  crawling.getHtmlData() ;
-			List<AnimalVO> list = crawling.start(doc);
+			List<AnimalDTO> list = crawling.start(doc);
 			
 			dao.insertAll(list);
 		}
@@ -29,7 +29,7 @@ public class Test {
 		for(int i =1;i<=5;i++) {
 			crawling.getConnection(crawling.getURL(i, "고양이"));
 			Document doc =  crawling.getHtmlData() ;
-			List<AnimalVO> list = crawling.start(doc);
+			List<AnimalDTO> list = crawling.start(doc);
 			
 			dao.insertAll(list);
 		}

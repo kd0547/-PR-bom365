@@ -8934,6 +8934,7 @@ a#complete {
 	background: #978d67;
 }
 .boardListFirstDiv {
+   	margin-bottom: 7em;
     margin-top: 3em;
     width: 100%;
     text-align: center;
@@ -8941,8 +8942,9 @@ a#complete {
 td.removeBorderTop {
     border-top: 0px solid #dee2e6;
 }
-td.fontSize-17 {
-    font-size: 17px;
+td.boardTitle {
+	font-size: 17px;
+	text-align: left;
 }
 a.btn.btn-primary.inputSubmit.apply {
     float: left;

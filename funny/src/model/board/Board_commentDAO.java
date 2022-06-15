@@ -24,7 +24,7 @@ public class Board_commentDAO {
     String sql_updateComDown = "update board set board_commentCnt=board_commentCnt-1 where board_number=?";
     
     //댓글 작성
-    public boolean insert(Board_commentVO vo) { 
+    public boolean insert(Board_commentDTO vo) { 
         conn = JDBCUtil.connect();
         try {
 			pstmt = conn.prepareStatement(sql_insert);
@@ -50,7 +50,7 @@ public class Board_commentDAO {
     }
     
     //댓글 삭제
-    public boolean delete(Board_commentVO vo) { 
+    public boolean delete(Board_commentDTO vo) { 
         conn = JDBCUtil.connect();
         try {
             pstmt = conn.prepareStatement(sql_delete);
