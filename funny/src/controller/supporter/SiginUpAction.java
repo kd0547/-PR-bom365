@@ -1,4 +1,4 @@
-package controller.signup;
+package controller.supporter;
 
 import java.io.IOException;
 
@@ -10,36 +10,38 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.Action;
 import controller.ActionForward;
-import model.supporter.SupporterDAO;
-import model.supporter.SupporterVO;
 
 @WebServlet("/signup")
-public class SignupUser extends HttpServlet implements Action{
+public class SiginUpAction extends HttpServlet implements Action{
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	SupporterDAO supporterDAO = new SupporterDAO();
-	SupporterVO supporterVO = new SupporterVO();
-	
-	
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		
+		execute(req,resp);
 	}
-	
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println(request.getParameter("supporter_id"));
+		System.out.println(request.getParameter("supporter_name"));
+		System.out.println(request.getParameter("supporter_password"));
+		System.out.println(request.getParameter("phone_number"));
+		System.out.println(request.getParameter("post_code"));
+		System.out.println(request.getParameter("detailed_address"));
 		
-		return null;
-	}
-	
-	public void signUp() {
+		ActionForward forward = null;
+		forward = new ActionForward();
 		
+		forward.setRedirect(true);
+		forward.setPath("signupDone.jsp");
+		return forward;
 	}
 	
 }
