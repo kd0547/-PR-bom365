@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="mytag"%>
 <!DOCTYPE HTML>
 <html>
@@ -10,7 +11,6 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <mytag:icon />
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Jua&display=swap"
 	rel="stylesheet">
@@ -106,51 +106,56 @@
 					
 				</div>
 			</div>
-			
-			<!-- 댓글 -->
-			<hr>
-			<div class="col-sm-4 text-left total writeForm"
-				style="display: inline-block;">
-				<h3 class="head">${boardDetail.board.board_commentCnt} Reviews</h3>
-				
-				<c:forEach var="v" items="${boardDetail.comments}">
-					<div class="review">
-						<div class="desc">
-							<p class="p-comment" style="font-size: 18px;">${v.comment_content}</p>
-							<span class="text-right" style="color: #5959596b;">${v.supporter_id}&nbsp;|&nbsp;${v.comment_date}
-								<!-- 본인 댓글에만 노출 -->
-								<c:if test="${v.supporter_id==supporter_id}">
-									<a href="commentDelete.do?comment_number=${v.comment_number}&board_number=${boardDetail.board.board_number}"
-										class="commentDel">&nbsp;&nbsp;&nbsp;삭제</a>
-								</c:if>
-							</span>
+
+			<c:if test="${boardDetail.board.supporter_id!='admin'}">
+				<!-- 댓글 -->
+				<hr>
+				<div class="col-sm-4 text-left total writeForm"
+					style="display: inline-block;">
+					<h3 class="head">${boardDetail.board.board_commentCnt}Reviews</h3>
+
+					<c:forEach var="v" items="${boardDetail.comments}">
+						<div class="review">
+							<div class="desc">
+								<p class="p-comment" style="font-size: 18px;">${v.comment_content}</p>
+								<span class="text-right" style="color: #5959596b;">${v.supporter_id}&nbsp;|&nbsp;${v.comment_date}
+									<!-- 본인 댓글에만 노출 --> <c:if
+										test="${v.supporter_id==supporter_id}">
+										<a
+											href="commentDelete.do?comment_number=${v.comment_number}&board_number=${boardDetail.board.board_number}"
+											class="commentDel">&nbsp;&nbsp;&nbsp;삭제</a>
+									</c:if>
+								</span>
+							</div>
 						</div>
-					</div>
-				</c:forEach>
+					</c:forEach>
 
-				<form action="commentInsert.do" method="post" style="display: flex;">
-					<input type="hidden" name="board_number" value="${boardDetail.board.board_number}">
-					
-					<!-- 로그인 시에만 댓글 작성 가능 -->
-					<c:choose>
-						<c:when test="${supporter_id==null}">
-							<textarea name="comment_content" cols="10" rows="3"
-								class="form-control gap comment comment"
-								placeholder="댓글을 작성하려면 로그인 해주세요" disabled></textarea>
-							<input type="submit" value="댓글등록"
-								class="btn btn-primary inputSubmit comment" disabled>
-						</c:when>
-						<c:otherwise>
-							<textarea name="comment_content" cols="10" rows="3"
-								class="form-control gap comment comment"
-								placeholder="댓글을 남겨보세요."></textarea>
-							<input type="submit" value="댓글등록"
-								class="btn btn-primary inputSubmit comment">
-						</c:otherwise>
-					</c:choose>
+					<form action="commentInsert.do" method="post"
+						style="display: flex;">
+						<input type="hidden" name="board_number"
+							value="${boardDetail.board.board_number}">
 
-				</form>
-			</div>
+						<!-- 로그인 시에만 댓글 작성 가능 -->
+						<c:choose>
+							<c:when test="${supporter_id==null}">
+								<textarea name="comment_content" cols="10" rows="3"
+									class="form-control gap comment comment"
+									placeholder="댓글을 작성하려면 로그인 해주세요" disabled></textarea>
+								<input type="submit" value="댓글등록"
+									class="btn btn-primary inputSubmit comment" disabled>
+							</c:when>
+							<c:otherwise>
+								<textarea name="comment_content" cols="10" rows="3"
+									class="form-control gap comment comment"
+									placeholder="댓글을 남겨보세요."></textarea>
+								<input type="submit" value="댓글등록"
+									class="btn btn-primary inputSubmit comment">
+							</c:otherwise>
+						</c:choose>
+
+					</form>
+				</div>
+			</c:if>
 		</div>
 	</div>
 

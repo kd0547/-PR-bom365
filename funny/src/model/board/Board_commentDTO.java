@@ -1,6 +1,6 @@
 package model.board;
 
-public class Board_commentVO {
+public class Board_commentDTO {
 	private String comment_number;
 	private int board_number;
 	private String supporter_id;

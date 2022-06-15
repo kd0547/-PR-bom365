@@ -58,7 +58,7 @@
 	<div id="page">
 
 		<!-- Page Header-->
-		<mytag:pageHeader/>
+		<mytag:pageHeader />
 		<div class="breadcrumbs">
 			<div class="container">
 				<div class="row">
@@ -86,21 +86,21 @@
 <!-- src수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 						<img class="img-fluid w-100" src="images_sample/강록.png">
 					</div>
-				<div class="about-wrap">
+					<div class="about-wrap">
 <!-- 데이터 수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-						<span class="animal-name">강록</span> 
-						
+						<span class="animal-name">강록</span>
+
 						<hr class="my-5">
-						
+
 						<ul class="list-unstyled mb-0">
 							<li class="media mb-1">
 								<div class="d-flex w-40 w-sm-30">
 									<small class="text-muted"> 종/품종 </small>
 								</div>
-									<div class="h6-container">
+								<div class="h6-container">
 <!-- 데이터 수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 									<p class="h6">개 / 믹스</p>
-									</div>
+								</div>
 							</li>
 							<li class="media mb-1">
 								<div class="d-flex w-40 w-sm-30">
@@ -131,16 +131,15 @@
 							</li>
 						</ul>
 <!-- href 수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-					<a href="adoptionRequest.jsp" class="btn btn-primary adopt">&nbsp;입양하기&nbsp;</a>
+						<a href="adoptionRequest.jsp" class="btn btn-primary adopt">&nbsp;입양하기&nbsp;</a>
 					</div>
-			</div>
-					
+				</div>
+
 			</div>
 		</div>
-	</div>
 
-	<!-- Page Footer-->
-	<mytag:pageFooter />
+		<!-- Page Footer-->
+		<mytag:pageFooter />
 	</div>
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>

@@ -1,6 +1,6 @@
 package model.animal;
 
-public class AnimalVO {
+public class AnimalDTO {
 	private int animal_number;
 	private String supporter;
 	private String animal_name;
@@ -17,11 +17,11 @@ public class AnimalVO {
 
 	
 	
-	public AnimalVO() {
+	public AnimalDTO() {
 		
 	}
 	
-	public AnimalVO(String animal_name, String animal_species, String animal_type,
+	public AnimalDTO(String animal_name, String animal_species, String animal_type,
 			String animal_gender, String animal_age, double animal_weight, String animal_image, String isAdoption) {
 
 		this.animal_name = animal_name;

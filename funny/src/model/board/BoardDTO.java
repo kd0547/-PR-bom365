@@ -1,6 +1,6 @@
 package model.board;
 
-public class BoardVO {
+public class BoardDTO {
 	private int board_number;
 	private String supporter_id;
 	private String board_date;

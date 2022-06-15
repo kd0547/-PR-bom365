@@ -3,7 +3,7 @@ package controller.board;
 import controller.Action;
 import controller.ActionForward;
 import model.board.BoardDAO;
-import model.board.BoardVO;
+import model.board.BoardDTO;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +15,7 @@ public class BoardDeleteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		BoardDAO dao = new BoardDAO();
-		BoardVO vo = new BoardVO();
+		BoardDTO vo = new BoardDTO();
 		vo.setBoard_number(Integer.parseInt(request.getParameter("board_number")));
 		if (dao.delete(vo)) {
 			System.out.println("삭제완료");
