@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebFilter({"*.do","*.jsp"}) // 모든 do,jsp 파일에 대해서 처리
+@WebFilter({"*.do","*.jsp","*.me"}) // 모든 do,jsp 파일에 대해서 처리
 public class EncFilter implements Filter {
     private String encoding;
     public void init(FilterConfig config) throws ServletException {

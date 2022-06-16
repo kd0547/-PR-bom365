@@ -55,7 +55,6 @@
 
 <body>
 
-
 	<div class="colorlib-loader"></div>
 	<div id="page">
 
@@ -83,7 +82,7 @@
 		<div class="signup-form-container">
 			<!-- action수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 			<!--signupDone.jsp  -->
-			<form id="signup" method="post"
+			<form id="signup" 
 				class="woocommerce-form woocommerce-form-register register ">
 				<p
 					class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide more">
@@ -132,12 +131,12 @@
 						name="phone_number" 
 						placeholder=" '-' 제외하고 입력해 주세요"
 						>
-				</p>
-				<p
+				</p>		
+				<p 
 					class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide more">
 					<label class="reg_signup">우편주소&nbsp;</label> <input type="text"
 						class="woocommerce-Input woocommerce-Input--text input-text unique post"
-						id="sample4_postcode" name="post_code" disabled="disabled"
+						id="sample4_postcode" name="post_code" readonly
 						> <input type="button" class="searchingPostcode"
 						onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
 					<mytag:postcode />
@@ -196,7 +195,8 @@
 								type:"POST",
 								//USER DAO랑 가까운 JAVA OR JSP 파일로 데이터 전송
 								url:"/idCheck.me",
-								data : "id=" + id_send,
+								data : 	"id=" + id_send,
+								
 								success : function(data,textStatus,xhr){
 												
 									//true - 유저 있음, false - 유저 없음
@@ -235,15 +235,17 @@
 				
 				$("#sendbutton").click((e)=>{
 					let n= document.getElementById("name").value;
+					
 					let i= document.getElementById("id").value;
 					let ph= document.getElementById("phone").value;
 					let pwd= document.getElementById("pwd").value;
 					let pwdck= document.getElementById("pwdcheck").value;
 					let p = document.getElementById("sample4_postcode").value;
-					let a = document.getElementById("reg_detail").value;
+	
 					let reg_detail= document.getElementById("reg_detail").value;
-					if(name_check(n) && checkNumberReg(i) && pwd_check(pwd,pwdck) && phoneCheckReg(ph) && reg_detail != null) {
-
+					if(name_check(n) && checkNumberReg(i) && pwd_check(pwd,pwdck) && phoneCheckReg(ph) && reg_detail != null && p != null) {
+						//document.getElementById("name").value = encodeURI(document.getElementById("name").value)
+						
 						send(document.getElementById("signup"));
 					} else {
 						alert("입력되지 않는 값이 있습니다.");
@@ -428,6 +430,7 @@
 			}
 			
 			function send(e) {
+				e.method = "POST"
 				e.action="/signup.me";
 				e.submit();
 			}
