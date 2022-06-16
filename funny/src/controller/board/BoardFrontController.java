@@ -33,7 +33,7 @@ public class BoardFrontController extends HttpServlet {
 		// 문자열 조작을 통하여 .do 파일에 대한 분석 (ex: main.do -> command = main)
 		String command = uri.substring(cp.length() + 1, uri.length() - 3);
 		System.out.println(command);
-
+		System.out.println(command);
 		// 로직이 바뀌어도 서버데이터에 부담을 주지 않는다
 		if (command.equals("main")) {
 			try {

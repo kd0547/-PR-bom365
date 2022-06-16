@@ -75,7 +75,7 @@ public class SupporterDAO {
 	 * ID 중복을 검사하기 위해 DB에서 값을 SELECT 한다
 	 * 
 	 * param 중복 검사할 ID
-	 * return true - 유저 중복, false - 유저 없음
+	 * return true - 유저 있음, false - 유저 없음
 	 */
 	public boolean SupporterIdCheck(String SupporterId) {
 		
@@ -86,8 +86,15 @@ public class SupporterDAO {
 			pstmt = conn.prepareStatement(sql_idCheck);
 			pstmt.setString(1, SupporterId);
 			
-			if(pstmt.execute()) {
-				result = true;
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				if(rs.getString("supporter_id").equals(SupporterId)) {
+					//System.out.println(rs.getString("supporter_id"));
+					return true;
+				}
+				
+				
 			}
 			
 		} catch (SQLException e) {

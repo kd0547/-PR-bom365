@@ -20,6 +20,7 @@ public class SupporterFrontController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		actionDO(request, response);
 	}
 
@@ -33,7 +34,6 @@ public class SupporterFrontController extends HttpServlet {
 		// 문자열 조작을 통하여 .do 파일에 대한 분석 (ex: main.do -> command = main)
 		String command = uri.substring(cp.length() + 1, uri.length() - 3);
 		System.out.println(command);
-
 		// 로직이 바뀌어도 서버데이터에 부담을 주지 않는다
 		if (command.equals("main")) {
 			try {
@@ -56,6 +56,23 @@ public class SupporterFrontController extends HttpServlet {
 				forward = new LogOutAction().execute(request, response);
 			} catch (Exception e) {
 				System.out.println("logout.me 수행중 문제 발생");
+			}
+		}
+		
+		else if(command.equals("idCheck")) {
+			try {
+				forward = new IDCheckAction().execute(request, response);
+			} catch (Exception e) {
+				System.out.println("idCheck.me 수행중 문제 발생");
+			}
+		}
+		
+		else if(command.equals("signup")) {
+			try {
+				forward = new SignUpAction().execute(request, response);
+				
+			} catch (Exception e) {
+				System.out.println("signup.me 수행중 문제 발생");
 			}
 		}
 

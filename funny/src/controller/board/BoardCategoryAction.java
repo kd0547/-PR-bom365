@@ -49,7 +49,7 @@ public class BoardCategoryAction implements Action {
 			request.setAttribute("boardList", boardList);
 
 			forward.setPath("boardList.jsp");
-			forward.setRedirect(false); // 보내야할 데이터가 있기때문에 forward
+			forward.setRedirect(true); // 보내야할 데이터가 있기때문에 forward
 		}
 		
 		return forward; // 최종적으로 forward 를 반환한다
