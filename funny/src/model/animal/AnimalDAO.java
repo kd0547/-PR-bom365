@@ -5,7 +5,6 @@ import model.common.JDBCUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 
 public class AnimalDAO {
@@ -14,11 +13,11 @@ public class AnimalDAO {
 	ResultSet rs = null;
 	String sql_insertAll = "insert into animal values((select nvl(max(animal_number),0)+1 from animal),null,?,?,?,?,?,?,?,default)";
 
-	public void insertAll(List<AnimalVO> datas) {
+	public void insertAll(List<AnimalDTO> datas) {
 		conn = JDBCUtil.connect();
 		try {
 			pstmt = conn.prepareStatement(sql_insertAll);
-			for (AnimalVO data : datas) {
+			for (AnimalDTO data : datas) {
 
 				pstmt.setString(1, data.getAnimal_name());
 				pstmt.setString(2, data.getAnimal_species());

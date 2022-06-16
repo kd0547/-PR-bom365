@@ -3,7 +3,7 @@ package controller.board;
 import controller.Action;
 import controller.ActionForward;
 import model.board.BoardDAO;
-import model.board.BoardVO;
+import model.board.BoardDTO;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -27,10 +27,10 @@ public class BoardCategoryAction implements Action {
 		// 내글보기
 		if (category.equals("mine")) {
 			HttpSession session = request.getSession();
-			BoardVO vo = new BoardVO();
+			BoardDTO vo = new BoardDTO();
 			// 현재 로그인된 uid 를 통해 select
 			vo.setSupporter_id((String) session.getAttribute("supporter_id"));
-			ArrayList<BoardVO> boardList = dao.selectMine(vo);
+			ArrayList<BoardDTO> boardList = dao.selectMine(vo);
 			request.setAttribute("boardList", boardList);
 
 			forward.setPath("boardList.jsp");
@@ -45,7 +45,7 @@ public class BoardCategoryAction implements Action {
 		
 		// 댓글 순
 		else if (category.equals("comment")) {
-			ArrayList<BoardVO> boardList = dao.selectComCnt();
+			ArrayList<BoardDTO> boardList = dao.selectComCnt();
 			request.setAttribute("boardList", boardList);
 
 			forward.setPath("boardList.jsp");

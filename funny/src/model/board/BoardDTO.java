@@ -59,3 +59,4 @@ public class BoardDTO {
 				+ ", board_commentCnt=" + board_commentCnt + "]";
 	}
 }
+

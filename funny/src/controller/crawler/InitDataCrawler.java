@@ -13,7 +13,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
 
-import model.animal.AnimalVO;
+import model.animal.AnimalDTO;
 
 
 public class InitDataCrawler extends CrawlingUtil{
@@ -48,19 +48,19 @@ public class InitDataCrawler extends CrawlingUtil{
 	 * 
 	 * 
 	 */
-	public List<AnimalVO> start(Document document) {
+	public List<AnimalDTO> start(Document document) {
 		
 		Elements col_sm_6 =  document.getElementsByClass("col-sm-6");
 		int size = col_sm_6.size();
-		List<AnimalVO> list = new ArrayList<>();
+		List<AnimalDTO> list = new ArrayList<>();
 		
 		Element element=null;
 		//Map<String[], String[]> animal = new HashMap<String[], String[]>();
 		
-		for(int i=0;i<col_sm_6.size();i++) {
+		for(int i=0;i<size;i++) {
 			element =  col_sm_6.get(i);
 			
-			list.add(new AnimalVO(
+			list.add(new AnimalDTO(
 					getName(element),
 					getAnimalType(getSpecies(element)),
 					getNameSpecies(getSpecies(element)),

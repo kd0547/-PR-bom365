@@ -3,7 +3,7 @@ package controller.board;
 import controller.Action;
 import controller.ActionForward;
 import model.board.BoardDAO;
-import model.board.BoardVO;
+import model.board.BoardDTO;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +18,7 @@ public class BoardSearchAction implements Action {
 		String keyword = request.getParameter("keyword"); // view 에서 검색 된 키워드
 		BoardDAO dao = new BoardDAO();
 		// 검색된 키워드를 바탕으로 게시판 제목 %keyword% , 게시판 내용 %keyword% 를 가진 결과값들을 리스트에 저장후 반환
-		ArrayList<BoardVO> boardList = dao.selectSearch(keyword);
+		ArrayList<BoardDTO> boardList = dao.selectSearch(keyword);
 		request.setAttribute("boardList", boardList);
 
 		// Action

@@ -1,3 +1,4 @@
+
 package model.board;
 
 public class Board_commentDTO {
@@ -45,3 +46,4 @@ public class Board_commentDTO {
 				+ comment_date + "]";
 	}
 }
+

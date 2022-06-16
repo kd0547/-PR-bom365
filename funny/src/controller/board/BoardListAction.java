@@ -3,7 +3,7 @@ package controller.board;
 import controller.Action;
 import controller.ActionForward;
 import model.board.BoardDAO;
-import model.board.BoardVO;
+import model.board.BoardDTO;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +17,7 @@ public class BoardListAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BoardDAO dao = new BoardDAO();
-		ArrayList<BoardVO> boardList = dao.selectAll(); // dao 에서 조회된 데이터들을 받아옴
+		ArrayList<BoardDTO> boardList = dao.selectAll(); // dao 에서 조회된 데이터들을 받아옴
 		request.setAttribute("boardList", boardList);
 		// Action 값 지정
 		ActionForward forward = new ActionForward();
