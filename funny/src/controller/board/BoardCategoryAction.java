@@ -48,7 +48,7 @@ public class BoardCategoryAction implements Action {
 			ArrayList<BoardDTO> boardList = dao.selectComCnt();
 			request.setAttribute("boardList", boardList);
 
-			forward.setPath("boardList.jsp");
+			forward.setPath("boardList.do");
 			forward.setRedirect(true); // 보내야할 데이터가 있기때문에 forward
 		}
 		

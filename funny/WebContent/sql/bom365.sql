@@ -19,7 +19,7 @@ select * from board_comment;
 -- truncate table support_temporary;
 -- truncate table board;
 -- truncate table board_comment;
-
+DELETE supporter where supporter_id = 'thEHdd';
 -- 회원
 CREATE TABLE supporter (  
 	supporter_id				VARCHAR2(20)		CONSTRAINT PK_member PRIMARY KEY,
@@ -27,7 +27,7 @@ CREATE TABLE supporter (
 	supporter_password	VARCHAR2(20)		NOT NULL,
 	phone_number			VARCHAR2(20)		NOT NULL,
 	post_code					VARCHAR2(5)			NOT NULL,
-	detailed_address		VARCHAR2(100)		NOT NULL
+	detailed_address		VARCHAR2(200)		NOT NULL
 );
 
 -- 동물
@@ -87,13 +87,13 @@ CREATE TABLE support_temporary (
 	ON DELETE SET NULL		-- 일시후원자가 회원 탈퇴해도 후원목록 남아있음
 );
 
--- 봉사자 모집
+-- 게시판
 CREATE TABLE board (
 	board_number			NUMBER					CONSTRAINT board PRIMARY KEY,
 	supporter_id				VARCHAR2(20),
 	board_date				VARCHAR2(20)		NOT NULL,
 	board_title					VARCHAR2(100)		NOT NULL,
-	board_content			VARCHAR2(200)		NOT NULL,
+	board_content			VARCHAR2(3000)		NOT NULL,
 	category						VARCHAR2(20)		NOT NULL,
 	board_commentCnt	NUMBER					DEFAULT 0 NOT NULL,
 	
@@ -104,7 +104,7 @@ CREATE TABLE board (
 
  -- 댓글
 CREATE TABLE board_comment (
-	comment_number		VARCHAR2(20)		PRIMARY KEY,
+	comment_number		VARCHAR2(20)		CONSTRAINT board_comment PRIMARY KEY,
 	board_number			NUMBER					NOT NULL,
 	supporter_id				VARCHAR2(20)		NOT NULL,
 	comment_content		VARCHAR2(100)		NOT NULL,
@@ -114,4 +114,16 @@ CREATE TABLE board_comment (
 	ON DELETE CASCADE,			-- 게시글 삭제시 댓글 삭제
 	CONSTRAINTS FK_supporter_TO_comment FOREIGN KEY (supporter_id) REFERENCES  supporter (supporter_id)
 	ON DELETE CASCADE		-- 댓글작성자가 회원 탈퇴시 댓글 삭제
+);
+
+-- 봉사신청
+CREATE TABLE volunteer (
+	volunteer_number		NUMBER					CONSTRAINT volunteer PRIMARY KEY,
+	supporter_id				VARCHAR2(20)		NOT NULL,
+	volunteer_date			VARCHAR2(20)		NOT NULL,
+	volunteer_time			VARCHAR2(20)		NOT NULL,
+	
+	CONSTRAINTS FK_supporter_TO_volunteer FOREIGN KEY (supporter_id) REFERENCES  supporter (supporter_id)
+	ON DELETE CASCADE,		-- 봉사신청자가 회원 탈퇴시 신청 내역 삭제
+	CONSTRAINTS CH_time CHECK (volunteer_time IN('오전','오후'))			--이 두 가지 외의 분류는 없음
 );
