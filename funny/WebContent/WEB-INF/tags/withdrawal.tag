@@ -1,4 +1,11 @@
+<%@tag import="model.supporter.SupporterVO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ tag language="java" pageEncoding="UTF-8"%>
+<%
+	SupporterVO  supporterVO;
+	supporterVO = (SupporterVO)request.getAttribute("userInfo");	
+%>
 <script type="text/javascript">
     function del(){
         var ans=confirm("회원님의 정보는 복구되지않습니다. \n정말 탈퇴하시겠습니까?");
@@ -14,10 +21,10 @@
         }
     }
 </script>
-
+<c:set var="userInfo" value="<%= supporterVO%>"> </c:set>
 <div class="col-md-12 total-wrap withdrawal" id="login">
 	<div class="container-htag">
-		<h1>김개똥님!</h1>
+		<h1>${userInfo.supporter_name }님!</h1>
 		<h5>
 			탈퇴에 앞서 봉사자님을 통해 행복을 다시 찾고있는<br>많은 우리 동물들을 위해 다시한번 고민을 부탁드립니다
 		</h5>

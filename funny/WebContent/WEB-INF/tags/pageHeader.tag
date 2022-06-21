@@ -22,7 +22,7 @@
 						<c:otherwise>
 							<a href="logout.me" class="btn btn-primary">&nbsp;로그아웃&nbsp;</a>
 <!-- href 수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<a href="mypage.jsp" class="btn btn-primary">마이페이지</a>
+							<a href="mypage.me" class="btn btn-primary">마이페이지</a>
 						</c:otherwise>
 					</c:choose>
 				</div>

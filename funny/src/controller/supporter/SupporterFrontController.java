@@ -74,6 +74,21 @@ public class SupporterFrontController extends HttpServlet {
 			} catch (Exception e) {
 				System.out.println("signup.me 수행중 문제 발생");
 			}
+		} else if(command.equals("uerUpdate")) {
+			try {
+				forward = new MyPageAction().execute(request, response);
+				
+			} catch (Exception e) {
+				System.out.println("uerUpdate.me 수행중 문제 발생");
+			}
+		} else if(command.equals("mypage")) {
+			try {
+				forward = new MyPageAction().execute(request, response);
+				
+			} catch (Exception e) {
+				System.out.println("MyPage.me 수행중 문제 발생");
+			}
+			
 		}
 
 		// 만약 forward 가 null 이라면 null pointer exception 이 발생하기 떄문에 대비

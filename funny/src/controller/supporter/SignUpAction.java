@@ -53,6 +53,7 @@ public class SignUpAction  implements Action{
 	public SupporterVO createSupporterVO(HttpServletRequest request) {
 		SupporterVO supporter = null;
 		
+				
 		if(request != null) {
 			supporter = new SupporterVO();
 			

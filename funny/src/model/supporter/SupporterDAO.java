@@ -21,6 +21,7 @@ public class SupporterDAO {
 	String sql_insert = "insert into supporter values(?,?,?,?,?,?)";
 	String sql_selectLoginCheck = "select * from supporter where supporter_id=?";
 	String sql_idCheck = "select supporter_id from supporter where supporter_id=?";
+	String sql_idInfo = "select * from supporter where supporter_id=?";
 	
 	// 회원가입
 	public boolean insert(SupporterVO vo) { 
@@ -93,10 +94,9 @@ public class SupporterDAO {
 					//System.out.println(rs.getString("supporter_id"));
 					return true;
 				}
-				
-				
 			}
 			
+			rs.close();
 		} catch (SQLException e) {
 			System.out.println("SupporterDAO의 SupporterIdCheck()에서 문제발생!");
 			e.printStackTrace();
@@ -106,5 +106,46 @@ public class SupporterDAO {
 		}
 		
 		return result;
+	}
+	public SupporterVO SupporterIdInfo(String SupporterId) {
+		SupporterVO supporterVO = null;
+		
+		
+		if(SupporterId != null) {
+			try {
+				conn = JDBCUtil.connect();
+				pstmt = conn.prepareStatement(sql_idInfo);
+				pstmt.setString(1, SupporterId);
+				
+				rs = pstmt.executeQuery();
+				
+				supporterVO = new SupporterVO();
+				
+					if (rs.next()) {
+						
+						supporterVO.setSupporter_id(rs.getString("supporter_id"));
+						supporterVO.setSupporter_name(rs.getString("supporter_name"));
+						supporterVO.setSupporter_password(rs.getString("supporter_password"));
+						supporterVO.setPhone_number(rs.getString("phone_number"));
+						supporterVO.setPost_code(rs.getString("post_code"));
+						supporterVO.setDetailed_address(rs.getString("detailed_address"));
+					} 
+		
+				
+				rs.close();
+			} catch (SQLException e) {
+				System.out.println("SupporterDAO의 SupporterIdInfo()에서 문제발생!");
+				e.printStackTrace();
+				
+			} finally {
+				JDBCUtil.disconnect(pstmt, conn);
+			}
+		} else {
+			return supporterVO;
+		}
+		
+		
+		
+		return supporterVO;
 	}
 }

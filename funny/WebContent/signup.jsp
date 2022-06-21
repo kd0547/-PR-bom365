@@ -288,7 +288,7 @@
 
 						
 			function idOverlap(str) {
-				//NULL갑 체크 
+				//NULL값 체크 
 				if(!checkNullCheck(str)) {
 					idResultMessage("*아이디를 입력해 주세요")
 					return false;
