@@ -24,19 +24,19 @@ public class Board_commentDAO {
     String sql_updateComDown = "update board set board_commentCnt=board_commentCnt-1 where board_number=?";
     
     //댓글 작성
-    public boolean insert(Board_commentDTO vo) { 
+    public boolean insert(Board_commentDTO dto) { 
         conn = JDBCUtil.connect();
         try {
 			pstmt = conn.prepareStatement(sql_insert);
-			pstmt.setInt(1, vo.getBoard_number());
-			pstmt.setInt(2, vo.getBoard_number());
-			pstmt.setInt(3, vo.getBoard_number());
-			pstmt.setString(4, vo.getSupporter_id());
-			pstmt.setString(5, vo.getComment_content());
+			pstmt.setInt(1, dto.getBoard_number());
+			pstmt.setInt(2, dto.getBoard_number());
+			pstmt.setInt(3, dto.getBoard_number());
+			pstmt.setString(4, dto.getSupporter_id());
+			pstmt.setString(5, dto.getComment_content());
 			pstmt.executeUpdate();
 			
 			pstmt = conn.prepareStatement(sql_updateComUp);
-			pstmt.setInt(1, vo.getBoard_number());
+			pstmt.setInt(1, dto.getBoard_number());
 			pstmt.executeUpdate();
 			System.out.println("Board_commentDAO의 댓글수 +1 완료");
         } catch (SQLException e) {
@@ -50,15 +50,15 @@ public class Board_commentDAO {
     }
     
     //댓글 삭제
-    public boolean delete(Board_commentDTO vo) { 
+    public boolean delete(Board_commentDTO dto) { 
         conn = JDBCUtil.connect();
         try {
             pstmt = conn.prepareStatement(sql_delete);
-            pstmt.setString(1, vo.getComment_number());
+            pstmt.setString(1, dto.getComment_number());
             pstmt.executeUpdate();
             
 			pstmt = conn.prepareStatement(sql_updateComDown);
-			pstmt.setInt(1, vo.getBoard_number());
+			pstmt.setInt(1, dto.getBoard_number());
 			pstmt.executeUpdate();
 			System.out.println("Board_commentDAO의 댓글수 -1 완료");
         } catch (SQLException e) {

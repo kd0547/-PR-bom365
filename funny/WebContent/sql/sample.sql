@@ -24,17 +24,18 @@ VALUES (
     'toEhd', '김새똥', '1234', '01025436285', '21548', '어딘가로5'
 );
 
+
 INSERT INTO board
 VALUES (
-	(select nvl(max(board_number),0)+1 from board),'admin',to_char(sysdate, 'yyyy.mm.dd hh24:mi'),'[필독] 2022.06 봉사 신청 공지사항','공지공지공지공지공지공지공지공지','공지',default
+	(select nvl(max(board_number),0)+1 from board),'admin',to_char(sysdate, 'yyyy.mm.dd hh24:mi'),'2022.06 봄365 공지사항','공지공지공지공지공지공지공지공지','공지',default
 );
 INSERT INTO board
 VALUES (
-	(select nvl(max(board_number),0)+1 from board),'roEhd',to_char(sysdate, 'yyyy.mm.dd hh24:mi'),'봉사 신청합니다','07/15 15시에 방문하겠습니다. 혹시 같이 봉사가실 분 계시면 댓글 남겨주세요','일반',default
+	(select nvl(max(board_number),0)+1 from board),'roEhd',to_char(sysdate, 'yyyy.mm.dd hh24:mi'),'물품 후원도 가능한가요?','집에 사료가 많아서 후원하려고요','일반',default
 );
 INSERT INTO board
 VALUES (
-	(select nvl(max(board_number),0)+1 from board),'thEhd',to_char(sysdate, 'yyyy.mm.dd hh24:mi'),'날씨가 더워졌네요,,','보호소 아이들 많이 덥겠어요. 여름준비 일손 필요하다고 들었는데 내일(06.11) 오후 6시에 봉사하러가겠습니다','일반',default
+	(select nvl(max(board_number),0)+1 from board),'thEhd',to_char(sysdate, 'yyyy.mm.dd hh24:mi'),'날씨가 더워졌네요,,','보호소 아이들 많이 덥겠어요. 여름준비 일손 필요하다고 들었는데 조만간 방문 해야겠어요','일반',default
 );
 INSERT INTO board
 VALUES (
@@ -42,6 +43,92 @@ VALUES (
 );
 
 
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오전'
+);
 
 
-select * from board where category='공지' order by board_number desc;
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
+);
+delete from board;
+delete from volunteer;
+delete from volunteer where volunteer_number=20;

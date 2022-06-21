@@ -52,9 +52,6 @@
 </head>
 
 <body>
-
-
-	<div class="colorlib-loader"></div>
 	<div id="page">
 
 		<!-- Page Header-->

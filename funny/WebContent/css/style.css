@@ -7422,7 +7422,7 @@ h1, h2, h3, h4, h5,
       display: none; } }
 
 .colorlib-nav ul {
-   width: 346px;
+   width: 453px;
    float: right;
   padding: 0;
   margin: -39px 0 0 -12px; }
@@ -9068,4 +9068,47 @@ a.btn.btn-primary.boardUD {
 }
 .btn.btn-primary.boardUD:hover {
 	background: #5e5840 !important;
+}
+.calendar {
+	text-align: center; color : #978d67;
+	font-size: 17px;
+	color: #978d67;
+}
+
+.calendarDay {
+	height: 55px;
+	border-block: 1px solid #5959592e;
+}
+
+.calendar td button {
+	color: #978d67;
+	width: 70px;
+	height: 70px;
+	border: 1px solid #ffffff00;
+	background-color: #ffffff00;
+}
+
+.calendar td button:hover, .calendar td button:active {
+	color: #5e5840;
+	cursor: pointer;
+	outline: none;
+}
+
+.calendar td button:focus {
+	outline: none;
+}
+
+.calendarDate button:hover, .calendarDate button:active {
+	font-size: 22px;
+}
+
+button.volFull {
+	color: #0000004d !important;
+}
+
+button.volFull:hover, button.volFull:active {
+	cursor: default !important;
+	font-size: 17px;
+	color: #0000004d;
+	outline: none;
 }

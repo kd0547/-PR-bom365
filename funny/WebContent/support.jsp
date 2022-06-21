@@ -50,7 +50,6 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
-<div class="colorlib-loader"></div>
 <div id="page">
 
 	<!-- Page Header-->

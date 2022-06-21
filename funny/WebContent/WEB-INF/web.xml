@@ -22,6 +22,15 @@
 		<url-pattern>*.me</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>vfc</servlet-name>
+		<servlet-class>controller.volunteer.VolunteerFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>vfc</servlet-name>
+		<url-pattern>*.vt</url-pattern>
+	</servlet-mapping>
+
 	<!-- init parameter 로 encoding 을 UTF-8 로 설정 -->
 	<context-param>
 		<param-name>encoding</param-name>
