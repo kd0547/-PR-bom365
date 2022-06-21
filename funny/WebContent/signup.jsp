@@ -53,8 +53,6 @@
 </head>
 
 <body>
-
-	<div class="colorlib-loader"></div>
 	<div id="page">
 
 		<!-- Page Header-->
@@ -193,8 +191,8 @@
 					$.ajax({
 								type:"POST",
 								//USER DAO랑 가까운 JAVA OR JSP 파일로 데이터 전송
-								url:"/idCheck.me",
-								data : 	"id=" + id_send,
+								url:"idCheck.me",
+								data : "id=" + id_send,
 								
 								success : function(data,textStatus,xhr){
 												
@@ -253,7 +251,7 @@
 					}
 				})
 				
-				$("#pwd").on('input',(e)=> {
+				$("#pwd").on('input',(e)=>{
 					let val = e.target.value;
 					
 					if(checkSpecialCheck(val)) {
@@ -430,7 +428,7 @@
 			
 			function send(e) {
 				e.method = "POST"
-				e.action="/signup.me";
+				e.action="signup.me";
 				e.submit();
 			}
 			

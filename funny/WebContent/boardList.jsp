@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>봉사자모집</title>
+<title>자유게시판</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -48,8 +48,6 @@
 </head>
 <body>
 
-	<div class="colorlib-loader"></div>
-
 	<div id="page">
 
 		<!-- Page Header-->
@@ -60,14 +58,14 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-							<span><a href="index.jsp">Home</a></span> / <span>봉사자모집</span>
+							<span><a href="main.do">Home</a></span> / <span>자유게시판</span>
 						</p>
 					</div>
 				</div>
 			</div>
 		</div>
 		
-		<h1 id="menuTitle">봉사자모집</h1>
+		<h1 id="menuTitle">자유게시판</h1>
 		
 		<!-- BoardList -->
 		<div class="boardListFirstDiv">
@@ -123,31 +121,41 @@
 							<td style="width: 7em;">날짜</td>
 						</tr>
 					</tbody>
-					
-					<tbody class="boardTbottom">
-						<c:forEach var="v" items="${boardList}">
-							<tr>
-								<c:choose>
-									<c:when test="${v.supporter_id=='admin'}">
-										<td>공지</td>
-										<td colspan="3" class="boardTitle"><a
-											href="boardDetail.do?board_number=${v.board_number}"
-											style="color: #b74a55;">[필독]&nbsp;&nbsp;&nbsp;${v.board_title}</a></td>
-									</c:when>
-									<c:otherwise>
-										<td>${v.board_number}</td>
-										<td class="boardTitle"><a
-											href="boardDetail.do?board_number=${v.board_number}"
-											style="color: #978d67;">${v.board_title}&nbsp; <b
-												style="color: #978d678c;">[${v.board_commentCnt}]</b>
-										</a></td>
-										<td>${v.supporter_id}</td>
-										<td>${v.board_date}</td>
-									</c:otherwise>
-								</c:choose>
-							</tr>
-						</c:forEach>
-					</tbody>
+					<c:choose>
+						<c:when test="${boardList.size()==0}">
+							<tbody class="boardTbottom">
+								<tr>
+									<td colspan="4"><h3>등록된 글이 없습니다!</h3></td>
+								</tr>
+							</tbody>
+						</c:when>
+						<c:otherwise>
+							<tbody class="boardTbottom">
+								<c:forEach var="v" items="${boardList}">
+									<tr>
+										<c:choose>
+											<c:when test="${v.supporter_id=='admin'}">
+												<td>공지</td>
+												<td colspan="3" class="boardTitle"><a
+													href="boardDetail.do?board_number=${v.board_number}"
+													style="color: #b74a55;">[필독]&nbsp;&nbsp;&nbsp;${v.board_title}</a></td>
+											</c:when>
+											<c:otherwise>
+												<td>${v.board_number}</td>
+												<td class="boardTitle"><a
+													href="boardDetail.do?board_number=${v.board_number}"
+													style="color: #978d67;">${v.board_title}&nbsp; <b
+														style="color: #978d678c;">[${v.board_commentCnt}]</b>
+												</a></td>
+												<td>${v.supporter_id}</td>
+												<td>${v.board_date}</td>
+											</c:otherwise>
+										</c:choose>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</c:otherwise>
+					</c:choose>
 				</table>
 			</div>
 		</div>

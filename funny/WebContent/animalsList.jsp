@@ -48,15 +48,9 @@
 <!-- Material Icons -->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-
 </head>
 
 <body>
-
-
-
-	<div class="colorlib-loader"></div>
 	<div id="page">
 
 		<!-- Page Header-->

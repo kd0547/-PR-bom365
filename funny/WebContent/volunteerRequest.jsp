@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="mytag"%>
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>탈퇴완료</title>
+<title>봉사신청</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -40,53 +41,10 @@
 
 <!-- Theme style  -->
 <link rel="stylesheet" href="css/style.css">
-
 </head>
 <body>
 
-	<div id="page">
-
-		<!-- Page Header-->
-		<mytag:pageHeader/>
-
-		<div class="breadcrumbs">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						<p class="bread">
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<span><a href="mypage.jsp">My Page</a></span> / <span>탈퇴완료</span>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="colorlib-product">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-10 offset-sm-1 text-center">
-						<p class="icon-addcart">
-							<span><i class="icon-check"></i></span>
-						</p>
-						<h3 class="mb-4">탈퇴 완료되었습니다.<br>그동안 이용해 주셔서 감사합니다.</h3>
-						<p>
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<a href="main.jsp" class="btn btn-primary" id="complete">메인으로 돌아가기</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Page Footer-->
-		<mytag:pageFooter />
-
-	</div>
-
-	<div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
-	</div>
+<h1>test</h1>
 
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
@@ -114,4 +72,3 @@
 
 </body>
 </html>
-

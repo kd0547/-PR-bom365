@@ -43,8 +43,6 @@
 </head>
 <body>
 
-	<div class="colorlib-loader"></div>
-
 	<div id="page">
 
 		<!-- Page Header-->
@@ -111,7 +109,28 @@
 												<span>여러분의 도움이 보호소 운영에 큰 힘이 됩니다</span>
 											</p>
 											<p>
-												<a href="boardList.do" class="btn btn-primary">봉사자모집</a>
+												<a href="volunteerList.vt" class="btn btn-primary">봉사신청</a>
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li style="background-image: url(images/야옹4.jpg);">
+						<div class="overlay"></div>
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-sm-6 offset-sm-4 text-right slider-text">
+									<div class="slider-text-inner">
+										<div class="desc">
+											<h2 class="head-3">여러분의 이야기를</h2>
+											<h2 class="head-3">들려주세요</h2>
+											<p class="category">
+												<span>봉사후기, 입양후기 등 자유롭게 작성해요</span>
+											</p>
+											<p>
+												<a href="boardList.do" class="btn btn-primary">자유게시판</a>
 											</p>
 										</div>
 									</div>

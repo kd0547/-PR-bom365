@@ -32,17 +32,17 @@ public class BoardDAO {
 	String sql_delete = "delete from board where board_number=?";
 
 	// 게시글 작성
-	public boolean insert(BoardDTO vo) {
+	public boolean insert(BoardDTO dto) {
 		conn = JDBCUtil.connect();
 		boolean isAdmin = false;
-		if (vo.getSupporter_id().equals("admin")) {
+		if (dto.getSupporter_id().equals("admin")) {
 			isAdmin = true;
 		}
 		try {
 			pstmt = conn.prepareStatement(sql_insert);
-			pstmt.setString(1, vo.getSupporter_id());
-			pstmt.setString(2, vo.getBoard_title());
-			pstmt.setString(3, vo.getBoard_content());
+			pstmt.setString(1, dto.getSupporter_id());
+			pstmt.setString(2, dto.getBoard_title());
+			pstmt.setString(3, dto.getBoard_content());
 			if (isAdmin) {
 				pstmt.setString(4, "공지");
 			} else {
@@ -268,13 +268,13 @@ public class BoardDAO {
 	}
 
 	// 게시글 수정
-	public boolean update(BoardDTO vo) {
+	public boolean update(BoardDTO dto) {
 		conn = JDBCUtil.connect();
 		try {
 			pstmt = conn.prepareStatement(sql_update);
-			pstmt.setString(1, vo.getBoard_title());
-			pstmt.setString(2, vo.getBoard_content());
-			pstmt.setInt(3, vo.getBoard_number());
+			pstmt.setString(1, dto.getBoard_title());
+			pstmt.setString(2, dto.getBoard_content());
+			pstmt.setInt(3, dto.getBoard_number());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("BoardDAO의 update()에서 문제발생!");
@@ -287,11 +287,11 @@ public class BoardDAO {
 	}
 
 	// 게시글 삭제
-	public boolean delete(BoardDTO vo) {
+	public boolean delete(BoardDTO dto) {
 		conn = JDBCUtil.connect();
 		try {
 			pstmt = conn.prepareStatement(sql_delete);
-			pstmt.setInt(1, vo.getBoard_number());
+			pstmt.setInt(1, dto.getBoard_number());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("BoardDAO의 delete()에서 문제 발생!");

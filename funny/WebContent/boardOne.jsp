@@ -42,22 +42,28 @@
 <!-- Theme style  -->
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/boardOne.css">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
-    function del(){
-        ans=confirm("정말 삭제하시겠습니까?");
-        if(ans==true){
-            document.withdrawal.submit();
-        }
-        else{
-        	event.preventDefault();
-        }
-    }
+	function del() {
+		ans = confirm("정말 삭제하시겠습니까?");
+		if (ans == true) {
+			document.withdrawal.submit();
+		} else {
+			event.preventDefault();
+		}
+	}
 </script>
+<style type="text/css">
+textarea.form-control.gap.one {
+	border-radius: 8px;
+	border: 0px !important;
+	font-size: 1.25rem !important;
+	padding: 14px;
+    min-height: 330px;
+}
+</style>
 </head>
 <body>
-
-	<div class="colorlib-loader"></div>
 
 	<div id="page">
 
@@ -68,7 +74,7 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-							<span><a href="boardList.do">봉사자모집</a></span> / <span>상세글</span>
+							<span><a href="boardList.do">자유게시판</a></span> / <span>상세글</span>
 						</p>
 					</div>
 				</div>
@@ -82,20 +88,27 @@
 				
 					<div class="form-group boardOne">
 						<h5 class="h5-detail title" style="width: 100%;">제목</h5>
-						<h5 class="h5-detail title info">${boardDetail.board.supporter_id} | ${boardDetail.board.board_date}</h5>
+						<c:if test="${boardDetail.board.supporter_id!='admin'}">
+							<h5 class="h5-detail title info">${boardDetail.board.supporter_id} | ${boardDetail.board.board_date}</h5>
+						</c:if>
 					</div>
 					
 					<div class="title-box">
 							<h5 style="padding: 14px;">${boardDetail.board.board_title}</h5>
 					</div>
-					
-					<div class="form-group">
-						<h5 class="h5-detail comment">내용</h5>
-						<div class="comment-box">
-							<h5 style="padding: 14px;">${boardDetail.board.board_content}</h5>
-						</div>
+ 					<div class="form-group">
+						<h5>내용</h5>
+						<textarea name="board_content" id="autoHeight" class="form-control gap one" disabled>${boardDetail.board.board_content}</textarea>
 					</div>
-					
+					<script type="text/javascript">
+						function adjustHeight() {
+							var textEle = $('#autoHeight');
+							var textEleHeight = textEle.prop('scrollHeight');
+							console.log(textEleHeight);
+							textEle.css("height", textEleHeight);
+						};
+						adjustHeight();
+					</script>
 					<!-- 본인 글에만 노출 -->
 					<c:if test="${boardDetail.board.supporter_id==supporter_id}">
 						<div style="float: right;">
@@ -112,7 +125,7 @@
 				<hr>
 				<div class="col-sm-4 text-left total writeForm"
 					style="display: inline-block;">
-					<h3 class="head">${boardDetail.board.board_commentCnt}Reviews</h3>
+					<h3 class="head">${boardDetail.board.board_commentCnt}&nbsp;Reviews</h3>
 
 					<c:forEach var="v" items="${boardDetail.comments}">
 						<div class="review">
@@ -152,7 +165,7 @@
 									class="btn btn-primary inputSubmit comment">
 							</c:otherwise>
 						</c:choose>
-
+						
 					</form>
 				</div>
 			</c:if>
