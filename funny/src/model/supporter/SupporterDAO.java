@@ -22,7 +22,8 @@ public class SupporterDAO {
 	String sql_selectLoginCheck = "select * from supporter where supporter_id=?";
 	String sql_idCheck = "select supporter_id from supporter where supporter_id=?";
 	String sql_idInfo = "select * from supporter where supporter_id=?";
-	
+	String sql_delete_info = "select supporter_id,supporter_password from supporter where supporter_id=? AND supporter_password=?";
+	String sql_delete = "delete FROM supporter where supporter_id=?";
 	// 회원가입
 	public boolean insert(SupporterVO vo) { 
 		try {
@@ -148,4 +149,65 @@ public class SupporterDAO {
 		
 		return supporterVO;
 	}
+	
+	/*
+	 * 	executeUpdate()의 반환값 	- 삭제 완료	
+	 * 	0 						- 비밀번호 다름 
+	 *
+	 * -1 						- 오류 
+	 * **'-1'은 executeUpdate()의 CREATE DROP반환값과 겹치지만 DELETE를 사용하기 때문에 사용해도 괜찮다고 생각함	**
+	 */
+	public int SupporterDelete(String id, String pwd) {
+		
+		String result_id = null;
+		String result_pwd = null;
+		int result = 0;
+		
+		if(id !=null && pwd != null) {
+			try {
+				conn = JDBCUtil.connect();
+				pstmt = conn.prepareStatement(sql_delete_info);
+				pstmt.setString(1, id);
+				pstmt.setString(2, pwd);
+				
+				rs = pstmt.executeQuery();
+				//유저 조회
+				if(rs.next()) {
+					result_id = rs.getString("supporter_id");
+					result_pwd = rs.getString("supporter_password");
+				}
+				//유저 삭제
+				if(result_id != null && result_pwd != null) {
+					
+					if(result_id.equals(id) && result_pwd.equals(pwd) ) {
+						pstmt = conn.prepareStatement(sql_delete);
+						pstmt.setString(1, id);
+						
+						//삭제 결과값 반환
+						result = pstmt.executeUpdate();
+					}
+				} else {
+					// 아이디는 세션을 쓰기 때문에 대부분 일치하겠지만 
+					// 혹시 모를 경우에 대비해서 넣어놨음 
+					result = 0;
+				}
+				
+				rs.close();
+			} catch (SQLException e) {
+				System.out.println("SupporterDAO의 SupporterDelete()에서 문제발생!");
+				e.printStackTrace();
+				
+			} finally {
+				JDBCUtil.disconnect(pstmt, conn);
+			}
+		} else {
+			//입력값이 없으면 에러로 처리 
+			result = -1;
+		}
+		
+		
+		return result;
+	}
+	
+	
 }

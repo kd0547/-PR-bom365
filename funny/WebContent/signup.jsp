@@ -270,7 +270,8 @@
 				document.getElementById("pwdcheck").addEventListener('input',(e)=>{
 					
 					if(pwd_check($("#pwd").val(),e.target.value)) {
-						PWResultMessage("패스워드가 일치합니다.");
+						sucremovePWNode()
+						successPWNode("*영문, 숫자 8~20 자리 입니다.");
 					} else{
 						PWResultMessage("패스워드가 일치하지 않습니다.");
 					}
@@ -304,7 +305,24 @@
 				}
 			}
 			
-
+			function successPWNode (str) {
+				let createText = document.getElementById("pwd-box");
+				if(createText.childElementCount == 0){
+					let h3 = document.createElement('h3');
+					h3.setAttribute('class','check-id-ps');
+					h3.style.color = "blue";
+					h3.innerText = str;
+					createText.appendChild(h3);
+				}
+						
+			}
+			function sucremovePWNode() {
+				let removeText = document.getElementById("pwd-box");
+				let h3 = removeText.children[0];
+				if(removeText.childElementCount) {
+					removeText.removeChild(h3);
+				}
+			}
 
 			
 			/*

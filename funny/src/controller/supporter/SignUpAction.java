@@ -70,6 +70,10 @@ public class SignUpAction  implements Action{
 		
 		return supporter;
 	}
+	/*
+	 * 필요 없음 
+	 * 
+	 */
 	public String decodingName(String name) {
 		
 		

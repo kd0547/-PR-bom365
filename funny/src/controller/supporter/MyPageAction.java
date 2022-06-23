@@ -29,7 +29,6 @@ public class MyPageAction implements Action{
 			supporterVO = supporterDAO.SupporterIdInfo(id);
 			
 			if(supporterVO != null) {
-				System.out.println("test");
 				request.setAttribute("userInfo", supporterVO);
 
 			} else {
