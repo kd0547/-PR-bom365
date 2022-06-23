@@ -53,6 +53,7 @@ public class SignUpAction  implements Action{
 	public SupporterVO createSupporterVO(HttpServletRequest request) {
 		SupporterVO supporter = null;
 		
+				
 		if(request != null) {
 			supporter = new SupporterVO();
 			
@@ -69,6 +70,10 @@ public class SignUpAction  implements Action{
 		
 		return supporter;
 	}
+	/*
+	 * 필요 없음 
+	 * 
+	 */
 	public String decodingName(String name) {
 		
 		
