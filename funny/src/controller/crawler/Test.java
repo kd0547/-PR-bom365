@@ -22,7 +22,9 @@ public class Test {
 			Document doc =  crawling.getHtmlData() ;
 			List<AnimalDTO> list = crawling.start(doc);
 			
-			dao.insertAll(list);
+			if (dao.insertAll(list)) {
+				System.out.println("개 : " + i + "페이지 초기데이터 설정 완료");
+			}
 		}
 		
 
@@ -31,7 +33,9 @@ public class Test {
 			Document doc =  crawling.getHtmlData() ;
 			List<AnimalDTO> list = crawling.start(doc);
 			
-			dao.insertAll(list);
+			if (dao.insertAll(list)) {
+				System.out.println("고양이 : " + i + "페이지 초기데이터 설정 완료");
+			}
 		}
 		
 		

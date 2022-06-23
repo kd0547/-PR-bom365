@@ -3,7 +3,7 @@ package controller.supporter;
 import controller.Action;
 import controller.ActionForward;
 import model.supporter.SupporterDAO;
-import model.supporter.SupporterVO;
+import model.supporter.SupporterDTO;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,13 +17,13 @@ public class LogInAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ActionForward forward = null; // 로그인 되지 않았다면 null 이 되도록
 		SupporterDAO dao = new SupporterDAO();
-		SupporterVO vo = new SupporterVO();
+		SupporterDTO vo = new SupporterDTO();
 		
 		String supporter_id = request.getParameter("supporter_id");
 		String supporter_password = request.getParameter("supporter_password");
 		vo.setSupporter_id(supporter_id);
 		vo.setSupporter_password(supporter_password);
-		SupporterVO data = dao.login(vo);
+		SupporterDTO data = dao.login(vo);
 		System.out.println(data);
 		
 		// 만약 아이디, 비밀번호가 동일하다면

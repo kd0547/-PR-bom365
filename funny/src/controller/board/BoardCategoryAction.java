@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 public class BoardCategoryAction implements Action {
 	@Override
@@ -23,14 +23,13 @@ public class BoardCategoryAction implements Action {
 		// 카테고리 값 : 내글보기/mine, 최신순/recent, 댓글순/comment
 		
 		BoardDAO dao = new BoardDAO();
-		
 		// 내글보기
 		if (category.equals("mine")) {
 			HttpSession session = request.getSession();
 			BoardDTO vo = new BoardDTO();
 			// 현재 로그인된 uid 를 통해 select
 			vo.setSupporter_id((String) session.getAttribute("supporter_id"));
-			ArrayList<BoardDTO> boardList = dao.selectMine(vo);
+			List<BoardDTO> boardList = dao.selectMine(vo);
 			request.setAttribute("boardList", boardList);
 
 			forward.setPath("boardList.jsp");
@@ -45,11 +44,11 @@ public class BoardCategoryAction implements Action {
 		
 		// 댓글 순
 		else if (category.equals("comment")) {
-			ArrayList<BoardDTO> boardList = dao.selectComCnt();
+			List<BoardDTO> boardList = dao.selectComCnt();
 			request.setAttribute("boardList", boardList);
 
-			forward.setPath("boardList.do");
-			forward.setRedirect(true); // 보내야할 데이터가 있기때문에 forward
+			forward.setPath("boardList.jsp");
+			forward.setRedirect(false); // 보내야할 데이터가 있기때문에 forward
 		}
 		
 		return forward; // 최종적으로 forward 를 반환한다

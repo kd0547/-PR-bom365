@@ -43,7 +43,7 @@
 <link rel="stylesheet" href="css/style.css">
 <script>
 function openPopup(url) {
-	window.open(url,'봉사신청','width=400, height=400, left=750, top=200');
+	window.open(url,'봉사신청','width=400, height=300, left=750, top=200');
 }
 </script>
 </head>
@@ -142,7 +142,7 @@ function openPopup(url) {
 								</c:choose>
 
 								<c:choose>
-									<c:when test="${volCal.month eq volCal.currentMonth and v.date lt volCal.currentDate}">		<!-- 봉사 신청 가능 여부 확인 -->
+									<c:when test="${volCal.month eq volCal.currentMonth and v.date le volCal.currentDate}">		<!-- 봉사 신청 가능 여부 확인 -->
 										<td class="calendarDate"><button class="volFull" disabled>${v.date}</button></td>
 									</c:when>
 									<c:when test="${v.isfull}">		<!-- 봉사 신청 가능 여부 확인 -->

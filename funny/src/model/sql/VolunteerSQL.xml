@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="VolunteerSQL">
+	<insert id="insert" parameterType="VolunteerDTO">
+		insert into volunteer values((select nvl(max(volunteer_number),0)+1 from volunteer),#{supporter_id},#{volunteer_date},#{volunteer_time})
+	</insert>
+	<select id="select" parameterType="hashmap" resultType="_int">
+		select count(*) cnt from volunteer where volunteer_date=#{volunteer_date} and volunteer_time=#{volunteer_time}
+	</select>
+	<delete id="delete" parameterType="VolunteerDTO">
+		delete from volunteer where volunteer_number=#{volunteer_number}
+	</delete>
+</mapper>

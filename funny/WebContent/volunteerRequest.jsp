@@ -43,9 +43,25 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-<h1>test</h1>
-
+	<div class="volReqFirstDiv">
+		<div style="display: inline-block;">
+			<form action="volunteerInsert.vt" method="post">
+				<table style="font-size: 18px">
+					<tr>
+						<td><input type="radio" name="volunteer_time" value="오전"
+							required> 오전 (09:00 ~ 12:00)</td>
+					</tr>
+					<tr>
+						<td><input type="radio" name="volunteer_time" value="오후"
+							required> 오후 (14:00 ~ 17:00)</td>
+					</tr>
+					<tr>
+						<td><input type="submit" class="btn btn-primary" value="신청하기"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->

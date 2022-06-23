@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import controller.Action;
 import controller.ActionForward;
 import model.supporter.SupporterDAO;
-import model.supporter.SupporterVO;
+import model.supporter.SupporterDTO;
 
 
 public class SignUpAction  implements Action{
@@ -24,7 +24,7 @@ public class SignUpAction  implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		SupporterVO supporterVO = new SupporterVO();
+		SupporterDTO supporterVO = new SupporterDTO();
 		
 		
 		supporterVO = createSupporterVO(request);
@@ -50,11 +50,11 @@ public class SignUpAction  implements Action{
 	}
 	
 	
-	public SupporterVO createSupporterVO(HttpServletRequest request) {
-		SupporterVO supporter = null;
+	public SupporterDTO createSupporterVO(HttpServletRequest request) {
+		SupporterDTO supporter = null;
 		
 		if(request != null) {
-			supporter = new SupporterVO();
+			supporter = new SupporterDTO();
 			
 			supporter.setSupporter_id(request.getParameter("supporter_id"));
 			supporter.setSupporter_name(request.getParameter("supporter_name"));
