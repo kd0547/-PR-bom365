@@ -81,11 +81,11 @@
 								<c:choose>
 									<c:when test="${supporter_id==null}">
 										<a href="login.jsp" class="btn btn-primary inputSubmit apply">로그인
-											후 지원하기</a>
+											후 작성가능</a>
 									</c:when>
 									<c:otherwise>
 										<a href="boardRequest.jsp"
-											class="btn btn-primary inputSubmit apply">지원하기</a>
+											class="btn btn-primary inputSubmit apply">글 작성하기</a>
 									</c:otherwise>
 								</c:choose>
 								
@@ -95,7 +95,7 @@
 									<input type="submit" value="검색"
 										class="btn btn-primary inputSubmit searchButton">
 								</form>
-								
+
 							</td>
 							<td class="removeBorderTop"></td>
 						</tr>

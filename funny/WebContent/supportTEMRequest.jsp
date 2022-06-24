@@ -48,73 +48,105 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
+<!-- jQuery -->
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
 </head>
 
-<body>
-	<div id="page">
+<body id="tem">
 
-		<!-- Page Header-->
-		<mytag:pageHeader/>
 
-		<div class="breadcrumbs">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						<p class="bread">
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<span><a href="support.jsp">후원신청</a></span> / <span>일시후원</span>
-						</p>
-					</div>
+	<div class="colorlib-loader"></div>
+
+	<!-- Page Header-->
+	<mytag:pageHeader />
+
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<p class="bread">
+						<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+						<span><a href="support.jsp">후원신청</a></span> / <span>일시후원</span>
+					</p>
 				</div>
 			</div>
 		</div>
-
-
-		<h1 id="menuTitle">일시후원신청</h1>
-
-		<div class="signup-form-container">
-<!-- action수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-			<form action="supportDone.jsp" method="post"
-				class="woocommerce-form woocommerce-form-register register ">
-				<div class="input-container">
-					<label class="reg_signup">은행&nbsp;</label> <input type="text"
-						class="woocommerce-Input woocommerce-Input--text input-text"
-						name="temporary_bank">
-				</div>
-				<div class="input-container">
-					<label class="reg_signup">계좌번호&nbsp;</label> <input type="text"
-						class="woocommerce-Input woocommerce-Input--text input-text"
-						name="temporary_acoount">
-				</div>
-				<div class="input-container">
-					<label class="reg_signup">금액&nbsp;</label> <input type="text"
-						class="woocommerce-Input woocommerce-Input--text input-text"
-						name="temporary_amount">
-				</div>
-				<input type="submit" class="btn btn-primary supprot"
-					value="&nbsp;신청하기&nbsp;">
-			</form>
-
-
-
-		</div>
-
-
-		<!-- Page Footer-->
-		<mytag:pageFooter />
 	</div>
+
+
+	<h1 id="menuTitle">일시후원신청</h1>
+
+	
+
+<!-- action수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+	<div class="container-tem">
+		<form action="supprotTEMRequest.sp" method="post" target="iframe">
+			<div class="signup-form-container tem">
+				<div class="js-focus-state form-group tem">
+						<span class="h4 tem">금액</span> 
+						<select name="temporary_amount"class="form-control input tem" id="kakaopay-amount" 
+						        data-msg="금액을 선택해 주세요" data-error-class="u-has-error" data-success-class="u-has-success">
+							<option value="50,000">50,000</option>
+							<option value="100,000">100,000</option>
+							<option value="150,000">150,000</option>
+							<option value="200,000">200,000</option>
+							<option value="250,000">250,000</option>
+							<option value="300,000">300,000</option>
+						</select>
+				</div>
+
+						<input type="submit" onclick="requestPay()" class="btn btn-primary supprot tem" value="&nbsp;신청하기&nbsp;">
+			</div>
+		</form>
+	</div>
+	 <iframe name='iframe' style='display: none;'></iframe> 
+
+
+	<!-- Page Footer-->
+	<mytag:pageFooter />
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 
-	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
+
+
+
+	<script>
+		var IMP = window.IMP; // 생략 가능
+		IMP.init("imp44896858"); // 가맹점 식별코드
+
+		function requestPay() {
+			// IMP.request_pay(param, callback) 결제창 호출
+			IMP.request_pay({
+				pg : "html5_inicis",
+				pay_method : "card",
+				temporary_number : "500088",
+				//관리자페이지(주문명)에 노출될 정보들(밑으론 key값 변경불가능)
+				name : "봄365 후원",
+				amount : document.getElementById("kakaopay-amount").value,
+				supporter_id : "gildong@gmail.com",
+				buyer_name : "홍길동",
+			}, function(rsp) {
+				if (rsp.success) {
+					location.href = "supportDone.jsp";
+				} else {
+					alert("결제에 실패했습니다.");
+					location.href = "supportTEMRequest.jsp";
+				}
+			});
+		}
+	</script>
+
+
 	<!-- popper -->
 	<script src="js/popper.min.js"></script>
 	<!-- bootstrap 4.1 -->
 	<script src="js/bootstrap.min.js"></script>
-	<!-- jQuery easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
 	<!-- Waypoints -->
 	<script src="js/jquery.waypoints.min.js"></script>
 	<!-- Flexslider -->
@@ -131,7 +163,6 @@
 	<!-- Main -->
 	<script src="js/main.js"></script>
 </body>
-
 
 
 </html>

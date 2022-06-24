@@ -2,27 +2,25 @@ package model.animal;
 
 public class AnimalDTO {
 	private int animal_number;
-	private String supporter;
+	private String supporter_id;
 	private String animal_name;
 	private String animal_species;
 	private String animal_type;
 	private String animal_gender;
 	private String animal_age;
-
+	private double animal_age_num;
+	private double animal_age_more;
+	private double animal_age_less;
 	private double animal_weight;
-
+	private int animal_weight_over;
+	private int animal_weight_under;
 	private String animal_image;
 	private String isAdoption;
 	
-
-	
-	
-	public AnimalDTO() {
-		
-	}
+	public AnimalDTO() {}
 	
 	public AnimalDTO(String animal_name, String animal_species, String animal_type,
-			String animal_gender, String animal_age, double animal_weight, String animal_image, String isAdoption) {
+			String animal_gender, String animal_age, double animal_weight, String animal_image) {
 
 		this.animal_name = animal_name;
 		this.animal_species = animal_species;
@@ -31,7 +29,6 @@ public class AnimalDTO {
 		this.animal_age = animal_age;
 		this.animal_weight = animal_weight;
 		this.animal_image = animal_image;
-		this.isAdoption = isAdoption;
 	}
 	
 
@@ -41,11 +38,11 @@ public class AnimalDTO {
 	public void setAnimal_number(int animal_number) {
 		this.animal_number = animal_number;
 	}
-	public String getSupporter() {
-		return supporter;
+	public String getSupporter_id() {
+		return supporter_id;
 	}
-	public void setSupporter(String supporter) {
-		this.supporter = supporter;
+	public void setSupporter_id(String supporter_id) {
+		this.supporter_id = supporter_id;
 	}
 	public String getAnimal_name() {
 		return animal_name;
@@ -77,17 +74,41 @@ public class AnimalDTO {
 	public void setAnimal_age(String animal_age) {
 		this.animal_age = animal_age;
 	}
-
-
+	public double getAnimal_age_num() {
+		return animal_age_num;
+	}
+	public void setAnimal_age_num(double animal_age_num) {
+		this.animal_age_num = animal_age_num;
+	}
+	public double getAnimal_age_more() {
+		return animal_age_more;
+	}
+	public void setAnimal_age_more(double animal_age_more) {
+		this.animal_age_more = animal_age_more;
+	}
+	public double getAnimal_age_less() {
+		return animal_age_less;
+	}
+	public void setAnimal_age_less(double animal_age_less) {
+		this.animal_age_less = animal_age_less;
+	}
 	public double getAnimal_weight() {
-
 		return animal_weight;
 	}
-
-
 	public void setAnimal_weight(double animal_weight) {
-
 		this.animal_weight = animal_weight;
+	}
+	public int getAnimal_weight_over() {
+		return animal_weight_over;
+	}
+	public void setAnimal_weight_over(int animal_weight_over) {
+		this.animal_weight_over = animal_weight_over;
+	}
+	public int getAnimal_weight_under() {
+		return animal_weight_under;
+	}
+	public void setAnimal_weight_under(int animal_weight_under) {
+		this.animal_weight_under = animal_weight_under;
 	}
 	public String getAnimal_image() {
 		return animal_image;
@@ -104,9 +125,12 @@ public class AnimalDTO {
 
 	@Override
 	public String toString() {
-		return "ProductVO [animal_number=" + animal_number + ", supporter=" + supporter + ", animal_name=" + animal_name
-				+ ", animal_species=" + animal_species + ", animal_type=" + animal_type + ", animal_gender="
-				+ animal_gender + ", animal_age=" + animal_age + ", animal_weight=" + animal_weight + ", animal_image="
-				+ animal_image + ", isAdoption=" + isAdoption + "]";
+		return "AnimalDTO [animal_number=" + animal_number + ", supporter_id=" + supporter_id + ", animal_name="
+				+ animal_name + ", animal_species=" + animal_species + ", animal_type=" + animal_type
+				+ ", animal_gender=" + animal_gender + ", animal_age=" + animal_age + ", animal_age_num="
+				+ animal_age_num + ", animal_age_more=" + animal_age_more + ", animal_age_less=" + animal_age_less
+				+ ", animal_weight=" + animal_weight + ", animal_weight_over=" + animal_weight_over
+				+ ", animal_weight_under=" + animal_weight_under + ", animal_image=" + animal_image + ", isAdoption="
+				+ isAdoption + "]";
 	}
 }

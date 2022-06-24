@@ -20,13 +20,12 @@ public class BoardInsertAction implements Action {
 		HttpSession session = request.getSession();
 
 		BoardDAO dao = new BoardDAO();
-		BoardDTO vo = new BoardDTO();
-		// 작성자 아이디를 uid , 제목을 title, 내용을 content 라고 가정하고 진행
-		vo.setSupporter_id((String) session.getAttribute("supporter_id"));
-		vo.setBoard_title(request.getParameter("board_title"));
-		vo.setBoard_content(request.getParameter("board_content"));
-		System.out.println("현재 vo: " + vo);
-		dao.insert(vo);
+		BoardDTO dto = new BoardDTO();
+		dto.setSupporter_id((String) session.getAttribute("supporter_id"));
+		dto.setBoard_title(request.getParameter("board_title"));
+		dto.setBoard_content(request.getParameter("board_content"));
+		System.out.println("현재 dto: " + dto);
+		dao.insert(dto);
 		forward.setPath("boardDone.jsp");
 		forward.setRedirect(true); // 넘겨야 할 데이터 X
 		return forward;

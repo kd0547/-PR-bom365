@@ -43,9 +43,56 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-<h1>test</h1>
-
+	<div class="volReqFirstDiv">
+		<div style="display: inline-block;">
+			<form action="volunteerInsert.vt" method="post" target="main">
+				<input type="hidden" name="volunteer_date" value="${volCnt.yymmdd}">
+				<table style="font-size: 18px">
+					<tr>
+						<c:choose>
+							<c:when test="${checkAM != null}">
+								<td colspan="2">🌼 ${volCnt.yymmdd} 오전 신청 완료 🌼</td>
+							</c:when>
+							<c:when test="${volCnt.cntAM ge 10}">
+								<td colspan="2" style="color: #5959597a;">🐶
+									${volCnt.yymmdd} 오전 봉사 마감 🐱</td>
+							</c:when>
+							<c:otherwise>
+								<td><input type="radio" name="volunteer_time" value="오전"
+									required> 오전 (09:00 ~ 12:00)</td>
+								<td><small style="color: #bfb180;">&nbsp;${volCnt.cntAM}
+										/ 10</small></td>
+							</c:otherwise>
+						</c:choose>
+					</tr>
+					<tr>
+						<c:choose>
+							<c:when test="${checkPM != null}">
+								<td colspan="2">🌼 ${volCnt.yymmdd} 오후 신청 완료 🌼</td>
+							</c:when>
+							<c:when test="${volCnt.cntPM ge 10}">
+								<td colspan="2" style="color: #5959597a;">🐱
+									${volCnt.yymmdd} 오후 봉사 마감 🐶</td>
+							</c:when>
+							<c:otherwise>
+								<td><input type="radio" name="volunteer_time" value="오후"
+									required> 오후 (14:00 ~ 17:00)</td>
+								<td><small style="color: #bfb180;">&nbsp;${volCnt.cntPM}
+										/ 10</small></td>
+							</c:otherwise>
+						</c:choose>
+					</tr>
+					<tr>
+						<td colspan="2"><input type="submit"
+							class="btn btn-primary vol" value="신청하기"></td>
+					</tr>
+					<tr>
+						<td colspan="2"><small class="volBack" onclick="self.close();">돌아가기</small></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->

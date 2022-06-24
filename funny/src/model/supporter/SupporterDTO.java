@@ -1,6 +1,6 @@
 package model.supporter;
 
-public class SupporterVO {
+public class SupporterDTO {
 	private String supporter_id;
 	private String supporter_name;
 	private String supporter_password;

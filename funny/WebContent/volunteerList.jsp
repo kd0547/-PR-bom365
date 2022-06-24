@@ -42,9 +42,20 @@
 <!-- Theme style  -->
 <link rel="stylesheet" href="css/style.css">
 <script>
-function openPopup(url) {
-	window.open(url,'봉사신청','width=400, height=400, left=750, top=200');
-}
+	window.name="main"
+
+	function openPopup(url) {
+		window.open(url, '봉사신청', 'width=400, height=300, left=745, top=200');
+	}
+
+	function check() {
+		var ans = confirm("로그인 후 이용 가능합니다.");
+		if (ans == true) {
+			location.href = 'login.jsp';
+		} else {
+			event.preventDefault();
+		}
+	}
 </script>
 </head>
 <body>
@@ -73,10 +84,10 @@ function openPopup(url) {
 					<table class="calendar">
 						<tr>
 							<td>
-								<!-- 저번달로 이동 -->
-								<c:choose>
+								<!-- 저번달로 이동 --> <c:choose>
 									<c:when
-										test="${volCal.beforeYear le volCal.currentYear and volCal.beforeMonth lt volCal.currentMonth}">		<!-- 저번달이 과거일때 -->
+										test="${volCal.beforeYear le volCal.currentYear and volCal.beforeMonth lt volCal.currentMonth}">
+										<!-- 저번달이 과거일때 -->
 										<button type="button" class="volFull" disabled>
 											<i class="ion-ios-arrow-back"></i>&nbsp;${volCal.beforeMonth}월
 										</button>
@@ -89,14 +100,13 @@ function openPopup(url) {
 									</c:otherwise>
 								</c:choose>
 							</td>
-							
+
 							<td colspan="5"><h4 style="margin: 0">${volCal.year}년${volCal.month}월</h4></td>
-							
+
 							<td>
-								<!-- 다음달로 이동 -->
-								<c:choose>
-									<c:when
-										test="${volCal.afterMonth ge volCal.currentMonth+3}">		<!-- 다음달이 지금으로부터 +4개월 이상일때 -->
+								<!-- 다음달로 이동 --> <c:choose>
+									<c:when test="${volCal.afterMonth ge volCal.currentMonth+3}">
+										<!-- 다음달이 지금으로부터 +4개월 이상일때 -->
 										<button type="button" class="volFull" disabled>
 											${volCal.afterMonth}월&nbsp;<i class="ion-ios-arrow-forward"></i>
 										</button>
@@ -110,14 +120,20 @@ function openPopup(url) {
 								</c:choose>
 							</td>
 						</tr>
-						
+
 						<tr class="calendarDay">
-							<td>일</td><td>월</td><td>화</td><td>수</td><td>목</td><td>금</td><td>토</td>
+							<td>일</td>
+							<td>월</td>
+							<td>화</td>
+							<td>수</td>
+							<td>목</td>
+							<td>금</td>
+							<td>토</td>
 						</tr>
-						
+
 						<tr>
 							<c:set var="cnt" value="0" />
-							
+
 							<!-- 1일 요일 위치 맞추기 -->
 							<c:forEach var="i" begin="2" end="${volCal.dayOfweek}">
 								<td></td>
@@ -142,15 +158,26 @@ function openPopup(url) {
 								</c:choose>
 
 								<c:choose>
-									<c:when test="${volCal.month eq volCal.currentMonth and v.date lt volCal.currentDate}">		<!-- 봉사 신청 가능 여부 확인 -->
+									<c:when
+										test="${volCal.month eq volCal.currentMonth and v.date le volCal.currentDate}">
+										<!-- 봉사 신청 가능 여부 확인 -->
 										<td class="calendarDate"><button class="volFull" disabled>${v.date}</button></td>
 									</c:when>
-									<c:when test="${v.isfull}">		<!-- 봉사 신청 가능 여부 확인 -->
+									<c:when test="${v.isfull}">
+										<!-- 봉사 신청 가능 여부 확인 -->
 										<td class="calendarDate"><button class="volFull" disabled>마감</button></td>
 									</c:when>
 									<c:otherwise>
-										<td class="calendarDate"><button onclick="openPopup('volunteerRequest.jsp')"
-												style="color: ${color}">${v.date}</button></td>
+										<td class="calendarDate"><c:choose>
+												<c:when test="${supporter_id == null}">
+													<button onclick="check()" style="color: ${color}">${v.date}</button>
+												</c:when>
+												<c:otherwise>
+													<button
+														onclick="openPopup('volunteerRequest.vt?yymmdd=${v.yymmdd}&cntAM=${v.cntAM}&cntPM=${v.cntPM}')"
+														style="color: ${color}">${v.date}</button>
+												</c:otherwise>
+											</c:choose></td>
 									</c:otherwise>
 								</c:choose>
 

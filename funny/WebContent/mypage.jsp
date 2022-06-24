@@ -51,6 +51,7 @@
 <link rel="stylesheet" href="css/deleteAccount.css">
 
 </head>
+
 <body>
 
 
@@ -64,8 +65,7 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<span><a href="main.jsp">HOME</a></span> / <span>my page</span>
+							<span><a href="main.do">HOME</a></span> / <span>my page</span>
 						</p>
 					</div>
 					<div class="col">

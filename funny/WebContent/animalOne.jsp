@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="mytag"%>
 <!DOCTYPE HTML>
 <html>
@@ -52,6 +53,8 @@
 </head>
 
 <body>
+
+
 	<div id="page">
 
 		<!-- Page Header-->
@@ -61,8 +64,7 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<span><a href="supportMain.jsp">입양하기</a></span> / <span>상세페이지</span>
+							<span><a href="animalList.am">입양하기</a></span> / <span>상세페이지</span>
 						</p>
 					</div>
 				</div>
@@ -74,29 +76,21 @@
 
 		<!--  외부페이지 ul-->
 		<div class="colorlib-about">
-
-
-
 			<div class="container">
 				<div class="row row-pb-lg">
 					<div class="col-sm-6 mb-3" style="margin-left: 5em;">
-<!-- src수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-						<img class="img-fluid w-100" src="images_sample/강록.png">
+						<img class="img-fluid w-100" src="${animalDetail.animal_image}">
 					</div>
 					<div class="about-wrap">
-<!-- 데이터 수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-						<span class="animal-name">강록</span>
-
+						<span class="animal-name">${animalDetail.animal_name}</span>
 						<hr class="my-5">
-
 						<ul class="list-unstyled mb-0">
 							<li class="media mb-1">
 								<div class="d-flex w-40 w-sm-30">
 									<small class="text-muted"> 종/품종 </small>
 								</div>
 								<div class="h6-container">
-<!-- 데이터 수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-									<p class="h6">개 / 믹스</p>
+									<p class="h6">${animalDetail.animal_species} / ${animalDetail.animal_type}</p>
 								</div>
 							</li>
 							<li class="media mb-1">
@@ -104,8 +98,7 @@
 									<small class="text-muted"> 성별(중성화) </small>
 								</div>
 								<div class="h6-container">
-<!-- 데이터 수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-									<h3 class="h6">암컷 / 중성화 X</h3>
+									<h3 class="h6">${animalDetail.animal_gender}</h3>
 								</div>
 							</li>
 							<li class="media mb-1">
@@ -113,8 +106,7 @@
 									<small class="text-muted"> 추정나이 </small>
 								</div>
 								<div class="h6-container">
-<!-- 데이터 수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-									<h3 class="h6">1살 1개월</h3>
+									<h3 class="h6">${animalDetail.animal_age}</h3>
 								</div>
 							</li>
 							<li class="media mb-1">
@@ -122,13 +114,18 @@
 									<small class="text-muted"> 몸무게 </small>
 								</div>
 								<div class="h6-container">
-<!-- 데이터 수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-									<h3 class="h6">6.1kg</h3>
+									<h3 class="h6">${animalDetail.animal_weight}kg</h3>
 								</div>
 							</li>
 						</ul>
-<!-- href 수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-						<a href="adoptionRequest.jsp" class="btn btn-primary adopt">&nbsp;입양하기&nbsp;</a>
+						<c:choose>
+						<c:when test="${supporter_id == null}">
+						<a href="login.jsp" class="btn btn-primary adopt" >로그인 후 입양 신청 가능</a>
+						</c:when>
+						<c:otherwise>
+						<a href="applicationRequest.ap?animal_number=${animalDetail.animal_number}" class="btn btn-primary adopt">입양하기</a>
+						</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 

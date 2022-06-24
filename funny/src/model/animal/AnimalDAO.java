@@ -1,40 +1,48 @@
 package model.animal;
 
-import model.common.JDBCUtil;
+import model.mybatis.SqlMapConfig;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
 public class AnimalDAO {
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
-	String sql_insertAll = "insert into animal values((select nvl(max(animal_number),0)+1 from animal),null,?,?,?,?,?,?,?,default)";
+	SqlSessionFactory factory = SqlMapConfig.getFactory();
+	SqlSession sqlsession;
 
-	public void insertAll(List<AnimalDTO> datas) {
-		conn = JDBCUtil.connect();
-		try {
-			pstmt = conn.prepareStatement(sql_insertAll);
-			for (AnimalDTO data : datas) {
-
-				pstmt.setString(1, data.getAnimal_name());
-				pstmt.setString(2, data.getAnimal_species());
-				pstmt.setString(3, data.getAnimal_type());
-				pstmt.setString(4, data.getAnimal_gender());
-				pstmt.setString(5, data.getAnimal_age());
-				pstmt.setDouble(6, data.getAnimal_weight());
-				pstmt.setString(7, data.getAnimal_image());
-
-				pstmt.executeUpdate();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("init 데이터 insert 중 문제발생");
-		} finally {
-			JDBCUtil.disconnect(pstmt, conn);
-		}
+	public AnimalDAO() {
+		// auto commit
+		sqlsession = factory.openSession(true);
+		System.out.println("factory값 가져오기 성공 (sqlsession과 dao연결성공)");
 	}
 
+	public boolean insertAll(List<AnimalDTO> datas) {
+		boolean result = false;
+		int cnt = 0;
+		for (AnimalDTO data : datas) {
+			if (sqlsession.insert("AnimalSQL.insertAll", data) != 0) {
+				cnt++;
+			}
+		}
+		if (datas.size() == cnt) {
+			result = true;
+		}
+		return result;
+	}
+	
+	public List<AnimalDTO> selectAll() {
+		List<AnimalDTO> datas = sqlsession.selectList("AnimalSQL.selectAll");
+		return datas;
+	}
+	
+	public AnimalDTO selectOne(AnimalDTO dto) {
+		AnimalDTO data = sqlsession.selectOne("AnimalSQL.selectOne", dto);
+		return data;
+	}
+	
+	public List<AnimalDTO> selectSearch(AnimalDTO dto) {
+		List<AnimalDTO> AnimalSelectList = sqlsession.selectList("AnimalSQL.selectSearch", dto);
+		return AnimalSelectList;
+	}
 }

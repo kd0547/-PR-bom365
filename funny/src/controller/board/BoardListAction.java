@@ -9,7 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 public class BoardListAction implements Action {
 
@@ -17,7 +17,7 @@ public class BoardListAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BoardDAO dao = new BoardDAO();
-		ArrayList<BoardDTO> boardList = dao.selectAll(); // dao 에서 조회된 데이터들을 받아옴
+		List<BoardDTO> boardList = dao.selectAll(); // dao 에서 조회된 데이터들을 받아옴
 		request.setAttribute("boardList", boardList);
 		// Action 값 지정
 		ActionForward forward = new ActionForward();

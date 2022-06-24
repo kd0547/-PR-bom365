@@ -1,4 +1,4 @@
-<%@tag import="model.supporter.SupporterVO"%>
+<%@tag import="model.supporter.SupporterDTO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="mytag"%>
 <%@ tag language="java" pageEncoding="UTF-8"%>
@@ -14,13 +14,13 @@
 		response.getWriter().println("<script>alert('허용하지 않는 경로 입니다.');history.go(-1);</script>");
 	} 
 
-	SupporterVO  supporterVO;
-	supporterVO = (SupporterVO)request.getAttribute("userInfo");	
+	SupporterDTO  SupporterDTO;
+	SupporterDTO = (SupporterDTO)request.getAttribute("userInfo");	
 %>
-<c:set var="userInfo" value="<%= supporterVO%>"> </c:set>
+<c:set var="userInfo" value="<%= SupporterDTO%>"> </c:set>
 <div class="signup-form-container">
 <!-- action 채워넣기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-	<form method="post" action="uerUpdate.me"
+	<form method="post" action="supporterUpdate.me"
 		class="woocommerce-form woocommerce-form-register register ">
 		<p
 			class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide more">

@@ -64,7 +64,7 @@
 		<h1 id="menuTitle">로그인</h1>
 		<div class="col-md-12 total-wrap" id="login">
 			<div class="col-sm-4 text-center total">
-				<form action="/login.me" method="post" name="loginForm">
+				<form action="login.me" method="post" name="loginForm">
 					<table id="tableStyle">
 						<tr>
 							<td id="tableCol">아이디</td>

@@ -2,6 +2,7 @@ package controller.volunteer;
 
 import controller.ActionForward;
 import controller.MainAction;
+import controller.application.ApplicationRequestAction;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,21 +36,30 @@ public class VolunteerFrontController extends HttpServlet {
 		String command = uri.substring(cp.length() + 1, uri.length() - 3);
 		System.out.println(command);
 		
-		// 로직이 바뀌어도 서버데이터에 부담을 주지 않는다
-		if (command.equals("main")) {
-			try {
-				forward = new MainAction().execute(request, response);
-			} catch (Exception e) {
-				System.out.println("main.do 수행중 문제 발생");
-				e.printStackTrace();
-			}
-		}
-
-		else if (command.equals("volunteerList")) {
+		// 봉사 신청 달력
+		if (command.equals("volunteerList")) {
 			try {
 				forward = new VolunteerListAction().execute(request, response);
 			} catch (Exception e) {
 				System.out.println("volunteerList.vt 수행중 문제 발생");
+				e.printStackTrace();
+			}
+		}
+		
+		// 날짜별 신청 페이지 이동
+		if (command.equals("volunteerRequest")) {
+			try {
+				forward = new VolunteerRequestAction().execute(request, response);
+			} catch (Exception e) {
+				System.out.println("volunteerRequest.vt 수행중 문제 발생");
+			}
+		}
+		
+		if (command.equals("volunteerInsert")) {
+			try {
+				forward = new VolunteerInsertAction().execute(request, response);
+			} catch (Exception e) {
+				System.out.println("volunteerInsert.vt 수행중 문제 발생");
 				e.printStackTrace();
 			}
 		}

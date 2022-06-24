@@ -8939,6 +8939,11 @@ a#complete {
     width: 100%;
     text-align: center;
 }
+.volReqFirstDiv {
+    margin-top: 4em;
+    width: 100%;
+    text-align: center;
+}
 td.removeBorderTop {
     border-top: 0px solid #dee2e6;
 }
@@ -9111,4 +9116,24 @@ button.volFull:hover, button.volFull:active {
 	font-size: 17px;
 	color: #0000004d;
 	outline: none;
+}
+
+input.btn.btn-primary.vol {
+    width: 77%;
+    margin-top: 2em;
+    margin-right: 0;
+}
+input.btn.btn-primary.vol:hover {
+    background: #978d67 !important;
+}
+small.volBack {
+    cursor: pointer;
+    color: #978d67;
+}
+small.volBack:hover {
+    color: #5e5840;
+}
+a.btn.btn-primary.main {
+    font-size: 17px !important;
+    border-radius: 40px;
 }

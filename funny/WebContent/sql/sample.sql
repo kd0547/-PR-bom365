@@ -5,6 +5,10 @@ VALUES (
 );
 INSERT INTO supporter
 VALUES (
+    'test', '테스트', '1234', '01011111111', '45352', '상세주소'
+);
+INSERT INTO supporter
+VALUES (
     'roEhd', '김개똥', '1234', '01012345678', '12345', '어딘가로1'
 );
 INSERT INTO supporter
@@ -22,6 +26,26 @@ VALUES (
 INSERT INTO supporter
 VALUES (
     'toEhd', '김새똥', '1234', '01025436285', '21548', '어딘가로5'
+);
+INSERT INTO supporter
+VALUES (
+    'wnlEhd', '김쥐똥', '1234', '01024576138', '35716', '어딘가로6'
+);
+INSERT INTO supporter
+VALUES (
+    'gkrEhd', '김학똥', '1234', '01030240532', '75439', '어딘가로7'
+);
+INSERT INTO supporter
+VALUES (
+    'RnjdEhd', '김꿩똥', '1234', '01042731005', '71645', '어딘가로8'
+);
+INSERT INTO supporter
+VALUES (
+    'qoaEhd', '김뱀똥', '1234', '01024673905', '67842', '어딘가로9'
+);
+INSERT INTO supporter
+VALUES (
+    'didEhd', '김양똥', '1234', '01020589672', '45352', '어딘가로10'
 );
 
 
@@ -42,93 +66,169 @@ VALUES (
 	(select nvl(max(board_number),0)+1 from board),'akfEhd',to_char(sysdate, 'yyyy.mm.dd hh24:mi'),'안양 사시는 분 중에 이번 주 주말 봉사 같이 가실 분계신가요','봉사 가고싶은데 교통편이 까다롭네요ㅜㅜ','일반',default
 );
 
+-- 마감 샘플--------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'roEhd','2022.07.05','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'thEhd','2022.07.05','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'akfEhd','2022.07.05','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'ekfrEhd','2022.07.05','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'wnlEhd','2022.07.05','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'gkrEhd','2022.07.05','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'RnjdEhd','2022.07.05','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'qoaEhd','2022.07.05','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'didEhd','2022.07.05','오전'
+);
 
 INSERT INTO volunteer
 VALUES (
-	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오전'
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'roEhd','2022.07.05','오후'
 );
 INSERT INTO volunteer
 VALUES (
-	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오전'
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'thEhd','2022.07.05','오후'
 );
 INSERT INTO volunteer
 VALUES (
-	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오전'
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'akfEhd','2022.07.05','오후'
 );
 INSERT INTO volunteer
 VALUES (
-	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오전'
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'ekfrEhd','2022.07.05','오후'
 );
 INSERT INTO volunteer
 VALUES (
-	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오전'
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
 );
 INSERT INTO volunteer
 VALUES (
-	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오전'
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'wnlEhd','2022.07.05','오후'
 );
 INSERT INTO volunteer
 VALUES (
-	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오전'
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'gkrEhd','2022.07.05','오후'
 );
 INSERT INTO volunteer
 VALUES (
-	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오전'
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'RnjdEhd','2022.07.05','오후'
 );
 INSERT INTO volunteer
 VALUES (
-	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오전'
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'qoaEhd','2022.07.05','오후'
 );
 INSERT INTO volunteer
 VALUES (
-	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오전'
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'didEhd','2022.07.05','오후'
 );
 
+-- 오전 마감 샘플--------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'roEhd','2022.07.14','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'thEhd','2022.07.14','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'akfEhd','2022.07.14','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'ekfrEhd','2022.07.14','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.14','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'wnlEhd','2022.07.14','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'gkrEhd','2022.07.14','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'RnjdEhd','2022.07.14','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'qoaEhd','2022.07.14','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'didEhd','2022.07.14','오전'
+);
 
+-- 오후 마감 샘플--------------------------------------------------------------------------------------------------------------------------------
 INSERT INTO volunteer
 VALUES (
-	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'roEhd','2022.07.15','오후'
 );
 INSERT INTO volunteer
 VALUES (
-	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'thEhd','2022.07.15','오후'
 );
 INSERT INTO volunteer
 VALUES (
-	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'akfEhd','2022.07.15','오후'
 );
 INSERT INTO volunteer
 VALUES (
-	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'ekfrEhd','2022.07.15','오후'
 );
 INSERT INTO volunteer
 VALUES (
-	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.15','오후'
 );
 INSERT INTO volunteer
 VALUES (
-	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'wnlEhd','2022.07.15','오후'
 );
 INSERT INTO volunteer
 VALUES (
-	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'gkrEhd','2022.07.15','오후'
 );
 INSERT INTO volunteer
 VALUES (
-	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'RnjdEhd','2022.07.15','오후'
 );
 INSERT INTO volunteer
 VALUES (
-	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'qoaEhd','2022.07.15','오후'
 );
 INSERT INTO volunteer
 VALUES (
-	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'didEhd','2022.07.15','오후'
 );
-INSERT INTO volunteer
-VALUES (
-	(select nvl(max(volunteer_number),0)+1 from volunteer),'toEhd','2022.07.05','오후'
-);
-delete from board;
-delete from volunteer;
-delete from volunteer where volunteer_number=20;
