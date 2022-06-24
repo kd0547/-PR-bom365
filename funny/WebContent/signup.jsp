@@ -63,8 +63,7 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-							<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<span><a href="main.jsp">HOME</a></span> / <span>회원가입</span>
+							<span><a href="main.do">HOME</a></span> / <span>회원가입</span>
 						</p>
 					</div>
 				</div>
@@ -77,7 +76,6 @@
 		<!-- sign up -->
 
 		<div class="signup-form-container">
-			<!-- action수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 			<!--signupDone.jsp  -->
 			<form id="signup" 
 				class="woocommerce-form woocommerce-form-register register ">
@@ -97,12 +95,10 @@
 						class="woocommerce-Input woocommerce-Input--text input-text" name ="supporter_id"
 						>
 				</p>
-				<!-- ajax 구현//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 				<div id="text-box"></div>
 				<p
 					class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide more">
 					<label class="reg_signup">비밀번호&nbsp;</label>
-					<!-- id="pw1"사용하여 ajax구현//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 					<input id="pwd" type="password"
 						class="woocommerce-Input woocommerce-Input--text input-text"
 						 name="supporter_password" placeholder="비밀번호는 안전하게"
@@ -113,7 +109,6 @@
 					class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide"
 					style="padding-left: 6px;">
 					<label class="reg_signup">비밀번호확인&nbsp;</label>
-					<!-- id="pw2"사용하여 ajax구현//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 					<input id="pwdcheck" type="password"
 						class="woocommerce-Input woocommerce-Input--text input-text">
 					
@@ -270,7 +265,8 @@
 				document.getElementById("pwdcheck").addEventListener('input',(e)=>{
 					
 					if(pwd_check($("#pwd").val(),e.target.value)) {
-						PWResultMessage("패스워드가 일치합니다.");
+						sucremovePWNode()
+						successPWNode("*영문, 숫자 8~20 자리 입니다.");
 					} else{
 						PWResultMessage("패스워드가 일치하지 않습니다.");
 					}
@@ -286,7 +282,7 @@
 
 						
 			function idOverlap(str) {
-				//NULL갑 체크 
+				//NULL값 체크 
 				if(!checkNullCheck(str)) {
 					idResultMessage("*아이디를 입력해 주세요")
 					return false;
@@ -304,7 +300,24 @@
 				}
 			}
 			
-
+			function successPWNode (str) {
+				let createText = document.getElementById("pwd-box");
+				if(createText.childElementCount == 0){
+					let h3 = document.createElement('h3');
+					h3.setAttribute('class','check-id-ps');
+					h3.style.color = "blue";
+					h3.innerText = str;
+					createText.appendChild(h3);
+				}
+						
+			}
+			function sucremovePWNode() {
+				let removeText = document.getElementById("pwd-box");
+				let h3 = removeText.children[0];
+				if(removeText.childElementCount) {
+					removeText.removeChild(h3);
+				}
+			}
 
 			
 			/*
@@ -431,11 +444,6 @@
 				e.action="signup.me";
 				e.submit();
 			}
-			
-
-
-
-			
 	</script>
 
 

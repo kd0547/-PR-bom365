@@ -67,8 +67,7 @@ public class InitDataCrawler extends CrawlingUtil{
 					getGender(element),
 					getAge(getAWC(element)),
 					getWeight(getAWC(element)),
-					getImgSrc(element),
-					"false"
+					getImgSrc(element)
 					));
 			
 			
@@ -87,14 +86,17 @@ public class InitDataCrawler extends CrawlingUtil{
 		return Species.replaceAll("\\(+[가-힣 | \\s ]+\\)", "").trim();
 	}
 
-	
+	/*
+	 * 나이(문자열) 추출
+	 * 
+	 */
 	public String  getAge(String AWC) {
-		String[] weight;
+		String[] age;
 		
-		weight = AWC.split("/");
+		age = AWC.split("/");
 		
 		
-		return weight[0];
+		return age[0];
 	}
 	/*
 	 * 몸무게 추출

@@ -17,14 +17,13 @@ public class LogInAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ActionForward forward = null; // 로그인 되지 않았다면 null 이 되도록
 		SupporterDAO dao = new SupporterDAO();
-		SupporterDTO vo = new SupporterDTO();
+		SupporterDTO dto = new SupporterDTO();
 		
 		String supporter_id = request.getParameter("supporter_id");
 		String supporter_password = request.getParameter("supporter_password");
-		vo.setSupporter_id(supporter_id);
-		vo.setSupporter_password(supporter_password);
-		SupporterDTO data = dao.login(vo);
-		System.out.println(data);
+		dto.setSupporter_id(supporter_id);
+		dto.setSupporter_password(supporter_password);
+		SupporterDTO data = dao.login(dto);
 		
 		// 만약 아이디, 비밀번호가 동일하다면
 		if (data != null) { 

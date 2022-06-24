@@ -17,7 +17,7 @@ public class Test {
 		 * 
 		 * 
 		 */
-		for(int i =1;i<=5;i++) {
+		for(int i =1;i<=3;i++) {
 			crawling.getConnection(crawling.getURL(i, "개"));
 			Document doc =  crawling.getHtmlData() ;
 			List<AnimalDTO> list = crawling.start(doc);
@@ -28,7 +28,7 @@ public class Test {
 		}
 		
 
-		for(int i =1;i<=5;i++) {
+		for(int i =1;i<=3;i++) {
 			crawling.getConnection(crawling.getURL(i, "고양이"));
 			Document doc =  crawling.getHtmlData() ;
 			List<AnimalDTO> list = crawling.start(doc);

@@ -2,6 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="AnimalSQL">
 	<insert id="insertAll" parameterType="AnimalDTO">
-		insert into animal values((select nvl(max(animal_number),0)+1 from animal),null,#{animal_name},#{animal_species},#{animal_type},#{animal_gender},#{animal_age},#{animal_weight},#{animal_image},default)
+		insert into animal values((select nvl(max(animal_number),0)+1 from animal),null,#{animal_name},#{animal_species},#{animal_type},#{animal_gender},#{animal_age},default,#{animal_weight},#{animal_image},default)
 	</insert>
+	<select id="selectAll" resultType="AnimalDTO">
+		select * from animal
+	</select>
+	<select id="selectOne" parameterType="AnimalDTO" resultType="AnimalDTO">
+		select * from animal where animal_number=#{animal_number}
+	</select>
+	<select id="selectSearch" parameterType="AnimalDTO" resultType="AnimalDTO">
+		select * from animal where animal_species like '%'||#{animal_species}||'%' and animal_gender like '%'||#{animal_gender}||'%' and (animal_weight >= #{animal_weight_over} and animal_weight &lt; #{animal_weight_under}) and (animal_age_num >= #{animal_age_more} and animal_age_num &lt;= #{animal_age_less}) and animal_name like '%'||#{animal_name}||'%'
+	</select>  
 </mapper>
+
+<!-- 
+select * from animal where 
+animal_species like '%'||#{animal_species}||'%' and 
+animal_gender like '%'||#{animal_gender}||'%' and 
+(animal_weight >= #{animal_weight_over} and animal_weight &lt; #{animal_weigt_under}) and 
+(animal_age_num >= #{animal_age_more} and animal_age_num &lt;= #{animal_age_less}) and 
+animal_name like '%'||#{animal_name}||'%'
+ -->

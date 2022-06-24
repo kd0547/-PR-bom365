@@ -26,10 +26,10 @@ public class BoardCategoryAction implements Action {
 		// 내글보기
 		if (category.equals("mine")) {
 			HttpSession session = request.getSession();
-			BoardDTO vo = new BoardDTO();
+			BoardDTO dto = new BoardDTO();
 			// 현재 로그인된 uid 를 통해 select
-			vo.setSupporter_id((String) session.getAttribute("supporter_id"));
-			List<BoardDTO> boardList = dao.selectMine(vo);
+			dto.setSupporter_id((String) session.getAttribute("supporter_id"));
+			List<BoardDTO> boardList = dao.selectMine(dto);
 			request.setAttribute("boardList", boardList);
 
 			forward.setPath("boardList.jsp");

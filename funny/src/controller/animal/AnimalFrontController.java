@@ -1,8 +1,7 @@
-package controller.volunteer;
+package controller.animal;
 
 import controller.ActionForward;
 import controller.MainAction;
-import controller.application.ApplicationRequestAction;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "VolunteerFrontController", value = "/VolunteerFrontController")
-public class VolunteerFrontController extends HttpServlet {
+@WebServlet(name = "AnimalFrontController", value = "/AnimalFrontController")
+public class AnimalFrontController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		actionDO(request, response);
@@ -21,11 +20,11 @@ public class VolunteerFrontController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
 		actionDO(request, response);
 	}
 
 	private void actionDO(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		ActionForward forward = null;
 		
 		// 요청을 파악
@@ -35,36 +34,35 @@ public class VolunteerFrontController extends HttpServlet {
 		// 문자열 조작을 통하여 .do 파일에 대한 분석 (ex: main.do -> command = main)
 		String command = uri.substring(cp.length() + 1, uri.length() - 3);
 		System.out.println(command);
+		// 로직이 바뀌어도 서버데이터에 부담을 주지 않는다
 		
-		// 봉사 신청 달력
-		if (command.equals("volunteerList")) {
+		// 동물 목록
+		if (command.equals("animalList")) {
 			try {
-				forward = new VolunteerListAction().execute(request, response);
+				forward = new AnimalListAction().execute(request, response);
 			} catch (Exception e) {
-				System.out.println("volunteerList.vt 수행중 문제 발생");
-				e.printStackTrace();
+				System.out.println("animalList.am 수행중 문제 발생");
 			}
 		}
 		
-		// 날짜별 신청 페이지 이동
-		if (command.equals("volunteerRequest")) {
+		// 상세 페이지
+		else if (command.equals("animalDetail")) {
 			try {
-				forward = new VolunteerRequestAction().execute(request, response);
+				forward = new AnimalDetailAction().execute(request, response);
 			} catch (Exception e) {
-				System.out.println("volunteerRequest.vt 수행중 문제 발생");
+				System.out.println("animalDetail.am 수행중 문제 발생");
 			}
 		}
 		
-		if (command.equals("volunteerInsert")) {
+		// 동물 검색
+		else if (command.equals("animalSearch")) {
 			try {
-				forward = new VolunteerInsertAction().execute(request, response);
+				forward = new AnimalSearchAction().execute(request, response);
 			} catch (Exception e) {
-				System.out.println("volunteerInsert.vt 수행중 문제 발생");
-				e.printStackTrace();
+				System.out.println("animalSearch.am 수행중 문제 발생");
 			}
 		}
-
-
+		
 		// 만약 forward 가 null 이라면 null pointer exception 이 발생하기 떄문에 대비
 		if (forward != null) {
 			if (forward.isRedirect()) {

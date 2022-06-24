@@ -30,5 +30,19 @@ public class AnimalDAO {
 		}
 		return result;
 	}
-
+	
+	public List<AnimalDTO> selectAll() {
+		List<AnimalDTO> datas = sqlsession.selectList("AnimalSQL.selectAll");
+		return datas;
+	}
+	
+	public AnimalDTO selectOne(AnimalDTO dto) {
+		AnimalDTO data = sqlsession.selectOne("AnimalSQL.selectOne", dto);
+		return data;
+	}
+	
+	public List<AnimalDTO> selectSearch(AnimalDTO dto) {
+		List<AnimalDTO> AnimalSelectList = sqlsession.selectList("AnimalSQL.selectSearch", dto);
+		return AnimalSelectList;
+	}
 }

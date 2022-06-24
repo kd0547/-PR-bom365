@@ -4,8 +4,11 @@
 	<insert id="insert" parameterType="VolunteerDTO">
 		insert into volunteer values((select nvl(max(volunteer_number),0)+1 from volunteer),#{supporter_id},#{volunteer_date},#{volunteer_time})
 	</insert>
-	<select id="select" parameterType="hashmap" resultType="_int">
+	<select id="selectIsFull" parameterType="hashmap" resultType="_int">
 		select count(*) cnt from volunteer where volunteer_date=#{volunteer_date} and volunteer_time=#{volunteer_time}
+	</select>
+	<select id="selectSupporter" parameterType="VolunteerDTO" resultType="VolunteerDTO">
+		select * from volunteer where supporter_id=#{supporter_id} and volunteer_date=#{volunteer_date} and volunteer_time=#{volunteer_time}
 	</select>
 	<delete id="delete" parameterType="VolunteerDTO">
 		delete from volunteer where volunteer_number=#{volunteer_number}

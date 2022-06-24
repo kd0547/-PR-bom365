@@ -13,8 +13,7 @@ import java.util.List;
 
 public class BoardSearchAction implements Action {
 	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String keyword = request.getParameter("keyword"); // view 에서 검색 된 키워드
 		BoardDAO dao = new BoardDAO();
 		// 검색된 키워드를 바탕으로 게시판 제목 %keyword% , 게시판 내용 %keyword% 를 가진 결과값들을 리스트에 저장후 반환

@@ -34,15 +34,27 @@ public class SupporterFrontController extends HttpServlet {
 		// 문자열 조작을 통하여 .do 파일에 대한 분석 (ex: main.do -> command = main)
 		String command = uri.substring(cp.length() + 1, uri.length() - 3);
 		System.out.println(command);
-		// 로직이 바뀌어도 서버데이터에 부담을 주지 않는다
-		if (command.equals("main")) {
+
+		// 아이디 중복 체크
+		if(command.equals("idCheck")) {
 			try {
-				forward = new MainAction().execute(request, response);
+				forward = new IDCheckAction().execute(request, response);
 			} catch (Exception e) {
-				System.out.println("main.do 수행중 문제 발생");
+				System.out.println("idCheck.me 수행중 문제 발생");
 			}
 		}
 
+		// 회원가입
+		else if(command.equals("signup")) {
+			try {
+				forward = new SignUpAction().execute(request, response);
+				
+			} catch (Exception e) {
+				System.out.println("signup.me 수행중 문제 발생");
+			}
+		}
+
+		// 로그인
 		else if (command.equals("login")) {
 			try {
 				forward = new LogInAction().execute(request, response);
@@ -51,6 +63,7 @@ public class SupporterFrontController extends HttpServlet {
 			}
 		}
 
+		// 로그아웃
 		else if (command.equals("logout")) {
 			try {
 				forward = new LogOutAction().execute(request, response);
@@ -59,20 +72,34 @@ public class SupporterFrontController extends HttpServlet {
 			}
 		}
 		
-		else if(command.equals("idCheck")) {
+		// 마이페이지 이동
+		else if(command.equals("mypage")) {
 			try {
-				forward = new IDCheckAction().execute(request, response);
+				forward = new MyPageAction().execute(request, response);
+				
 			} catch (Exception e) {
-				System.out.println("idCheck.me 수행중 문제 발생");
+				System.out.println("mypage.me 수행중 문제 발생");
+			}
+		}
+
+		// 회원 정보 수정
+		else if(command.equals("supporterUpdate")) {
+			try {
+				forward = new SupporterUpdateAction().execute(request, response);
+				
+			} catch (Exception e) {
+				System.out.println("supporterUpdate.me 수행중 문제 발생");
 			}
 		}
 		
-		else if(command.equals("signup")) {
+		// 회원 탈퇴
+		else if(command.equals("supporterDelete")) {
 			try {
-				forward = new SignUpAction().execute(request, response);
+				forward = new SupporterDeleteAction().execute(request, response);
 				
 			} catch (Exception e) {
-				System.out.println("signup.me 수행중 문제 발생");
+				e.printStackTrace();
+				System.out.println("supporterDelete.me 수행중 문제 발생");
 			}
 		}
 

@@ -36,7 +36,7 @@ public class VolunteerDAO {
 		return result;
 	}
 	
-	// 봉사가능여부확인
+	// 해당 날짜에 봉사 가능한지 확인
 	public ArrayList<VolunteerCnt> select(VolunteerCal volCal) {
 		ArrayList<VolunteerCnt> cnts = new ArrayList<VolunteerCnt>();
 		String month = "" + volCal.getMonth();
@@ -53,14 +53,14 @@ public class VolunteerDAO {
 				date = "0" + date;
 			}
 			pram.put("volunteer_date", volCal.getYear() + "." + month + "." + date);
-			cnt.setYymmdd(pram.get("yymmdd"));
+			cnt.setYymmdd(pram.get("volunteer_date"));
 			cnt.setDate(date);
 
 			pram.put("volunteer_time", "오전");
-			cnt.setCntAM(sqlsession.selectOne("VolunteerSQL.select", pram));
+			cnt.setCntAM(sqlsession.selectOne("VolunteerSQL.selectIsFull", pram));
 
 			pram.replace("volunteer_time", "오후");
-			cnt.setCntPM(sqlsession.selectOne("VolunteerSQL.select", pram));
+			cnt.setCntPM(sqlsession.selectOne("VolunteerSQL.selectIsFull", pram));
 
 				
 			if (cnt.getCntAM() >= 10 && cnt.getCntPM() >= 10) {
@@ -72,6 +72,12 @@ public class VolunteerDAO {
 			cnts.add(cnt);
 		}
 		return cnts;
+	}
+	
+	// 신청 여부 확인
+	public VolunteerDTO selectSupporter(VolunteerDTO dto) {
+		VolunteerDTO data = sqlsession.selectOne("VolunteerSQL.selectSupporter", dto);
+		return data;
 	}
 	
 	// 신청취소

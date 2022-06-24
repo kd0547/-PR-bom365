@@ -5,6 +5,7 @@ select * from support_regular;
 select * from support_temporary;
 select * from board;
 select * from board_comment;
+select * from volunteer;
  drop table supporter;
  drop table animal;
  drop table application;
@@ -12,6 +13,7 @@ select * from board_comment;
  drop table support_temporary;
  drop table board;
  drop table board_comment;
+ drop table volunteer;
 -- truncate table supporter;
 -- truncate table animal;
 -- truncate table application;
@@ -19,7 +21,8 @@ select * from board_comment;
 -- truncate table support_temporary;
 -- truncate table board;
 -- truncate table board_comment;
-DELETE supporter where supporter_id = 'thEHdd';
+-- truncate table volunteer;
+
 -- 회원
 CREATE TABLE supporter (  
 	supporter_id				VARCHAR2(20)		CONSTRAINT PK_member PRIMARY KEY,
@@ -39,6 +42,7 @@ CREATE TABLE animal (
 	animal_type				VARCHAR2(50)		NOT NULL,
 	animal_gender			VARCHAR2(50)		NOT NULL,
 	animal_age				VARCHAR2(50) 		NOT NULL,
+	animal_age_num		NUMBER					DEFAULT 0 NOT NULL,
 	animal_weight			NUMBER					NOT NULL,
 	animal_image			VARCHAR2(200)		NOT NULL,
 	isAdoption					VARCHAR2(10)  		DEFAULT 'false' NOT NULL,
@@ -48,13 +52,24 @@ CREATE TABLE animal (
 	CONSTRAINTS CH_species CHECK (animal_species IN('개','고양이')),		--이 두 가지 외의 분류는 없음
 	CONSTRAINTS CH_adoption CHECK (isAdoption IN('true','false'))			--이 두 가지 외의 분류는 없음
 );
+-- 나이 숫자로 변환
+UPDATE animal SET animal_age_num = nvl(substr(animal_age,0, instr(animal_age, '살')-1), 0) +
+nvl(
+decode(
+instr(animal_age,'살'), 0, substr(animal_age, 0, LENGTH(animal_age) -3) ,
+decode(LENGTH(substr(animal_age,0 ,instr(animal_age,'살')-1)),
+1, substr(animal_age,instr(animal_age, '살')+2,LENGTH(animal_age)-6 ),
+2, substr(animal_age,instr(animal_age, '살')+2,LENGTH(animal_age)-7 ))
+)
+,0)
+*0.01;
 
 -- 입양신청서
 CREATE TABLE application (	
 	application_number	NUMBER					CONSTRAINT application PRIMARY KEY,
 	animal_number			NUMBER					NOT NULL,
 	supporter_id				VARCHAR2(20),
-	application_title			VARCHAR2(100) 		NOT NULL,
+	application_title			VARCHAR2(100) 	NOT NULL,
 	application_content	VARCHAR2(4000)	NOT NULL,
 	
 	CONSTRAINTS FK_animal_TO_application FOREIGN KEY (animal_number) REFERENCES  animal (animal_number)
@@ -93,7 +108,7 @@ CREATE TABLE board (
 	supporter_id				VARCHAR2(20),
 	board_date				VARCHAR2(20)		NOT NULL,
 	board_title					VARCHAR2(100)		NOT NULL,
-	board_content			VARCHAR2(3000)		NOT NULL,
+	board_content			VARCHAR2(3000)	NOT NULL,
 	category						VARCHAR2(20)		NOT NULL,
 	board_commentCnt	NUMBER					DEFAULT 0 NOT NULL,
 	

@@ -4,11 +4,16 @@
 	<insert id="insert" parameterType="SupporterDTO">
 		insert into supporter values(#{supporter_id},#{supporter_name},#{supporter_password},#{phone_number},#{post_code},#{detailed_address})
 	</insert>
-	<select id="selectLoginCheck" parameterType="SupporterDTO" resultType="SupporterDTO">
+	<select id="selectSupporterCheck" parameterType="SupporterDTO" resultType="SupporterDTO">
 		select * from supporter where supporter_id=#{supporter_id}
 	</select>
 	<select id="idCheck" parameterType="string" resultType="string">
 		select supporter_id from supporter where supporter_id=#{supporter_id}
 	</select>
+	<select id="deleteInfo" parameterType="SupporterDTO" resultType="SupporterDTO">
+		select * from supporter where supporter_id=#{supporter_id} and supporter_password=#{supporter_password}
+	</select>
+	<delete id="delete" parameterType="SupporterDTO">
+		delete from supporter where supporter_id=#{supporter_id}
+	</delete>
 </mapper>
-

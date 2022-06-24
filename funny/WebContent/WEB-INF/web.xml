@@ -3,7 +3,32 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
 	version="4.0">
+	
+	 <display-name>funny</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+	
+	
 	<!-- 모든 .do 에 대하여 front controller 로 향하도록 함 -->
+	<servlet>
+		<servlet-name>afc</servlet-name>
+		<servlet-class>controller.animal.AnimalFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>afc</servlet-name>
+		<url-pattern>*.am</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>apfc</servlet-name>
+		<servlet-class>controller.application.ApplicationFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>apfc</servlet-name>
+		<url-pattern>*.ap</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>bfc</servlet-name>
 		<servlet-class>controller.board.BoardFrontController</servlet-class>
@@ -36,7 +61,6 @@
 		<param-name>encoding</param-name>
 		<param-value>UTF-8</param-value>
 	</context-param>
-
 
 	<display-name>Apache-Axis</display-name>
 	<servlet>

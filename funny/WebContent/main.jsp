@@ -65,8 +65,7 @@
 												<span>입양은 가장 실천적인 동물구호 활동입니다</span>
 											</p>
 											<p>
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-												<a href="animalsList.jsp" class="btn btn-primary">입양하기</a>
+												<a href="animalList.am" class="btn btn-primary main">입양하기</a>
 											</p>
 										</div>
 									</div>
@@ -89,7 +88,7 @@
 											</p>
 											<p>
 <!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-												<a href="support.jsp" class="btn btn-primary">후원하기</a>
+												<a href="support.jsp" class="btn btn-primary main">후원하기</a>
 											</p>
 										</div>
 									</div>
@@ -110,7 +109,7 @@
 												<span>여러분의 도움이 보호소 운영에 큰 힘이 됩니다</span>
 											</p>
 											<p>
-												<a href="volunteerList.vt" class="btn btn-primary">봉사신청</a>
+												<a href="volunteerList.vt" class="btn btn-primary main">봉사신청</a>
 											</p>
 										</div>
 									</div>
@@ -131,7 +130,7 @@
 												<span>봉사후기, 입양후기 등 자유롭게 작성해요</span>
 											</p>
 											<p>
-												<a href="boardList.do" class="btn btn-primary">자유게시판</a>
+												<a href="boardList.do" class="btn btn-primary main">자유게시판</a>
 											</p>
 										</div>
 									</div>

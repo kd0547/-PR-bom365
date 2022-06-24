@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>마이페이지</title>
+<title>입양신청완료</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -41,19 +41,8 @@
 <!-- Theme style  -->
 <link rel="stylesheet" href="css/style.css">
 
-<!-- contect boardList.css -->
-<link rel="stylesheet" href="css/boardList.css">
-
-<!-- contect signup.css -->
-<link rel="stylesheet" href="css/signup_mypage.css">
-
-<!-- contact deleteAccount.css -->
-<link rel="stylesheet" href="css/deleteAccount.css">
-
 </head>
-
 <body>
-
 
 	<div id="page">
 
@@ -65,60 +54,24 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-							<span><a href="main.do">HOME</a></span> / <span>my page</span>
+							<span><a href="animalList.am">입양하기</a></span> / <span>신청완료</span>
 						</p>
-					</div>
-					<div class="col">
-						<ul class="nav nav-pills mb-3">
-
-							<li class="nav-item"><a class="nav-link active show"
-								id="pills-description-tab" data-toggle="pill"
-								href="#pills-description" role="tab"
-								aria-controls="pills-description" aria-expanded="true"
-								aria-selected="true">정보수정</a></li>
-							<li class="nav-item"><a class="nav-link"
-								id="pills-manufacturer-tab" data-toggle="pill"
-								href="#pills-manufacturer" role="tab"
-								aria-controls="pills-manufacturer" aria-expanded="true"
-								aria-selected="false">후원내역</a></li>
-							<li class="nav-item"><a class="nav-link"
-								id="pills-review-tab" data-toggle="pill" href="#pills-review"
-								role="tab" aria-controls="pills-review" aria-expanded="true"
-								aria-selected="false">회원탈퇴</a></li>
-						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<h1 id="menuTitle">My Page</h1>
-
-
-		<div class="twin container">
-			<div class="col-sm-12">
+		<div class="colorlib-product">
+			<div class="container">
 				<div class="row">
-					<div class="col-md-12 pills">
-						<div class="bd-example bd-example-tabs">
-							<div class="tab-content" id="pills-tabContent">
-
-								<div class="tab-pane border fade active show"
-									id="pills-description" role="tabpanel"
-									aria-labelledby="pills-description-tab">
-									<mytag:updateSupporter />
-								</div>
-
-								<div class="tab-pane border fade" id="pills-manufacturer"
-									role="tabpanel" aria-labelledby="pills-manufacturer-tab">
-									<mytag:mytable />
-								</div>
-
-								<div class="tab-pane border fade" id="pills-review"
-									role="tabpanel" aria-labelledby="pills-review-tab">
-									<mytag:withdrawal />
-
-								</div>
-							</div>
-						</div>
+					<div class="col-sm-10 offset-sm-1 text-center">
+						<p class="icon-addcart">
+							<span><i class="icon-check"></i></span>
+						</p>
+						<h3 class="mb-4">신청서가 접수되었습니다.<br>심사는 약 일주일 정도 소요됩니다.</h3>
+						<p>
+							<a href="main.do" class="btn btn-primary" id="complete">메인으로 돌아가기</a>
+						</p>
 					</div>
 				</div>
 			</div>
@@ -159,3 +112,4 @@
 
 </body>
 </html>
+
