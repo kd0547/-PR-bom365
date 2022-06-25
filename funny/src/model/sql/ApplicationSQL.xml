@@ -7,6 +7,14 @@
 	<insert id="insert" parameterType="ApplicationDTO" >
 		insert into application values ((select nvl(max(application_number),0)+1 from application), #{animal_number}, #{supporter_id}, #{application_title}, #{application_content, jdbcType=VARCHAR})
 	</insert>
+
+	<select id="selectApplication" resultType="ApplicationDTO" parameterType="hashmap">
+		<!-- SELECT * FROM tbl_board ORDER BY BOARDNUM DESC -->
+		SELECT * FROM (SELECT rownum R, D.* FROM (SELECT * FROM APPLICATION ORDER BY APPLICATION_NUMBER DESC) D) B WHERE B.R BETWEEN #{startRow} AND #{endRow}
+	</select>
+	<select id="selectCnt" resultType="_int">
+		SELECT COUNT(*) FROM APPLICATION
+	</select>
 </mapper>
 
 

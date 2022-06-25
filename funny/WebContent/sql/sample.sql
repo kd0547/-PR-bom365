@@ -1,4 +1,4 @@
--- 회원
+-- 회원--------------------------------------------------------------------------------------------------------------------------------
 INSERT INTO supporter
 VALUES (
     'admin', '관리자', 'rhksflwk', '01079797979',  '17023', '경기 용인시 처인구 포곡읍 에버랜드로 199'
@@ -48,7 +48,108 @@ VALUES (
     'didEhd', '김양똥', '1234', '01020589672', '45352', '어딘가로10'
 );
 
+-- 입양신청 샘플--------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청1','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청2','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청3','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청4','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청5','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청6','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청7','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청8','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청9','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청10','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청11','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청12','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청13','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청14','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청15','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청16','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청16','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청17','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청18','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청19','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청20','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청21','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청22','신청신청신청신청신청신청신청신청'
+);
+INSERT INTO application
+VALUES (
+	(select nvl(max(application_number),0)+1 from application),10,'test','입양신청23','신청신청신청신청신청신청신청신청'
+);
 
+
+	
+
+-- 게시물 샘플--------------------------------------------------------------------------------------------------------------------------------
 INSERT INTO board
 VALUES (
 	(select nvl(max(board_number),0)+1 from board),'admin',to_char(sysdate, 'yyyy.mm.dd hh24:mi'),'2022.06 봄365 공지사항','공지공지공지공지공지공지공지공지','공지',default

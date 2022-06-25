@@ -2,41 +2,57 @@ package controller.support;
 
 import javax.servlet.http.HttpServletRequest;
 
+
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.Action;
 import controller.ActionForward;
-
-import model.supportRequest.SupportREGRequestDAO;
-import model.supportRequest.SupportREGRequestDTO;
+import model.support.SupportREGDAO;
+import model.support.SupportREGDTO;
  
 public class SupportREGRequestAction implements Action{
     
 	 @Override
 	   public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) {
-	    SupportREGRequestDAO regdao = new SupportREGRequestDAO();
-	    SupportREGRequestDTO regdto = new SupportREGRequestDTO();
-	    ActionForward forward = new ActionForward();
+		//정기후원신청
 		 
+	    SupportREGDAO regdao = new SupportREGDAO();
+	    SupportREGDTO regdto = new SupportREGDTO();
+	    ActionForward forward = new ActionForward();
+	    
 		 //세션에서 ID값 꺼내오기
 		 HttpSession session = req.getSession();
 		 String supporter_id = (String)session.getAttribute("supporter_id");
-		
-		//값담기
+		 
+		 //금액에 ,포함 변환
+		 String regular_amount = (String)req.getParameter("regular_amount");
+		 regular_amount = regular_amount.replace(",", "");
+		 System.out.println("파라미터값: " + regular_amount);
+		 
+		//날짜에 -포함 변환
+		 String regular_date = (String)req.getParameter("regular_date");
+		 regular_date = regular_date.replace("-", "");
+		 System.out.println("파라미터값: " + regular_date);
+		 
+		 //값담기
 		 regdto.setSupporter_id(supporter_id);
 		 regdto.setRegular_bank(req.getParameter("regular_bank"));
 		 regdto.setRegular_account(req.getParameter("regular_account"));
-		 regdto.setRegular_amount(Integer.parseInt(req.getParameter("regular_amount")));
-		 regdto.setRegular_date(Integer.parseInt(req.getParameter("regular_date")));
-	    
+		 regdto.setRegular_amount(Integer.parseInt(regular_amount));
+		 regdto.setRegular_date(regular_date);
+		 System.out.println("값담김: " + regdto);
  
-        if(regdao.supportREGRequest(regdto)) {        
-            forward.setRedirect(true);
-            forward.setPath(req.getContextPath() + "/supportDone.jsp");
+		 
+		 
+		 if(regdao.insert(regdto)) {      
+   		     System.out.println("regdto"+ regdto);
+            forward.setRedirect(false);    //성공 //Redirect방식
+            forward.setPath("supportDone.jsp");
         } else {                
-            forward.setRedirect(true);
-            forward.setPath(req.getContextPath() + "/index.jsp" );
+            forward.setRedirect(true);    //실패 //Redirect방식
+            forward.setPath("support.sp" );
         }
         
         return forward;

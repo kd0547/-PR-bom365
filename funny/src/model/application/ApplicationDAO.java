@@ -1,5 +1,8 @@
 package model.application;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -34,4 +37,16 @@ public class ApplicationDAO {
 		}
 		return result;
 	}	
+	
+	
+	public List<ApplicationDTO> selectApplication( int startRow, int endRow ) {
+		HashMap<String, Integer> datas = new HashMap<>();
+		datas.put("startRow", startRow);
+		datas.put("endRow", endRow);
+		List<ApplicationDTO> ApplicationList = sqlsession.selectList("ApplicationSQL.selectApplication", datas);
+		return ApplicationList;
+	}
+	public int getApplicationCnt() {
+		return sqlsession.selectOne("ApplicationSQL.selectCnt");
+	}
 }

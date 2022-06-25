@@ -86,9 +86,12 @@ CREATE TABLE support_regular (
 	regular_bank				VARCHAR2(50)		NOT NULL,
 	regular_account		VARCHAR2(20)		NOT NULL,
 	regular_date				VARCHAR2(20)		NOT NULL,
+	regular_end				VARCHAR2(20)		DEFAULT '진행중' NOT NULL,
+
 	
-	CONSTRAINTS FK_MEMBER_TO_REGULAR FOREIGN KEY (supporter_id) REFERENCES  supporter (supporter_id)
+	CONSTRAINTS FK_MEMBER_TO_REGULAR FOREIGN KEY (supporter_id) REFERENCES  supporter (supporter_id),
 	--후원중인 회원은 탈퇴 불가
+	CONSTRAINTS CH_regular_end CHECK (regular_end IN('종료','진행중')) 
 );
 
 --일시후원

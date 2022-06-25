@@ -1,11 +1,11 @@
-package model.TEMRmyPage;
+package model.support;
 
-public class SupportBean {
-		
-	private int    regular_amount;
+public class MytableREGDTO {
+	private int regular_amount;
 	private String regular_bank;
 	private String regular_account;
-	private String regular_date;
+	private int regular_date;
+	
 	
 	public int getRegular_amount() {
 		return regular_amount;
@@ -25,11 +25,11 @@ public class SupportBean {
 	public void setRegular_account(String regular_account) {
 		this.regular_account = regular_account;
 	}
-	public String getRegular_date() {
+	public int getRegular_date() {
 		return regular_date;
 	}
-	public void setRegular_date(String regular_date) {
+	public void setRegular_date(int regular_date) {
 		this.regular_date = regular_date;
 	}
-	
+
 }

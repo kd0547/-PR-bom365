@@ -1,12 +1,13 @@
-package model.supportRequest;
+package model.support;
 
-public class SupportREGRequestDTO {
+public class SupportREGDTO {
 	private int regular_number;
 	private String supporter_id;
 	private int regular_amount;
 	private String regular_bank;
 	private String regular_account;
-	private int regular_date;
+	private String regular_date;
+	private String regular_end;
 	
 	public int getRegular_number() {
 		return regular_number;
@@ -39,20 +40,23 @@ public class SupportREGRequestDTO {
 	public void setRegular_account(String regular_account) {
 		this.regular_account = regular_account;
 	}
-	public int getRegular_date() {
+	public String getRegular_date() {
 		return regular_date;
 	}
-	public void setRegular_date(int regular_date) {
+	public void setRegular_date(String regular_date) {
 		this.regular_date = regular_date;
 	}
-	@Override
-	public String toString() {
-		return "SupportREGRequestVO [regular_amount=" + regular_amount + ", regular_bank=" + regular_bank
-				+ ", regular_account=" + regular_account + ", regular_date=" + regular_date + "]";
+	public String getRegular_end() {
+		return regular_end;
+	}
+	public void setRegular_end(String regular_end) {
+		this.regular_end = regular_end;
 	}
 
-	
-	
-	
-
+	@Override
+	public String toString() {
+		return "SupportREGRequestDTO [regular_number=" + regular_number + ", supporter_id=" + supporter_id
+				+ ", regular_amount=" + regular_amount + ", regular_bank=" + regular_bank + ", regular_account="
+				+ regular_account + ", regular_date=" + regular_date + ", regular_end=" + regular_end + "]";
+	}
 }

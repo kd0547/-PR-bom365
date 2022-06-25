@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SupportSQL">
+    <insert id="insertREG" parameterType="SupportREGDTO">
+  		  	Insert INTO support_regular VALUES ((select NVL(MAX(regular_number),0)+1 FROM support_regular), #{supporter_id}, #{regular_amount},#{regular_bank},#{regular_account},#{regular_date},default)
+    </insert>
+    <select id="SupportREGEndCheck" parameterType="string" resultType="string">
+    		SELECT regular_end FROM support_regular WHERE supporter_id = #{supporter_id}
+    </select> 
+    <insert id="supportTEMRequest" parameterType="SupportTEMDTO">
+  		 	Insert INTO support_temporary VALUES ((select NVL(MAX(temporary_number),0)+1 FROM support_temporary), #{supporter_id}, #{temporary_amount}, #{temporary_date})
+    </insert>
+    <update id="supportREGEnd" parameterType="string">
+    		UPDATE support_regular SET regular_end = '종료' WHERE supporter_id = #{supporter_id}
+    </update>
+    <select id="Mytable" parameterType="string" resultType="SupportREGDTO">
+    	select regular_amount, regular_bank , regular_account, regular_date from support_regular WHERE supporter_id = #{supporter_id}
+    </select> 
+</mapper>

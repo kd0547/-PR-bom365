@@ -1,7 +1,6 @@
 package controller.application;
 
 import controller.ActionForward;
-import controller.MainAction;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -51,6 +50,14 @@ public class ApplicationFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("applicationInsert.ap 수행중 문제 발생");
+			}
+		}
+		
+		if (command.equals("adminApplicationList")) {
+			try {
+				forward = new ApplicationListAction().execute(request, response);
+			} catch (Exception e) {
+				System.out.println("adminApplicationList.ap 수행중 문제 발생");
 			}
 		}
 		

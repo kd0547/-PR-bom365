@@ -1,7 +1,6 @@
 package controller.supporter;
 
 import controller.ActionForward;
-import controller.MainAction;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

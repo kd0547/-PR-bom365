@@ -1,9 +1,9 @@
-package model.supportRequest;
+package model.support;
 
-public class SupportTEMRequestDTO {
+public class SupportTEMDTO {
 	private int temporary_number;
 	private String supporter_id;
-	private int temporary_amount;
+	private String temporary_amount;
 	private String temporary_date;
 	
 	public int getTemporary_number() {
@@ -18,10 +18,10 @@ public class SupportTEMRequestDTO {
 	public void setSupporter_id(String supporter_id) {
 		this.supporter_id = supporter_id;
 	}
-	public int getTemporary_amount() {
+	public String getTemporary_amount() {
 		return temporary_amount;
 	}
-	public void setTemporary_amount(int temporary_amount) {
+	public void setTemporary_amount(String temporary_amount) {
 		this.temporary_amount = temporary_amount;
 	}
 	public String getTemporary_date() {

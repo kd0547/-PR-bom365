@@ -47,15 +47,6 @@
 	function openPopup(url) {
 		window.open(url, '봉사신청', 'width=400, height=300, left=745, top=200');
 	}
-
-	function check() {
-		var ans = confirm("로그인 후 이용 가능합니다.");
-		if (ans == true) {
-			location.href = 'login.jsp';
-		} else {
-			event.preventDefault();
-		}
-	}
 </script>
 </head>
 <body>
@@ -170,7 +161,7 @@
 									<c:otherwise>
 										<td class="calendarDate"><c:choose>
 												<c:when test="${supporter_id == null}">
-													<button onclick="check()" style="color: ${color}">${v.date}</button>
+													<button onclick="loginCheck()" style="color: ${color}">${v.date}</button>
 												</c:when>
 												<c:otherwise>
 													<button
@@ -207,6 +198,7 @@
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 
+	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->

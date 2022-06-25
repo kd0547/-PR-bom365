@@ -21,7 +21,7 @@ public class AnimalDAO {
 		boolean result = false;
 		int cnt = 0;
 		for (AnimalDTO data : datas) {
-			if (sqlsession.insert("AnimalSQL.insertAll", data) != 0) {
+			if (sqlsession.insert("AnimalSQL.insert", data) != 0) {
 				cnt++;
 			}
 		}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="AnimalSQL">
-	<insert id="insertAll" parameterType="AnimalDTO">
+	<insert id="insert" parameterType="AnimalDTO">
 		insert into animal values((select nvl(max(animal_number),0)+1 from animal),null,#{animal_name},#{animal_species},#{animal_type},#{animal_gender},#{animal_age},default,#{animal_weight},#{animal_image},default)
 	</insert>
 	<select id="selectAll" resultType="AnimalDTO">

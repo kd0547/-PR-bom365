@@ -1,4 +1,12 @@
-<%@ tag language="java" pageEncoding="UTF-8"%>
+ <%@ tag language="java" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="s" %>
+
+
+<c:set var="regular_bank" value="${regular_bank }" />
+<c:set var="regular_account" value="${regular_account }" />
+<c:set var="regular_amount" value="${regular_amount }" />
+<c:set var="vregular_date" value="${regular_date }" />
 
 <div class="twin container">
 	<div class="row">
@@ -15,20 +23,23 @@
 									<td>은행</td>
 									<td>계좌</td>
 									<td>금액</td>
+									<td>후원시작일</td>
 								</tr>
 							</tbody>
 							<tbody class="boardTbottom">
-<!-- 데이터 불러오기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- Mypage 데이터 불러오기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
 								<tr>
-									<td>신한은행</td>
-									<td>110-123-456987</td>
-									<td>50,000</td>
+									<td>${regular_bank }</td>
+									<td>${regular_account }</td>
+									<td>${regular_amount }</td>
+									<td>${regular_date }</td>
 								</tr>
 								<tr>
 								</tr>
 							</tbody>
 						</table>
-						<h6 style="float: right;">후원 시작일 : 22.01.01</h6>
+							<a href="supportREGEnd.sp" type="button" class="btn btn-primary support">&nbsp;후원종료&nbsp;</a>
 					</div>
 				</div>
 			</div>
@@ -76,4 +87,5 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> 
+
