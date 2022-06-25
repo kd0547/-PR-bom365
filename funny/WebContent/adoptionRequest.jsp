@@ -52,8 +52,7 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<span><a href="animalsList.jsp">입양하기</a></span> / <span>입양신청</span>
+							<span><a href="animalList.am">입양하기</a></span> / <span>입양신청</span>
 						</p>
 					</div>
 				</div>
@@ -68,21 +67,22 @@
 		<div style="text-align: center; margin-top: 2em; margin-bottom: 7em;">
 			<div class="col-sm-4 text-left total writeForm"
 				style="display: inline-block;">
-<!-- action수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-				<form action="adoptDone.jsp" method="post">
+				<form action="applicationInsert.ap" method="post"
+					name="applicationForm">
+					<input type="hidden" name="animal_number"
+						value="${animal.animal_number}">
 					<div class="form-group">
 						<h5>입양을 희망하는 동물의 이름</h5>
-<!-- placeholder수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-						<input type="text" class="form-control gap"
-							placeholder="강록" disabled="disabled">
+						<input type="text" class="form-control gap" name="animal_name"
+							placeholder="${animal.animal_name}" disabled="disabled">
 						<h5>제목</h5>
 						<input type="text" class="form-control gap"
 							placeholder="제목을 입력해 주세요." name="application_title">
 
 						<div class="form-group">
 							<h5>신청 내용</h5>
-							<textarea name="message" cols="30" rows="48"
-								class="form-control gap" name="application_content">
+							<textarea name="application_content" cols="30" rows="48"
+								class="form-control gap">
 01. 입양을 결정하시기 까지 얼마나 오랜 시간을 고민하셨나요?
 →
 							02. 입양을 원하시는 가장 큰 이유는 무엇인가요?
@@ -119,7 +119,7 @@
 						</div>
 					</div>
 					<input type="submit" value="입양 신청하기"
-						class="btn btn-primary inputSubmit">
+						class="btn btn-primary inputSubmit" onclick='application_sendit()'>
 				</form>
 			</div>
 		</div>
@@ -133,7 +133,7 @@
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
-
+	<script src="js/application.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->

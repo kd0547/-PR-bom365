@@ -1,12 +1,11 @@
 package model.board;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
-import model.common.JDBCUtil;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import model.mybatis.SqlMapConfig;
 
 public class BoardDAO {
 	/*
@@ -16,290 +15,99 @@ public class BoardDAO {
 	 * 게시글 삭제하기
 	 */
 
-	Connection conn;
-	PreparedStatement pstmt;
-	ResultSet rs;
+	SqlSessionFactory factory = SqlMapConfig.getFactory();
+	SqlSession sqlsession;
 
-	String sql_insert = "insert into board values ((select nvl(max(board_number),0)+1 from board),?,to_char(sysdate, 'yyyy.mm.dd hh24:mi'),?,?,?,default)";
-	String sql_selectSupporter = "select * from board where category='일반' order by board_number desc";
-	String sql_selectOne = "select * from board where board_number=?";
-	String sql_selectCom = "select * from board_comment where board_number=? order by comment_date";
-	String sql_selectAdmin = "select * from board where category='공지' order by board_number desc";
-	String sql_selectSearch = "select * from board where category='일반' and board_title like '%'||?||'%' or board_content like '%'||?||'%' order by board_number desc";
-	String sql_selectMine = "select * from board where category='일반' and supporter_id=? order by board_number desc";
-	String sql_selectComCnt = "select * from board where category='일반' order by board_commentCnt desc";
-	String sql_update = "update board set board_title=?, board_content=? where board_number=?";
-	String sql_delete = "delete from board where board_number=?";
+	public BoardDAO() {
+		// auto commit
+		sqlsession = factory.openSession(true);
+		System.out.println("factory값 가져오기 성공 (sqlsession과 dao연결성공)");
+	}
 
 	// 게시글 작성
 	public boolean insert(BoardDTO dto) {
-		conn = JDBCUtil.connect();
+		boolean result = false;
 		boolean isAdmin = false;
+
 		if (dto.getSupporter_id().equals("admin")) {
 			isAdmin = true;
 		}
-		try {
-			pstmt = conn.prepareStatement(sql_insert);
-			pstmt.setString(1, dto.getSupporter_id());
-			pstmt.setString(2, dto.getBoard_title());
-			pstmt.setString(3, dto.getBoard_content());
-			if (isAdmin) {
-				pstmt.setString(4, "공지");
-			} else {
-				pstmt.setString(4, "일반");
-			}
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			System.out.println("BoardDAO의 insert()에서 문제 발생!");
-			e.printStackTrace();
-			return false;
-		} finally {
-			JDBCUtil.disconnect(pstmt, conn);
+
+		if (isAdmin) {
+			dto.setCategory("공지");
+		} else {
+			dto.setCategory("일반");
 		}
-		return true;
+		if (sqlsession.insert("BoardSQL.insert", dto) != 0) {
+			result = true;
+		}
+		return result;
 	}
 
 	// 전체 게시글 조회
-	public ArrayList<BoardDTO> selectAll() {
-		conn = JDBCUtil.connect();
-		ArrayList<BoardDTO> datas = new ArrayList<BoardDTO>();
-		try {
-			pstmt = conn.prepareStatement(sql_selectAdmin);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				BoardDTO vo = new BoardDTO();
-				vo.setBoard_number(rs.getInt("board_number"));
-				vo.setSupporter_id(rs.getString("supporter_id"));
-				vo.setBoard_date(rs.getString("board_date"));
-				vo.setBoard_title(rs.getString("board_title"));
-				vo.setCategory(rs.getString("category"));
-				vo.setBoard_commentCnt(rs.getInt("board_commentCnt"));
-				System.out.println("dao : " + vo);
-				datas.add(vo);
-			}
-			
-			pstmt = conn.prepareStatement(sql_selectSupporter);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				BoardDTO vo = new BoardDTO();
-				vo.setBoard_number(rs.getInt("board_number"));
-				vo.setSupporter_id(rs.getString("supporter_id"));
-				vo.setBoard_date(rs.getString("board_date"));
-				vo.setBoard_title(rs.getString("board_title"));
-				vo.setCategory(rs.getString("category"));
-				vo.setBoard_commentCnt(rs.getInt("board_commentCnt"));
-				System.out.println("dao : " + vo);
-				datas.add(vo);
-			}
-		} catch (SQLException e) {
-			System.out.println("BoardDAO의 selectAll()에서 문제 발생!");
-			e.printStackTrace();
-		} finally {
-			JDBCUtil.disconnect(pstmt, conn);
+	public List<BoardDTO> selectAll() {
+		List<BoardDTO> datas = sqlsession.selectList("BoardSQL.selectAdmin");
+		List<BoardDTO> datasSupporter = sqlsession.selectList("BoardSQL.selectSupporter");
+
+		for (BoardDTO v : datasSupporter) {
+			datas.add(v);
 		}
 		return datas;
 	}
 
 	// 게시글 상세보기
 	public BoardSet selectOne(BoardDTO data) {
-		conn = JDBCUtil.connect();
 		BoardSet bs = new BoardSet();
-		try {
-			pstmt = conn.prepareStatement(sql_selectOne);
-			pstmt.setInt(1, data.getBoard_number());
-			rs = pstmt.executeQuery();
-			rs.next();
-			BoardDTO vo = new BoardDTO();
-			vo.setBoard_number(rs.getInt("board_number"));
-			vo.setSupporter_id(rs.getString("supporter_id"));
-			vo.setBoard_date(rs.getString("board_date"));
-			vo.setBoard_title(rs.getString("board_title"));
-			vo.setBoard_content(rs.getString("board_content"));
-			vo.setBoard_commentCnt(rs.getInt("board_commentCnt"));
-			bs.setBoard(vo);
-
-			ArrayList<Board_commentDTO> comments = new ArrayList<Board_commentDTO>();
-			pstmt = conn.prepareStatement(sql_selectCom);
-			pstmt.setInt(1, vo.getBoard_number());
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				Board_commentDTO bc = new Board_commentDTO();
-				bc.setComment_number(rs.getString("comment_number"));
-				bc.setSupporter_id(rs.getString("supporter_id"));
-				bc.setComment_content(rs.getString("comment_content"));
-				bc.setComment_date(rs.getString("comment_date"));
-				comments.add(bc);
-			}
-			bs.setComments(comments);
-		} catch (SQLException e) {
-			System.out.println("BoardDAO의 selectOne()에서 문제 발생!");
-			e.printStackTrace();
-		} finally {
-			JDBCUtil.disconnect(pstmt, conn);
-		}
+		bs.setBoard(sqlsession.selectOne("BoardSQL.selectOne", data));
+		bs.setComments(sqlsession.selectList("BoardSQL.selectCom", bs.getBoard()));
 		return bs;
 	}
 
 	// 키워드 검색 결과 조회
-	public ArrayList<BoardDTO> selectSearch(String keyword) {
-		conn = JDBCUtil.connect();
-		ArrayList<BoardDTO> datas = new ArrayList<BoardDTO>();
-
-		try {
-			pstmt = conn.prepareStatement(sql_selectAdmin);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				BoardDTO vo = new BoardDTO();
-				vo.setBoard_number(rs.getInt("board_number"));
-				vo.setSupporter_id(rs.getString("supporter_id"));
-				vo.setBoard_date(rs.getString("board_date"));
-				vo.setBoard_title(rs.getString("board_title"));
-				vo.setCategory(rs.getString("category"));
-				vo.setBoard_commentCnt(rs.getInt("board_commentCnt"));
-				System.out.println("dao : " + vo);
-				datas.add(vo);
-			}
-
-			pstmt = conn.prepareStatement(sql_selectSearch);
-			pstmt.setString(1, keyword);
-			pstmt.setString(2, keyword);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				BoardDTO vo = new BoardDTO();
-				vo.setBoard_number(rs.getInt("board_number"));
-				vo.setSupporter_id(rs.getString("supporter_id"));
-				vo.setBoard_date(rs.getString("board_date"));
-				vo.setBoard_title(rs.getString("board_title"));
-				vo.setCategory(rs.getString("category"));
-				vo.setBoard_commentCnt(rs.getInt("board_commentCnt"));
-				System.out.println("dao : " + vo);
-				datas.add(vo);
-			}
-		} catch (SQLException e) {
-			System.out.println("BoardDAO의 selectSearch()에서 문제 발생!");
-			e.printStackTrace();
-		} finally {
-			JDBCUtil.disconnect(pstmt, conn);
+	public List<BoardDTO> selectSearch(String keyword) {
+		List<BoardDTO> datas = sqlsession.selectList("BoardSQL.selectAdmin");
+		List<BoardDTO> datasSearch = sqlsession.selectList("BoardSQL.selectSearch", keyword);
+		for (BoardDTO v : datasSearch) {
+			datas.add(v);
 		}
 		return datas;
 	}
 
 	// 내가 작성한 글 조회
-	public ArrayList<BoardDTO> selectMine(BoardDTO data) {
-		conn = JDBCUtil.connect();
-		ArrayList<BoardDTO> datas = new ArrayList<BoardDTO>();
-		try {
-			pstmt = conn.prepareStatement(sql_selectAdmin);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				BoardDTO vo = new BoardDTO();
-				vo.setBoard_number(rs.getInt("board_number"));
-				vo.setSupporter_id(rs.getString("supporter_id"));
-				vo.setBoard_date(rs.getString("board_date"));
-				vo.setBoard_title(rs.getString("board_title"));
-				vo.setCategory(rs.getString("category"));
-				vo.setBoard_commentCnt(rs.getInt("board_commentCnt"));
-				System.out.println("dao : " + vo);
-				datas.add(vo);
-			}
-
-			pstmt = conn.prepareStatement(sql_selectMine);
-			pstmt.setString(1, data.getSupporter_id());
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				BoardDTO vo = new BoardDTO();
-				vo.setBoard_number(rs.getInt("board_number"));
-				vo.setSupporter_id(rs.getString("supporter_id"));
-				vo.setBoard_date(rs.getString("board_date"));
-				vo.setBoard_title(rs.getString("board_title"));
-				vo.setCategory(rs.getString("category"));
-				vo.setBoard_commentCnt(rs.getInt("board_commentCnt"));
-				System.out.println("dao : " + vo);
-				datas.add(vo);
-			}
-		} catch (SQLException e) {
-			System.out.println("BoardDAO의 selectMine()에서 문제 발생!");
-			e.printStackTrace();
-		} finally {
-			JDBCUtil.disconnect(pstmt, conn);
+	public List<BoardDTO> selectMine(BoardDTO data) {
+		List<BoardDTO> datas = sqlsession.selectList("BoardSQL.selectAdmin");
+		List<BoardDTO> datasMine = sqlsession.selectList("BoardSQL.selectMine", data);
+		for (BoardDTO v : datasMine) {
+			datas.add(v);
 		}
 		return datas;
 	}
 
 	// 댓글 순으로 결과 조회
-	public ArrayList<BoardDTO> selectComCnt() {
-		conn = JDBCUtil.connect();
-		ArrayList<BoardDTO> datas = new ArrayList<BoardDTO>();
-		try {
-			pstmt = conn.prepareStatement(sql_selectAdmin);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				BoardDTO vo = new BoardDTO();
-				vo.setBoard_number(rs.getInt("board_number"));
-				vo.setSupporter_id(rs.getString("supporter_id"));
-				vo.setBoard_date(rs.getString("board_date"));
-				vo.setBoard_title(rs.getString("board_title"));
-				vo.setCategory(rs.getString("category"));
-				vo.setBoard_commentCnt(rs.getInt("board_commentCnt"));
-				System.out.println("dao : " + vo);
-				datas.add(vo);
-			}
-
-			pstmt = conn.prepareStatement(sql_selectComCnt);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				BoardDTO vo = new BoardDTO();
-				vo.setBoard_number(rs.getInt("board_number"));
-				vo.setSupporter_id(rs.getString("supporter_id"));
-				vo.setBoard_date(rs.getString("board_date"));
-				vo.setBoard_title(rs.getString("board_title"));
-				vo.setCategory(rs.getString("category"));
-				vo.setBoard_commentCnt(rs.getInt("board_commentCnt"));
-				System.out.println("dao : " + vo);
-				datas.add(vo);
-			}
-		} catch (SQLException e) {
-			System.out.println("BoardDAO의 selectComCnt()에서 문제 발생!");
-			e.printStackTrace();
-		} finally {
-			JDBCUtil.disconnect(pstmt, conn);
+	public List<BoardDTO> selectComCnt() {
+		List<BoardDTO> datas = sqlsession.selectList("BoardSQL.selectAdmin");
+		List<BoardDTO> datasComCnt = sqlsession.selectList("BoardSQL.selectComCnt");
+		for (BoardDTO v : datasComCnt) {
+			datas.add(v);
 		}
 		return datas;
 	}
 
 	// 게시글 수정
 	public boolean update(BoardDTO dto) {
-		conn = JDBCUtil.connect();
-		try {
-			pstmt = conn.prepareStatement(sql_update);
-			pstmt.setString(1, dto.getBoard_title());
-			pstmt.setString(2, dto.getBoard_content());
-			pstmt.setInt(3, dto.getBoard_number());
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			System.out.println("BoardDAO의 update()에서 문제발생!");
-			e.printStackTrace();
-			return false;
-		} finally {
-			JDBCUtil.disconnect(pstmt, conn);
+		boolean result = false;
+		if (sqlsession.update("BoardSQL.update", dto) != 0) {
+			result = true;
 		}
-		return true;
+		return result;
 	}
 
 	// 게시글 삭제
 	public boolean delete(BoardDTO dto) {
-		conn = JDBCUtil.connect();
-		try {
-			pstmt = conn.prepareStatement(sql_delete);
-			pstmt.setInt(1, dto.getBoard_number());
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			System.out.println("BoardDAO의 delete()에서 문제 발생!");
-			e.printStackTrace();
-			return false;
-		} finally {
-			JDBCUtil.disconnect(pstmt, conn);
+		boolean result = false;
+		if (sqlsession.delete("BoardSQL.delete", dto) != 0) {
+			result = true;
 		}
-		return true;
+		return result;
 	}
 }

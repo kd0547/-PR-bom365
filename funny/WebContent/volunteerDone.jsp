@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>입양신청완료</title>
+<title>봉사신청완료</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -54,8 +54,7 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<span><a href="index.html">입양신청</a></span> / <span>신청완료</span>
+							<span><a href="volunteerList.vt">봉사신청</a></span> / <span>신청완료</span>
 						</p>
 					</div>
 				</div>
@@ -69,10 +68,9 @@
 						<p class="icon-addcart">
 							<span><i class="icon-check"></i></span>
 						</p>
-						<h3 class="mb-4">신청서가 접수되었습니다.<br>심사는 약 일주일 정도 소요됩니다.</h3>
+						<h3 class="mb-4" style="margin-bottom: 0 !important">신청이 완료되었습니다.</h3><h5>마이페이지에서 신청 내역을 조회하실 수 있어요!</h5><br>
 						<p>
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<a href="main.jsp" class="btn btn-primary" id="complete">메인으로 돌아가기</a>
+							<a href="volunteerList.vt" class="btn btn-primary" id="complete">돌아가기</a>
 						</p>
 					</div>
 				</div>

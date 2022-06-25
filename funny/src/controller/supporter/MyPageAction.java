@@ -5,43 +5,28 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controller.Action;
 import controller.ActionForward;
 import model.supporter.SupporterDAO;
-import model.supporter.SupporterVO;
+import model.supporter.SupporterDTO;
 
 public class MyPageAction implements Action{
-	
-	
-	private ActionForward forward = new ActionForward();
-	private SupporterDAO supporterDAO = new SupporterDAO();
-	private SupporterVO supporterVO = null ;
-
 	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ActionForward forward = new ActionForward();
+		SupporterDAO dao = new SupporterDAO();
+		SupporterDTO dto = new SupporterDTO() ;
 		
+		HttpSession session = request.getSession(); // spring 식 session 을 받는법
+		String id= (String) session.getAttribute("supporter_id");
 		
-		String id= request.getSession().getAttribute("supporter_id").toString();
-		
-		if(id != null) {
-			supporterVO = supporterDAO.SupporterIdInfo(id);
-			
-			if(supporterVO != null) {
-				request.setAttribute("userInfo", supporterVO);
+		dto.setSupporter_id(id);
 
-			} else {
-				//에러 제어 코드 
-				//어디로 보낼지 생각 안남 
-			}
-			
-			
-		} else {
-			//에러 제어 코드 
-			//어디로 보낼지 생각 안 남 
-			
-		}
+		dto = dao.SupporterIdInfo(dto);
+		request.setAttribute("userInfo", dto);
+		
 		// 문제 없으면 실행 	
 		forward.setPath("mypage.jsp");
 		forward.setRedirect(false);

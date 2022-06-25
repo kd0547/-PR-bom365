@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="C:/util/jar/ojdbc6.jar"/>
 	<classpathentry kind="lib" path="C:/util/jar/jstl.jar"/>
 	<classpathentry kind="lib" path="C:/util/jar/standard.jar"/>
+	<classpathentry kind="lib" path="C:/util/jar/mybatis-3.5.10.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

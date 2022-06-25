@@ -1,10 +1,9 @@
 package model.board;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 
-import model.common.JDBCUtil;
+import model.mybatis.SqlMapConfig;
 
 public class Board_commentDAO {
 	/*
@@ -15,59 +14,34 @@ public class Board_commentDAO {
 						→ updateComDown	-	댓글 삭제시 게시글의 댓글 수 컬럼 -1
 	*/
 	
-    Connection conn;
-    PreparedStatement pstmt;
+	SqlSessionFactory factory = SqlMapConfig.getFactory();
+	SqlSession sqlsession;
 
-    String sql_insert = "insert into board_comment values (?||'_'||((select nvl(COUNT(comment_number),0)+1 from board_comment WHERE board_number=?)), ?, ?, ?, to_char(sysdate, 'yyyy.mm.dd hh24:mi'))";
-    String sql_delete = "delete from board_comment where comment_number=?";
-    String sql_updateComUp = "update board set board_commentCnt=board_commentCnt+1 where board_number=?";
-    String sql_updateComDown = "update board set board_commentCnt=board_commentCnt-1 where board_number=?";
+	public Board_commentDAO() {
+		// auto commit
+		sqlsession = factory.openSession(true);
+		System.out.println("factory값 가져오기 성공 (sqlsession과 dao연결성공)");
+	}
     
-    //댓글 작성
-    public boolean insert(Board_commentDTO dto) { 
-        conn = JDBCUtil.connect();
-        try {
-			pstmt = conn.prepareStatement(sql_insert);
-			pstmt.setInt(1, dto.getBoard_number());
-			pstmt.setInt(2, dto.getBoard_number());
-			pstmt.setInt(3, dto.getBoard_number());
-			pstmt.setString(4, dto.getSupporter_id());
-			pstmt.setString(5, dto.getComment_content());
-			pstmt.executeUpdate();
-			
-			pstmt = conn.prepareStatement(sql_updateComUp);
-			pstmt.setInt(1, dto.getBoard_number());
-			pstmt.executeUpdate();
+	// 댓글 작성
+	public boolean insert(Board_commentDTO dto) {
+		boolean result = false;
+		if (sqlsession.insert("BoardSQL.insertCom", dto) != 0) {
+			sqlsession.update("BoardSQL.updateComUp", dto);
 			System.out.println("Board_commentDAO의 댓글수 +1 완료");
-        } catch (SQLException e) {
-            System.out.println("Board_commentDAO의 insert()에서 문제 발생!");
-            e.printStackTrace();
-            return false;
-        } finally {
-            JDBCUtil.disconnect(pstmt, conn);
-        }
-        return true;
-    }
-    
-    //댓글 삭제
-    public boolean delete(Board_commentDTO dto) { 
-        conn = JDBCUtil.connect();
-        try {
-            pstmt = conn.prepareStatement(sql_delete);
-            pstmt.setString(1, dto.getComment_number());
-            pstmt.executeUpdate();
-            
-			pstmt = conn.prepareStatement(sql_updateComDown);
-			pstmt.setInt(1, dto.getBoard_number());
-			pstmt.executeUpdate();
+			result = true;
+		}
+		return result;
+	}
+
+	// 댓글 삭제
+	public boolean delete(Board_commentDTO dto) {
+		boolean result = false;
+		if (sqlsession.delete("BoardSQL.deleteCom", dto) != 0) {
+			sqlsession.update("BoardSQL.updateComDown", dto);
 			System.out.println("Board_commentDAO의 댓글수 -1 완료");
-        } catch (SQLException e) {
-            System.out.println("Board_commentDAO의 delete()에서 문제 발생!");
-            e.printStackTrace();
-            return false;
-        } finally {
-            JDBCUtil.disconnect(pstmt, conn);
-        }
-        return true;
-    }
+			result = true;
+		}
+		return result;
+	}
 }

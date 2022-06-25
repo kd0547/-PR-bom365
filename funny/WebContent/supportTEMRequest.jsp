@@ -99,6 +99,7 @@
 
 <!-- action수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<div class="container-tem">
+		<form action="supprotTEMRequest.sp" method="post" target="iframe">
 			<div class="signup-form-container tem">
 				<div class="js-focus-state form-group tem">
 						<span class="h4 tem">금액</span> 
@@ -112,15 +113,13 @@
 							<option value="300,000">300,000</option>
 						</select>
 				</div>
-				<c:if test="${userInfo != null }">
-						<input type="submit" onclick="requestPay();" class="btn btn-primary supprot tem" value="&nbsp;신청하기&nbsp;">
-				</c:if>
-				<c:if test="${userInfo == null }">
-						<input type="submit" onclick="alert('로그인 후 이용가능합니다!')" class="btn btn-primary supprot tem" value="&nbsp;신청하기&nbsp;">
-				</c:if>
-						
+
+						<input type="submit" onclick="requestPay()" class="btn btn-primary supprot tem" value="&nbsp;신청하기&nbsp;">
 			</div>
+		</form>
 	</div>
+	 <iframe name='iframe' style='display: none;'></iframe> 
+
 
 
 	<!-- Page Footer-->
@@ -131,51 +130,33 @@
 
 
 	<script>
+		var IMP = window.IMP; // 생략 가능
+		IMP.init("imp44896858"); // 가맹점 식별코드
 
-	//KAKAO API
-	var IMP = window.IMP; // 생략 가능
-	IMP.init("imp44896858"); // 가맹점 식별코드
-
-	function requestPay() {
-		// IMP.request_pay(param, callback) 결제창 호출
-		IMP.request_pay({
-			pg : "html5_inicis",
-			pay_method : "card",
-			temporary_number : "5000_" + new Date().getTime(),
-			//관리자페이지(주문명)에 노출될 정보들(밑으론 key값 변경불가능)
-			name : "봄365 후원",
-			amount : document.getElementById("kakaopay-amount").value,
-			supporter_id : "gildong@gmail.com",
-			buyer_name : "홍길동",
-		}, function(rsp) {
-			if (rsp.success) {
-				location.href = "supportDone.jsp";
-			} else {
-				alert("결제에 실패했습니다.");
-				location.href = "supportTEMRequest.jsp";
-			}
-		});
-	}
-	
-	//데이터 Controller로 전송
- var test =$('#kakaopay-amount option:selected').val();
-	
-	$.ajax({
-		url : "supportTEMRequest.sp",
-		type : 'get',
-		data : {
-			
-			temporary_amount: $('#kakaopay-amount option:selected').val()
-		},
-		success : function(data) {
-		},
-		error : function() {
-			console.log($('#kakaopay-amount option:selected').val());
-			console.log("supportTEMRequest ajax진입안됨");
+		function requestPay() {
+			// IMP.request_pay(param, callback) 결제창 호출
+			IMP.request_pay({
+				pg : "html5_inicis",
+				pay_method : "card",
+				temporary_number : "500088",
+				//관리자페이지(주문명)에 노출될 정보들(밑으론 key값 변경불가능)
+				name : "봄365 후원",
+				amount : document.getElementById("kakaopay-amount").value,
+				supporter_id : "gildong@gmail.com",
+				buyer_name : "홍길동",
+			}, function(rsp) {
+				if (rsp.success) {
+					location.href = "supportDone.jsp";
+				} else {
+					alert("결제에 실패했습니다.");
+					location.href = "supportTEMRequest.jsp";
+				}
+			});
 		}
-	}); 
-/* 	
- */</script>
+	</script>
+
+
+
 	<!-- popper -->
 	<script src="js/popper.min.js"></script>
 	<!-- bootstrap 4.1 -->

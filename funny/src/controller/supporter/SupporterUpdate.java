@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import controller.Action;
 import controller.ActionForward;
 import model.supporter.SupporterDAO;
-import model.supporter.SupporterVO;
+import model.supporter.SupporterDTO;
+
 
 public class SupporterUpdate implements Action{
 	
@@ -20,18 +21,18 @@ public class SupporterUpdate implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		SupporterVO supporterVO = new SupporterVO();
+		SupporterDTO supporterDTO = new SupporterDTO();
 		
 		
 		
-		supporterVO.setSupporter_id(request.getSession().getAttribute("supporter_id").toString());
-		supporterVO.setSupporter_name(request.getParameter("supporter_name"));
-		supporterVO.setSupporter_password(request.getParameter("supporter_password"));
-		supporterVO.setPhone_number(request.getParameter("phone_number"));
-		supporterVO.setPost_code(request.getParameter("post_code"));
-		supporterVO.setDetailed_address(request.getParameter("detailed_address"));
+		supporterDTO.setSupporter_id(request.getSession().getAttribute("supporter_id").toString());
+		supporterDTO.setSupporter_name(request.getParameter("supporter_name"));
+		supporterDTO.setSupporter_password(request.getParameter("supporter_password"));
+		supporterDTO.setPhone_number(request.getParameter("phone_number"));
+		supporterDTO.setPost_code(request.getParameter("post_code"));
+		supporterDTO.setDetailed_address(request.getParameter("detailed_address"));
 		
-		if(supporterDAO.SupporterUpdate(supporterVO)) {
+		if(supporterDAO.SupporterUpdate(supporterDTO)) {
 			forward = new ActionForward();
 			
 			forward.setPath("mypage.me");

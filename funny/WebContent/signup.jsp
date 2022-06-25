@@ -63,8 +63,7 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-							<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<span><a href="main.jsp">HOME</a></span> / <span>회원가입</span>
+							<span><a href="main.do">HOME</a></span> / <span>회원가입</span>
 						</p>
 					</div>
 				</div>
@@ -77,7 +76,6 @@
 		<!-- sign up -->
 
 		<div class="signup-form-container">
-			<!-- action수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 			<!--signupDone.jsp  -->
 			<form id="signup" 
 				class="woocommerce-form woocommerce-form-register register ">
@@ -97,12 +95,10 @@
 						class="woocommerce-Input woocommerce-Input--text input-text" name ="supporter_id"
 						>
 				</p>
-				<!-- ajax 구현//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 				<div id="text-box"></div>
 				<p
 					class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide more">
 					<label class="reg_signup">비밀번호&nbsp;</label>
-					<!-- id="pw1"사용하여 ajax구현//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 					<input id="pwd" type="password"
 						class="woocommerce-Input woocommerce-Input--text input-text"
 						 name="supporter_password" placeholder="비밀번호는 안전하게"
@@ -113,7 +109,6 @@
 					class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide"
 					style="padding-left: 6px;">
 					<label class="reg_signup">비밀번호확인&nbsp;</label>
-					<!-- id="pw2"사용하여 ajax구현//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 					<input id="pwdcheck" type="password"
 						class="woocommerce-Input woocommerce-Input--text input-text">
 					
@@ -449,11 +444,6 @@
 				e.action="signup.me";
 				e.submit();
 			}
-			
-
-
-
-			
 	</script>
 
 
