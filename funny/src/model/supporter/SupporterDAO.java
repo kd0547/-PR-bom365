@@ -83,16 +83,37 @@ public class SupporterDAO {
 	// 회원 정보 수정하기
 	public boolean update(SupporterDTO dto) {
 		boolean result = false;
-		//
-		//
-		//
-		//
-		// 채우기
-		//
-		//
-		//
-		//
-		//
+
+		
+		try {
+			
+			conn = JDBCUtil.connect();
+			pstmt = conn.prepareStatement(sql_update);
+			
+			pstmt.setString(1, dto.getSupporter_name());
+			pstmt.setString(2, dto.getSupporter_password());
+			pstmt.setString(3, dto.getPhone_number());
+			pstmt.setString(4, dto.getPost_code());
+			pstmt.setString(5, dto.getDetailed_address());
+			pstmt.setString(6, dto.getSupporter_id());
+			
+			if(pstmt.executeUpdate() != 0) {
+				
+				result = true;
+			} else {
+				result = false;
+			}
+
+			
+		} catch (SQLException e) {
+			System.out.println("SupporterDAO의 SupporterUpdate()에서 문제발생!");
+			e.printStackTrace();
+			
+		} finally {
+			JDBCUtil.disconnect(pstmt, conn);
+		}
+		
+
 		return result;
 	}
 
@@ -124,41 +145,4 @@ public class SupporterDAO {
 		}
 		return result;
 	}
-	
-	public boolean SupporterUpdate(SupporterDTO vo) {
-		
-		boolean result = false;
-		
-		try {
-			
-			conn = JDBCUtil.connect();
-			pstmt = conn.prepareStatement(sql_update);
-			
-			pstmt.setString(1, vo.getSupporter_name());
-			pstmt.setString(2, vo.getSupporter_password());
-			pstmt.setString(3, vo.getPhone_number());
-			pstmt.setString(4, vo.getPost_code());
-			pstmt.setString(5, vo.getDetailed_address());
-			pstmt.setString(6, vo.getSupporter_id());
-			
-			if(pstmt.executeUpdate() != 0) {
-				
-				result = true;
-			} else {
-				result = false;
-			}
-
-			
-		} catch (SQLException e) {
-			System.out.println("SupporterDAO의 SupporterUpdate()에서 문제발생!");
-			e.printStackTrace();
-			
-		} finally {
-			JDBCUtil.disconnect(pstmt, conn);
-		}
-		
-	
-		return result;
-	}
-	
 }

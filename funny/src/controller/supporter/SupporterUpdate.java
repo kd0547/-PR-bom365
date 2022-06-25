@@ -32,7 +32,7 @@ public class SupporterUpdate implements Action{
 		supporterDTO.setPost_code(request.getParameter("post_code"));
 		supporterDTO.setDetailed_address(request.getParameter("detailed_address"));
 		
-		if(supporterDAO.SupporterUpdate(supporterDTO)) {
+		if(supporterDAO.update(supporterDTO)) {
 			forward = new ActionForward();
 			
 			forward.setPath("mypage.me");
