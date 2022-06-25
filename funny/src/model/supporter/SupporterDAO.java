@@ -24,6 +24,7 @@ public class SupporterDAO {
 	String sql_idInfo = "select * from supporter where supporter_id=?";
 	String sql_delete_info = "select supporter_id,supporter_password from supporter where supporter_id=? AND supporter_password=?";
 	String sql_delete = "delete FROM supporter where supporter_id=?";
+	String sql_update = "update supporter set supporter_name=?,supporter_password=?,phone_number=?,post_code=?,detailed_address=?  where supporter_id=?";
 	// 회원가입
 	public boolean insert(SupporterVO vo) { 
 		try {
@@ -209,5 +210,40 @@ public class SupporterDAO {
 		return result;
 	}
 	
+	public boolean SupporterUpdate(SupporterVO vo) {
+		
+		boolean result = false;
+		
+		try {
+			
+			conn = JDBCUtil.connect();
+			pstmt = conn.prepareStatement(sql_update);
+			
+			pstmt.setString(1, vo.getSupporter_name());
+			pstmt.setString(2, vo.getSupporter_password());
+			pstmt.setString(3, vo.getPhone_number());
+			pstmt.setString(4, vo.getPost_code());
+			pstmt.setString(5, vo.getDetailed_address());
+			pstmt.setString(6, vo.getSupporter_id());
+			
+			if(pstmt.executeUpdate() != 0) {
+				
+				result = true;
+			} else {
+				result = false;
+			}
+
+			
+		} catch (SQLException e) {
+			System.out.println("SupporterDAO의 SupporterUpdate()에서 문제발생!");
+			e.printStackTrace();
+			
+		} finally {
+			JDBCUtil.disconnect(pstmt, conn);
+		}
+		
+	
+		return result;
+	}
 	
 }
