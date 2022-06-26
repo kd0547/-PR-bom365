@@ -37,7 +37,7 @@ public class SupporterFrontController extends HttpServlet {
 		// 아이디 중복 체크
 		if(command.equals("idCheck")) {
 			try {
-				forward = new IDCheckAction().execute(request, response);
+				forward = new IdCheckAction().execute(request, response);
 			} catch (Exception e) {
 				System.out.println("idCheck.me 수행중 문제 발생");
 			}
@@ -59,6 +59,7 @@ public class SupporterFrontController extends HttpServlet {
 				forward = new LogInAction().execute(request, response);
 			} catch (Exception e) {
 				System.out.println("login.me 수행중 문제 발생");
+				e.printStackTrace();
 			}
 		}
 
@@ -75,30 +76,26 @@ public class SupporterFrontController extends HttpServlet {
 		else if(command.equals("mypage")) {
 			try {
 				forward = new MyPageAction().execute(request, response);
-				
 			} catch (Exception e) {
 				System.out.println("mypage.me 수행중 문제 발생");
 			}
 		}
 
 		// 회원 정보 수정
-		else if(command.equals("supporterUpdate")) {
+		else if(command.equals("update")) {
 			try {
-				forward = new SupporterUpdateAction().execute(request, response);
-				
+				forward = new UpdateAction().execute(request, response);
 			} catch (Exception e) {
-				System.out.println("supporterUpdate.me 수행중 문제 발생");
+				System.out.println("update.me 수행중 문제 발생");
 			}
 		}
 		
 		// 회원 탈퇴
-		else if(command.equals("supporterDelete")) {
+		else if(command.equals("withdrawal")) {
 			try {
-				forward = new SupporterDeleteAction().execute(request, response);
-				
+				forward = new WithdrawalAction().execute(request, response);
 			} catch (Exception e) {
-				e.printStackTrace();
-				System.out.println("supporterDelete.me 수행중 문제 발생");
+				System.out.println("withdrawal.me 수행중 문제 발생");
 			}
 		}
 

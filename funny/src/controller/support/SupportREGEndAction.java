@@ -1,5 +1,7 @@
 package controller.support;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpServletResponse;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import controller.Action;
 import controller.ActionForward;
 import model.support.SupportREGDAO;
+import model.support.SupportREGDTO;
 
  
 public class SupportREGEndAction implements Action{
@@ -24,10 +27,19 @@ public class SupportREGEndAction implements Action{
 		String supporter_id = (String)session.getAttribute("supporter_id");
 	    System.out.println(supporter_id);
 	    
-	    
 	    regdao.setEnd(supporter_id);
-		
-		forward.setRedirect(false); //forward방식
+
+		// 정기후원 중 중복신청 불가능
+		List<SupportREGDTO> supportREGdto = regdao.SupportREGEndCheck(supporter_id);
+
+		// 정기후원기록이 복수인 사람 대비
+		if (supportREGdto.size() > 1) {
+			session.setAttribute("regular_end", supportREGdto.get(supportREGdto.size() - 1));
+		} else {
+			session.setAttribute("regular_end", supportREGdto);
+		}
+	    
+		forward.setRedirect(true); //forward방식
 		forward.setPath("supportEnd.jsp");
 		
 		System.out.println("supporter_id: " + request);

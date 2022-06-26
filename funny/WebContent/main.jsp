@@ -87,7 +87,7 @@
 												<span>동물과 인간이 더불어 사는 사회를 위해</span>
 											</p>
 											<p>
-												<a href="support.sp" class="btn btn-primary main">후원하기</a>
+												<a href="support.jsp" class="btn btn-primary main">후원하기</a>
 											</p>
 										</div>
 									</div>

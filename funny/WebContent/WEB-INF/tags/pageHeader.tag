@@ -37,14 +37,20 @@
 									<a href="animalList.am">입양하기</a>
 								</c:otherwise>
 							</c:choose></li>
-						<li class="has-dropdown"><a href="support.sp">후원하기</a>
+						<li class="has-dropdown"><a href="support.jsp">후원하기</a>
 							<ul class="dropdown">
-								<li><a href="#"
-									onclick="${supporter_id == null? 'loginCheck()':'goREG()'}">정기후원
-										신청</a></li>
+								<li><c:choose>
+										<c:when test="${regular_end == '진행중'}">
+											<a class="mainREG">정기후원 (진행 중)</a>
+										</c:when>
+										<c:otherwise>
+											<a href="#"
+												onclick="${supporter_id == null? 'loginCheck()':'goREG()'}">정기후원 신청하기</a>
+										</c:otherwise>
+									</c:choose></li>
 								<li><a href="#"
 									onclick="${supporter_id == null? 'loginCheck()':'goTEM()'}">일시후원
-										신청</a></li>
+										신청하기</a></li>
 							</ul></li>
 						<li><a href="volunteerList.vt">봉사신청</a></li>
 						<li><a href="boardList.do">자유게시판</a></li>

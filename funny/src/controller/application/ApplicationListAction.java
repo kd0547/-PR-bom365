@@ -59,7 +59,7 @@ public class ApplicationListAction implements Action {
 		req.setAttribute("endPage", endPage);
 		
 		req.setAttribute("totalCnt", totalCnt);
-		req.setAttribute("applicationList", apdao.selectApplication(startRow, endRow));
+		req.setAttribute("applicationList", apdao.selectAll(startRow, endRow));
 		
 		forward.setRedirect(false);
 		forward.setPath("adminApplicationList.jsp" );

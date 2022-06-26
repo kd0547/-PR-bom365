@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="mytag"%>
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>글작성</title>
+<title>상세글</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -40,58 +41,101 @@
 
 <!-- Theme style  -->
 <link rel="stylesheet" href="css/style.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="css/boardOne.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+	function del() {
+		ans = confirm("${application.supporter_id}님을 ${application.animal_name}의 입양자로 결정하시겠습니까?");
+		if (ans == true) {
+			document.withdrawal.submit();
+		} else {
+			event.preventDefault();
+		}
+	}
+</script>
 </head>
 <body>
 
 	<div id="page">
 
 		<!-- Page Header-->
-		<mytag:pageHeader/>
+		<mytag:pageHeader />
 		<div class="breadcrumbs">
 			<div class="container">
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-							<span><a href="boardList.do">자유게시판</a></span> / <span>글등록</span>
+							<span><a href="adminApplicationList.ap">신청목록</a></span> / <span>상세글</span>
 						</p>
 					</div>
 				</div>
 			</div>
 		</div>
-		<h1 id="menuTitle">봉사신청</h1>
-		<hr>
+
+
 
 		<div style="text-align: center; margin-top: 2em; margin-bottom: 7em;">
 			<div class="col-sm-4 text-left total writeForm"
 				style="display: inline-block;">
-				<form action="boardInsert.do" method="post">
-					<div class="form-group">
-						<h5>제목</h5>
-						<input type="text" class="form-control gap"
-							placeholder="제목을 입력해 주세요." name="board_title">
+				<div class="form-group">
 
-						<div class="form-group">
-							<h5>내용</h5>
-							<textarea name="board_content" rows="10" maxlength="1000"
-								class="form-control gap" placeholder="내용을 입력해 주세요."></textarea>
-						</div>
+					<div class="form-group boardOne">
+						<h5 class="h5-detail title" style="width: 100%;">신청자</h5>
+						<h5 class="h5-detail title info">${application.application_date}</h5>
 					</div>
-					<input type="submit" value="글 작성하기"
-						class="btn btn-primary inputSubmit">
-				</form>
+					<div class="title-box">
+						<h5 style="padding: 14px;">${application.supporter_id}</h5>
+					</div>
+					<div class="form-group boardOne">
+						<h5 class="h5-detail title" style="width: 100%;">입양 신청
+							동물번호(동물이름)</h5>
+					</div>
+					<div class="title-box">
+						<h5 style="padding: 14px;">${application.animal_number}(${application.animal_name})</h5>
+					</div>
+
+					<div class="form-group boardOne">
+						<h5 class="h5-detail title" style="width: 100%;">제목</h5>
+					</div>
+					<div class="title-box">
+						<h5 style="padding: 14px;">${application.application_title}</h5>
+					</div>
+					<div class="form-group">
+						<h5>내용</h5>
+						<textarea name="board_content" id="autoHeight"
+							class="form-control gap one" disabled>${application.application_content}</textarea>
+					</div>
+					<script type="text/javascript">
+						function adjustHeight() {
+							var textEle = $('#autoHeight');
+							var textEleHeight = textEle.prop('scrollHeight');
+							console.log(textEleHeight);
+							textEle.css("height", textEleHeight);
+						};
+						adjustHeight();
+					</script>
+					<!-- 관리자인지 한번 더 확인  -->
+					<c:if test="${supporter_id == 'admin'}">
+						<div style="float: right;">
+							<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+							<a href="#" class="btn btn-primary boardUD" onclick="del()">입양자
+								확정</a>
+						</div>
+					</c:if>
+						<div style="float: right;">
+							<a href="adminApplicationList.ap" class="btn btn-primary boardUD">목록보기</a>
+						</div>
+
+				</div>
 			</div>
 		</div>
-
 		<!-- Page Footer-->
 		<mytag:pageFooter />
-
 	</div>
-
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
-	
 
 	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
@@ -117,7 +161,20 @@
 	<script src="js/jquery.stellar.min.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
-
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

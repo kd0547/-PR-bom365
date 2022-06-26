@@ -84,7 +84,7 @@
 							전반적인 활동과 운영을<br>지지해 주실 수 있습니다.
 						</h5>
 						<c:choose>
-							<c:when test="${regular_end == '[진행중]'}">
+							<c:when test="${regular_end == '진행중'}">
 								<a style="color: white;" class="btn btn-primary del support">이미
 									후원 중 입니다!</a>
 							</c:when>

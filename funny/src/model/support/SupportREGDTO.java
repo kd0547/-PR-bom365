@@ -3,7 +3,7 @@ package model.support;
 public class SupportREGDTO {
 	private int regular_number;
 	private String supporter_id;
-	private int regular_amount;
+	private String regular_amount;
 	private String regular_bank;
 	private String regular_account;
 	private String regular_date;
@@ -21,11 +21,10 @@ public class SupportREGDTO {
 	public void setSupporter_id(String supporter_id) {
 		this.supporter_id = supporter_id;
 	}
-	
-	public int getRegular_amount() {
+	public String getRegular_amount() {
 		return regular_amount;
 	}
-	public void setRegular_amount(int regular_amount) {
+	public void setRegular_amount(String regular_amount) {
 		this.regular_amount = regular_amount;
 	}
 	public String getRegular_bank() {

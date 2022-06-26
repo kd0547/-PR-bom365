@@ -482,8 +482,7 @@ pre {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px; }
+  }
 
 .no-gutters {
   margin-right: 0;
@@ -7450,7 +7449,7 @@ h1, h2, h3, h4, h5,
     .colorlib-nav ul li.has-dropdown {
       position: relative; }
       .colorlib-nav ul li.has-dropdown .dropdown {
-        width: 130px;
+        width: 153px;
         -webkit-box-shadow: 0px 14px 33px -9px rgba(0, 0, 0, 0.75);
         -moz-box-shadow: 0px 14px 33px -9px rgba(0, 0, 0, 0.75);
         box-shadow: 0px 14px 33px -9px rgba(0, 0, 0, 0.75);
@@ -8990,7 +8989,7 @@ tbody.boardTbottom {
     border-bottom: 2px solid #dee2e6;
 }
 .twins-wrap {
-    padding: 2em;
+    padding: 2em 0 4em 0;
     height: 100%;
 }
 .twin.container {
@@ -9141,4 +9140,19 @@ a.btn.btn-primary.main {
 input.btn.btn-primary.del.support {
     margin: 1.5em 0px 0 0 !important;
     width: 10em;
+}
+a.mainREG {
+    color: #797152;
+    cursor: pointer;
+}
+a.mainREG:hover {
+    color: white;
+    cursor: pointer;
+}
+textarea.form-control.gap.one {
+	border-radius: 8px;
+	border: 0px !important;
+	font-size: 1.25rem !important;
+	padding: 14px;
+    min-height: 330px;
 }

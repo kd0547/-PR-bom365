@@ -53,6 +53,7 @@ public class VolunteerFrontController extends HttpServlet {
 			}
 		}
 		
+		// 봉사 신청
 		if (command.equals("volunteerInsert")) {
 			try {
 				forward = new VolunteerInsertAction().execute(request, response);
@@ -62,7 +63,12 @@ public class VolunteerFrontController extends HttpServlet {
 			}
 		}
 
-
+		// 관리자 페이지 용 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		
+		
+		
+		
 		// 만약 forward 가 null 이라면 null pointer exception 이 발생하기 떄문에 대비
 		if (forward != null) {
 			if (forward.isRedirect()) {

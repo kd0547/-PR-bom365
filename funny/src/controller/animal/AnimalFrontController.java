@@ -45,11 +45,11 @@ public class AnimalFrontController extends HttpServlet {
 		}
 		
 		// 상세 페이지
-		else if (command.equals("animalDetail")) {
+		else if (command.equals("animalOne")) {
 			try {
-				forward = new AnimalDetailAction().execute(request, response);
+				forward = new AnimalOneAction().execute(request, response);
 			} catch (Exception e) {
-				System.out.println("animalDetail.am 수행중 문제 발생");
+				System.out.println("animalOne.am 수행중 문제 발생");
 			}
 		}
 		

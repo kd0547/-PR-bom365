@@ -60,7 +60,7 @@
 			<div class="row">
 				<div class="col">
 					<p class="bread">
-						<span><a href="support.sp">후원신청</a></span> / <span>정기후원</span>
+						<span><a href="support.jsp">후원신청</a></span> / <span>정기후원</span>
 					</p>
 				</div>
 			</div>
@@ -178,6 +178,7 @@
 	</div>
 
 
+	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->

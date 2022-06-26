@@ -23,7 +23,7 @@ public class CommentDeleteAction implements Action {
 		}
 
 		ActionForward forward = new ActionForward();
-		forward.setPath("boardDetail.do?board_number=" + request.getParameter("board_number"));
+		forward.setPath("boardOne.do?board_number=" + request.getParameter("board_number"));
 		forward.setRedirect(true); // 넘겨줄 데이터 X
 		return forward;
 	}

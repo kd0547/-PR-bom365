@@ -54,8 +54,7 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<span><a href="mypage.jsp">My Page</a></span> / <span>탈퇴완료</span>
+							<span><a href="mypage.me">My Page</a></span> / <span>탈퇴완료</span>
 						</p>
 					</div>
 				</div>
@@ -71,8 +70,7 @@
 						</p>
 						<h3 class="mb-4">탈퇴 완료되었습니다.<br>그동안 이용해 주셔서 감사합니다.</h3>
 						<p>
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<a href="main.jsp" class="btn btn-primary" id="complete">메인으로 돌아가기</a>
+							<a href="main.do" class="btn btn-primary" id="complete">메인으로 돌아가기</a>
 						</p>
 					</div>
 				</div>
@@ -88,6 +86,7 @@
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 
+	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->

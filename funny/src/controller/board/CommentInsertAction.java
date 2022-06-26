@@ -26,7 +26,7 @@ public class CommentInsertAction implements Action {
 		vo.setComment_content(request.getParameter("comment_content"));
 		System.out.println("현재 vo: " + vo);
 		dao.insert(vo);
-		forward.setPath("boardDetail.do?board_number=" + request.getParameter("board_number"));
+		forward.setPath("boardOne.do?board_number=" + request.getParameter("board_number"));
 		forward.setRedirect(true); // 넘겨야 할 데이터 X
 		System.out.println(forward.getPath());
 		return forward;

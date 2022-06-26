@@ -12,10 +12,8 @@ import controller.ActionForward;
 import model.supporter.SupporterDAO;
 
 
-public class IDCheckAction extends HttpServlet implements Action{
+public class IdCheckAction extends HttpServlet implements Action{
 	SupporterDAO idCheck = new SupporterDAO();
-	
-	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -29,7 +27,7 @@ public class IDCheckAction extends HttpServlet implements Action{
 		// true : 값 있음 , false : 값 없음
 		public boolean idCheck(String id) {
 			
-			if(idCheck.SupporterIdCheck(id)) {
+			if(idCheck.idCheck(id)) {
 				return true;
 			} else {
 				return false;

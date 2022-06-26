@@ -112,6 +112,7 @@ input.searchingPostcode {
     background: #cbbd89;
     border-color: #cbbd8900;
     color: white;
+    height: 43px;
 }
 
 input.searchingPostcode:hover {

@@ -84,9 +84,10 @@
 					<tbody>
 						<tr class="boardHead">
 							<td style="width: 5em;">신청번호</td>
-							<td style="width: 5em;">동물번호</td>
+							<td style="width: 8em;">동물번호</td>
 							<td style="width: 20em;">제목</td>
-							<td style="width: 7em;">신청자 ID</td>
+							<td style="width: 6em;">신청자 ID</td>
+							<td style="width: 8em;">신청날짜</td>
 						</tr>
 					</tbody>
 					<c:choose>
@@ -94,14 +95,15 @@
 							test="${applicationList != null and fn:length(applicationList) > 0 }">
 							<tbody class="boardTbottom">
 								<!-- 게시글 작성 : 글이 있는 경우 -->
-								<c:forEach var="application" items="${applicationList }">
+								<c:forEach var="application" items="${applicationList}">
 									<tr>
 										<td>${application.application_number }</td>
-										<td>${application.animal_number }</td>
+										<td>${application.animal_number}(${application.animal_name})</td>
 										<td class="boardTitle"><a
-											href="ApplicationListView.bo?listnum=${application.application_number }">
+											href="adminApplicationOne.ap?application_number=${application.application_number}">
 												${application.application_title} </a></td>
 										<td>${application.supporter_id}</td>
+										<td>${application.application_date}</td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -109,7 +111,7 @@
 						<c:otherwise>
 							<tbody class="boardTbottom">
 								<tr style="height: 50px">
-									<td colspan="4"><h3>입양신청 목록이 없습니다!</h3></td>
+									<td colspan="5"><h3>입양신청 목록이 없습니다!</h3></td>
 								</tr>
 							</tbody>
 						</c:otherwise>

@@ -11,13 +11,6 @@ import model.mybatis.SqlMapConfig;
 import model.volunteer.VolunteerDTO;
 
 public class VolunteerDAO {
-	/*
-	volunteer
-		ㆍ c :	insert				-	봉사신청
-		ㆍ r :	select				-	봉사가능여부확인
-		ㆍ d :	delete				-	신청취소
-	*/
-	
 	SqlSessionFactory factory = SqlMapConfig.getFactory();
 	SqlSession sqlsession;
 
@@ -52,7 +45,7 @@ public class VolunteerDAO {
 			if (i < 10) {
 				date = "0" + date;
 			}
-			pram.put("volunteer_date", volCal.getYear() + "." + month + "." + date);
+			pram.put("volunteer_date", volCal.getYear() + "/" + month + "/" + date);
 			cnt.setYymmdd(pram.get("volunteer_date"));
 			cnt.setDate(date);
 
@@ -88,4 +81,10 @@ public class VolunteerDAO {
 		}
 		return result;
 	}
+	
+	// 관리자 페이지 용 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
+	
 }

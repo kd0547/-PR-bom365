@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class AnimalDetailAction implements Action {
+public class AnimalOneAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -18,7 +18,7 @@ public class AnimalDetailAction implements Action {
 		dto.setAnimal_number(Integer.parseInt(request.getParameter("animal_number")));
 		AnimalDAO dao = new AnimalDAO();
 		dto = dao.selectOne(dto);
-		request.setAttribute("animalDetail", dto);
+		request.setAttribute("animalOne", dto);
 		ActionForward forward = new ActionForward();
 		forward.setPath("animalOne.jsp");
 		forward.setRedirect(false);

@@ -25,10 +25,11 @@ public class SupportFrontController extends HttpServlet {
 		actionDO(request, response);
 	}
 
-	private void actionDO(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void actionDO(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		ActionForward forward = null;
-		
+
 		// 요청을 파악
 		String uri = request.getRequestURI();
 		String cp = request.getContextPath();
@@ -36,22 +37,12 @@ public class SupportFrontController extends HttpServlet {
 		// 문자열 조작을 통하여 .do 파일에 대한 분석 (ex: main.do -> command = main)
 		String command = uri.substring(cp.length() + 1, uri.length() - 3);
 		System.out.println(command);
-		
-		// 정기후원 진행 확인
-		if (command.equals("support")) {
-			try {
-				System.out.println("support.sp 경로 ok");
-				forward = new SupportMainAction().execute(request, response);
-			} catch (Exception e) {
-				System.out.println("support.sp수행중 문제 발생");
-			}
-		}
 
 		// 정기후원신청
-		else if (command.equals("supportREGInsert")) {
+		if (command.equals("supportREGInsert")) {
 			try {
-				System.out.println("supportREGRequest.sp 경로 ok");
-				forward = new SupportREGRequestAction().execute(request, response);
+				System.out.println("supportREGInsert.sp 경로 ok");
+				forward = new SupportREGInsertAction().execute(request, response);
 			} catch (Exception e) {
 				System.out.println("supportREGInsert.sp수행중 문제 발생");
 				e.printStackTrace();
@@ -59,22 +50,12 @@ public class SupportFrontController extends HttpServlet {
 		}
 
 		// 일시후원신청
-		else if (command.equals("supportTEMRequest")) {
+		else if (command.equals("supportTEMInsert")) {
 			try {
-				System.out.println("supportTEMRequest.sp 경로 ok");
-				forward = new SupportTEMRequestAction().execute(request, response);
+				System.out.println("supportTEMInsert.sp 경로 ok");
+				forward = new SupportTEMInsertAction().execute(request, response);
 			} catch (Exception e) {
-				System.out.println("supportTEMRequest.sp 수행중 문제 발생");
-			}
-		}
-		
-		// 후원내역조회
-		else if (command.equals("supportMypage")) {
-			try {
-				System.out.println("supportMypage.sp 경로 ok");
-				forward = new MytableAction().execute(request, response);
-			} catch (Exception e) {
-				System.out.println("supportMypage.sp 수행중 문제 발생");
+				System.out.println("supportTEMInsert.sp 수행중 문제 발생");
 			}
 		}
 
@@ -85,6 +66,29 @@ public class SupportFrontController extends HttpServlet {
 				forward = new SupportREGEndAction().execute(request, response);
 			} catch (Exception e) {
 				System.out.println("supportREGEnd.sp 수행중 문제 발생");
+			}
+		}
+		
+		// 관리자 페이지 용 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+		//관리자 후원내역조회
+		else if (command.equals("AdminSupportList")) {
+			try {
+				System.out.println("AdminSupportList.sp 경로 ok");
+	        	forward = new SupportAdminListAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("AdminSupportList.sp 수행중 문제 발생");
+			}
+		}
+		
+     	//후원 정렬기능 REG
+		else if (command.equals("MypageCategory")) {
+			try {
+				System.out.println("MypageCategory.sp 경로ok");
+				forward = new SupportREGListCategoryAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("MypageCategory.sp 수행중 문제 발생");
 			}
 		}
 

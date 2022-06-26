@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>로그인</title>
+<title>후원신청완료</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -44,6 +44,8 @@
 </head>
 <body>
 
+	<div class="colorlib-loader"></div>
+
 	<div id="page">
 
 		<!-- Page Header-->
@@ -54,34 +56,26 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-							<span><a href="index.jsp">Home</a></span> / <span>로그인</span>
+							<span><a href="supportRequest.jsp">후원신청</a></span> / <span>후원종료</span>
 						</p>
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		<h1 id="menuTitle">로그인</h1>
-		<div class="col-md-12 total-wrap" id="login">
-			<div class="col-sm-4 text-center total">
-				<form action="login.me" method="post" name="loginForm">
-					<table id="tableStyle">
-						<tr>
-							<td id="tableCol">아이디</td>
-							<td><input type="text" class="form-control" name="supporter_id"></td>
-						</tr>
-						<tr>
-							<td>비밀번호</td>
-							<td><input type="password" class="form-control" name="supporter_password"></td>
-						</tr>
-					</table>
-					<table id="tableStyle" style="margin-top: 20px;">
-						<tr>
-							<td><input type="submit" class="btn btn-primary" value="&nbsp;로그인&nbsp;"></td>
-							<td><a href="signup.jsp" class="btn btn-primary login">회원가입</a></td>
-						</tr>
-					</table>
-				</form>
+
+		<div class="colorlib-product">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-10 offset-sm-1 text-center">
+						<p class="icon-addcart">
+							<span><i class="icon-check"></i></span>
+						</p>
+						<h3 class="mb-4">ㆍ정기 후원 종료 완료ㆍ<br>그동안 보내주신 사랑에 진심으로 감사드립니다.</h3>
+						<p>
+							<a href="main.do" class="btn btn-primary" id="complete">메인으로 돌아가기</a>
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -94,7 +88,6 @@
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 
-	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->

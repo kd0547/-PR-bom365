@@ -68,7 +68,7 @@
 			<div class="row">
 				<div class="col">
 					<p class="bread">
-						<span><a href="support.sp">후원신청</a></span> / <span>일시후원</span>
+						<span><a href="support.jsp">후원신청</a></span> / <span>일시후원</span>
 					</p>
 				</div>
 			</div>
@@ -145,7 +145,7 @@
 					location.href = "supportDone.jsp";
 				} else {
 					alert("결제에 실패했습니다.");
-					location.href = "supportTEMRequest.jsp";
+					location.href = "supportTEMInsert.jsp";
 				}
 			});
 		}
@@ -155,7 +155,7 @@
 				function() {
 
 					$.ajax({
-						url : "supportTEMRequest.sp",
+						url : "supportTEMInsert.sp",
 						type : 'get',
 						data : {
 							temporary_amount : $(
@@ -164,14 +164,12 @@
 						success : function(data) {
 						},
 						error : function() {
-							console.log("supportTEMRequest ajax진입안됨");
+							console.log("supportTEMInsert ajax진입안됨");
 						}
 					});
 
 					console.log(amount_input);
 				});
-		/* 	
-		 */
 	</script>
 
 

@@ -11,15 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class BoardDetailAction implements Action {
+public class BoardOneAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		BoardDTO vo = new BoardDTO();
 		vo.setBoard_number(Integer.parseInt(request.getParameter("board_number")));
 		BoardDAO dao = new BoardDAO();
-		BoardSet boardDetail = dao.selectOne(vo);
-		request.setAttribute("boardDetail", boardDetail);
+		BoardSet boardOne = dao.selectOne(vo);
+		request.setAttribute("boardOne", boardOne);
 		ActionForward forward = new ActionForward();
 		forward.setPath("boardOne.jsp");
 		forward.setRedirect(false);

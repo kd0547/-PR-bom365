@@ -13,7 +13,7 @@ import controller.ActionForward;
 import model.supporter.SupporterDAO;
 import model.supporter.SupporterDTO;
 
-public class SupporterDeleteAction implements Action{
+public class WithdrawalAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ActionForward forward = null; 
@@ -23,7 +23,7 @@ public class SupporterDeleteAction implements Action{
 		
 		dto.setSupporter_id(request.getParameter("supporter_id"));
 		dto.setSupporter_password(request.getParameter("supporter_password"));
-		boolean result = dao.SupporterDelete(dto);
+		boolean result = dao.delete(dto);
 		
 		if(result == true) {
 			//세션 삭제 

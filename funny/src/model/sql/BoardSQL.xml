@@ -3,7 +3,7 @@
 <mapper namespace="BoardSQL">
 	<!-- 글 -->
 	<insert id="insert" parameterType="BoardDTO">
-		insert into board values ((select nvl(max(board_number),0)+1 from board),#{supporter_id},to_char(sysdate, 'yyyy.mm.dd hh24:mi'),#{board_title},#{board_content},#{category},default)
+		insert into board values ((select nvl(max(board_number),0)+1 from board),#{supporter_id},to_char(sysdate, 'yyyy/mm/dd hh24:mi'),#{board_title},#{board_content},#{category},default)
 	</insert>
 	<select id="selectSupporter" resultType="BoardDTO">
 		select * from board where category='일반' order by board_number desc
@@ -35,7 +35,7 @@
 	
 	<!-- 댓글 -->
 	<insert id="insertCom" parameterType="Board_commentDTO">
-		insert into board_comment values (#{board_number}||'_'||((select nvl(COUNT(comment_number),0)+1 from board_comment WHERE board_number=#{board_number})), #{board_number}, #{supporter_id}, #{comment_content}, to_char(sysdate, 'yyyy.mm.dd hh24:mi'))
+		insert into board_comment values (#{board_number}||'_'||((select nvl(COUNT(comment_number),0)+1 from board_comment WHERE board_number=#{board_number})), #{board_number}, #{supporter_id}, #{comment_content}, to_char(sysdate, 'yyyy/mm/dd hh24:mi'))
 	</insert>
 	<delete id="deleteCom" parameterType="Board_commentDTO">
 		delete from board_comment where comment_number=#{comment_number}
