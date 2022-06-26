@@ -15,6 +15,7 @@ import model.supporter.SupporterDTO;
 public class MyPageAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		ActionForward forward = new ActionForward();
 		SupporterDAO dao = new SupporterDAO();
 		SupporterDTO dto = new SupporterDTO() ;

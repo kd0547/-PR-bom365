@@ -16,4 +16,8 @@
 	<delete id="delete" parameterType="SupporterDTO">
 		delete from supporter where supporter_id=#{supporter_id}
 	</delete>
+	<update id="update" parameterType="SupporterDTO">
+		update supporter set supporter_name=#{supporter_name},supporter_password=#{supporter_password},phone_number=#{phone_number},post_code=#{post_code},detailed_address=#{detailed_address}
+		 where  supporter_id=#{supporter_id}
+	</update>
 </mapper>

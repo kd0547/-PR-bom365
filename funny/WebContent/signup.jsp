@@ -49,7 +49,7 @@
 <!-- Material Icons -->
 <link rel="stylesheet"href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+<script type="text/javascript" src="js/validate-Fun.js"></script>
 </head>
 
 <body>
@@ -77,7 +77,7 @@
 
 		<div class="signup-form-container">
 			<!--signupDone.jsp  -->
-			<form id="signup" 
+			<form id="signup" method ="post" action ="signup.me"
 				class="woocommerce-form woocommerce-form-register register ">
 				<p
 					class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide more">
@@ -99,7 +99,7 @@
 				<p
 					class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide more">
 					<label class="reg_signup">비밀번호&nbsp;</label>
-					<input id="pwd" type="password"
+					<input id="supporter_password" type="password"
 						class="woocommerce-Input woocommerce-Input--text input-text"
 						 name="supporter_password" placeholder="비밀번호는 안전하게"
 						>
@@ -109,7 +109,7 @@
 					class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide"
 					style="padding-left: 6px;">
 					<label class="reg_signup">비밀번호확인&nbsp;</label>
-					<input id="pwdcheck" type="password"
+					<input id="supporter_password_check" type="password"
 						class="woocommerce-Input woocommerce-Input--text input-text">
 					
 				</p>
@@ -148,40 +148,10 @@
 				</p>
 			</form>
 			<script>
-				window.idresult = false;
-				window.pwdResult = false;
-				$("#id").on('input',()=>{
+			
+			$("#id").on('input',()=>{
 				
 				var id_send = $("#id").val();
-				// if(checkNullCheck(id_send)) {
-				// 	if(!checkSpecialCheck(id_send)) {
-				// 		if(!checkNumberReg(id_send)){
-				// 			$.ajax({
-				// 				type:"POST",
-				// 				//USER DAO랑 가까운 JAVA OR JSP 파일로 데이터 전송
-				// 				url:"/idOverlap",
-				// 				data : "id=" + id_send,
-				// 				success : function(data,textStatus,xhr){
-												
-				// 					//true - 유저 있음, false - 유저 없음
-				// 					if(data == "true") {
-				// 						idResultMessage("*이미 사용중인 아이디 입니다.");
-				// 					} else {
-				// 						idResultMessage("*사용 가능한 아이디 입니다.");
-				// 					}
-				// 				},
-								
-				// 				error : function (request,status,err) {
-				// 					console.log("code:"+request.status);
-				// 				},
-				// 			})} else {
-				// 				idResultMessage("*숫자만 사용할 수 없습니다.");
-				// 			}
-				// 	} else {
-				// 	idResultMessage("*특수문자는 사용할 수 없습니다.");
-				// }} else {
-				// 	idResultMessage("*아이디를 입력해 주세요")
-				// }
 				if(idOverlap(id_send)){
 					$.ajax({
 								type:"POST",
@@ -196,7 +166,6 @@
 										idResultMessage("*이미 사용중인 아이디 입니다.");
 									} else {
 										idResultMessage("*사용 가능한 아이디 입니다.");
-										window.idresult = true;
 									}
 								},
 								
@@ -205,12 +174,8 @@
 								},
 							})
 				}
-				 
-
-
 				})
-
-				$(window).ready(()=>{
+			$(window).ready(()=>{
 					var result_text = document.getElementById("text-box");
 					var result_pwd = document.getElementById("pwd-box");
 
@@ -221,231 +186,100 @@
 						result_pwd.style.height = "21px";
 					}
 				})
+			$("#supporter_password").on('input',(e)=>{
+					let validatePW = e.target.value;
+					
+					if(!passwordCheckReg(validatePW)) {
+						PWResultMessage("*영문, 숫자 8~20 자리 입력");
+						return false;
+					}
+					if(passwordCheckReg(validatePW)) {
+						PWResultMessage("*사용 가능한 비밀번호 입니다");
+						return false;
+					}
+					
+					
+				})
+				
+				$("#supporter_password_check").on('input',(e)=>{
+					let validatePW = e.target.value;
+					let pwdCheck = $("#supporter_password").val();
+					
+					if(!passwordCheckReg(validatePW)) {
+						PWResultMessage("*영문, 숫자 8~20 자리 입력");
+						return false;
+					}		
+					if(!pwd_check(validatePW,pwdCheck)) {
+						PWResultMessage("*비밀번호가 일치하지 않습니다");
+						return false;
+					}
+					if(pwd_check(validatePW,pwdCheck)) {
+						PWResultMessage("*사용 가능한 비밀번호 입니다");
+						return false;
+					}				
+				})
+			
 				/*
 					전송
 				*/
 				
 				$("#sendbutton").click((e)=>{
-					let n= document.getElementById("name").value;
+					e.preventDefault();
 					
-					let i= document.getElementById("id").value;
-					let ph= document.getElementById("phone").value;
-					let pwd= document.getElementById("pwd").value;
-					let pwdck= document.getElementById("pwdcheck").value;
-					let p = document.getElementById("sample4_postcode").value;
-	
-					let reg_detail= document.getElementById("reg_detail").value;
-					if(name_check(n) && checkNumberReg(i) && pwd_check(pwd,pwdck) && phoneCheckReg(ph) && reg_detail != null && p != null) {
-						//document.getElementById("name").value = encodeURI(document.getElementById("name").value)
-						
-						send(document.getElementById("signup"));
-					} else {
-						alert("입력되지 않는 값이 있습니다.");
-						event.preventDefault();
-						
-					}
+					var formValues = $('#signup').serializeArray();
+					formValues.forEach((e)=>{
+						console.log(e);
+						if(!checkNullCheck(e.value) 
+							|| e.value === "") {
+							console.log(e);
+							alert("비어있는 값이 있습니다.");
+							return false;
+						}
+		 			})
+		 			
+					
+		 			if(!koreanCheckReg(formValues[0].value)) {
+		 				alert("이름에 숫자 또는 영어는 사용할 수 없습니다");
+		 				return false;
+		 			}
+					if(!koreanCheckReg(formValues[0].value)) {
+		 				alert("이름에 숫자 또는 영어는 사용할 수 없습니다");
+		 				return false;
+		 			}
+					
+					let pwdCheck = $("#supporter_password_check").val();
+					console.log(passwordCheckReg(formValues[2].value));
+					console.log(passwordCheckReg(pwdCheck));
+					
+		 			if(!pwd_check(formValues[2].value,pwdCheck)
+		 			|| !passwordCheckReg(formValues[2].value)
+		 			|| !passwordCheckReg(pwdCheck)) {
+		 				alert("비밀번호를 확인해 주세요");
+		 				return false;
+		 			}
+		 			
+		 			if(!phoneCheckReg(formValues[3].value)) {
+		 				alert("핸드폰 번호를 확인해 주세요");
+		 				return false;
+		 			}
+		 			
+		 			
+		 			if(!postCheckReg(formValues[4].value)) {
+		 				alert("우편 번호를 확인해 주세요");
+		 				return false;
+		 			}
+		 			
+		 			$('#signup').submit();
 				})
 				
-				$("#pwd").on('input',(e)=>{
-					let val = e.target.value;
-					
-					if(checkSpecialCheck(val)) {
-						PWResultMessage("*특수문자는 사용할 수 없습니다.");
-					} else if(!passwordCheckReg(val)) {
-						PWResultMessage("*영문, 숫자 8~20 자리 입력");
-						window.pwdResult = false;
-					} else {
-						PWResultMessage("*사용 가능한 비밀번호 입니다.");
-						window.pwdResult = true;
-					}
-					
-					
-				})
-
-				document.getElementById("pwdcheck").addEventListener('input',(e)=>{
-					
-					if(pwd_check($("#pwd").val(),e.target.value)) {
-						sucremovePWNode()
-						successPWNode("*영문, 숫자 8~20 자리 입니다.");
-					} else{
-						PWResultMessage("패스워드가 일치하지 않습니다.");
-					}
-				})
+				
 				
 				
 
 			</script>
 		</div>
 		
-		<script>
-			
-
-						
-			function idOverlap(str) {
-				//NULL값 체크 
-				if(!checkNullCheck(str)) {
-					idResultMessage("*아이디를 입력해 주세요")
-					return false;
-				} else if(checkSpecialCheck(str)){
-					idResultMessage("*특수문자는 사용할 수 없습니다.");
-					return false;
-				} else if(koreanCheckReg(str)) {
-					idResultMessage("*한글은 사용할 수 없습니다.");
-					return false;
-				} else if(!checkNumberReg(str)) {
-					idResultMessage("*숫자만 사용할 수 없습니다.");
-					return false;
-				} else {
-					return true;
-				}
-			}
-			
-			function successPWNode (str) {
-				let createText = document.getElementById("pwd-box");
-				if(createText.childElementCount == 0){
-					let h3 = document.createElement('h3');
-					h3.setAttribute('class','check-id-ps');
-					h3.style.color = "blue";
-					h3.innerText = str;
-					createText.appendChild(h3);
-				}
-						
-			}
-			function sucremovePWNode() {
-				let removeText = document.getElementById("pwd-box");
-				let h3 = removeText.children[0];
-				if(removeText.childElementCount) {
-					removeText.removeChild(h3);
-				}
-			}
-
-			
-			/*
-						
-			*/
-			function idResultMessage(str) {
-				removeNode();
-				createNode(str);
-			}
-			function createNode (str) {
-				let createText = document.getElementById("text-box");
-				if(createText.childElementCount == 0){
-					let h3 = document.createElement('h3');
-					h3.setAttribute('class','check-id-ps');
-					h3.innerText = str;
-					createText.appendChild(h3);
-				}
-						
-			}
-			function removeNode() {
-				let removeText = document.getElementById("text-box");
-				let h3 = removeText.children[0];
-				if(removeText.childElementCount) {
-					removeText.removeChild(h3);
-				}
-			}
-			function PWResultMessage(str) {
-				removePWNode();
-				createPWNode(str);
-			}
-			function createPWNode (str) {
-				let createText = document.getElementById("pwd-box");
-				if(createText.childElementCount == 0){
-					let h3 = document.createElement('h3');
-					h3.setAttribute('class','check-id-ps');
-					h3.innerText = str;
-					createText.appendChild(h3);
-				}
-						
-			}
-			function removePWNode() {
-				let removeText = document.getElementById("pwd-box");
-				let h3 = removeText.children[0];
-				if(removeText.childElementCount) {
-					removeText.removeChild(h3);
-				}
-			}
-			function passwordCheckReg(str) {
-				var regExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/g;
-				if(regExp.test(str)) {
-					return true;
-				} else {
-					return false;
-				}
-			}
-			function phoneCheckReg(str) {
-				var regExp = /\d{3}\d{4}\d{4}/g;
-				if(regExp.test(str)) {
-					return true;
-				} else {
-					return false;
-				}
-
-			}
-			function koreanCheckReg(str) {
-				var regExp = /[ㄱ-ㅎㅏ-ㅣ가-힣]/g;
-				if(regExp.test(str)){
-        			return true;
-    			} else {
-        			return false;
-    			}
-			}
-			
-					//공백 체크 
-			function checkNullCheck(str) {
-				var regExp = /./g;
-						
-				if(regExp.test(str)) {
-					return true;
-				} else {
-					return false;
-				}
-						
-			}
-					//특수문자 체크 
-			function checkSpecialCheck(str) {
-				var regExp = /[/\[\]\{\}\/\(\)\.\?\<\>!@#$%^&*]+/g;
-				
-				if(regExp.test(str)) {
-					return true;
-				} else {
-					return false;
-				}
-			}	
-					
-			//숫자만 체크
-			function checkNumberReg(str) {
-			var regExp = /[0-9_]*[a-z]+[0-9_]*/g;
-				if(regExp.test(str)) {
-					return true;
-				} else {
-					return false;
-				}
-			}
-
-			//회원가입 조건이 만족하지 않으면 회원가입 버튼이 활성화되지 않게 하기 
-
-			
-			/*
-				//최소 10자리 이상 : 영어 대문자, 소문자, 숫자, 특수문자 중 2종류 조합
-				//최소 8자리 이상 : 영어 대문자, 소문자, 숫자, 특수문자 중 3종류 조합
-				//비밀번호 생성 규칙을 확인하고 데이터가 null인지 그리고 패스워드 더블체크 
-			*/
-			function name_check(name) {
-				return koreanCheckReg(name);
-			}
-
-			function pwd_check(pwd,pwdcheck) {
-				return pwd === pwdcheck;
-			}
-			
-			function send(e) {
-				e.method = "POST"
-				e.action="signup.me";
-				e.submit();
-			}
-	</script>
-
+		
 
 		<!-- Page Footer-->
 		<mytag:pageFooter />
@@ -479,9 +313,6 @@
 	<script src="js/main.js"></script>
 	
 </body>
-
-
-
 </html>
 
 

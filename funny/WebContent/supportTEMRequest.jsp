@@ -1,6 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="mytag"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
+
+<c:set var="request" value="<%= request.getSession().getAttribute(\"supporter_id\")%>"/>
+<c:choose>
+	<c:when test="${request != null }">
+		<c:set var="userInfo" value="${request}" />
+	</c:when>
+	<c:when test="${request == null }">
+		<c:set var="userInfo" value="<%= null%>" /> 
+	</c:when>
+</c:choose>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -107,13 +121,12 @@
 	 <iframe name='iframe' style='display: none;'></iframe> 
 
 
+
 	<!-- Page Footer-->
 	<mytag:pageFooter />
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
-
-
 
 
 	<script>
@@ -141,6 +154,7 @@
 			});
 		}
 	</script>
+
 
 
 	<!-- popper -->
