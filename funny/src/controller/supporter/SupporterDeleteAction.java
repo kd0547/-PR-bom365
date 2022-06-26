@@ -23,6 +23,7 @@ public class SupporterDeleteAction implements Action{
 		
 		dto.setSupporter_id(request.getParameter("supporter_id"));
 		dto.setSupporter_password(request.getParameter("supporter_password"));
+		
 		boolean result = dao.SupporterDelete(dto);
 		
 		if(result == true) {

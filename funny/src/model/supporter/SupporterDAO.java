@@ -17,14 +17,9 @@ public class SupporterDAO {
 	 * supporter ㆍ c : insert - 회원가입 ㆍ c : selectLogin - 로그인
 	 */
 
-	Connection conn;
-	PreparedStatement pstmt;
-	ResultSet rs;
 
-	String sql_delete_info = "select supporter_id,supporter_password from supporter where supporter_id=? AND supporter_password=?";
-	String sql_delete = "delete FROM supporter where supporter_id=?";
-	String sql_update = "update supporter set supporter_name=?,supporter_password=?,phone_number=?,post_code=?,detailed_address=?  where supporter_id=?";
-	
+
+
 
 	SqlSessionFactory factory = SqlMapConfig.getFactory();
 	SqlSession sqlsession;
@@ -38,9 +33,15 @@ public class SupporterDAO {
 	// 회원가입
 	public boolean insert(SupporterDTO dto) {
 		boolean result = false;
-		if (sqlsession.insert("SupporterSQL.insert", dto) == 0) {
+		/*
+		 * insert() 리턴 타입
+		 * 성공 - 업데이트 된 행의 개수
+		 * 실패 - 업데이트 된 행의 개수(없으면 0)
+		 */
+		if (sqlsession.insert("SupporterSQL.insert", dto) != 0) {
 			result = true;
 		}
+		
 		return result;
 	}
 
@@ -66,11 +67,17 @@ public class SupporterDAO {
 		boolean result = false;
 		SupporterDTO data = new SupporterDTO();
 		data.setSupporter_id(supporter_id);
+		
+		/*
+		 * 	DB에 값이 없으면 NULL 반환 
+		 */
 		data = sqlsession.selectOne("SupporterSQL.selectSupporterCheck", data);
-		String idCheck = data.getSupporter_id();
-		if (supporter_id.equals(idCheck)) {
+		
+		if(data != null ) {
 			result = true;
 		}
+		
+		
 		return result;
 	}
 
@@ -84,35 +91,9 @@ public class SupporterDAO {
 	public boolean update(SupporterDTO dto) {
 		boolean result = false;
 
-		
-		try {
-			
-			conn = JDBCUtil.connect();
-			pstmt = conn.prepareStatement(sql_update);
-			
-			pstmt.setString(1, dto.getSupporter_name());
-			pstmt.setString(2, dto.getSupporter_password());
-			pstmt.setString(3, dto.getPhone_number());
-			pstmt.setString(4, dto.getPost_code());
-			pstmt.setString(5, dto.getDetailed_address());
-			pstmt.setString(6, dto.getSupporter_id());
-			
-			if(pstmt.executeUpdate() != 0) {
-				
-				result = true;
-			} else {
-				result = false;
-			}
-
-			
-		} catch (SQLException e) {
-			System.out.println("SupporterDAO의 SupporterUpdate()에서 문제발생!");
-			e.printStackTrace();
-			
-		} finally {
-			JDBCUtil.disconnect(pstmt, conn);
+		if (sqlsession.update("SupporterSQL.update", dto) != 0) {
+			result = true;
 		}
-		
 
 		return result;
 	}

@@ -22,6 +22,7 @@ public class IDCheckAction extends HttpServlet implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String id = request.getParameter("id");
+		System.out.println(id);
 	
 		response.getWriter().print(idCheck(id));
 		return null;

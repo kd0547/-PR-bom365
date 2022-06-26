@@ -40,6 +40,7 @@ public class SupporterFrontController extends HttpServlet {
 			try {
 				forward = new IDCheckAction().execute(request, response);
 			} catch (Exception e) {
+				e.printStackTrace();
 				System.out.println("idCheck.me 수행중 문제 발생");
 			}
 		}
@@ -50,6 +51,7 @@ public class SupporterFrontController extends HttpServlet {
 				forward = new SignUpAction().execute(request, response);
 				
 			} catch (Exception e) {
+				e.printStackTrace();
 				System.out.println("signup.me 수행중 문제 발생");
 			}
 		}
@@ -78,6 +80,7 @@ public class SupporterFrontController extends HttpServlet {
 				forward = new MyPageAction().execute(request, response);
 				
 			} catch (Exception e) {
+				e.printStackTrace();
 				System.out.println("mypage.me 수행중 문제 발생");
 			}
 		}
@@ -88,6 +91,7 @@ public class SupporterFrontController extends HttpServlet {
 				forward = new SupporterUpdateAction().execute(request, response);
 				
 			} catch (Exception e) {
+				e.printStackTrace();
 				System.out.println("supporterUpdate.me 수행중 문제 발생");
 			}
 		}
@@ -103,9 +107,10 @@ public class SupporterFrontController extends HttpServlet {
 			}
 		} else if(command.equals("userUpdate")) {
 			try {
-				forward = new SupporterUpdate().execute(request, response);
+				forward = new SupporterUpdateAction().execute(request, response);
 				
 			} catch (Exception e) {
+				e.printStackTrace();
 				System.out.println("userUpdate.me 수행중 문제 발생");
 			}
 		}
