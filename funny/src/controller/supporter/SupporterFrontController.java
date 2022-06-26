@@ -13,12 +13,14 @@ import java.io.IOException;
 @WebServlet(name = "SupporterFrontController", value = "/SupporterFrontController")
 public class SupporterFrontController extends HttpServlet {
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		actionDO(request, response);
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		actionDO(request, response);
 	}
@@ -37,8 +39,9 @@ public class SupporterFrontController extends HttpServlet {
 		// 아이디 중복 체크
 		if(command.equals("idCheck")) {
 			try {
-				forward = new IdCheckAction().execute(request, response);
+				forward = new IDCheckAction().execute(request, response);
 			} catch (Exception e) {
+				e.printStackTrace();
 				System.out.println("idCheck.me 수행중 문제 발생");
 			}
 		}
@@ -49,6 +52,7 @@ public class SupporterFrontController extends HttpServlet {
 				forward = new SignUpAction().execute(request, response);
 				
 			} catch (Exception e) {
+				e.printStackTrace();
 				System.out.println("signup.me 수행중 문제 발생");
 			}
 		}
@@ -77,6 +81,7 @@ public class SupporterFrontController extends HttpServlet {
 			try {
 				forward = new MyPageAction().execute(request, response);
 			} catch (Exception e) {
+				e.printStackTrace();
 				System.out.println("mypage.me 수행중 문제 발생");
 			}
 		}
@@ -85,7 +90,9 @@ public class SupporterFrontController extends HttpServlet {
 		else if(command.equals("update")) {
 			try {
 				forward = new UpdateAction().execute(request, response);
+				
 			} catch (Exception e) {
+				e.printStackTrace();
 				System.out.println("update.me 수행중 문제 발생");
 			}
 		}
@@ -97,7 +104,7 @@ public class SupporterFrontController extends HttpServlet {
 			} catch (Exception e) {
 				System.out.println("withdrawal.me 수행중 문제 발생");
 			}
-		}
+		} 
 
 		// 만약 forward 가 null 이라면 null pointer exception 이 발생하기 떄문에 대비
 		if (forward != null) {

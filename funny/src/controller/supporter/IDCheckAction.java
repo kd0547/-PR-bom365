@@ -12,12 +12,16 @@ import controller.ActionForward;
 import model.supporter.SupporterDAO;
 
 
-public class IdCheckAction extends HttpServlet implements Action{
+public class IDCheckAction extends HttpServlet implements Action{
 	SupporterDAO idCheck = new SupporterDAO();
+	
+
+	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String id = request.getParameter("id");
+		System.out.println(id);
 	
 		response.getWriter().print(idCheck(id));
 		return null;

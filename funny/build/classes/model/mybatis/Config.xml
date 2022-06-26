@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="model.animal.AnimalDTO" alias="AnimalDTO" />
+		<typeAlias type="model.application.ApplicationDTO" alias="ApplicationDTO"/>
+		<typeAlias type="model.board.Board_commentDTO" alias="Board_commentDTO" />
+		<typeAlias type="model.board.BoardDTO" alias="BoardDTO" />
+		<typeAlias type="model.supporter.SupporterDTO" alias="SupporterDTO" />
+		<typeAlias type="model.support.SupportREGDTO" alias="SupportREGDTO" />
+		<typeAlias type="model.support.SupportTEMDTO" alias="SupportTEMDTO" />
+		<typeAlias type="model.volunteer.VolunteerDTO" alias="VolunteerDTO" />
+	</typeAliases>
+	
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+                <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+                <property name="username" value="seyoung" />
+                <property name="password" value="1234" />
+            </dataSource>
+        </environment>
+    </environments>
+    
+    <mappers>
+        <mapper resource="model/sql/AnimalSQL.xml" />
+        <mapper resource="model/sql/ApplicationSQL.xml"/>
+        <mapper resource="model/sql/BoardSQL.xml" />
+        <mapper resource="model/sql/SupporterSQL.xml" />
+        <mapper resource="model/sql/SupportSQL.xml" />
+        <mapper resource="model/sql/VolunteerSQL.xml" />
+    </mappers>
+</configuration>

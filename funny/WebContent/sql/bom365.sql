@@ -22,7 +22,7 @@ select * from volunteer;
 -- truncate table board;
 -- truncate table board_comment;
 -- truncate table volunteer;
-
+delete supporter where supporter_id = 'aaaaa';
  -- 회원
 CREATE TABLE supporter (  
 	supporter_id				VARCHAR2(20)		CONSTRAINT PK_member PRIMARY KEY,

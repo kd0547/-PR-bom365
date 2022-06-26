@@ -1,8 +1,6 @@
 package controller.supporter;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 
 import javax.servlet.ServletException;
 
@@ -24,24 +22,17 @@ public class SignUpAction  implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		SupporterDTO supporterVO = new SupporterDTO();
+		SupporterDTO supporterDTO;
+		supporterDTO = createSupporterVO(request);
 		
-		
-		supporterVO = createSupporterVO(request);
-		
-		
-		if(supporterVO != null) {
-			if(supporterDAO.insert(supporterVO)) {
+		if(supporterDTO != null) {
+			if(supporterDAO.insert(supporterDTO)) {
 				forward = new ActionForward();
 				forward.setPath("signupDone.jsp");
 				forward.setRedirect(true);
-				
-				
 			} else {
 				System.out.println("insert 실패");
 			}
-			
-			
 		} else {
 			System.out.println("supporterVO 생성 실패");
 		}
@@ -64,27 +55,13 @@ public class SignUpAction  implements Action{
 			supporter.setPost_code(request.getParameter("post_code"));
 			supporter.setDetailed_address(request.getParameter("detailed_address"));
 			
+			supporter.toString();
+			
 			return supporter;
 		} 
 		
 		
 		return supporter;
 	}
-	/*
-	 * 필요 없음 
-	 * 
-	 */
-	public String decodingName(String name) {
-		
-		
-		try {
-			return URLDecoder.decode(name,"utf-8");
-			
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return name;
-	}
-	
+
 }
