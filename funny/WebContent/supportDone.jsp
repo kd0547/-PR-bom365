@@ -70,8 +70,7 @@
 						</p>
 						<h3 class="mb-4">ㆍ후원 신청 완료ㆍ<br>후원해 주셔서 정말 감사합니다.</h3>
 						<p>
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<a href="main.jsp" class="btn btn-primary" id="complete">메인으로 돌아가기</a>
+							<a href="main.do" class="btn btn-primary" id="complete">메인으로 돌아가기</a>
 						</p>
 					</div>
 				</div>
@@ -87,6 +86,7 @@
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 
+	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->

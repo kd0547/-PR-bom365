@@ -49,6 +49,8 @@
 
 <!-- contact deleteAccount.css -->
 <link rel="stylesheet" href="css/deleteAccount.css">
+<link rel="stylesheet" href="css/supportRequest.css">
+<link rel="stylesheet" href="css/support.css">
 
 </head>
 
@@ -58,7 +60,7 @@
 	<div id="page">
 
 		<!-- Page Header-->
-		<mytag:pageHeader/>
+		<mytag:pageHeader />
 
 		<div class="breadcrumbs">
 			<div class="container">
@@ -108,7 +110,8 @@
 								</div>
 
 								<div class="tab-pane border fade" id="pills-manufacturer"
-									role="tabpanel" aria-labelledby="pills-manufacturer-tab">
+									role="tabpanel" aria-labelledby="pills-manufacturer-tab"
+									style="padding: 32px 0 4em 0;">
 									<mytag:mytable />
 								</div>
 
@@ -133,6 +136,7 @@
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 
+	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->

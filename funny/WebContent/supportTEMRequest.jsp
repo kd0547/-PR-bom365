@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="mytag"%>
+<<<<<<< HEAD
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+=======
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
@@ -15,6 +18,7 @@
 	</c:when>
 </c:choose>
 
+>>>>>>> branch 'main' of https://github.com/bom365/-PR-bom365.git
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -71,10 +75,7 @@
 
 </head>
 
-<body id="tem">
-
-
-	<div class="colorlib-loader"></div>
+<body id="page">
 
 	<!-- Page Header-->
 	<mytag:pageHeader />
@@ -84,7 +85,6 @@
 			<div class="row">
 				<div class="col">
 					<p class="bread">
-						<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 						<span><a href="support.jsp">후원신청</a></span> / <span>일시후원</span>
 					</p>
 				</div>
@@ -94,34 +94,51 @@
 
 
 	<h1 id="menuTitle">일시후원신청</h1>
+	<hr>
 
-	
-
-<!-- action수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-	<div class="container-tem">
-		<form action="supprotTEMRequest.sp" method="post" target="iframe">
-			<div class="signup-form-container tem">
-				<div class="js-focus-state form-group tem">
-						<span class="h4 tem">금액</span> 
-						<select name="temporary_amount"class="form-control input tem" id="kakaopay-amount" 
-						        data-msg="금액을 선택해 주세요" data-error-class="u-has-error" data-success-class="u-has-success">
-							<option value="50,000">50,000</option>
-							<option value="100,000">100,000</option>
-							<option value="150,000">150,000</option>
-							<option value="200,000">200,000</option>
-							<option value="250,000">250,000</option>
-							<option value="300,000">300,000</option>
-						</select>
-				</div>
-
-						<input type="submit" onclick="requestPay()" class="btn btn-primary supprot tem" value="&nbsp;신청하기&nbsp;">
-			</div>
-		</form>
+	<div class="volReqFirstDiv">
+		<div style="display: inline-block;">
+			<table>
+				<tr>
+					<td style="display: flex;"><h4>금액&nbsp;&nbsp;</h4> <select
+						name="temporary_amount" class="form-control input tem"
+						id="kakaopay-amount" data-msg="금액을 선택해 주세요"
+						data-error-class="u-has-error" data-success-class="u-has-success">
+							<option value="">🐶🐱🐶🐱</option>
+						<option value="10,000">10,000</option>
+						<option value="30,000">30,000</option>
+						<option value="50,000">50,000</option>
+						<option value="100,000">100,000</option>
+						<option value="150,000">150,000</option>
+						<option value="200,000">200,000</option>
+						<option value="250,000">250,000</option>
+						<option value="300,000">300,000</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td><c:choose>
+							<c:when test="${supporter_id == null }">
+								<input type="submit" onclick="loginCheck()"
+									class="btn btn-primary del support" value="&nbsp;신청하기&nbsp;">
+							</c:when>
+							<c:otherwise>
+								<input type="submit" onclick="requestPay();"
+									class="btn btn-primary del support" value="&nbsp;신청하기&nbsp;">
+							</c:otherwise>
+						</c:choose></td>
+				</tr>
+			</table>
+		</div>
+		<h6 style="margin-bottom: 5em; color: #59595978;">카카오페이 결제 페이지로 넘어갑니다.</h6>
 	</div>
-	 <iframe name='iframe' style='display: none;'></iframe> 
+
+<<<<<<< HEAD
+	<hr style="margin-top: 0;">
+	<mytag:howToUseSupport />
+=======
 
 
-
+>>>>>>> branch 'main' of https://github.com/bom365/-PR-bom365.git
 	<!-- Page Footer-->
 	<mytag:pageFooter />
 	<div class="gototop js-top">
@@ -130,6 +147,7 @@
 
 
 	<script>
+		//KAKAO API
 		var IMP = window.IMP; // 생략 가능
 		IMP.init("imp44896858"); // 가맹점 식별코드
 
@@ -138,25 +156,50 @@
 			IMP.request_pay({
 				pg : "html5_inicis",
 				pay_method : "card",
-				temporary_number : "500088",
+				temporary_number : "5000_" + new Date().getTime(),
 				//관리자페이지(주문명)에 노출될 정보들(밑으론 key값 변경불가능)
 				name : "봄365 후원",
 				amount : document.getElementById("kakaopay-amount").value,
-				supporter_id : "gildong@gmail.com",
-				buyer_name : "홍길동",
+				supporter_id : "${supporter_id}",
+				buyer_name : "${supporter_name}",
 			}, function(rsp) {
 				if (rsp.success) {
 					location.href = "supportDone.jsp";
 				} else {
 					alert("결제에 실패했습니다.");
-					location.href = "supportTEMRequest.jsp";
+					location.href = "supportTEMInsert.jsp";
 				}
 			});
 		}
+
+		//데이터 Controller로 전송
+		$('#kakaopay-amount').change(
+				function() {
+
+					$.ajax({
+						url : "supportTEMInsert.sp",
+						type : 'get',
+						data : {
+							temporary_amount : $(
+									'#kakaopay-amount option:selected').val()
+						},
+						success : function(data) {
+						},
+						error : function() {
+							console.log("supportTEMInsert ajax진입안됨");
+						}
+					});
+
+					console.log(amount_input);
+				});
 	</script>
 
 
+<<<<<<< HEAD
+	<script src="js/loginCheck.js"></script>
+=======
 
+>>>>>>> branch 'main' of https://github.com/bom365/-PR-bom365.git
 	<!-- popper -->
 	<script src="js/popper.min.js"></script>
 	<!-- bootstrap 4.1 -->

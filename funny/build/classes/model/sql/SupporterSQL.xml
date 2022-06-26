@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SupporterSQL">
+	<insert id="insert" parameterType="SupporterDTO">
+		insert into supporter values(#{supporter_id},#{supporter_name},#{supporter_password},#{phone_number},#{post_code},#{detailed_address})
+	</insert>
+	<select id="selectSupporterCheck" parameterType="SupporterDTO" resultType="SupporterDTO">
+		select * from supporter where supporter_id=#{supporter_id}
+	</select>
+	<select id="idCheck" parameterType="string" resultType="string">
+		select supporter_id from supporter where supporter_id=#{supporter_id}
+	</select>
+	<select id="deleteInfo" parameterType="SupporterDTO" resultType="SupporterDTO">
+		select * from supporter where supporter_id=#{supporter_id} and supporter_password=#{supporter_password}
+	</select>
+	<delete id="delete" parameterType="SupporterDTO">
+		delete from supporter where supporter_id=#{supporter_id}
+	</delete>
+	<update id="update" parameterType="SupporterDTO">
+		update supporter set supporter_name=#{supporter_name},supporter_password=#{supporter_password},phone_number=#{phone_number},post_code=#{post_code},detailed_address=#{detailed_address}
+		 where  supporter_id=#{supporter_id}
+	</update>
+</mapper>

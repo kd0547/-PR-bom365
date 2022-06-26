@@ -482,8 +482,7 @@ pre {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px; }
+  }
 
 .no-gutters {
   margin-right: 0;
@@ -7422,7 +7421,6 @@ h1, h2, h3, h4, h5,
       display: none; } }
 
 .colorlib-nav ul {
-   width: 453px;
    float: right;
   padding: 0;
   margin: -39px 0 0 -12px; }
@@ -7451,7 +7449,7 @@ h1, h2, h3, h4, h5,
     .colorlib-nav ul li.has-dropdown {
       position: relative; }
       .colorlib-nav ul li.has-dropdown .dropdown {
-        width: 130px;
+        width: 153px;
         -webkit-box-shadow: 0px 14px 33px -9px rgba(0, 0, 0, 0.75);
         -moz-box-shadow: 0px 14px 33px -9px rgba(0, 0, 0, 0.75);
         box-shadow: 0px 14px 33px -9px rgba(0, 0, 0, 0.75);
@@ -8891,7 +8889,7 @@ a.fcbutton {
 div#login {
   	width: 100%;
     text-align: center;
-    margin-bottom: 10em;
+    margin-bottom: 13em;
     margin-top: 1em;
 }
 #menuTitle {
@@ -8991,7 +8989,7 @@ tbody.boardTbottom {
     border-bottom: 2px solid #dee2e6;
 }
 .twins-wrap {
-    padding: 2em;
+    padding: 2em 0 4em 0;
     height: 100%;
 }
 .twin.container {
@@ -9063,9 +9061,11 @@ a.btn.btn-primary.boardUD {
 }
 .btn.btn-primary.del:focus, .btn.btn-primary.del:active {
     background: #cbbd89 !important;
+   	color: #fff  !important;
 }
 .btn.btn-primary.del:hover {
     background: #5e5840 !important;
+   	color: #fff  !important;
 }
 .btn.btn-primary.boardUD:focus, .btn.btn-primary.boardUD:active {
 	background: #978d67  !important;
@@ -9136,4 +9136,23 @@ small.volBack:hover {
 a.btn.btn-primary.main {
     font-size: 17px !important;
     border-radius: 40px;
+}
+input.btn.btn-primary.del.support {
+    margin: 1.5em 0px 0 0 !important;
+    width: 10em;
+}
+a.mainREG {
+    color: #797152;
+    cursor: pointer;
+}
+a.mainREG:hover {
+    color: white;
+    cursor: pointer;
+}
+textarea.form-control.gap.one {
+	border-radius: 8px;
+	border: 0px !important;
+	font-size: 1.25rem !important;
+	padding: 14px;
+    min-height: 330px;
 }

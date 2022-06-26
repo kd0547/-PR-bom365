@@ -22,8 +22,8 @@ select * from volunteer;
 -- truncate table board;
 -- truncate table board_comment;
 -- truncate table volunteer;
-
--- 회원
+delete supporter where supporter_id = 'aaaaa';
+ -- 회원
 CREATE TABLE supporter (  
 	supporter_id				VARCHAR2(20)		CONSTRAINT PK_member PRIMARY KEY,
 	supporter_name		VARCHAR2(20)		NOT NULL,
@@ -71,6 +71,7 @@ CREATE TABLE application (
 	supporter_id				VARCHAR2(20),
 	application_title			VARCHAR2(100) 	NOT NULL,
 	application_content	VARCHAR2(4000)	NOT NULL,
+	application_date		VARCHAR2(	20)		NOT NULL,
 	
 	CONSTRAINTS FK_animal_TO_application FOREIGN KEY (animal_number) REFERENCES  animal (animal_number)
 	ON DELETE CASCADE,			-- animal 데이터 삭제시 입양신청내역 삭제
@@ -82,10 +83,12 @@ CREATE TABLE application (
 CREATE TABLE support_regular (
 	regular_number			NUMBER					CONSTRAINT support_regular PRIMARY KEY,
 	supporter_id				VARCHAR2(20)		NOT NULL,
-	regular_amount			NUMBER					NOT NULL,
+	regular_amount			NUMBER(10,4)		NOT NULL,
 	regular_bank				VARCHAR2(50)		NOT NULL,
 	regular_account		VARCHAR2(20)		NOT NULL,
 	regular_date				VARCHAR2(20)		NOT NULL,
+	regular_end				VARCHAR2(20)		DEFAULT '진행중' NOT NULL,
+
 	
 	CONSTRAINTS FK_MEMBER_TO_REGULAR FOREIGN KEY (supporter_id) REFERENCES  supporter (supporter_id)
 	--후원중인 회원은 탈퇴 불가
@@ -95,7 +98,7 @@ CREATE TABLE support_regular (
 CREATE TABLE support_temporary (
 	temporary_number	NUMBER					CONSTRAINT support_temporary PRIMARY KEY,
 	supporter_id				VARCHAR2(20),
-	temporary_amount	NUMBER					NOT NULL,
+	temporary_amount	NUMBER(10,4)		NOT NULL,
 	temporary_date			VARCHAR2(20)		NOT NULL,
 	
 	CONSTRAINTS FK_supporter_TO_temporary FOREIGN KEY (supporter_id) REFERENCES  supporter (supporter_id)

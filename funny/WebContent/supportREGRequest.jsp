@@ -51,60 +51,134 @@
 </head>
 
 <body>
-	<div id="page">
 
-		<!-- Page Header-->
-		<mytag:pageHeader/>
+	<!-- Page Header-->
+	<mytag:pageHeader />
 
-		<div class="breadcrumbs">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						<p class="bread">
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<span><a href="support.jsp">후원신청</a></span> / <span>정기후원</span>
-						</p>
-					</div>
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<p class="bread">
+						<span><a href="support.jsp">후원신청</a></span> / <span>정기후원</span>
+					</p>
 				</div>
 			</div>
 		</div>
-
-
-		<h1 id="menuTitle">정기후원신청</h1>
-
-		<div class="signup-form-container">
-<!-- action수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-			<form action="supportDone.jsp" method="post"
-				class="woocommerce-form woocommerce-form-register register ">
-					<div class="input-container">
-						<label class="reg_signup">은행&nbsp;</label>
-							<input type="text"	class="woocommerce-Input woocommerce-Input--text input-text" name="regular_bank">
-						</div>
-						<div class="input-container">
-						<label class="reg_signup">계좌번호&nbsp;</label>
-							<input type="text"	class="woocommerce-Input woocommerce-Input--text input-text" name="regular_account">
-						</div>
-						<div class="input-container">
-						<label class="reg_signup">금액&nbsp;</label>
-							<input type="text"	class="woocommerce-Input woocommerce-Input--text input-text" name="regular_amount">
-						</div>
-						<div class="input-container">
-						<label class="reg_signup">후원시작일&nbsp;</label>
-					   		 <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="regular_date">
-						</div>
-							<input type="submit" class="btn btn-primary supprot" value="&nbsp;신청하기&nbsp;">
-			</form>
-
-		</div>
-
-
-		<!-- Page Footer-->
-		<mytag:pageFooter />
 	</div>
+
+
+	<h1 id="menuTitle">정기후원신청</h1>
+	<hr>
+
+	<div class="volReqFirstDiv">
+		<div style="display: inline-block;">
+			<form action="supportREGInsert.sp" method="post" name="frm"
+				class="woocommerce-form woocommerce-form-register register">
+				<div class="input-container">
+					<label class="reg_signup">은행&nbsp;</label> <select
+						name="regular_bank"
+						class="woocommerce-Input woocommerce-Input--text input-text select"
+						id="regular_bank">
+						<mytag:bankList />
+					</select>
+				</div>
+				<div class="input-container">
+					<label class="reg_signup">계좌번호&nbsp;</label> <input type="text"
+						class="woocommerce-Input woocommerce-Input--text input-text"
+						id="regular_account" name="regular_account">
+				</div>
+				<div class="input-container">
+					<label class="reg_signup">금액&nbsp;</label> <select
+						name="regular_amount"
+						class="woocommerce-Input woocommerce-Input--text input-text select"
+						id="regular_amount">
+						<option value="">🌼 후원금액을 선택해 주세요 🌼</option>
+						<option value="">========================================</option>
+						<option value="10,000">10,000</option>
+						<option value="30,000">30,000</option>
+						<option value="50,000">50,000</option>
+						<option value="100,000">100,000</option>
+						<option value="150,000">150,000</option>
+						<option value="200,000">200,000</option>
+						<option value="250,000">250,000</option>
+						<option value="300,000">300,000</option>
+					</select>
+				</div>
+				<div class="input-container">
+					<label class="reg_signup">후원시작일&nbsp;</label> <input type="date"
+						class="woocommerce-Input woocommerce-Input--text input-text regDate"
+						name="regular_date">
+				</div>
+
+				<input type="submit" onClick="sendit(); return false;"
+					class="btn btn-primary supprot" value="신청하기">
+			</form>
+		</div>
+	</div>
+
+	<hr>
+	<mytag:howToUseSupport />
+
+
+	<script>
+		function sendit() {
+
+			let frm = document.frm;
+			let regular_bank = frm.regular_bank;
+			let regular_account = frm.regular_account;
+			let regular_date = frm.regular_date;
+			let checkString = /[-!%^@#$&*+.?]/gi;
+			let supporter_id = "${supporter_id}";
+
+			if (checkString.test(regular_amount.value)) {
+				alert("특수문자는 입력할 수 없습니다!");
+				regular_date.focus();
+				return false;
+			}
+
+			if (regular_bank.value == "") {
+				alert("은행을 선택해 주세요!");
+				regular_bank.focus();
+				return false;
+			}
+
+			if (regular_account.value == "") {
+				alert("계좌번호를 입력하세요!");
+				regular_account.focus();
+				return false;
+			}
+
+			if (regular_amount.value == "") {
+				alert("후원금액을 선택해 주세요!");
+				regular_amount.focus();
+				return false;
+			}
+
+			if (regular_date.value == "") {
+				alert("후원날짜를 입력하세요!");
+				regular_date.focus();
+				return false;
+			}
+
+			if (supporter_id == "") {
+				alert("로그인 후 이용해주세요!");
+				return false;
+			}
+
+			frm.submit();
+		}
+	</script>
+
+
+	<!-- Page Footer-->
+	<mytag:pageFooter />
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 
+
+	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->
@@ -129,7 +203,4 @@
 	<!-- Main -->
 	<script src="js/main.js"></script>
 </body>
-
-
-
 </html>

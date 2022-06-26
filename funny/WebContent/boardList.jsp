@@ -41,8 +41,6 @@
 
 <!-- Theme style  -->
 <link rel="stylesheet" href="css/style.css">
-
-<!-- contect boardList.css -->
 <link rel="stylesheet" href="css/boardList.css">
 
 </head>
@@ -51,7 +49,7 @@
 	<div id="page">
 
 		<!-- Page Header-->
-		<mytag:pageHeader/>
+		<mytag:pageHeader />
 
 		<div class="breadcrumbs">
 			<div class="container">
@@ -64,9 +62,9 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<h1 id="menuTitle">자유게시판</h1>
-		
+
 		<!-- BoardList -->
 		<div class="boardListFirstDiv">
 			<div style="display: inline-block;">
@@ -76,9 +74,7 @@
 							<td class="removeBorderTop"></td>
 							<td colspan="2" class="removeBorderTop"
 								style="padding-inline: 120px;">
-								
-								<!-- 로그인했을시에만 글 작성 가능 -->
-								<c:choose>
+								<!-- 로그인했을시에만 글 작성 가능 --> <c:choose>
 									<c:when test="${supporter_id==null}">
 										<a href="login.jsp" class="btn btn-primary inputSubmit apply">로그인
 											후 작성가능</a>
@@ -87,10 +83,9 @@
 										<a href="boardRequest.jsp"
 											class="btn btn-primary inputSubmit apply">글 작성하기</a>
 									</c:otherwise>
-								</c:choose>
-								
-								<!-- 검색 -->
-								<form method="post" action="boardSearch.do" style="float: right;">
+								</c:choose> <!-- 검색 -->
+								<form method="post" action="boardSearch.do"
+									style="float: right;">
 									<input type="text" name="keyword" class="searchKeyword">
 									<input type="submit" value="검색"
 										class="btn btn-primary inputSubmit searchButton">
@@ -99,12 +94,11 @@
 							</td>
 							<td class="removeBorderTop"></td>
 						</tr>
-						
+
 						<tr>
 							<td class="removeBorderTop"></td>
 							<td colspan="2" class="removeBorderTop" style="float: right;"><h6>
-									정렬 :&nbsp; 
-									<a href="boardCategory.do?category=recent">최신순</a>&nbsp;|&nbsp;
+									정렬 :&nbsp; <a href="boardCategory.do?category=recent">최신순</a>&nbsp;|&nbsp;
 									<a href="boardCategory.do?category=comment">댓글순</a>&nbsp;
 									<!-- 로그인이안돼있다면 숨김 -->
 									<c:if test="${supporter_id!=null}">
@@ -113,7 +107,7 @@
 								</h6></td>
 							<td class="removeBorderTop"></td>
 						</tr>
-						
+
 						<tr class="boardHead">
 							<td style="width: 7em;">번호</td>
 							<td style="width: 28em;">제목</td>
@@ -137,13 +131,13 @@
 											<c:when test="${v.supporter_id=='admin'}">
 												<td>공지</td>
 												<td colspan="3" class="boardTitle"><a
-													href="boardDetail.do?board_number=${v.board_number}"
+													href="boardOne.do?board_number=${v.board_number}"
 													style="color: #b74a55;">[필독]&nbsp;&nbsp;&nbsp;${v.board_title}</a></td>
 											</c:when>
 											<c:otherwise>
 												<td>${v.board_number}</td>
 												<td class="boardTitle"><a
-													href="boardDetail.do?board_number=${v.board_number}"
+													href="boardOne.do?board_number=${v.board_number}"
 													style="color: #978d67;">${v.board_title}&nbsp; <b
 														style="color: #978d678c;">[${v.board_commentCnt}]</b>
 												</a></td>
@@ -159,8 +153,8 @@
 				</table>
 			</div>
 		</div>
-<!-- 페이지네이션 구현한다면 유지//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- 		<div style="margin-bottom: 3em;">
+		<!-- 페이지네이션 구현한다면 유지//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+		<!-- 		<div style="margin-bottom: 3em;">
 			<div class="col-md-12 text-center">
 				<div class="block-27">
 					<ul>
@@ -185,6 +179,7 @@
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 
+	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->

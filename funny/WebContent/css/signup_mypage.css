@@ -51,6 +51,10 @@ ul{
     border-radius: 10px;
     border-style: solid !important;
     border-color: rgb(203, 189, 137) !important;
+    padding: 7px;
+    font-size: large;
+    height: 43px !important;
+    color: #595959;
 }
 
 .woocommerce-Input.woocommerce-Input--text.input-text:focus {
@@ -108,6 +112,7 @@ input.searchingPostcode {
     background: #cbbd89;
     border-color: #cbbd8900;
     color: white;
+    height: 43px;
 }
 
 input.searchingPostcode:hover {
