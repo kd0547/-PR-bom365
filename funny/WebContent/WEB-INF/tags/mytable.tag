@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="s"%>
 
 <script type="text/javascript">
-	function del() {
+	function end() {
 		var ans = confirm("정말 후원을 중지하시겠습니까?");
 		if (ans == true) {
 
@@ -42,24 +42,28 @@
 												<h4>후원 내역이 없습니다!</h4>
 											</td>
 										</tr>
-									</c:when>
-									<c:otherwise>
-										<c:forEach var="spList" items="${MypageREGList}">
-											<tr>
-												<td>${spList.regular_bank }</td>
-												<td>${spList.regular_account }</td>
-												<td>${spList.regular_amount }</td>
-												<td>${spList.regular_date }</td>
-												<td>${spList.regular_end }</td>
-											</tr>
-										</c:forEach>
-									</c:otherwise>
-								</c:choose>
 							</tbody>
 						</table>
+						<a href="supportREGRequest.jsp"
+							class="btn btn-primary del support">후원하러 가기</a>
+						</c:when>
+						<c:otherwise>
+							<c:forEach var="spList" items="${MypageREGList}">
+								<tr>
+									<td>${spList.regular_bank }</td>
+									<td>${spList.regular_account }</td>
+									<td>${spList.regular_amount }</td>
+									<td>${spList.regular_date }</td>
+									<td>${spList.regular_end }</td>
+								</tr>
+							</c:forEach>
+							</tbody>
+							</table>
+						</c:otherwise>
+						</c:choose>
 						<c:if test="${regular_end=='진행중'}">
 							<a href="#" id="trans" class="btn btn-primary del support"
-								onclick="del()">&nbsp;후원종료&nbsp;</a>
+								onclick="end()">&nbsp;후원종료&nbsp;</a>
 						</c:if>
 					</div>
 				</div>
@@ -70,7 +74,8 @@
 				<h2>일시후원내역</h2>
 				<div>
 					<div>
-						<table class="board table" style="text-align: center;">
+						<table class="board table"
+							style="text-align: center; margin-bottom: 14px;">
 							<tbody>
 								<tr class="boardHead">
 									<td>금액</td>
@@ -82,23 +87,32 @@
 								<c:choose>
 									<c:when test="${MypageTEMList.size() == 0}">
 										<tr class="boardHead">
-											<td colspan="2"><h6>후원 내역이 없습니다!</h6></td>
+											<td colspan="2">
+												<h4>후원 내역이 없습니다!</h4>
+											</td>
 										</tr>
-									</c:when>
-									<c:otherwise>
-										<c:forEach var="spList" items="${MypageTEMList}">
-											<tr>
-												<td>${spList.temporary_amount }</td>
-												<td>${spList.temporary_date }</td>
-											</tr>
-										</c:forEach>
-									</c:otherwise>
-								</c:choose>
 							</tbody>
 						</table>
+						<a href="supportTEMRequest.jsp"
+							class="btn btn-primary del support">후원하러 가기</a>
+						</c:when>
+						<c:otherwise>
+							<c:forEach var="spList" items="${MypageTEMList}">
+								<tr>
+									<td>${spList.temporary_amount }</td>
+									<td>${spList.temporary_date }</td>
+								</tr>
+							</c:forEach>
+							</tbody>
+							</table>
+						</c:otherwise>
+						</c:choose>
+
 					</div>
 				</div>
 			</div>
 		</div>
+
+
 	</div>
 </div>

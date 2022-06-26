@@ -13,7 +13,7 @@ public class SupportTEMDAO {
 
 	public SupportTEMDAO() {
 		sqlsession = factory.openSession(true);
-		System.out.println("factory값 가져오기 성공 (sqlsession과 dao연결성공):");
+		System.out.println("factory값 가져오기 성공 (sqlsession과 dao연결성공)");
 	}
 
 	// 일시후원 데이터 insert

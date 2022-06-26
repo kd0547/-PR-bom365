@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import controller.Action;
 import controller.ActionForward;
 import model.application.ApplicationDAO;
+import model.application.ApplicationDTO;
 
 public class AdminApplicationOneAction implements Action {
 
@@ -13,10 +14,11 @@ public class AdminApplicationOneAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		ApplicationDAO apdao = new ApplicationDAO();
+		ApplicationDTO apdto = new ApplicationDTO();
 		
-		int application_number = Integer.parseInt( request.getParameter("application_number") );
+		apdto.setApplication_number(Integer.parseInt(request.getParameter("application_number")));
 		
-		request.setAttribute("application", apdao.selectOne(application_number));
+		request.setAttribute("application", apdao.selectOne(apdto));
 		forward.setRedirect(false);
 		forward.setPath("adminApplicationOne.jsp");
 		

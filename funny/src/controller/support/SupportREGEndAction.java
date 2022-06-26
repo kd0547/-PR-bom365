@@ -28,15 +28,20 @@ public class SupportREGEndAction implements Action{
 	    System.out.println(supporter_id);
 	    
 	    regdao.setEnd(supporter_id);
-
+	    
 		// 정기후원 중 중복신청 불가능
 		List<SupportREGDTO> supportREGdto = regdao.SupportREGEndCheck(supporter_id);
 
 		// 정기후원기록이 복수인 사람 대비
 		if (supportREGdto.size() > 1) {
 			session.setAttribute("regular_end", supportREGdto.get(supportREGdto.size() - 1));
+			System.out.println("종료일 = "+session.getAttribute("regular_end"));
+		} else if(supportREGdto.size() ==1 ) {
+			session.setAttribute("regular_end", supportREGdto.get(0));
+			System.out.println("종료일 = "+session.getAttribute("regular_end"));
 		} else {
 			session.setAttribute("regular_end", supportREGdto);
+			System.out.println("종료일 = "+session.getAttribute("regular_end"));
 		}
 	    
 		forward.setRedirect(true); //forward방식
@@ -46,8 +51,4 @@ public class SupportREGEndAction implements Action{
 
 		return forward;
 	}
-	
-	
-	
-	
 }

@@ -13,7 +13,7 @@ public class SupportREGDAO {
 
 	public SupportREGDAO() {
 		sqlsession = factory.openSession(true);
-		System.out.println("factory값 가져오기 성공 (sqlsession과 dao연결성공): SupportREGDAO");
+		System.out.println("factory값 가져오기 성공 (sqlsession과 dao연결성공)");
 	}
 
 	// 정기후원 중 중복 신청 불가

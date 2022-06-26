@@ -4,9 +4,6 @@
     <insert id="insertREG" parameterType="SupportREGDTO">
   		  	Insert INTO support_regular VALUES ((select NVL(MAX(regular_number),0)+1 FROM support_regular), #{supporter_id}, #{regular_amount},#{regular_bank},#{regular_account},#{regular_date},default)
     </insert>
-    <select id="SupportREGEndCheck" parameterType="string" resultType="string">
-    		SELECT regular_end FROM support_regular WHERE supporter_id = #{supporter_id}
-    </select> 
     <insert id="insertTEM" parameterType="SupportTEMDTO">
   		 	Insert INTO support_temporary VALUES ((select NVL(MAX(temporary_number),0)+1 FROM support_temporary), #{supporter_id}, #{temporary_amount}, to_char(sysdate, 'yyyy/mm/dd hh24:mi'))
     </insert>
@@ -14,15 +11,20 @@
     		UPDATE support_regular SET regular_end = to_char(sysdate, 'yy/mm/dd') WHERE supporter_id = #{supporter_id}
     </update>
     
-    
-    
-    
+   	<!-- login -->
+    <select id="SupportREGEndCheck" parameterType="string" resultType="string">
+    		SELECT regular_end FROM support_regular WHERE supporter_id = #{supporter_id}
+    </select> 
+
+   	<!-- my page -->
     <select id="mypageREG" parameterType="string" resultType="SupportREGDTO">
 		SELECT * FROM support_regular WHERE supporter_id = #{supporter_id}   
 	</select>     
     <select id="mypageTEM" parameterType="string" resultType="SupportTEMDTO">
     	SELECT * from support_temporary where supporter_id=#{supporter_id} order by temporary_number desc
     </select> 
+    
+   	<!-- 관리자 페이지 -->
      <select id="AdminREGSelectAll" parameterType="SupportREGDTO" resultType="SupportREGDTO">
 		SELECT * FROM support_regular
 	</select> 

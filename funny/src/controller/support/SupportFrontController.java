@@ -81,16 +81,6 @@ public class SupportFrontController extends HttpServlet {
 			}
 		}
 		
-     	//후원 정렬기능 REG
-		else if (command.equals("MypageCategory")) {
-			try {
-				System.out.println("MypageCategory.sp 경로ok");
-				forward = new SupportREGListCategoryAction().execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-				System.out.println("MypageCategory.sp 수행중 문제 발생");
-			}
-		}
 
 		// 만약 forward 가 null 이라면 null pointer exception 이 발생하기 떄문에 대비
 		if (forward != null) {
