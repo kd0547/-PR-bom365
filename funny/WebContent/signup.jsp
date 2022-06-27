@@ -47,10 +47,8 @@
 <link rel="stylesheet" href="css/signup_mypage.css">
 
 <!-- Material Icons -->
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet"href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript" src="js/validate-Fun.js"></script>
 </head>
 
@@ -79,14 +77,14 @@
 
 		<div class="signup-form-container">
 			<!--signupDone.jsp  -->
-			<form id="signup" method="post" action="signup.me"
+			<form id="signup" method ="post" action ="signup.me"
 				class="woocommerce-form woocommerce-form-register register ">
 				<p
 					class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide more">
 					<label class="reg_signup">이름&nbsp;</label> <input id="name"
 						type="text"
 						class="woocommerce-Input woocommerce-Input--text input-text"
-						name="supporter_name">
+						name="supporter_name" >
 				</p>
 
 				<p
@@ -94,25 +92,26 @@
 					style="padding-left: 6px;">
 					<label class="reg_signup">아이디&nbsp;</label> <input id="id"
 						type="text"
-						class="woocommerce-Input woocommerce-Input--text input-text"
-						name="supporter_id">
+						class="woocommerce-Input woocommerce-Input--text input-text" name ="supporter_id"
+						>
 				</p>
 				<div id="text-box"></div>
 				<p
 					class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide more">
-					<label class="reg_signup">비밀번호&nbsp;</label> <input
-						id="supporter_password" type="password"
+					<label class="reg_signup">비밀번호&nbsp;</label>
+					<input id="supporter_password" type="password"
 						class="woocommerce-Input woocommerce-Input--text input-text"
-						name="supporter_password" placeholder="비밀번호는 안전하게">
+						 name="supporter_password" placeholder="비밀번호는 안전하게"
+						>
 				</p>
 
 				<p
 					class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide"
 					style="padding-left: 6px;">
-					<label class="reg_signup">비밀번호확인&nbsp;</label> <input
-						id="supporter_password_check" type="password"
+					<label class="reg_signup">비밀번호확인&nbsp;</label>
+					<input id="supporter_password_check" type="password"
 						class="woocommerce-Input woocommerce-Input--text input-text">
-
+					
 				</p>
 				<div id="pwd-box"></div>
 
@@ -121,14 +120,16 @@
 					<label class="reg_signup">핸드폰번호&nbsp;</label> <input id="phone"
 						type="text"
 						class="woocommerce-Input woocommerce-Input--text input-text"
-						name="phone_number" placeholder=" '-' 제외하고 입력해 주세요">
-				</p>
-				<p
+						name="phone_number" 
+						placeholder=" '-' 제외하고 입력해 주세요"
+						>
+				</p>		
+				<p 
 					class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide more">
 					<label class="reg_signup">우편주소&nbsp;</label> <input type="text"
 						class="woocommerce-Input woocommerce-Input--text input-text unique post"
-						id="sample4_postcode" name="post_code" readonly> <input
-						type="button" class="searchingPostcode"
+						id="sample4_postcode" name="post_code" readonly
+						> <input type="button" class="searchingPostcode"
 						onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
 					<mytag:postcode />
 				</p>
@@ -142,8 +143,8 @@
 				</p>
 
 				<p class="woocommerce-form-row form-row mb-0 register">
-					<button id="sendbutton" type="submit"
-						class="btn btn-primary btn-register" name="register">가입하기</button>
+					<button id="sendbutton" type="submit" class="btn btn-primary btn-register"
+						name="register">가입하기</button>
 				</p>
 			</form>
 			<script>
@@ -177,6 +178,7 @@
 			$(window).ready(()=>{
 					var result_text = document.getElementById("text-box");
 					var result_pwd = document.getElementById("pwd-box");
+
 					if(!result_text.childElementCount) {
 						result_text.style.height = "21px";
 					}
@@ -273,10 +275,11 @@
 				
 				
 				
+
 			</script>
 		</div>
-
-
+		
+		
 
 		<!-- Page Footer-->
 		<mytag:pageFooter />
@@ -308,6 +311,14 @@
 	<script src="js/jquery.stellar.min.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
-
+	
 </body>
 </html>
+
+
+
+
+
+
+
+

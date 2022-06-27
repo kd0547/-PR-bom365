@@ -3,6 +3,7 @@ package controller.supporter;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,7 +32,7 @@ public class IDCheckAction extends HttpServlet implements Action{
 		// true : 값 있음 , false : 값 없음
 		public boolean idCheck(String id) {
 			
-			if(idCheck.idCheck(id)) {
+			if(idCheck.SupporterIdCheck(id)) {
 				return true;
 			} else {
 				return false;

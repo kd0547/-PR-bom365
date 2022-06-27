@@ -79,10 +79,10 @@
 			<div class="container">
 				<div class="row row-pb-lg">
 					<div class="col-sm-6 mb-3" style="margin-left: 5em;">
-						<img class="img-fluid w-100" src="${animalOne.animal_image}">
+						<img class="img-fluid w-100" src="${animalDetail.animal_image}">
 					</div>
 					<div class="about-wrap">
-						<span class="animal-name">${animalOne.animal_name}</span>
+						<span class="animal-name">${animalDetail.animal_name}</span>
 						<hr class="my-5">
 						<ul class="list-unstyled mb-0">
 							<li class="media mb-1">
@@ -90,7 +90,7 @@
 									<small class="text-muted"> 종/품종 </small>
 								</div>
 								<div class="h6-container">
-									<p class="h6">${animalOne.animal_species} / ${animalOne.animal_type}</p>
+									<p class="h6">${animalDetail.animal_species} / ${animalDetail.animal_type}</p>
 								</div>
 							</li>
 							<li class="media mb-1">
@@ -98,7 +98,7 @@
 									<small class="text-muted"> 성별(중성화) </small>
 								</div>
 								<div class="h6-container">
-									<h3 class="h6">${animalOne.animal_gender}</h3>
+									<h3 class="h6">${animalDetail.animal_gender}</h3>
 								</div>
 							</li>
 							<li class="media mb-1">
@@ -106,7 +106,7 @@
 									<small class="text-muted"> 추정나이 </small>
 								</div>
 								<div class="h6-container">
-									<h3 class="h6">${animalOne.animal_age}</h3>
+									<h3 class="h6">${animalDetail.animal_age}</h3>
 								</div>
 							</li>
 							<li class="media mb-1">
@@ -114,7 +114,7 @@
 									<small class="text-muted"> 몸무게 </small>
 								</div>
 								<div class="h6-container">
-									<h3 class="h6">${animalOne.animal_weight}kg</h3>
+									<h3 class="h6">${animalDetail.animal_weight}kg</h3>
 								</div>
 							</li>
 						</ul>
@@ -123,7 +123,7 @@
 						<a href="login.jsp" class="btn btn-primary adopt" >로그인 후 입양 신청 가능</a>
 						</c:when>
 						<c:otherwise>
-						<a href="applicationRequest.ap?animal_number=${animalOne.animal_number}" class="btn btn-primary adopt">입양하기</a>
+						<a href="applicationRequest.ap?animal_number=${animalDetail.animal_number}" class="btn btn-primary adopt">입양하기</a>
 						</c:otherwise>
 						</c:choose>
 					</div>
@@ -139,7 +139,6 @@
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 
-	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->

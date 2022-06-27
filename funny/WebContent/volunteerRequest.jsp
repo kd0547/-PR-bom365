@@ -87,16 +87,12 @@
 							class="btn btn-primary vol" value="신청하기"></td>
 					</tr>
 					<tr>
-						<td colspan="2"><small class="volBack"
-							onclick="self.close();">돌아가기</small></td>
+						<td colspan="2"><small class="volBack" onclick="self.close();">돌아가기</small></td>
 					</tr>
 				</table>
 			</form>
 		</div>
 	</div>
-	
-	
-	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->

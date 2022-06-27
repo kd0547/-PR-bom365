@@ -1,6 +1,7 @@
 package controller.supporter;
 
 import controller.ActionForward;
+import controller.MainAction;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,14 +14,12 @@ import java.io.IOException;
 @WebServlet(name = "SupporterFrontController", value = "/SupporterFrontController")
 public class SupporterFrontController extends HttpServlet {
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		actionDO(request, response);
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		actionDO(request, response);
 	}
@@ -63,7 +62,6 @@ public class SupporterFrontController extends HttpServlet {
 				forward = new LogInAction().execute(request, response);
 			} catch (Exception e) {
 				System.out.println("login.me 수행중 문제 발생");
-				e.printStackTrace();
 			}
 		}
 
@@ -80,6 +78,7 @@ public class SupporterFrontController extends HttpServlet {
 		else if(command.equals("mypage")) {
 			try {
 				forward = new MyPageAction().execute(request, response);
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("mypage.me 수행중 문제 발생");
@@ -87,24 +86,34 @@ public class SupporterFrontController extends HttpServlet {
 		}
 
 		// 회원 정보 수정
-		else if(command.equals("update")) {
+		else if(command.equals("supporterUpdate")) {
 			try {
-				forward = new UpdateAction().execute(request, response);
+				forward = new SupporterUpdateAction().execute(request, response);
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.out.println("update.me 수행중 문제 발생");
+				System.out.println("supporterUpdate.me 수행중 문제 발생");
 			}
 		}
 		
 		// 회원 탈퇴
-		else if(command.equals("withdrawal")) {
+		else if(command.equals("supporterDelete")) {
 			try {
-				forward = new WithdrawalAction().execute(request, response);
+				forward = new SupporterDeleteAction().execute(request, response);
+				
 			} catch (Exception e) {
-				System.out.println("withdrawal.me 수행중 문제 발생");
+				e.printStackTrace();
+				System.out.println("supporterDelete.me 수행중 문제 발생");
 			}
-		} 
+		} else if(command.equals("userUpdate")) {
+			try {
+				forward = new SupporterUpdateAction().execute(request, response);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("userUpdate.me 수행중 문제 발생");
+			}
+		}
 
 		// 만약 forward 가 null 이라면 null pointer exception 이 발생하기 떄문에 대비
 		if (forward != null) {

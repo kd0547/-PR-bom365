@@ -7,8 +7,8 @@
 		<typeAlias type="model.board.Board_commentDTO" alias="Board_commentDTO" />
 		<typeAlias type="model.board.BoardDTO" alias="BoardDTO" />
 		<typeAlias type="model.supporter.SupporterDTO" alias="SupporterDTO" />
-		<typeAlias type="model.support.SupportREGDTO" alias="SupportREGDTO" />
-		<typeAlias type="model.support.SupportTEMDTO" alias="SupportTEMDTO" />
+		<typeAlias type="model.supportRequest.SupportREGRequestDTO" alias="SupportREGRequestDTO" />
+		<typeAlias type="model.supportRequest.SupportTEMRequestDTO" alias="SupportTEMRequestDTO" />
 		<typeAlias type="model.volunteer.VolunteerDTO" alias="VolunteerDTO" />
 	</typeAliases>
 	
@@ -29,7 +29,7 @@
         <mapper resource="model/sql/ApplicationSQL.xml"/>
         <mapper resource="model/sql/BoardSQL.xml" />
         <mapper resource="model/sql/SupporterSQL.xml" />
-        <mapper resource="model/sql/SupportSQL.xml" />
+        <mapper resource="model/sql/SupportRequestSQL.xml" />
         <mapper resource="model/sql/VolunteerSQL.xml" />
     </mappers>
 </configuration>

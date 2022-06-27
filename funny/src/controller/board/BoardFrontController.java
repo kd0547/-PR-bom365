@@ -70,11 +70,11 @@ public class BoardFrontController extends HttpServlet {
 		}
 		
 		// 상세글 보기
-		else if (command.equals("boardOne")) {
+		else if (command.equals("boardDetail")) {
 			try {
-				forward = new BoardOneAction().execute(request, response);
+				forward = new BoardDetailAction().execute(request, response);
 			} catch (Exception e) {
-				System.out.println("boardOne.do 수행중 문제 발생");
+				System.out.println("boardDetail.do 수행중 문제 발생");
 			}
 		}
 		

@@ -1,73 +1,30 @@
-.input-container {
-    padding: 0px 0 20px 0;
+
+
+.input-container{
+		padding: 20px 0;
 	left: 30px;
 }
 
-/*д╚О©╫в╟О©╫*/
-label.reg_signup {
-    margin: 0;
-    text-align: left;
-    padding: 0 0px 9px 0;
-    display: block;
+/*д╚ев╟М╦╝*/
+label.reg_signup{
+		margin: 0;
+		text-align: right;
+		width:100px;
+		padding: 0 10px 0 0;
 }
 
-.menuTitle {
+.menuTitle{
 	text-align: center;
-}
+}		
 
-.btn.btn-primary.supprot {
-	width: 13em;
-	margin: 2em 0 2em 0;
+.btn.btn-primary.supprot{
+	width: 100px;
+	margin: 20px 0 0 40px;
+	position: relative;
 	left: 18px;
 }
 
-.woocommerce-form.woocommerce-form-register.register {
+.woocommerce-form.woocommerce-form-register.register{
+	left: -30px;
 	position: relative;
-}
-
-
-
-/*О©╫о╫О©╫О©╫д©О©╫*/
-#tem{
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-
-.btn.btn-primary.supprot.tem {
-	margin: 0 auto;
-	top: 80px;
-	position: relative;
-	left: 0;
-}
-
-.js-focus-state.form-group.tem {
-	display: flex;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-}
-
-.form-control.input.tem {
-	width: 138px;
-}
-
-.h4.tem {
-	margin: 0px 15px 0px 0px;
-	display: block;
-}
-
-.signup-form-container.tem {
-	padding: 30px 0 50px 0;
-}
-
-
-
-/*О©╫О©╫О©╫О©╫О©╫д©О©╫*/
-.woocommerce-Input.woocommerce-Input--text.input-text.regDate{
-	height: 44px;
-}
-select.woocommerce-Input.woocommerce-Input--text.input-text.select {
-    border: 2px;
-    height: 44px;
 }

@@ -94,7 +94,6 @@
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 
-	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->

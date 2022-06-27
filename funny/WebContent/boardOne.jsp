@@ -42,8 +42,7 @@
 <!-- Theme style  -->
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/boardOne.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
 	function del() {
 		ans = confirm("정말 삭제하시겠습니까?");
@@ -54,13 +53,22 @@
 		}
 	}
 </script>
+<style type="text/css">
+textarea.form-control.gap.one {
+	border-radius: 8px;
+	border: 0px !important;
+	font-size: 1.25rem !important;
+	padding: 14px;
+    min-height: 330px;
+}
+</style>
 </head>
 <body>
 
 	<div id="page">
 
 		<!-- Page Header-->
-		<mytag:pageHeader />
+		<mytag:pageHeader/>
 		<div class="breadcrumbs">
 			<div class="container">
 				<div class="row">
@@ -72,27 +80,25 @@
 				</div>
 			</div>
 		</div>
-
+		
 		<div style="text-align: center; margin-top: 2em; margin-bottom: 7em;">
 			<div class="col-sm-4 text-left total writeForm"
 				style="display: inline-block;">
 				<div class="form-group">
-
+				
 					<div class="form-group boardOne">
 						<h5 class="h5-detail title" style="width: 100%;">제목</h5>
-						<c:if test="${boardOne.board.supporter_id!='admin'}">
-							<h5 class="h5-detail title info">${boardOne.board.supporter_id}
-								| ${boardOne.board.board_date}</h5>
+						<c:if test="${boardDetail.board.supporter_id!='admin'}">
+							<h5 class="h5-detail title info">${boardDetail.board.supporter_id} | ${boardDetail.board.board_date}</h5>
 						</c:if>
 					</div>
-
+					
 					<div class="title-box">
-						<h5 style="padding: 14px;">${boardOne.board.board_title}</h5>
+							<h5 style="padding: 14px;">${boardDetail.board.board_title}</h5>
 					</div>
-					<div class="form-group">
+ 					<div class="form-group">
 						<h5>내용</h5>
-						<textarea name="board_content" id="autoHeight"
-							class="form-control gap one" disabled>${boardOne.board.board_content}</textarea>
+						<textarea name="board_content" id="autoHeight" class="form-control gap one" disabled>${boardDetail.board.board_content}</textarea>
 					</div>
 					<script type="text/javascript">
 						function adjustHeight() {
@@ -104,27 +110,24 @@
 						adjustHeight();
 					</script>
 					<!-- 본인 글에만 노출 -->
-					<c:if test="${boardOne.board.supporter_id==supporter_id}">
+					<c:if test="${boardDetail.board.supporter_id==supporter_id}">
 						<div style="float: right;">
-							<a
-								href="boardUpdatePage.do?board_number=${boardOne.board.board_number}"
-								class="btn btn-primary boardUD">수정하기</a> <a
-								href="boardDelete.do?board_number=${boardOne.board.board_number}"
-								class="btn btn-primary boardUD" onclick="del()">삭제하기</a>
+							<a href="boardUpdatePage.do?board_number=${boardDetail.board.board_number}" class="btn btn-primary boardUD">수정하기</a>
+							<a href="boardDelete.do?board_number=${boardDetail.board.board_number}" class="btn btn-primary boardUD" onclick="del()">삭제하기</a>
 						</div>
 					</c:if>
-
+					
 				</div>
 			</div>
 
-			<c:if test="${boardOne.board.supporter_id!='admin'}">
+			<c:if test="${boardDetail.board.supporter_id!='admin'}">
 				<!-- 댓글 -->
 				<hr>
 				<div class="col-sm-4 text-left total writeForm"
 					style="display: inline-block;">
-					<h3 class="head">${boardOne.board.board_commentCnt}&nbsp;Reviews</h3>
+					<h3 class="head">${boardDetail.board.board_commentCnt}&nbsp;Reviews</h3>
 
-					<c:forEach var="v" items="${boardOne.comments}">
+					<c:forEach var="v" items="${boardDetail.comments}">
 						<div class="review">
 							<div class="desc">
 								<p class="p-comment" style="font-size: 18px;">${v.comment_content}</p>
@@ -132,7 +135,7 @@
 									<!-- 본인 댓글에만 노출 --> <c:if
 										test="${v.supporter_id==supporter_id}">
 										<a
-											href="commentDelete.do?comment_number=${v.comment_number}&board_number=${boardOne.board.board_number}"
+											href="commentDelete.do?comment_number=${v.comment_number}&board_number=${boardDetail.board.board_number}"
 											class="commentDel">&nbsp;&nbsp;&nbsp;삭제</a>
 									</c:if>
 								</span>
@@ -143,7 +146,7 @@
 					<form action="commentInsert.do" method="post"
 						style="display: flex;">
 						<input type="hidden" name="board_number"
-							value="${boardOne.board.board_number}">
+							value="${boardDetail.board.board_number}">
 
 						<!-- 로그인 시에만 댓글 작성 가능 -->
 						<c:choose>
@@ -162,7 +165,7 @@
 									class="btn btn-primary inputSubmit comment">
 							</c:otherwise>
 						</c:choose>
-
+						
 					</form>
 				</div>
 			</c:if>
@@ -177,7 +180,6 @@
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 
-	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->

@@ -87,6 +87,7 @@
 												<span>동물과 인간이 더불어 사는 사회를 위해</span>
 											</p>
 											<p>
+<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 												<a href="support.jsp" class="btn btn-primary main">후원하기</a>
 											</p>
 										</div>
@@ -150,7 +151,6 @@
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 
-	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->

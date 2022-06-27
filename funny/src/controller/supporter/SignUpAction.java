@@ -1,6 +1,8 @@
 package controller.supporter;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 import javax.servlet.ServletException;
 
@@ -30,6 +32,7 @@ public class SignUpAction  implements Action{
 				forward = new ActionForward();
 				forward.setPath("signupDone.jsp");
 				forward.setRedirect(true);
+				
 			} else {
 				System.out.println("insert 실패");
 			}

@@ -8,7 +8,7 @@
 			
         	var trans = document.getElementById("trans");
         	trans.method = "POST";
-        	trans.action = "withdrawal.me";
+        	trans.action = "supporterDelete.me";
             trans.submit();
         }
         else{

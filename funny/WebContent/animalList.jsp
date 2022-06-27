@@ -176,13 +176,13 @@
 						<div
 							class="col-md-3 col-lg-3 mb-4 text-center animals-photos-text">
 							<div class="product-entry border">
-								<a href="animalOne.am?animal_number=${v.animal_number}"
+								<a href="animalDetail.am?animal_number=${v.animal_number}"
 									class="prod-img"> <img src="${v.animal_image}"
 									class="img-fluid animals" alt="Free html5 bootstrap 4 template">
 								</a>
 								<div class="desc">
 									<h2>
-										<a href="animalOne.am?animal_number=${v.animal_number}">${v.animal_name}</a>
+										<a href="animalDetail.am?animal_number=${v.animal_number}">${v.animal_name}</a>
 									</h2>
 									<span class="animal_spacies">${v.animal_species}(${v.animal_type})</span><br>
 									<span class="animal_gender">${v.animal_gender}</span><br>
@@ -221,7 +221,6 @@
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 	
-	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->

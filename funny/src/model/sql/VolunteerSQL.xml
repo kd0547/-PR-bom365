@@ -13,6 +13,4 @@
 	<delete id="delete" parameterType="VolunteerDTO">
 		delete from volunteer where volunteer_number=#{volunteer_number}
 	</delete>
-	
-   	<!-- 관리자 페이지 -->
 </mapper>
