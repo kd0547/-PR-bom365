@@ -7,7 +7,7 @@ import controller.Action;
 import controller.ActionForward;
 import model.application.ApplicationDAO;
 
-public class ApplicationListAction implements Action {
+public class AdminApplicationListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) {

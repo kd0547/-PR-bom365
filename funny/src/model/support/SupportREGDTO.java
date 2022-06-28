@@ -6,6 +6,7 @@ public class SupportREGDTO {
 	private String regular_amount;
 	private String regular_bank;
 	private String regular_account;
+	private String regular_paymentDate;
 	private String regular_date;
 	private String regular_end;
 	
@@ -39,6 +40,12 @@ public class SupportREGDTO {
 	public void setRegular_account(String regular_account) {
 		this.regular_account = regular_account;
 	}
+	public String getRegular_paymentDate() {
+		return regular_paymentDate;
+	}
+	public void setRegular_paymentDate(String regular_paymentDate) {
+		this.regular_paymentDate = regular_paymentDate;
+	}
 	public String getRegular_date() {
 		return regular_date;
 	}
@@ -54,8 +61,9 @@ public class SupportREGDTO {
 
 	@Override
 	public String toString() {
-		return "SupportREGRequestDTO [regular_number=" + regular_number + ", supporter_id=" + supporter_id
+		return "SupportREGDTO [regular_number=" + regular_number + ", supporter_id=" + supporter_id
 				+ ", regular_amount=" + regular_amount + ", regular_bank=" + regular_bank + ", regular_account="
-				+ regular_account + ", regular_date=" + regular_date + ", regular_end=" + regular_end + "]";
+				+ regular_account + ", regular_paymentDate=" + regular_paymentDate + ", regular_date=" + regular_date
+				+ ", regular_end=" + regular_end + "]";
 	}
 }

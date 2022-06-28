@@ -60,7 +60,7 @@ public class ApplicationFrontController extends HttpServlet {
 		// 전체 신청서 목록
 		else if (command.equals("adminApplicationList")) {
 			try {
-				forward = new ApplicationListAction().execute(request, response);
+				forward = new AdminApplicationListAction().execute(request, response);
 			} catch (Exception e) {
 				System.out.println("adminApplicationList.ap 수행중 문제 발생");
 			}

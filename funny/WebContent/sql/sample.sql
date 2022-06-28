@@ -159,22 +159,7 @@ INSERT INTO support_temporary
 VALUES (
 	(select nvl(max(temporary_number),0)+1 from support_temporary),'test',10000,to_char(sysdate, 'yyyy/mm/dd hh24:mi')
 );
-INSERT INTO support_temporary
-VALUES (
-	(select nvl(max(temporary_number),0)+1 from support_temporary),'test',10000,to_char(sysdate, 'yyyy/mm/dd hh24:mi')
-);
-INSERT INTO support_temporary
-VALUES (
-	(select nvl(max(temporary_number),0)+1 from support_temporary),'test',10000,to_char(sysdate, 'yyyy/mm/dd hh24:mi')
-);
-INSERT INTO support_temporary
-VALUES (
-	(select nvl(max(temporary_number),0)+1 from support_temporary),'test',10000,to_char(sysdate, 'yyyy/mm/dd hh24:mi')
-);
-INSERT INTO support_temporary
-VALUES (
-	(select nvl(max(temporary_number),0)+1 from support_temporary),'test',10000,to_char(sysdate, 'yyyy/mm/dd hh24:mi')
-);
+
 	
 
 
@@ -361,4 +346,18 @@ VALUES (
 INSERT INTO volunteer
 VALUES (
 	(select nvl(max(volunteer_number),0)+1 from volunteer),'didEhd','2022/07/15','오후'
+);
+
+-- 봉사 이전 날짜 샘플--------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'test','2022/04/12','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'test','2022/05/19','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'test','2022/06/15','오후'
 );

@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import model.mybatis.SqlMapConfig;
+import model.supporter.SupporterDTO;
 
 public class SupportTEMDAO {
 	SqlSessionFactory factory = SqlMapConfig.getFactory();
@@ -30,23 +31,23 @@ public class SupportTEMDAO {
 	}
 
 	// 마이페이지 일시후원 목록 불러오기
-	public List<SupportTEMDTO> MypageTEM(String supporter_id) {
+	public List<SupportTEMDTO> mypage(SupporterDTO dto) {
 		System.out.println("일시후원목록메서드진입 성공");
-		List<SupportTEMDTO> datas = sqlsession.selectList("SupportSQL.mypageTEM", supporter_id);
+		List<SupportTEMDTO> datas = sqlsession.selectList("SupportSQL.mypageTEM", dto);
 		return datas;
 
 	}
 
 	// 관리자 페이지 용 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//관리자페이지 일시후원 목록 불러오기
-	public List<SupportTEMDTO> AdminTEMSelectAll() {
+	public List<SupportTEMDTO> adminTEMSelectAll() {
 		System.out.println("TEM메서드진입성공");
 		List<SupportTEMDTO> datas = sqlsession.selectList("SupportSQL.AdminTEMSelectAll");
 		return datas;
 	}
 
 	//관리자페이지 금액순 정렬
-	public List<SupportTEMDTO> AdminTEMAmountSelectAll() {
+	public List<SupportTEMDTO> adminTEMAmountSelectAll() {
 		System.out.println("AdminTEMAmountSelectAll메서드진입성공");
 		List<SupportTEMDTO> datas = sqlsession.selectList("SupportSQL.AdminTEMAmountSelectAll");
 		return datas;

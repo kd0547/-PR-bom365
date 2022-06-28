@@ -6,14 +6,16 @@ select * from support_temporary;
 select * from board;
 select * from board_comment;
 select * from volunteer;
- drop table supporter;
- drop table animal;
- drop table application;
- drop table support_regular;
- drop table support_temporary;
- drop table board;
- drop table board_comment;
- drop table volunteer;
+
+-- drop table supporter;
+-- drop table animal;
+-- drop table application;
+-- drop table support_regular;
+-- drop table support_temporary;
+-- drop table board;
+-- drop table board_comment;
+-- drop table volunteer;
+
 -- truncate table supporter;
 -- truncate table animal;
 -- truncate table application;
@@ -22,7 +24,7 @@ select * from volunteer;
 -- truncate table board;
 -- truncate table board_comment;
 -- truncate table volunteer;
-delete supporter where supporter_id = 'aaaaa';
+
  -- 회원
 CREATE TABLE supporter (  
 	supporter_id				VARCHAR2(20)		CONSTRAINT PK_member PRIMARY KEY,
@@ -86,6 +88,7 @@ CREATE TABLE support_regular (
 	regular_amount			NUMBER(10,4)		NOT NULL,
 	regular_bank				VARCHAR2(50)		NOT NULL,
 	regular_account		VARCHAR2(20)		NOT NULL,
+	regular_paymentDate VARCHAR2(20)		NOT NULL,
 	regular_date				VARCHAR2(20)		NOT NULL,
 	regular_end				VARCHAR2(20)		DEFAULT '진행중' NOT NULL,
 

@@ -9156,3 +9156,16 @@ textarea.form-control.gap.one {
 	padding: 14px;
     min-height: 330px;
 }
+.container.table {
+	max-width: 1282px !important;
+}
+.twins-wrap.tem {
+    padding: 0 15px;
+}
+td.startSup {
+    border-top: 1px dashed #dee2e6;
+    text-align: right;
+    color: #59595973;
+    font-size: 13px;
+    padding: 0;
+}
