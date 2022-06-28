@@ -29,7 +29,7 @@ public class SupportREGListCategoryAction {
 		// 금액순
 		if (category.equals("REGamount")) {
 			System.out.println("if 들어옴");
-			List<SupportREGDTO> AdminsupportREGList = regdao.AdminREGAmountSelectAll();
+			List<SupportREGDTO> AdminsupportREGList = regdao.adminREGAmountSelectAll();
 			System.out.println("AdminREGAmountSelectAll 값 받아옴: " + AdminsupportREGList);
 			request.setAttribute("AdminsupportREGList",AdminsupportREGList);	   
 			System.out.println("값넘김");

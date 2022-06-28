@@ -1,5 +1,7 @@
 package controller.support;
 
+import java.util.Calendar;
+
 import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpServletResponse;
@@ -29,17 +31,30 @@ public class SupportREGInsertAction implements Action {
 		regular_amount = regular_amount.replace(",", "");
 		System.out.println("파라미터값: " + regular_amount);
 
-		// 날짜에 -포함 변환
-		String regular_date = (String) req.getParameter("regular_date");
-		regular_date = regular_date.replace("-", "/");
-
-		System.out.println("파라미터값: " + regular_date);
+		String regular_paymentDate = req.getParameter("regular_paymentDate");
+		String regular_date = null;
 
 		// 값담기
 		regdto.setSupporter_id(supporter_id);
 		regdto.setRegular_bank(req.getParameter("regular_bank"));
 		regdto.setRegular_account(req.getParameter("regular_account"));
 		regdto.setRegular_amount(regular_amount);
+		regdto.setRegular_paymentDate(regular_paymentDate);
+
+		Calendar cal = Calendar.getInstance();
+		int thisY = cal.get(Calendar.YEAR);
+		int thisM = cal.get(Calendar.MONTH) + 1;
+		int thisD = cal.get(Calendar.DATE);
+		if (thisD < Integer.parseInt(regular_paymentDate)) {
+			regular_date = thisY + "/" + String.format("%02d", thisM) + regular_paymentDate;
+		} else {
+			if (thisM == 12) {
+				regular_date = (thisY + 1) + "/" + "01" + regular_paymentDate;
+			} else {
+				regular_date = thisY + "/" + String.format("%02d", thisM+1) + regular_paymentDate;
+			}
+		}
+
 		regdto.setRegular_date(regular_date);
 		System.out.println("값담김: " + regdto);
 

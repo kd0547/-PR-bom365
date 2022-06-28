@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="mytag"%>
 <!DOCTYPE HTML>
 <html>
@@ -73,6 +74,7 @@
 
 	<div class="volReqFirstDiv">
 		<div style="display: inline-block;">
+
 			<form action="supportREGInsert.sp" method="post" name="frm"
 				class="woocommerce-form woocommerce-form-register register">
 				<div class="input-container">
@@ -106,9 +108,17 @@
 					</select>
 				</div>
 				<div class="input-container">
-					<label class="reg_signup">후원시작일&nbsp;</label> <input type="date"
-						class="woocommerce-Input woocommerce-Input--text input-text regDate"
-						name="regular_date">
+					<label class="reg_signup">출금일&nbsp;</label> <select
+						name="regular_paymentDate"
+						class="woocommerce-Input woocommerce-Input--text input-text select"
+						id="regular_paymentDate">
+						<option value="">🌼 출금일을 선택해 주세요 🌼</option>
+						<option value="">========================================</option>
+						<option value="05">매월 05일</option>
+						<option value="10">매월 10일</option>
+						<option value="17">매월 17일</option>
+						<option value="25">매월 25일</option>
+					</select>
 				</div>
 
 				<input type="submit" onClick="sendit(); return false;"
@@ -127,13 +137,13 @@
 			let frm = document.frm;
 			let regular_bank = frm.regular_bank;
 			let regular_account = frm.regular_account;
-			let regular_date = frm.regular_date;
+			let regular_paymentDate = frm.regular_paymentDate;
 			let checkString = /[-!%^@#$&*+.?]/gi;
 			let supporter_id = "${supporter_id}";
 
 			if (checkString.test(regular_amount.value)) {
 				alert("특수문자는 입력할 수 없습니다!");
-				regular_date.focus();
+				regular_amount.focus();
 				return false;
 			}
 
@@ -155,9 +165,9 @@
 				return false;
 			}
 
-			if (regular_date.value == "") {
-				alert("후원날짜를 입력하세요!");
-				regular_date.focus();
+			if (regular_paymentDate.value == "") {
+				alert("출금일을 선택해 주세요!");
+				regular_paymentDate.focus();
 				return false;
 			}
 
@@ -165,7 +175,6 @@
 				alert("로그인 후 이용해주세요!");
 				return false;
 			}
-
 			frm.submit();
 		}
 	</script>

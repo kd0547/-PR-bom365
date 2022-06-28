@@ -30,7 +30,7 @@ public class SupportREGEndAction implements Action{
 	    regdao.setEnd(supporter_id);
 	    
 		// 정기후원 중 중복신청 불가능
-		List<SupportREGDTO> supportREGdto = regdao.SupportREGEndCheck(supporter_id);
+		List<SupportREGDTO> supportREGdto = regdao.supportREGEndCheck(supporter_id);
 
 		// 정기후원기록이 복수인 사람 대비
 		if (supportREGdto.size() > 1) {

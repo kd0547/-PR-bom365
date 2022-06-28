@@ -22,7 +22,7 @@ public class ApplicationDAO {
 
 	// 해당 동물 정보 가져오기
 	public AnimalDTO selectAnimal(AnimalDTO dto) {
-		AnimalDTO data = sqlsession.selectOne("ApplicationSQL.selectAnimal", dto);
+		AnimalDTO data = sqlsession.selectOne("AnimalSQL.selectOne", dto);
 		if (data != null) {
 			return data;
 		}

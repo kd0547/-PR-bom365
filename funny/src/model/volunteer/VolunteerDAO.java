@@ -2,12 +2,16 @@ package model.volunteer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import controller.volunteer.component.VolunteerCal;
+import model.board.BoardDTO;
+import model.board.BoardSet;
 import model.mybatis.SqlMapConfig;
+import model.supporter.SupporterDTO;
 import model.volunteer.VolunteerDTO;
 
 public class VolunteerDAO {
@@ -80,6 +84,12 @@ public class VolunteerDAO {
 			result=true;
 		}
 		return result;
+	}
+	
+	// my page ///////////////////////////////////////////////////////////////////////////////////////////////////////
+	public List<VolunteerDTO> mypage(SupporterDTO dto) {
+		List<VolunteerDTO> data = sqlsession.selectList("VolunteerSQL.mypage", dto);
+		return data;
 	}
 	
 	// 관리자 페이지 용 ///////////////////////////////////////////////////////////////////////////////////////////////////////

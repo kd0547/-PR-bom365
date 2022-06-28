@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import model.mybatis.SqlMapConfig;
+import model.supporter.SupporterDTO;
 
 public class SupportREGDAO {
 	SqlSessionFactory factory = SqlMapConfig.getFactory();
@@ -17,7 +18,7 @@ public class SupportREGDAO {
 	}
 
 	// 정기후원 중 중복 신청 불가
-	public List<SupportREGDTO> SupportREGEndCheck(String supporter_id) {
+	public List<SupportREGDTO> supportREGEndCheck(String supporter_id) {
 		System.out.println("정기후원여부확인 메서드 입장성공");
 		return sqlsession.selectList("SupportSQL.SupportREGEndCheck", supporter_id);
 	}
@@ -46,22 +47,22 @@ public class SupportREGDAO {
 	}
 
 	// 마이페이지 정기후원 목록 불러오기
-	public List<SupportREGDTO> MypageREG(String supporter_id) {
+	public List<SupportREGDTO> mypage(SupporterDTO dto) {
 		System.out.println("정기후원목록메서드진입 성공");
-		List<SupportREGDTO> datas = sqlsession.selectList("SupportSQL.mypageREG", supporter_id);
+		List<SupportREGDTO> datas = sqlsession.selectList("SupportSQL.mypageREG", dto);
 		return datas;
 	}
 
 	// 관리자 페이지 용 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 	// 관리자페이지 정기후원 목록 불러오기
-	public List<SupportREGDTO> AdminREGSelectAll() {
+	public List<SupportREGDTO> adminREGSelectAll() {
 		System.out.println("AdminREGSelectAll메서드진입성공");
 		List<SupportREGDTO> datas = sqlsession.selectList("SupportSQL.AdminREGSelectAll");
 		return datas;
 	}
 
 	// 관리자페이지 정기후원내역 금액순 정렬
-	public List<SupportREGDTO> AdminREGAmountSelectAll() {
+	public List<SupportREGDTO> adminREGAmountSelectAll() {
 		System.out.println("AdminREGAmountSelectAll메서드진입성공");
 		List<SupportREGDTO> datas = sqlsession.selectList("SupportSQL.AdminREGAmountSelectAll");
 		return datas;

@@ -1,6 +1,7 @@
 package controller.volunteer;
 
 import controller.ActionForward;
+import controller.board.BoardDeleteAction;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -62,7 +63,16 @@ public class VolunteerFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-
+		
+		//봉사 취소하기
+		else if (command.equals("volunteerDelete")) {
+			try {
+				forward = new VolunteerDeleteAction().execute(request, response);
+			} catch (Exception e) {
+				System.out.println("volunteerDelete.vt 수행중 문제 발생");
+			}
+		} 
+		
 		// 관리자 페이지 용 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		

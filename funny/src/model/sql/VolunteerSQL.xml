@@ -13,6 +13,9 @@
 	<delete id="delete" parameterType="VolunteerDTO">
 		delete from volunteer where volunteer_number=#{volunteer_number}
 	</delete>
-	
+   	<!-- mypage -->
+	<select id="mypage" parameterType="SupporterDTO" resultType="VolunteerDTO">
+		select * from volunteer where supporter_id=#{supporter_id} order by volunteer_date desc
+	</select>
    	<!-- 관리자 페이지 -->
 </mapper>

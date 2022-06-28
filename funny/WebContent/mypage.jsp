@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="mytag"%>
 <!DOCTYPE HTML>
 <html>
@@ -51,12 +52,9 @@
 <link rel="stylesheet" href="css/deleteAccount.css">
 <link rel="stylesheet" href="css/supportRequest.css">
 <link rel="stylesheet" href="css/support.css">
-
 </head>
 
 <body>
-
-
 	<div id="page">
 
 		<!-- Page Header-->
@@ -82,7 +80,7 @@
 								id="pills-manufacturer-tab" data-toggle="pill"
 								href="#pills-manufacturer" role="tab"
 								aria-controls="pills-manufacturer" aria-expanded="true"
-								aria-selected="false">후원내역</a></li>
+								aria-selected="false">내역조회</a></li>
 							<li class="nav-item"><a class="nav-link"
 								id="pills-review-tab" data-toggle="pill" href="#pills-review"
 								role="tab" aria-controls="pills-review" aria-expanded="true"
@@ -112,7 +110,7 @@
 								<div class="tab-pane border fade" id="pills-manufacturer"
 									role="tabpanel" aria-labelledby="pills-manufacturer-tab"
 									style="padding: 32px 0 4em 0;">
-									<mytag:mytable />
+									<mytag:myTable />
 								</div>
 
 								<div class="tab-pane border fade" id="pills-review"

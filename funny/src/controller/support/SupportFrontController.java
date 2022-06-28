@@ -70,16 +70,6 @@ public class SupportFrontController extends HttpServlet {
 		}
 		
 		// 관리자 페이지 용 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-		//관리자 후원내역조회
-		else if (command.equals("AdminSupportList")) {
-			try {
-				System.out.println("AdminSupportList.sp 경로 ok");
-	        	forward = new SupportAdminListAction().execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-				System.out.println("AdminSupportList.sp 수행중 문제 발생");
-			}
-		}
 		
 
 		// 만약 forward 가 null 이라면 null pointer exception 이 발생하기 떄문에 대비

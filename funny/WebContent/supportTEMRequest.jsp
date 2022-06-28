@@ -1,24 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="mytag"%>
-<<<<<<< HEAD
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-=======
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
-
-<c:set var="request" value="<%= request.getSession().getAttribute(\"supporter_id\")%>"/>
-<c:choose>
-	<c:when test="${request != null }">
-		<c:set var="userInfo" value="${request}" />
-	</c:when>
-	<c:when test="${request == null }">
-		<c:set var="userInfo" value="<%= null%>" /> 
-	</c:when>
-</c:choose>
-
->>>>>>> branch 'main' of https://github.com/bom365/-PR-bom365.git
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -132,13 +115,8 @@
 		<h6 style="margin-bottom: 5em; color: #59595978;">카카오페이 결제 페이지로 넘어갑니다.</h6>
 	</div>
 
-<<<<<<< HEAD
 	<hr style="margin-top: 0;">
 	<mytag:howToUseSupport />
-=======
-
-
->>>>>>> branch 'main' of https://github.com/bom365/-PR-bom365.git
 	<!-- Page Footer-->
 	<mytag:pageFooter />
 	<div class="gototop js-top">
@@ -195,11 +173,7 @@
 	</script>
 
 
-<<<<<<< HEAD
 	<script src="js/loginCheck.js"></script>
-=======
-
->>>>>>> branch 'main' of https://github.com/bom365/-PR-bom365.git
 	<!-- popper -->
 	<script src="js/popper.min.js"></script>
 	<!-- bootstrap 4.1 -->
