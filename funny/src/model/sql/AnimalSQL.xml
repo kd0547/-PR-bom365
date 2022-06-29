@@ -13,6 +13,10 @@
 	<select id="selectSearch" parameterType="AnimalDTO" resultType="AnimalDTO">
 		select * from animal where animal_species like '%'||#{animal_species}||'%' and animal_gender like '%'||#{animal_gender}||'%' and (animal_weight >= #{animal_weight_over} and animal_weight &lt; #{animal_weight_under}) and (animal_age_num >= #{animal_age_more} and animal_age_num &lt;= #{animal_age_less}) and animal_name like '%'||#{animal_name}||'%'
 	</select>  
+	<!-- 관리자 페이지 -->
+	<update id="update" parameterType="hashmap">
+		update animal set supporter_id = #{supporter_id}, isAdoption='true' where animal_number=#{animal_number} 
+	</update>
 </mapper>
 
 <!-- 

@@ -45,10 +45,10 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
-	function del() {
+	function choose() {
 		ans = confirm("${application.supporter_id}님을 ${application.animal_name}의 입양자로 결정하시겠습니까?");
 		if (ans == true) {
-			document.withdrawal.submit();
+			location.href = "animalUpdate.am?animal_number=${application.animal_number}&application_number=${application.application_number}&supporter_id=${application.supporter_id}";
 		} else {
 			event.preventDefault();
 		}
@@ -56,7 +56,6 @@
 </script>
 </head>
 <body>
-
 	<div id="page">
 
 		<!-- Page Header-->
@@ -66,14 +65,26 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-							<span><a href="adminApplicationList.ap">신청목록</a></span> / <span>상세글</span>
+							<span><a href="adminApplicationList.ap">입양신청목록</a></span> / <span>상세글</span>
 						</p>
 					</div>
 				</div>
 			</div>
 		</div>
 
-
+		<c:if test="${application.adoptionSupporter_id != null}">
+			<c:choose>
+				<c:when
+					test="${application.adoptionSupporter_id == application.supporter_id}">
+					<h1 id="menuTitle" style="color: #595959a6;">🎉🎉🎉&nbsp;&nbsp;&nbsp;가족으로
+						선정된 신청서 입니다!&nbsp;&nbsp;&nbsp;🎉🎉🎉</h1>
+				</c:when>
+				<c:otherwise>
+					<h1 id="menuTitle" style="color: #595959a6;">🌼🌼🌼🌼&nbsp;&nbsp;&nbsp;이미
+						가족을 찾았습니다.&nbsp;&nbsp;&nbsp;🌼🌼🌼🌼</h1>
+				</c:otherwise>
+			</c:choose>
+		</c:if>
 
 		<div style="text-align: center; margin-top: 2em; margin-bottom: 7em;">
 			<div class="col-sm-4 text-left total writeForm"
@@ -115,17 +126,18 @@
 						};
 						adjustHeight();
 					</script>
+					<div style="float: right;">
+						<a href="adminApplicationList.ap" class="btn btn-primary boardUD">목록보기</a>
+					</div>
 					<!-- 관리자인지 한번 더 확인  -->
-					<c:if test="${supporter_id == 'admin'}">
+					<c:if
+						test="${(supporter_id == 'admin') && (application.adoptionSupporter_id == null)}">
 						<div style="float: right;">
-							<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<a href="#" class="btn btn-primary boardUD" onclick="del()">입양자
+							<a href="#" class="btn btn-primary boardUD" onclick="choose()">입양자
 								확정</a>
 						</div>
 					</c:if>
-						<div style="float: right;">
-							<a href="adminApplicationList.ap" class="btn btn-primary boardUD">목록보기</a>
-						</div>
+
 
 				</div>
 			</div>

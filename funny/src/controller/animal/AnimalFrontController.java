@@ -61,6 +61,17 @@ public class AnimalFrontController extends HttpServlet {
 				System.out.println("animalSearch.am 수행중 문제 발생");
 			}
 		}
+
+		// 관리자 페이지 용 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+		// 입양 채택
+		else if (command.equals("animalUpdate")) {
+			try {
+				forward = new AnimalUpdateAction().execute(request, response);
+			} catch (Exception e) {
+				System.out.println("animalUpdate.am 수행중 문제 발생");
+				e.printStackTrace();
+			}
+		}
 		
 		// 만약 forward 가 null 이라면 null pointer exception 이 발생하기 떄문에 대비
 		if (forward != null) {

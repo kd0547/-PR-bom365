@@ -6,7 +6,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>후원하기</title>
+<title>후원신청목록</title>
 
 <meta charset="utf-8">
 <meta name="viewport"
@@ -67,7 +67,7 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-							<span><a href="main.do">HOME</a></span> / <span>신청목록</span>
+							<span><a href="main.do">HOME</a></span> / <span>입양신청목록</span>
 						</p>
 					</div>
 				</div>
@@ -79,7 +79,8 @@
 
 		<div class="boardListFirstDiv">
 			<div style="display: inline-block;">
-				<h6 align="right">글 개수 : ${totalCnt}개</h6>
+				<h6 align="right" style="color: #8d8d8d;">🎉: 선정된
+					신청서&nbsp;|&nbsp;🌼: 이미 입양된 동물&nbsp;|&nbsp;글 개수 : ${totalCnt}개</h6>
 				<table class="board table">
 					<tbody>
 						<tr class="boardHead">
@@ -101,7 +102,18 @@
 										<td>${application.animal_number}(${application.animal_name})</td>
 										<td class="boardTitle"><a
 											href="adminApplicationOne.ap?application_number=${application.application_number}">
-												${application.application_title} </a></td>
+												<c:if test="${application.adoptionSupporter_id != null}">
+													<c:choose>
+														<c:when
+															test="${application.adoptionSupporter_id == application.supporter_id}">
+														🎉
+													</c:when>
+														<c:otherwise>
+														🌼
+													</c:otherwise>
+													</c:choose>
+												</c:if> ${application.application_title}
+										</a></td>
 										<td>${application.supporter_id}</td>
 										<td>${application.application_date}</td>
 									</tr>

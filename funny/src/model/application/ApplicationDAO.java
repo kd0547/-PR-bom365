@@ -55,6 +55,6 @@ public class ApplicationDAO {
 
 	// 상세글 보기
 	public ApplicationDTO selectOne(ApplicationDTO dto) {
-		return (ApplicationDTO) sqlsession.selectOne("ApplicationSQL.selectOne", dto);
+		return sqlsession.selectOne("ApplicationSQL.selectOne", dto);
 	}
 }

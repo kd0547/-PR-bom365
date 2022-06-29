@@ -9169,3 +9169,7 @@ td.startSup {
     font-size: 13px;
     padding: 0;
 }
+a.btn.btn-primary.adopt.done {
+    color: #fff;
+    cursor: default;
+}

@@ -9,6 +9,8 @@ import model.volunteer.VolunteerDAO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -20,7 +22,9 @@ public class VolunteerListAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		Calendar cal = Calendar.getInstance();
-
+		HttpSession session = request.getSession(); // spring 식 session 을 받는법
+		String supporter_id = (String) session.getAttribute("supporter_id");
+		
 		int year = cal.get(Calendar.YEAR);
 		int month = cal.get(Calendar.MONTH) + 1; 	// 0~11
 
@@ -40,7 +44,12 @@ public class VolunteerListAction implements Action {
 
 		// Action 값 지정
 		ActionForward forward = new ActionForward();
-		forward.setPath("volunteerList.jsp");
+		
+		if("admin".equals(supporter_id)) {
+			forward.setPath("adminVolunteerList.jsp");
+		}else {
+			forward.setPath("volunteerList.jsp");
+		}
 		forward.setRedirect(false); // 넘겨줄 데이터가 있기 때문에 forward
 
 		return forward;

@@ -35,7 +35,7 @@ public class VolunteerFrontController extends HttpServlet {
 		String command = uri.substring(cp.length() + 1, uri.length() - 3);
 		System.out.println(command);
 		
-		// 봉사 신청 달력
+		// 봉사 신청 달력 (관리자 페이지 겸용)
 		if (command.equals("volunteerList")) {
 			try {
 				forward = new VolunteerListAction().execute(request, response);
@@ -72,12 +72,6 @@ public class VolunteerFrontController extends HttpServlet {
 				System.out.println("volunteerDelete.vt 수행중 문제 발생");
 			}
 		} 
-		
-		// 관리자 페이지 용 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		
-		
-		
 		
 		// 만약 forward 가 null 이라면 null pointer exception 이 발생하기 떄문에 대비
 		if (forward != null) {

@@ -179,7 +179,12 @@
 								<a href="animalOne.am?animal_number=${v.animal_number}"
 									class="prod-img"> <img src="${v.animal_image}"
 									class="img-fluid animals" alt="Free html5 bootstrap 4 template">
+									<c:if test="${v.isAdoption == 'true'}">
+										<img src="images/adoptionDone.png" class="img-fluid animals"
+											alt="Free html5 bootstrap 4 template">
+									</c:if>
 								</a>
+
 								<div class="desc">
 									<h2>
 										<a href="animalOne.am?animal_number=${v.animal_number}">${v.animal_name}</a>
@@ -193,7 +198,7 @@
 						</div>
 					</c:forEach>
 				</div>
-<!-- 페이지네이션 구현한다면 유지//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+				<!-- 페이지네이션 구현한다면 유지//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 				<!-- 		<div class="pagenation">
 			<div class="col-md-12 text-center">
 				<div class="block-27">
@@ -220,7 +225,7 @@
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
-	
+
 	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>

@@ -119,8 +119,11 @@
 							</li>
 						</ul>
 						<c:choose>
-						<c:when test="${supporter_id == null}">
+						<c:when test="${(supporter_id == null) && (animalOne.isAdoption == 'false')}">
 						<a href="login.jsp" class="btn btn-primary adopt" >로그인 후 입양 신청 가능</a>
+						</c:when>
+						<c:when test="${animalOne.isAdoption == 'true'}">
+						<a class="btn btn-primary adopt done" >이미 가족을 찾았어요!</a>
 						</c:when>
 						<c:otherwise>
 						<a href="applicationRequest.ap?animal_number=${animalOne.animal_number}" class="btn btn-primary adopt">입양하기</a>

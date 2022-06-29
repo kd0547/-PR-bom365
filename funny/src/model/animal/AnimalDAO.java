@@ -2,6 +2,7 @@ package model.animal;
 
 import model.mybatis.SqlMapConfig;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -48,5 +49,19 @@ public class AnimalDAO {
 	public List<AnimalDTO> selectSearch(AnimalDTO dto) {
 		List<AnimalDTO> AnimalSelectList = sqlsession.selectList("AnimalSQL.selectSearch", dto);
 		return AnimalSelectList;
+	}
+	
+	// 관리자 페이지 용 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+	//입양 채택
+	public boolean update(String supporter_id, int animal_number) {
+		boolean result = false;
+		HashMap<String, Object> updateSet = new HashMap<>();
+		updateSet.put("supporter_id", supporter_id);
+		updateSet.put("animal_number", animal_number);
+		
+		if (sqlsession.update("AnimalSQL.update", updateSet) != 0) {
+			result = true;
+		}
+		return result;
 	}
 }

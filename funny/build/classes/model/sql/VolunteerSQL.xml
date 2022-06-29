@@ -7,14 +7,14 @@
 	<select id="selectIsFull" parameterType="hashmap" resultType="_int">
 		select count(*) cnt from volunteer where volunteer_date=#{volunteer_date} and volunteer_time=#{volunteer_time}
 	</select>
-	<select id="selectSupporter" parameterType="VolunteerDTO" resultType="VolunteerDTO">
+	<select id="selectIsDone" parameterType="VolunteerDTO" resultType="VolunteerDTO">
 		select * from volunteer where supporter_id=#{supporter_id} and volunteer_date=#{volunteer_date} and volunteer_time=#{volunteer_time}
 	</select>
 	<delete id="delete" parameterType="VolunteerDTO">
 		delete from volunteer where volunteer_number=#{volunteer_number}
 	</delete>
    	<!-- mypage -->
-	<select id="mypage" parameterType="SupporterDTO" resultType="VolunteerDTO">
+	<select id="selectSupporter" parameterType="SupporterDTO" resultType="VolunteerDTO">
 		select * from volunteer where supporter_id=#{supporter_id} order by volunteer_date desc
 	</select>
    	<!-- 관리자 페이지 -->

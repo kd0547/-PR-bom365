@@ -8,8 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import controller.volunteer.component.VolunteerCal;
-import model.board.BoardDTO;
-import model.board.BoardSet;
 import model.mybatis.SqlMapConfig;
 import model.supporter.SupporterDTO;
 import model.volunteer.VolunteerDTO;
@@ -73,7 +71,7 @@ public class VolunteerDAO {
 	
 	// 신청 여부 확인
 	public VolunteerDTO selectSupporter(VolunteerDTO dto) {
-		VolunteerDTO data = sqlsession.selectOne("VolunteerSQL.selectSupporter", dto);
+		VolunteerDTO data = sqlsession.selectOne("VolunteerSQL.selectIsDone", dto);
 		return data;
 	}
 	
@@ -86,13 +84,12 @@ public class VolunteerDAO {
 		return result;
 	}
 	
-	// my page ///////////////////////////////////////////////////////////////////////////////////////////////////////
-	public List<VolunteerDTO> mypage(SupporterDTO dto) {
-		List<VolunteerDTO> data = sqlsession.selectList("VolunteerSQL.mypage", dto);
+	// my page / 관리자 검색 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+	public List<VolunteerDTO> selectSupporter(SupporterDTO dto) {
+		List<VolunteerDTO> data = sqlsession.selectList("VolunteerSQL.selectSupporter", dto);
 		return data;
 	}
 	
-	// 관리자 페이지 용 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	
 	

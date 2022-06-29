@@ -21,7 +21,9 @@
 						</c:when>
 						<c:otherwise>
 							<a href="logout.me" class="btn btn-primary">&nbsp;로그아웃&nbsp;</a>
-							<a href="mypage.me" class="btn btn-primary">마이페이지</a>
+							<c:if test="${supporter_id!='admin'}">
+								<a href="mypage.me" class="btn btn-primary">마이페이지</a>
+							</c:if>
 						</c:otherwise>
 					</c:choose>
 				</div>
@@ -45,7 +47,8 @@
 										</c:when>
 										<c:otherwise>
 											<a href="#"
-												onclick="${supporter_id == null? 'loginCheck()':'goREG()'}">정기후원 신청하기</a>
+												onclick="${supporter_id == null? 'loginCheck()':'goREG()'}">정기후원
+												신청하기</a>
 										</c:otherwise>
 									</c:choose></li>
 								<li><a href="#"
