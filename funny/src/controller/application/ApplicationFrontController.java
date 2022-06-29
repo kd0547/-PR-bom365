@@ -53,7 +53,28 @@ public class ApplicationFrontController extends HttpServlet {
 				System.out.println("applicationInsert.ap 수행중 문제 발생");
 			}
 		}
-		
+
+		// 관리자 페이지 용 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+		// 전체 신청서 목록
+		else if (command.equals("adminApplicationList")) {
+			try {
+				forward = new AdminApplicationListAction().execute(request, response);
+			} catch (Exception e) {
+				System.out.println("adminApplicationList.ap 수행중 문제 발생");
+			}
+		}
+
+		// 상세글보기
+		else if (command.equals("adminApplicationOne")) {
+			try {
+				forward = new AdminApplicationOneAction().execute(request, response);
+			} catch (Exception e) {
+				System.out.println("adminApplicationOne.ap 수행중 문제 발생");
+				e.printStackTrace();
+			}
+		}
+
+
 		// 만약 forward 가 null 이라면 null pointer exception 이 발생하기 떄문에 대비
 		if (forward != null) {
 			if (forward.isRedirect()) {

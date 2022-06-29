@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ApplicationSQL">
-	<select id="selectAnimal" parameterType="AnimalDTO" resultType="AnimalDTO">
-		select * from animal where animal_number=#{animal_number}
-	</select>
 	<insert id="insert" parameterType="ApplicationDTO" >
 		insert into application values ((select nvl(max(application_number),0)+1 from application), #{animal_number}, #{supporter_id}, #{application_title}, #{application_content, jdbcType=VARCHAR})
 	</insert>

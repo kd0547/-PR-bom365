@@ -6,14 +6,16 @@ select * from support_temporary;
 select * from board;
 select * from board_comment;
 select * from volunteer;
- drop table supporter;
- drop table animal;
- drop table application;
- drop table support_regular;
- drop table support_temporary;
- drop table board;
- drop table board_comment;
- drop table volunteer;
+
+-- drop table supporter;
+-- drop table animal;
+-- drop table application;
+-- drop table support_regular;
+-- drop table support_temporary;
+-- drop table board;
+-- drop table board_comment;
+-- drop table volunteer;
+
 -- truncate table supporter;
 -- truncate table animal;
 -- truncate table application;
@@ -23,7 +25,11 @@ select * from volunteer;
 -- truncate table board_comment;
 -- truncate table volunteer;
 
+<<<<<<< HEAD
 -- 회원
+=======
+ -- 회원
+>>>>>>> branch 'main' of https://github.com/bom365/-PR-bom365.git
 CREATE TABLE supporter (  
 	supporter_id				VARCHAR2(20)		CONSTRAINT PK_member PRIMARY KEY,
 	supporter_name		VARCHAR2(20)		NOT NULL,
@@ -85,6 +91,7 @@ CREATE TABLE support_regular (
 	regular_amount			NUMBER					NOT NULL,
 	regular_bank				VARCHAR2(50)		NOT NULL,
 	regular_account		VARCHAR2(20)		NOT NULL,
+	regular_paymentDate VARCHAR2(20)		NOT NULL,
 	regular_date				VARCHAR2(20)		NOT NULL,
 	
 	CONSTRAINTS FK_MEMBER_TO_REGULAR FOREIGN KEY (supporter_id) REFERENCES  supporter (supporter_id)

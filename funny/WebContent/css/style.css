@@ -9137,3 +9137,36 @@ a.btn.btn-primary.main {
     font-size: 17px !important;
     border-radius: 40px;
 }
+input.btn.btn-primary.del.support {
+    margin: 1.5em 0px 0 0 !important;
+    width: 10em;
+}
+a.mainREG {
+    color: #797152;
+    cursor: pointer;
+}
+a.mainREG:hover {
+    color: white;
+    cursor: pointer;
+}
+textarea.form-control.gap.one {
+	border-radius: 8px;
+	border: 0px !important;
+	font-size: 1.25rem !important;
+	padding: 14px;
+    min-height: 330px;
+}
+.container.table {
+	max-width: 1282px !important;
+}
+.twins-wrap.tem {
+    padding: 0 15px;
+}
+td.startSup {
+    border-top: 1px dashed #dee2e6;
+    text-align: right;
+    color: #59595973;
+    font-size: 13px;
+    padding: 0;
+}
+

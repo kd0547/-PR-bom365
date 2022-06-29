@@ -64,6 +64,9 @@ public class SupportFrontController extends HttpServlet {
 				default: System.out.println("SupportFrontController에서 문제 발생! 경로확인 필요");
 		
 			}*/
+
+		// 관리자 페이지 용 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
 		
 
 

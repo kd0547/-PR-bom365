@@ -1,8 +1,12 @@
 package controller.volunteer;
 
 import controller.ActionForward;
+<<<<<<< HEAD
 import controller.MainAction;
 import controller.application.ApplicationRequestAction;
+=======
+import controller.board.BoardDeleteAction;
+>>>>>>> branch 'main' of https://github.com/bom365/-PR-bom365.git
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -64,6 +68,22 @@ public class VolunteerFrontController extends HttpServlet {
 			}
 		}
 
+		
+		//봉사 취소하기
+		else if (command.equals("volunteerDelete")) {
+			try {
+				forward = new VolunteerDeleteAction().execute(request, response);
+			} catch (Exception e) {
+				System.out.println("volunteerDelete.vt 수행중 문제 발생");
+			}
+		} 
+		
+		// 관리자 페이지 용 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		
+		
+		
+		
 
 		// 만약 forward 가 null 이라면 null pointer exception 이 발생하기 떄문에 대비
 		if (forward != null) {

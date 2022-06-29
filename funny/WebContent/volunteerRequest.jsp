@@ -83,7 +83,7 @@
 						</c:choose>
 					</tr>
 					<tr>
-						<td colspan="2"><input type="submit"
+						<td colspan="2"><input type="submit" onclick="self.close();"
 							class="btn btn-primary vol" value="신청하기"></td>
 					</tr>
 					<tr>
