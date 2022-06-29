@@ -1,6 +1,7 @@
 package controller.supporter;
 
 import controller.Action;
+
 import controller.ActionForward;
 import model.supporter.SupporterDAO;
 import model.supporter.SupporterDTO;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LogInAction implements Action {
 	@Override
@@ -25,14 +28,29 @@ public class LogInAction implements Action {
 		dto.setSupporter_password(supporter_password);
 		SupporterDTO data = dao.login(dto);
 		
+
+		
+		
 		// 만약 아이디, 비밀번호가 동일하다면
-		if (data != null) { 
+		if (data != null) {
 			HttpSession session = request.getSession(); // spring 식 session 을 받는법
 			session.setAttribute("supporter_id", data.getSupporter_id());
 			session.setAttribute("supporter_name", data.getSupporter_name()); // "000님 환영합니다"에 쓰임
 			System.out.println(data.getSupporter_name());
+			
+			//로그인 시 이전 페이지의 URL을 저장한다.
+			/*
+			 * 이전 페이지의 검증이 필요할 것 같음 
+			 */
+			String previousURL = (String) session.getAttribute("PREVIOUS");
+			System.out.println("test: "+previousURL);
 			forward = new ActionForward();
-			forward.setPath("main.do");
+			if(previousURL != null) {
+				forward.setPath(previousURL);
+			} else {
+				forward.setPath("main.do");
+			}
+			
 			forward.setRedirect(true); // 세션에 저장하였기 때문에 넘겨줘야할 데이터가 없음
 		} else {
 			response.setContentType("text/html; charset=UTF-8");
@@ -44,3 +62,4 @@ public class LogInAction implements Action {
 		return forward;
 	}
 }
+	 

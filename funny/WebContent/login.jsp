@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="mytag"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
+<c:set var="PREVIOUS" value="<%=request.getHeader(\"REFERER\")%>"
+	scope="session" />
 <!DOCTYPE HTML>
 <html>
 <head>

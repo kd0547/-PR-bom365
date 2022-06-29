@@ -98,7 +98,8 @@ textarea.form-control.gap.one {
 					</div>
  					<div class="form-group">
 						<h5>내용</h5>
-						<textarea name="board_content" id="autoHeight" class="form-control gap one" disabled>${boardDetail.board.board_content}</textarea>
+						<div name="board_content" id="autoHeight" class="form-control gap one" readonly>${boardDetail.board.board_content}
+						</div>
 					</div>
 					<script type="text/javascript">
 						function adjustHeight() {

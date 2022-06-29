@@ -9,6 +9,8 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <mytag:icon />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="js/textedit.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link
 	href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Jua&display=swap"
@@ -40,8 +42,23 @@
 
 <!-- Theme style  -->
 <link rel="stylesheet" href="css/style.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-</head>
+
+<!-- include libraries(jQuery, bootstrap) -->
+<script type="text/javascript" src="/js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/js/edit-layout.js"></script>
+
+
+<style type="text/css">
+.ck-editor {
+	max-width: 100%;
+}
+
+.ck-editor__editable {
+	min-height: 800px;
+}
+</style>
+ </head>
+
 <body>
 
 	<div id="page">
@@ -65,19 +82,21 @@
 		<div style="text-align: center; margin-top: 2em; margin-bottom: 7em;">
 			<div class="col-sm-4 text-left total writeForm"
 				style="display: inline-block;">
-				<form action="boardInsert.do" method="post">
+				<form action="boardInsert.do" method="post" >
+				
 					<div class="form-group">
 						<h5>제목</h5>
 						<input type="text" class="form-control gap"
 							placeholder="제목을 입력해 주세요." name="board_title">
 
-						<div class="form-group">
-							<h5>내용</h5>
-							<textarea name="board_content" rows="10" maxlength="1000"
-								class="form-control gap" placeholder="내용을 입력해 주세요."></textarea>
+						<div id="text-edit-layout" class="form-group">
+							<textarea name="board_content" id="editor"></textarea>
+							
+
 						</div>
 					</div>
-					<input type="submit" value="글 작성하기"
+					
+					<input id="send" type="submit" value="글 작성하기"
 						class="btn btn-primary inputSubmit">
 				</form>
 			</div>
@@ -115,7 +134,13 @@
 	<script src="js/jquery.stellar.min.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
+	<script>
+		
+	</script>
+	
 
 </body>
+
+
 </html>
 

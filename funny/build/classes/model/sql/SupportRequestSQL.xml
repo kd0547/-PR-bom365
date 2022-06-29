@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SupportRequestSQL">
+    <insert id="supportREGRequest" parameterType="SupportREGRequestDTO">
+  		  Insert INTO support_regular VALUES ((select NVL(MAX(regular_number),0)+1 FROM support_regular), #{supporter_id}, #{regular_amount},#{regular_bank},#{regular_account},#{regular_date})
+    </insert>
+    
+     <insert id="supportTEMRequest" parameterType="SupportTEMRequestDTO">
+  		 Insert INTO support_temporary VALUES ((select NVL(MAX(temporary_number),0)+1 FROM support_temporary), #{supporter_id}, #{temporary_amount}, #{temporary_date})
+    </insert>
+</mapper>
