@@ -48,6 +48,7 @@ public class BoardFrontController extends HttpServlet {
 				forward = new BoardListAction().execute(request, response);
 			} catch (Exception e) {
 				System.out.println("boardList.do 수행중 문제 발생");
+				e.printStackTrace();
 			}
 		}
 		

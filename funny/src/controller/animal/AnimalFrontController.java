@@ -41,6 +41,7 @@ public class AnimalFrontController extends HttpServlet {
 				forward = new AnimalListAction().execute(request, response);
 			} catch (Exception e) {
 				System.out.println("animalList.am 수행중 문제 발생");
+				e.printStackTrace();
 			}
 		}
 		

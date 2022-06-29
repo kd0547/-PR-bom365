@@ -5,8 +5,11 @@
 	<insert id="insert" parameterType="BoardDTO">
 		insert into board values ((select nvl(max(board_number),0)+1 from board),#{supporter_id},to_char(sysdate, 'yyyy/mm/dd hh24:mi'),#{board_title},#{board_content},#{category},default)
 	</insert>
-	<select id="selectSupporter" resultType="BoardDTO">
-		select * from board where category='일반' order by board_number desc
+	<select id="selectCnt" resultType="_int">
+		SELECT COUNT(*) FROM BOARD where category='일반'
+	</select>
+	<select id="selectSupporter" parameterType="hashmap" resultType="BoardDTO">
+		SELECT * FROM (SELECT rownum R, D.* FROM (SELECT * FROM BOARD where category='일반' ORDER BY BOARD_NUMBER DESC) D) B WHERE B.R BETWEEN #{startRow} AND #{endRow}
 	</select>
 	<select id="selectOne" parameterType="BoardDTO" resultType="BoardDTO">
 		select * from board where board_number=#{board_number}

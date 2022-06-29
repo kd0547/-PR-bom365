@@ -1,5 +1,6 @@
 package model.board;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -45,16 +46,25 @@ public class BoardDAO {
 	}
 
 	// 전체 게시글 조회
-	public List<BoardDTO> selectAll() {
-		List<BoardDTO> datas = sqlsession.selectList("BoardSQL.selectAdmin");
-		List<BoardDTO> datasSupporter = sqlsession.selectList("BoardSQL.selectSupporter");
+	public List<BoardDTO> selectAll(int startRow, int endRow) {
+		HashMap<String, Integer> datas = new HashMap<>();
+		datas.put("startRow", startRow);
+		datas.put("endRow", endRow);
+		
+		List<BoardDTO> boardList = sqlsession.selectList("BoardSQL.selectAdmin");
+		List<BoardDTO> boardListPaging = sqlsession.selectList("BoardSQL.selectSupporter", datas);
 
-		for (BoardDTO v : datasSupporter) {
-			datas.add(v);
+		for (BoardDTO v : boardListPaging) {
+			boardList.add(v);
 		}
-		return datas;
+		return boardList;
 	}
-
+	
+	// 전체 글 개수
+	public int selectCnt() {
+		return sqlsession.selectOne("BoardSQL.selectCnt");
+	}
+	
 	// 게시글 상세보기
 	public BoardSet selectOne(BoardDTO data) {
 		BoardSet bs = new BoardSet();
@@ -110,4 +120,6 @@ public class BoardDAO {
 		}
 		return result;
 	}
+	
+
 }

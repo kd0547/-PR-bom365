@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>봉사신청</title>
+<title>날짜별조회</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -41,61 +41,73 @@
 
 <!-- Theme style  -->
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/signup_mypage.css">
 </head>
 <body>
-	<div class="volReqFirstDiv">
-		<div style="display: inline-block;">
-			<form action="volunteerInsert.vt" method="post" target="main">
-				<input type="hidden" name="volunteer_date" value="${volCnt.yyyyMMdd}">
-				<table style="font-size: 18px">
-					<tr>
-						<c:choose>
-							<c:when test="${checkAM != null}">
-								<td colspan="2">🌼 ${volCnt.yyyyMMdd} 오전 신청 완료 🌼</td>
-							</c:when>
-							<c:when test="${volCnt.cntAM ge 10}">
-								<td colspan="2" style="color: #5959597a;">🐶
-									${volCnt.yyyyMMdd} 오전 봉사 마감 🐱</td>
-							</c:when>
-							<c:otherwise>
-								<td><input type="radio" name="volunteer_time" value="오전"
-									required> 오전 (09:00 ~ 12:00)</td>
-								<td><small style="color: #bfb180;">&nbsp;${volCnt.cntAM}
-										/ 10</small></td>
-							</c:otherwise>
-						</c:choose>
-					</tr>
-					<tr>
-						<c:choose>
-							<c:when test="${checkPM != null}">
-								<td colspan="2">🌼 ${volCnt.yyyyMMdd} 오후 신청 완료 🌼</td>
-							</c:when>
-							<c:when test="${volCnt.cntPM ge 10}">
-								<td colspan="2" style="color: #5959597a;">🐱
-									${volCnt.yyyyMMdd} 오후 봉사 마감 🐶</td>
-							</c:when>
-							<c:otherwise>
-								<td><input type="radio" name="volunteer_time" value="오후"
-									required> 오후 (14:00 ~ 17:00)</td>
-								<td><small style="color: #bfb180;">&nbsp;${volCnt.cntPM}
-										/ 10</small></td>
-							</c:otherwise>
-						</c:choose>
-					</tr>
-					<tr>
-						<td colspan="2"><input type="submit" onclick="self.close();"
-							class="btn btn-primary vol" value="신청하기"></td>
-					</tr>
-					<tr>
-						<td colspan="2"><small class="volBack"
-							onclick="self.close();">돌아가기</small></td>
-					</tr>
-				</table>
-			</form>
+
+	<div class="container-fluid" style="padding: 0;">
+		<div align="center">
+			<h3 class="adVolyyyyMMdd">${yyyyMMdd}</h3>
+			<div class="row adVol">
+
+				<c:choose>
+					<c:when test="${AMList.size() == 0 && PMList.size() == 0}">
+						<h4 style="color: #7c7454;">봉사신청자가없습니다!</h4>
+					</c:when>
+					<c:otherwise>
+						<div class="col-sm-6 text-center">
+							<table class="board table" style="margin-bottom: 14px;">
+								<tbody>
+									<tr class="boardHead">
+										<td colspan="3" class="adVolTitle">오전</td>
+									</tr>
+								</tbody>
+								<tbody class="boardTbottom">
+									<c:set var="cnt" value="0" />
+									<tr>
+										<c:forEach var="v" items="${AMList}">
+											<c:set var="cnt" value="${cnt+1}" />
+											<td class="adVolTd">${v.supporter_id}</td>
+											<c:if test="${cnt % 3 == 0}">
+												<%="</tr><tr>"%>
+											</c:if>
+										</c:forEach>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="col-sm-6 text-center">
+							<table class="board table" style="margin-bottom: 14px;">
+								<tbody>
+									<tr class="boardHead">
+										<td colspan="3" class="adVolTitle">오후</td>
+									</tr>
+								</tbody>
+								<tbody class="boardTbottom">
+									<c:set var="cnt" value="0" />
+									<tr>
+										<c:forEach var="v" items="${PMList}">
+											<c:set var="cnt" value="${cnt+1}" />
+											<td class="adVolTd">${v.supporter_id}</td>
+											<c:if test="${cnt % 3 == 0}">
+												<%="</tr><tr>"%>
+												<c:set var="cnt" value="0" />
+											</c:if>
+										</c:forEach>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</c:otherwise>
+				</c:choose>
+			</div>
+			<button onclick="self.close();" class="btn btn-primary adVol">
+				목록보기</button>
 		</div>
 	</div>
-	
-	
+
+
+
 	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
@@ -123,3 +135,4 @@
 
 </body>
 </html>
+

@@ -1,17 +1,17 @@
 package model.volunteer;
 
 public class VolunteerCnt {
-	private String yymmdd;
+	private String yyyyMMdd;
 	private String date;
 	private int cntAM;
 	private int cntPM;
 	private boolean isfull;
 	
-	public String getYymmdd() {
-		return yymmdd;
+	public String getYyyyMMdd() {
+		return yyyyMMdd;
 	}
-	public void setYymmdd(String yymmdd) {
-		this.yymmdd = yymmdd;
+	public void setYyyyMMdd(String yyyyMMdd) {
+		this.yyyyMMdd = yyyyMMdd;
 	}
 	public String getDate() {
 		return date;
@@ -39,7 +39,7 @@ public class VolunteerCnt {
 	}
 	@Override
 	public String toString() {
-		return "VolunteerCnt [yymmdd=" + yymmdd + ", date=" + date + ", cntAM=" + cntAM + ", cntPM=" + cntPM
+		return "VolunteerCnt [yyyyMMdd=" + yyyyMMdd + ", date=" + date + ", cntAM=" + cntAM + ", cntPM=" + cntPM
 				+ ", isfull=" + isfull + "]";
 	}
 }

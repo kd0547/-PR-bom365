@@ -52,14 +52,14 @@
 									<tr>
 										<c:choose>
 											<c:when test="${spList.regular_end=='중'}">
-												<td colspan="3" class="startSup">출금 :
-													매달 ${spList.regular_paymentDate }일&nbsp;&nbsp;|&nbsp;&nbsp;시작 :
-													${spList.regular_date }</td>
+												<td colspan="3" class="startSup">출금 : 매달
+													${spList.regular_paymentDate }일&nbsp;&nbsp;|&nbsp;&nbsp;시작
+													: ${spList.regular_date }</td>
 											</c:when>
 											<c:otherwise>
-												<td colspan="3" class="startSup">출금 :
-													매달 ${spList.regular_paymentDate }일&nbsp;&nbsp;|&nbsp;&nbsp;시작 :
-													${spList.regular_date }&nbsp;&nbsp;|&nbsp;&nbsp;종료 :
+												<td colspan="3" class="startSup">출금 : 매달
+													${spList.regular_paymentDate }일&nbsp;&nbsp;|&nbsp;&nbsp;시작
+													: ${spList.regular_date }&nbsp;&nbsp;|&nbsp;&nbsp;종료 :
 													${spList.regular_end }</td>
 											</c:otherwise>
 										</c:choose>
@@ -152,16 +152,20 @@
 							<c:otherwise>
 								<c:forEach var="vtList" items="${mypageVolList}">
 									<c:set var="volEnd" value="volEnd${vtList.volunteer_number}" />
-									<tr id="volEndTr${vtList.volunteer_number}">
+									<tr>
 										<td>${vtList.volunteer_date}</td>
 										<td>${vtList.volunteer_time}</td>
-										<td><c:if test="${today lt vtList.volunteer_date}">
-												<a href="#" id="volEnd${vtList.volunteer_number}"
-													class="volEnd"
-													onmouseenter="document.getElementById('${volEnd}').innerHTML = '취소';"
-													onmouseleave="document.getElementById('${volEnd}').innerHTML = '예정';"
-													onclick="end('봉사신청을 취소하시겠습니까?', 'volunteerDelete.vt?volunteer_number=${vtList.volunteer_number}')">예정</a>
-											</c:if></td>
+										<td><c:choose>
+												<c:when test="${today lt vtList.volunteer_date}">
+													<a href="#" id="volEnd${vtList.volunteer_number}"
+														class="volEnd"
+														onmouseenter="document.getElementById('${volEnd}').innerHTML = '취소';"
+														onmouseleave="document.getElementById('${volEnd}').innerHTML = '예정';"
+														onclick="end('봉사신청을 취소하시겠습니까?', 'volunteerDelete.vt?volunteer_number=${vtList.volunteer_number}')">예정</a>
+												</c:when>
+												<c:otherwise>🌼
+												</c:otherwise>
+											</c:choose></td>
 									</tr>
 								</c:forEach>
 								</tbody>

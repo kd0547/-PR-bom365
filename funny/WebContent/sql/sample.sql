@@ -59,7 +59,7 @@ VALUES (
 );
 INSERT INTO application
 VALUES (
-	(select nvl(max(application_number),0)+1 from application),28,'akfEhd','입양신청3','신청신청신청신청신청신청신청신청', to_char(sysdate, 'yyyy/mm/dd hh24:mi')
+	(select nvl(max(application_number),0)+1 from application),29,'akfEhd','입양신청3','신청신청신청신청신청신청신청신청', to_char(sysdate, 'yyyy/mm/dd hh24:mi')
 );
 INSERT INTO application
 VALUES (
@@ -123,7 +123,7 @@ VALUES (
 );
 INSERT INTO application
 VALUES (
-	(select nvl(max(application_number),0)+1 from application),45,'qoaEhd','입양신청19','신청신청신청신청신청신청신청신청', to_char(sysdate, 'yyyy/mm/dd hh24:mi')
+	(select nvl(max(application_number),0)+1 from application),44,'qoaEhd','입양신청19','신청신청신청신청신청신청신청신청', to_char(sysdate, 'yyyy/mm/dd hh24:mi')
 );
 INSERT INTO application
 VALUES (
@@ -158,15 +158,51 @@ VALUES (
 );
 INSERT INTO board
 VALUES (
-	(select nvl(max(board_number),0)+1 from board),'roEhd',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'물품 후원도 가능한가요?','집에 사료가 많아서 후원하려고요','일반',default
+	(select nvl(max(board_number),0)+1 from board),'roEhd',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'게시글1','내용내용내용내용내용내용내용내용내용내용내용내용','일반',default
 );
 INSERT INTO board
 VALUES (
-	(select nvl(max(board_number),0)+1 from board),'thEhd',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'날씨가 더워졌네요,,','보호소 아이들 많이 덥겠어요. 여름준비 일손 필요하다고 들었는데 조만간 방문 해야겠어요','일반',default
+	(select nvl(max(board_number),0)+1 from board),'thEhd',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'게시글2','내용내용내용내용내용내용내용내용내용내용내용내용','일반',default
 );
 INSERT INTO board
 VALUES (
-	(select nvl(max(board_number),0)+1 from board),'akfEhd',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'안양 사시는 분 중에 이번 주 주말 봉사 같이 가실 분계신가요','봉사 가고싶은데 교통편이 까다롭네요ㅜㅜ','일반',default
+	(select nvl(max(board_number),0)+1 from board),'akfEhd',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'게시글3','내용내용내용내용내용내용내용내용내용내용내용내용','일반',default
+);
+INSERT INTO board
+VALUES (
+	(select nvl(max(board_number),0)+1 from board),'ekfrEhd',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'게시글4','내용내용내용내용내용내용내용내용내용내용내용내용','일반',default
+);
+INSERT INTO board
+VALUES (
+	(select nvl(max(board_number),0)+1 from board),'toEhd',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'게시글5','내용내용내용내용내용내용내용내용내용내용내용내용','일반',default
+);
+INSERT INTO board
+VALUES (
+	(select nvl(max(board_number),0)+1 from board),'wnlEhd',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'게시글6','내용내용내용내용내용내용내용내용내용내용내용내용','일반',default
+);
+INSERT INTO board
+VALUES (
+	(select nvl(max(board_number),0)+1 from board),'gkrEhd',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'게시글7','내용내용내용내용내용내용내용내용내용내용내용내용','일반',default
+);
+INSERT INTO board
+VALUES (
+	(select nvl(max(board_number),0)+1 from board),'RnjdEhd',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'게시글8','내용내용내용내용내용내용내용내용내용내용내용내용','일반',default
+);
+INSERT INTO board
+VALUES (
+	(select nvl(max(board_number),0)+1 from board),'qoaEhd',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'게시글9','내용내용내용내용내용내용내용내용내용내용내용내용','일반',default
+);
+INSERT INTO board
+VALUES (
+	(select nvl(max(board_number),0)+1 from board),'didEhd',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'물품 후원도 가능한가요?','집에 사료가 많아서 후원하려고요','일반',default
+);
+INSERT INTO board
+VALUES (
+	(select nvl(max(board_number),0)+1 from board),'roEhd',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'날씨가 더워졌네요,,','보호소 아이들 많이 덥겠어요. 여름준비 일손 필요하다고 들었는데 조만간 방문 해야겠어요','일반',default
+);
+INSERT INTO board
+VALUES (
+	(select nvl(max(board_number),0)+1 from board),'thEhd',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'안양 사시는 분 중에 이번 주 주말 봉사 같이 가실 분계신가요','봉사 가고싶은데 교통편이 까다롭네요ㅜㅜ','일반',default
 );
 
 -- 마감 샘플--------------------------------------------------------------------------------------------------------------------------------

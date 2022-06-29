@@ -41,11 +41,12 @@
 
 <!-- Theme style  -->
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/signup_mypage.css">
 <script>
-	window.name="main"
+	window.name = "main"
 
 	function openPopup(url) {
-		window.open(url, '봉사신청목록', 'width=400, height=300, left=745, top=200');
+		window.open(url, '봉사신청목록', 'width=700, height=500, left=595, top=200');
 	}
 </script>
 </head>
@@ -69,8 +70,8 @@
 
 		<h1 id="menuTitle">신청목록조회</h1>
 
-		<section>
-			<div class="boardListFirstDiv">
+		<section style="margin-bottom: 7rem;">
+			<div class="boardListFirstDiv" style="margin-bottom: 0;">
 				<div style="display: inline-block;">
 					<table class="calendar">
 						<tr>
@@ -135,7 +136,7 @@
 										</c:when>
 										<c:otherwise>
 											<button
-												onclick="openPopup('adminVolunteerDateList.vt?yymmdd=${v.yymmdd}&cntAM=${v.cntAM}&cntPM=${v.cntPM}')"
+												onclick="openPopup('adminVolunteerDateList.vt?yyyyMMdd=${v.yyyyMMdd}')"
 												style="color: ${color}">${v.date}</button>
 										</c:otherwise>
 									</c:choose></td>
@@ -153,14 +154,66 @@
 							</c:forEach>
 						</tr>
 					</table>
+
 				</div>
 			</div>
+			<hr>
+			<form method="post" action="volunteerList.vt"
+				style="display: flex; justify-content: center;">
+				<input type="text"
+					class="woocommerce-Input woocommerce-Input--text input-text unique post"
+					name="keyword"><input type="submit"
+					style="width: 150px; font-size: 19px;" class="searchingPostcode"
+					value="아이디로 검색">
+			</form>
+			<c:if test="${searchList != null}">
+				<div class="boardListFirstDiv" style="margin-bottom: 0;">
+					<div style="display: inline-block; width: 510px;">
+						<c:choose>
+							<c:when test="${searchList.size() == 0}">
+								<h4 style="color: #7c7454;">검색 결과가 없습니다</h4>
+							</c:when>
+							<c:otherwise>
+								<table class="board table"
+									style="text-align: center; margin-bottom: 14px;">
+									<tbody>
+										<tr class="boardHead">
+											<td>봉사자명</td>
+											<td>날짜</td>
+											<td>파트</td>
+											<td>완료여부</td>
+										</tr>
+									</tbody>
+									<tbody class="boardTbottom">
+										<c:forEach var="v" items="${searchList}">
+											<c:choose>
+												<c:when test="${today gt v.volunteer_date}">
+													<tr>
+														<td>${v.supporter_id}</td>
+														<td>${v.volunteer_date}</td>
+														<td>${v.volunteer_time}</td>
+														<td>완료</td>
+													</tr>
+												</c:when>
+												<c:otherwise>
+													<tr style="color: #59595978;">
+														<td>${v.supporter_id}</td>
+														<td>${v.volunteer_date}</td>
+														<td>${v.volunteer_time}</td>
+														<td>예정</td>
+													</tr>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
+									</tbody>
+								</table>
+							</c:otherwise>
+						</c:choose>
+					</div>
+				</div>
+			</c:if>
 		</section>
-		<form method="post" action="boardSearch.do" style="float: right;">
-			<input type="text" name="keyword" class="searchKeyword"> <input
-				type="submit" value="아이디/이름 검색"
-				class="btn btn-primary inputSubmit searchButton">
-		</form>
+
 		<!-- Page Footer-->
 		<mytag:pageFooter />
 

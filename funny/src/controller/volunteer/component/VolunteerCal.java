@@ -60,87 +60,66 @@ public class VolunteerCal {
 	public int getCurrentYear() {
 		return currentYear;
 	}
-
 	public void setCurrentYear(int currentYear) {
 		this.currentYear = currentYear;
 	}
-
 	public int getYear() {
 		return year;
 	}
-
 	public void setYear(int year) {
 		this.year = year;
 	}
-
 	public int getBeforeYear() {
 		return beforeYear;
 	}
-
 	public void setBeforeYear(int beforeYear) {
 		this.beforeYear = beforeYear;
 	}
-
 	public int getAfterYear() {
 		return afterYear;
 	}
-
 	public void setAfterYear(int afterYear) {
 		this.afterYear = afterYear;
 	}
-
 	public int getCurrentMonth() {
 		return currentMonth;
 	}
-
 	public void setCurrentMonth(int currentMonth) {
 		this.currentMonth = currentMonth;
 	}
-
 	public int getMonth() {
 		return month;
 	}
-
 	public void setMonth(int month) {
 		this.month = month;
 	}
-
 	public int getBeforeMonth() {
 		return beforeMonth;
 	}
-
 	public void setBeforeMonth(int beforeMonth) {
 		this.beforeMonth = beforeMonth;
 	}
-
 	public int getAfterMonth() {
 		return afterMonth;
 	}
-
 	public void setAfterMonth(int afterMonth) {
 		this.afterMonth = afterMonth;
 	}
-
 	public int getCurrentDate() {
 		return currentDate;
 	}
-
 	public void setCurrentDate(int currentDate) {
 		this.currentDate = currentDate;
 	}
-
 	public int getDayOfweek() {
 		return dayOfweek;
 	}
-
 	public void setDayOfweek(int dayOfweek) {
 		this.dayOfweek = dayOfweek;
 	}
-
 	public int getLastday() {
 		return lastday;
 	}
-
 	public void setLastday(int lastday) {
 		this.lastday = lastday;
 	}

@@ -52,12 +52,6 @@
 
 </head>
 <body>
-	<c:set var="applicationList" value="${requestScope.applicationList}" />
-	<c:set var="totalCnt" value="${requestScope.totalCnt }" />
-	<c:set var="nowPage" value="${requestScope.nowPage }" />
-	<c:set var="totalPage" value="${requestScope.totalPage }" />
-	<c:set var="startPage" value="${requestScope.startPage }" />
-	<c:set var="endPage" value="${requestScope.endPage }" />
 	<div id="page">
 
 		<!-- Page Header-->

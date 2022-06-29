@@ -22,12 +22,6 @@ public class AdminApplicationListAction implements Action {
 		String temp = req.getParameter("page");
 		int page = 0;
 		
-//		if( temp == null ) {
-//			page = 1;
-//		} else {
-//			page = Integer.parseInt(temp);
-//		}
-		
 		page = temp == null ? 1 : Integer.parseInt(temp); 
 		
 		// 페이지 처리 [1][2]...[10] : 10개씩
@@ -43,13 +37,6 @@ public class AdminApplicationListAction implements Action {
 		// [1][2]...[10] : [10], [11][12]..[20] : [20]
 		int endPage = startPage + pageSize -1;
 		int totalPage = (totalCnt -1)/pageSize + 1;
-		
-		System.out.println("endRow : " + endRow);
-		System.out.println("startRow : " + startRow);
-		System.out.println("startPage : " + startPage);
-		System.out.println("endPage : " + endPage);
-		System.out.println("totalPage : " + totalPage);
-		System.out.println("---------------------------------");
 		
 		endPage = endPage > totalPage ? totalPage : endPage;
 		

@@ -8,7 +8,7 @@ public class Today {
 
 	public Today() {
 		//오늘날짜넣기
-		 String pattern = "yyy/MM/dd";
+		 String pattern = "yyyy/MM/dd";
 		 SimpleDateFormat sdf = new SimpleDateFormat(pattern);
 		 today = sdf.format(new Date());
 		 System.out.println(today);

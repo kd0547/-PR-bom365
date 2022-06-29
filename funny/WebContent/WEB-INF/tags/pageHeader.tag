@@ -55,7 +55,11 @@
 									onclick="${supporter_id == null? 'loginCheck()':'goTEM()'}">일시후원
 										신청하기</a></li>
 							</ul></li>
-						<li><a href="volunteerList.vt">봉사신청</a></li>
+						<li><a href="volunteerList.vt"> <c:choose>
+									<c:when test="${supporter_id=='admin'}">봉사신청목록</c:when>
+									<c:otherwise>봉사신청</c:otherwise>
+								</c:choose>
+						</a></li>
 						<li><a href="boardList.do">자유게시판</a></li>
 					</ul>
 				</div>
