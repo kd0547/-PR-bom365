@@ -1,12 +1,10 @@
 package controller.volunteer;
 
 import controller.ActionForward;
-<<<<<<< HEAD
-import controller.MainAction;
-import controller.application.ApplicationRequestAction;
-=======
+
+
 import controller.board.BoardDeleteAction;
->>>>>>> branch 'main' of https://github.com/bom365/-PR-bom365.git
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

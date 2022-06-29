@@ -1,6 +1,7 @@
 package controller.supporter;
 
 import java.io.IOException;
+
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -11,14 +12,13 @@ import javax.servlet.http.HttpSession;
 
 import controller.Action;
 import controller.ActionForward;
-<<<<<<< HEAD
-=======
+
 import controller.component.Today;
 import model.support.SupportREGDAO;
 import model.support.SupportREGDTO;
 import model.support.SupportTEMDAO;
 import model.support.SupportTEMDTO;
->>>>>>> branch 'main' of https://github.com/bom365/-PR-bom365.git
+
 import model.supporter.SupporterDAO;
 import model.supporter.SupporterDTO;
 import model.volunteer.VolunteerDAO;
