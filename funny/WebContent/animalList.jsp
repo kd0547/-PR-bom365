@@ -170,8 +170,7 @@
 			</c:when>
 			<c:otherwise>
 				<!-- animals list -->
-				<div class="row animals-photos" style="margin-bottom: 15em;">
-					<!-- 페이지네이션 구현하면 margin=bottom 삭제 -->
+				<div class="row animals-photos">
 					<c:forEach var="v" items="${animalList}">
 						<div
 							class="col-md-3 col-lg-3 mb-4 text-center animals-photos-text">
@@ -201,13 +200,22 @@
 				</div>
 
 				<!-- 페이징 처리 -->
-				<div style="margin-bottom: 3em;">
+				<div style="margin: 3rem 0 7em 0;">
 					<div class="col-md-12 text-center">
 						<div class="block-27">
 							<ul>
 								<c:if test="${nowPage > 1 }">
-									<li><a href="animalList.am?page=${nowPage-1}"><i
-											class="ion-ios-arrow-back"></i></a></li>
+									<li><c:choose>
+											<c:when test="${seach != null}">
+												<a
+													href="animalSearch.am?animal_name=${animal_name}&animal_species=${animal_species}&animal_gender=${animal_gender}&animal_weight=${animal_weight}&animal_age=${animal_age}&page=${nowPage-1}"><i
+													class="ion-ios-arrow-back"></i></a>
+											</c:when>
+											<c:otherwise>
+												<a href="animalList.am?page=${nowPage-1}"><i
+													class="ion-ios-arrow-back"></i></a>
+											</c:otherwise>
+										</c:choose></li>
 								</c:if>
 								<c:forEach var="i" begin="${startPage }" end="${endPage }">
 									<c:choose>
@@ -215,13 +223,30 @@
 											<li class="active"><span>${i }</span></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="animalList.am?page=${i}">${i }</a></li>
+											<li><c:choose>
+													<c:when test="${seach != null}">
+														<a
+															href="animalSearch.am?animal_name=${animal_name}&animal_species=${animal_species}&animal_gender=${animal_gender}&animal_weight=${animal_weight}&animal_age=${animal_age}&page=${i}">${i }</a>
+													</c:when>
+													<c:otherwise>
+														<a href="animalList.am?page=${i}">${i }</a>
+													</c:otherwise>
+												</c:choose></li>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
 								<c:if test="${nowPage < totalPage }">
-									<li><a href="animalList.am?page=${nowPage+1}"><i
-											class="ion-ios-arrow-forward"></i></a></li>
+									<li><c:choose>
+											<c:when test="${seach != null}">
+												<a
+													href="animalSearch.am?animal_name=${animal_name}&animal_species=${animal_species}&animal_gender=${animal_gender}&animal_weight=${animal_weight}&animal_age=${animal_age}&page=${nowPage+1}"><i
+													class="ion-ios-arrow-forward"></i></a>
+											</c:when>
+											<c:otherwise>
+												<a href="animalList.am?page=${nowPage+1}"><i
+													class="ion-ios-arrow-forward"></i></a>
+											</c:otherwise>
+										</c:choose></li>
 								</c:if>
 							</ul>
 						</div>
@@ -229,6 +254,8 @@
 				</div>
 			</c:otherwise>
 		</c:choose>
+
+
 
 		<!-- Page Footer-->
 		<mytag:pageFooter />

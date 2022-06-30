@@ -60,6 +60,7 @@ public class AnimalFrontController extends HttpServlet {
 				forward = new AnimalSearchAction().execute(request, response);
 			} catch (Exception e) {
 				System.out.println("animalSearch.am 수행중 문제 발생");
+				e.printStackTrace();
 			}
 		}
 

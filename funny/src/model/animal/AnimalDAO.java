@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 public class AnimalDAO {
 	SqlSessionFactory factory = SqlMapConfig.getFactory();
 	SqlSession sqlsession;
+	HashMap<String, Object> datas = new HashMap<>();
 
 	public AnimalDAO() {
 		// auto commit
@@ -35,10 +36,9 @@ public class AnimalDAO {
 
 	// 전체 목록 불러오기
 	public List<AnimalDTO> selectAll(int startRow, int endRow) {
-		HashMap<String, Integer> datas = new HashMap<>();
 		datas.put("startRow", startRow);
 		datas.put("endRow", endRow);
-		List<AnimalDTO> AnimalList = sqlsession.selectList("AniamlSQL.selectAll", datas);
+		List<AnimalDTO> AnimalList = sqlsession.selectList("AnimalSQL.selectAll", datas);
 		return AnimalList;
 	}
 	
@@ -54,9 +54,23 @@ public class AnimalDAO {
 	}
 
 	// 필터 검색
-	public List<AnimalDTO> selectSearch(AnimalDTO dto) {
-		List<AnimalDTO> AnimalSelectList = sqlsession.selectList("AnimalSQL.selectSearch", dto);
+	public List<AnimalDTO> selectSearch(AnimalDTO dto, int startRow, int endRow) {
+		datas.put("animal_name", dto.getAnimal_name());
+		datas.put("animal_species", dto.getAnimal_species());
+		datas.put("animal_gender", dto.getAnimal_gender());
+		datas.put("animal_weight_over", dto.getAnimal_weight_over());
+		datas.put("animal_weight_under", dto.getAnimal_weight_under());
+		datas.put("animal_age_more", dto.getAnimal_age_more());
+		datas.put("animal_age_less", dto.getAnimal_age_less());
+		datas.put("startRow", startRow);
+		datas.put("endRow", endRow);
+		List<AnimalDTO> AnimalSelectList = sqlsession.selectList("AnimalSQL.selectSearch", datas);
 		return AnimalSelectList;
+	}
+	
+	// 필터 검색 개수
+	public int selectSearchCnt(AnimalDTO dto) {
+		return sqlsession.selectOne("AnimalSQL.selectSearchCnt", dto);
 	}
 
 	// 관리자 페이지 용

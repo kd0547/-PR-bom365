@@ -126,7 +126,7 @@
 				<br>
 
 
-				<div style="margin-bottom: 3em;">
+				<div>
 					<div class="col-md-12 text-center">
 						<div class="block-27">
 							<ul>

@@ -205,6 +205,51 @@ VALUES (
 	(select nvl(max(board_number),0)+1 from board),'thEhd',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'안양 사시는 분 중에 이번 주 주말 봉사 같이 가실 분계신가요','봉사 가고싶은데 교통편이 까다롭네요ㅜㅜ','일반',default
 );
 
+INSERT INTO board
+VALUES (
+	(select nvl(max(board_number),0)+1 from board),'test',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'test','test','일반',default
+);
+INSERT INTO board
+VALUES (
+	(select nvl(max(board_number),0)+1 from board),'test',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'test','test','일반',default
+);
+INSERT INTO board
+VALUES (
+	(select nvl(max(board_number),0)+1 from board),'test',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'test','test','일반',default
+);
+INSERT INTO board
+VALUES (
+	(select nvl(max(board_number),0)+1 from board),'test',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'test','test','일반',default
+);
+INSERT INTO board
+VALUES (
+	(select nvl(max(board_number),0)+1 from board),'test',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'test','test','일반',default
+);
+INSERT INTO board
+VALUES (
+	(select nvl(max(board_number),0)+1 from board),'test',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'test','test','일반',default
+);
+INSERT INTO board
+VALUES (
+	(select nvl(max(board_number),0)+1 from board),'test',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'test','test','일반',default
+);
+INSERT INTO board
+VALUES (
+	(select nvl(max(board_number),0)+1 from board),'test',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'test','test','일반',default
+);
+INSERT INTO board
+VALUES (
+	(select nvl(max(board_number),0)+1 from board),'test',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'test','test','일반',default
+);
+INSERT INTO board
+VALUES (
+	(select nvl(max(board_number),0)+1 from board),'test',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'test','test','일반',default
+);
+INSERT INTO board
+VALUES (
+	(select nvl(max(board_number),0)+1 from board),'test',to_char(sysdate, 'yyyy/mm/dd hh24:mi'),'test','test','일반',default
+);
+
 -- 마감 샘플--------------------------------------------------------------------------------------------------------------------------------
 INSERT INTO volunteer
 VALUES (

@@ -65,7 +65,7 @@
 
 		<h1 id="menuTitle">자유게시판</h1>
 
-		<!-- BoardList -->
+		<!-- boardList -->
 		<div class="boardListFirstDiv">
 			<div style="display: inline-block;">
 				<table class="board table">
@@ -98,8 +98,8 @@
 						<tr>
 							<td class="removeBorderTop"></td>
 							<td colspan="2" class="removeBorderTop" style="float: right;"><h6>
-									정렬 :&nbsp; <a href="boardCategory.do?category=recent">최신순</a>&nbsp;|&nbsp;
-									<a href="boardCategory.do?category=comment">댓글순</a>&nbsp;
+									정렬 :&nbsp; <a href="boardList.do">최신순</a>&nbsp;|&nbsp; <a
+										href="boardCategory.do?category=comment">댓글순</a>&nbsp;
 									<!-- 로그인이안돼있다면 숨김 -->
 									<c:if test="${supporter_id!=null}">
 										|&nbsp;<a href="boardCategory.do?category=mine">내글보기</a>&nbsp;
@@ -152,13 +152,31 @@
 					</c:choose>
 				</table>
 
-				<div style="margin-bottom: 3em;">
+				<div>
 					<div class="col-md-12 text-center">
 						<div class="block-27">
 							<ul>
 								<c:if test="${nowPage > 1 }">
-									<li><a href="boardlist.do?page=${nowPage-1}"><i
-											class="ion-ios-arrow-back"></i></a></li>
+									<li><c:choose>
+											<c:when test="${keyword != null}">
+												<a
+													href="boardSearch.do?keyword=${keyword}&page=${nowPage-1}"><i
+													class="ion-ios-arrow-back"></i></a>
+											</c:when>
+											<c:when test="${category == 'comment'}">
+												<a
+													href="boardCategory.do?category=comment&page=${nowPage-1}"><i
+													class="ion-ios-arrow-back"></i></a>
+											</c:when>
+											<c:when test="${category == 'mine'}">
+												<a href="boardCategory.do?category=mine&page=${nowPage-1}"><i
+													class="ion-ios-arrow-back"></i></a>
+											</c:when>
+											<c:otherwise>
+												<a href="boardList.do?page=${nowPage-1}"><i
+													class="ion-ios-arrow-back"></i></a>
+											</c:otherwise>
+										</c:choose></li>
 								</c:if>
 								<c:forEach var="i" begin="${startPage }" end="${endPage }">
 									<c:choose>
@@ -166,13 +184,44 @@
 											<li class="active"><span>${i }</span></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="boardlist.do?page=${i}">${i }</a></li>
+											<li><c:choose>
+													<c:when test="${keyword != null}">
+														<a href="boardSearch.do?keyword=${keyword}&page=${i}">${i }</a>
+													</c:when>
+													<c:when test="${category == 'comment'}">
+														<a href="boardCategory.do?category=comment&page=${i}">${i }</a>
+													</c:when>
+													<c:when test="${category == 'mine'}">
+														<a href="boardCategory.do?category=mine&page=${i}">${i }</a>
+													</c:when>
+													<c:otherwise>
+														<a href="boardList.do?page=${i}">${i }</a>
+													</c:otherwise>
+												</c:choose></li>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
 								<c:if test="${nowPage < totalPage }">
-									<li><a href="boardlist.do?page=${nowPage+1}"><i
-											class="ion-ios-arrow-forward"></i></a></li>
+									<li><c:choose>
+											<c:when test="${keyword != null}">
+												<a
+													href="boardSearch.do?keyword=${keyword}&page=${nowPage+1}"><i
+													class="ion-ios-arrow-forward"></i></a>
+											</c:when>
+											<c:when test="${category == 'comment'}">
+												<a
+													href="boardCategory.do?category=comment&page=${nowPage+1}"><i
+													class="ion-ios-arrow-forward"></i></a>
+											</c:when>
+											<c:when test="${category == 'mine'}">
+												<a href="boardCategory.do?category=mine&page=${nowPage+1}"><i
+													class="ion-ios-arrow-forward"></i></a>
+											</c:when>
+											<c:otherwise>
+												<a href="boardList.do?page=${nowPage+1}"><i
+													class="ion-ios-arrow-forward"></i></a>
+											</c:otherwise>
+										</c:choose></li>
 								</c:if>
 							</ul>
 						</div>
