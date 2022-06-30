@@ -27,7 +27,7 @@
 		select * from board where category='일반' and (board_title like '%'||#{keyword}||'%' or board_content like '%'||#{keyword}||'%') order by board_number desc
 		) D) B WHERE B.R BETWEEN #{startRow} AND #{endRow}
 	</select>
-	<select id="selectSearchCnt" resultType="_int">
+	<select id="selectSearchCnt" parameterType="string" resultType="_int">
 		SELECT COUNT(*) FROM BOARD where category='일반' and (board_title like '%'||#{keyword}||'%' or board_content like '%'||#{keyword}||'%') order by board_number desc
 	</select>
 	<select id="selectMine" parameterType="hashmap" resultType="BoardDTO">

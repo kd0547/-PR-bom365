@@ -88,8 +88,8 @@ public class BoardDAO {
 	}
 
 	// 검색 글 개수
-	public int selectSearchCnt() {
-		return sqlsession.selectOne("BoardSQL.selectSearchCnt");
+	public int selectSearchCnt(String keyword) {
+		return sqlsession.selectOne("BoardSQL.selectSearchCnt", keyword);
 	}
 
 	// 내가 작성한 글 조회

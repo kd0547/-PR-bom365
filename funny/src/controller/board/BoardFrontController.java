@@ -67,6 +67,7 @@ public class BoardFrontController extends HttpServlet {
 				forward = new BoardSearchAction().execute(request, response);
 			} catch (Exception e) {
 				System.out.println("boardSearch.do 수행중 문제 발생");
+				e.printStackTrace();
 			}
 		}
 		

@@ -167,7 +167,7 @@
 					value="아이디로 검색">
 			</form>
 			<c:if test="${searchList != null}">
-				<div class="boardListFirstDiv" style="margin-bottom: 0;">
+				<div class="boardListFirstDiv" style="margin: 0;">
 					<div style="display: inline-block; width: 510px;">
 						<c:choose>
 							<c:when test="${searchList.size() == 0}">
@@ -177,6 +177,12 @@
 								<table class="board table"
 									style="text-align: center; margin-bottom: 14px;">
 									<tbody>
+										<tr class="boardHead">
+											<td colspan="4" class="removeBorderTop"
+												style="padding: 0 0 1em 0; color: #cbbd89;">${search_id}님은 총&nbsp;<span
+												style="color: #978d67;">${totalCnt}번</span> 방문하셨습니다.
+											</td>
+										</tr>
 										<tr class="boardHead">
 											<td>봉사자명</td>
 											<td>날짜</td>
@@ -207,35 +213,38 @@
 										</c:forEach>
 									</tbody>
 								</table>
+								<!-- 페이징 처리 -->
+								<div style="margin-top: 2rem;">
+									<div class="col-md-12 text-center">
+										<div class="block-27">
+											<ul>
+												<c:if test="${nowPage > 1 }">
+													<li><a
+														href="volunteerList.vt?search_id=${search_id}&page=${nowPage-1}"><i
+															class="ion-ios-arrow-back"></i></a></li>
+												</c:if>
+												<c:forEach var="i" begin="${startPage }" end="${endPage }">
+													<c:choose>
+														<c:when test="${i == nowPage }">
+															<li class="active"><span>${i }</span></li>
+														</c:when>
+														<c:otherwise>
+															<li><a
+																href="volunteerList.vt?search_id=${search_id}&page=${i}">${i }</a></li>
+														</c:otherwise>
+													</c:choose>
+												</c:forEach>
+												<c:if test="${nowPage < totalPage }">
+													<li><a
+														href="volunteerList.vt?search_id=${search_id}&page=${nowPage+1}"><i
+															class="ion-ios-arrow-forward"></i></a></li>
+												</c:if>
+											</ul>
+										</div>
+									</div>
+								</div>
 							</c:otherwise>
 						</c:choose>
-					</div>
-				</div>
-				<!-- 페이징 처리 -->
-				<div style="margin-top: 2rem;">
-					<div class="col-md-12 text-center">
-						<div class="block-27">
-							<ul>
-								<c:if test="${nowPage > 1 }">
-									<li><a href="volunteerList.vt?search_id=${search_id}&page=${nowPage-1}"><i
-											class="ion-ios-arrow-back"></i></a></li>
-								</c:if>
-								<c:forEach var="i" begin="${startPage }" end="${endPage }">
-									<c:choose>
-										<c:when test="${i == nowPage }">
-											<li class="active"><span>${i }</span></li>
-										</c:when>
-										<c:otherwise>
-											<li><a href="volunteerList.vt?search_id=${search_id}&page=${i}">${i }</a></li>
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-								<c:if test="${nowPage < totalPage }">
-									<li><a href="volunteerList.vt?search_id=${search_id}&page=${nowPage+1}"><i
-											class="ion-ios-arrow-forward"></i></a></li>
-								</c:if>
-							</ul>
-						</div>
 					</div>
 				</div>
 			</c:if>

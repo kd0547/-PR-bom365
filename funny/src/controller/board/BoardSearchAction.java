@@ -18,7 +18,7 @@ public class BoardSearchAction implements Action {
 		BoardDAO dao = new BoardDAO();
 
 		// 전체 검색 글 개수
-		int totalCnt = dao.selectSearchCnt();
+		int totalCnt = dao.selectSearchCnt(keyword);
 
 		// 페이징 처리
 		// 현재 넘겨받은 페이지

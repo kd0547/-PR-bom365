@@ -85,8 +85,6 @@ public class AnimalSearchAction implements Action {
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 
-		request.setAttribute("totalCnt", totalCnt);
-		
 		List<AnimalDTO> animalList = anidao.selectSearch(animal, startRow, endRow);
 		request.setAttribute("animalList", animalList);
 		// Action 값 지정

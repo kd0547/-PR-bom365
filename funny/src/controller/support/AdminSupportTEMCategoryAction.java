@@ -64,7 +64,6 @@ public class AdminSupportTEMCategoryAction {
 
 			request.setAttribute("AdminsupportTEMList", AdminTEMList);
 			request.setAttribute("totalPage", totalPage);
-			request.setAttribute("totalCnt", totalCnt);
 			request.setAttribute("endPage", endPage);
 
 			forward.setRedirect(false);// forward방식

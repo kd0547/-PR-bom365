@@ -44,7 +44,6 @@ public class AdminSupportREGListAction{
 		request.setAttribute("nowPage", page);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);	
-		request.setAttribute("totalCnt", totalCnt);
 		
 		
 		//금액 데이터 정리

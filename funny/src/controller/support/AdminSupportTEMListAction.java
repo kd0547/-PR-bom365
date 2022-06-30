@@ -60,7 +60,6 @@ public class AdminSupportTEMListAction implements Action {
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		
-		request.setAttribute("totalCnt", totalCnt);
 		request.setAttribute("AdminsupportTEMList", temdao.AdminTEMSelectList(startRow, endRow));
 		System.out.println("값가져옴: " + temdao.AdminTEMSelectList(startRow, endRow));
 
