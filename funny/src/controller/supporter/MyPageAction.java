@@ -67,7 +67,7 @@ public class MyPageAction implements Action {
 		
 		VolunteerDAO voldao = new VolunteerDAO();
 		
-		List<VolunteerDTO> mypageVolList = voldao.selectSupporter(dto);
+		List<VolunteerDTO> mypageVolList = voldao.mypage(dto);
 		request.setAttribute("mypageVolList", mypageVolList);
 		
 		String today = new Today().today();

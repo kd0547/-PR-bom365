@@ -6,7 +6,9 @@
 	</insert>
 	<!-- 관리자 페이지 -->
 	<select id="selectAll" parameterType="hashmap" resultType="ApplicationDTO">
-		SELECT * FROM (SELECT rownum R, D.* FROM (SELECT a.* , animal_name, an.supporter_id adoptionSupporter_id FROM APPLICATION a LEFT OUTER JOIN ANIMAL an ON a.ANIMAL_NUMBER = an.ANIMAL_NUMBER ORDER BY APPLICATION_NUMBER DESC) D) B WHERE B.R BETWEEN #{startRow} AND #{endRow}
+		SELECT * FROM (SELECT rownum R, D.* FROM (
+		SELECT a.* , animal_name, an.supporter_id adoptionSupporter_id FROM APPLICATION a LEFT OUTER JOIN ANIMAL an ON a.ANIMAL_NUMBER = an.ANIMAL_NUMBER ORDER BY APPLICATION_NUMBER DESC
+		) D) B WHERE B.R BETWEEN #{startRow} AND #{endRow}
 	</select>
 	<select id="selectCnt" resultType="_int">
 		SELECT COUNT(*) FROM APPLICATION

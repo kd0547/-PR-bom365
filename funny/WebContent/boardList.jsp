@@ -68,46 +68,30 @@
 		<!-- boardList -->
 		<div class="boardListFirstDiv">
 			<div style="display: inline-block;">
-				<table class="board table">
+				<table class="board table" style="margin-bottom: 0px;">
 					<tbody>
 						<tr>
-							<td class="removeBorderTop"></td>
-							<td colspan="2" class="removeBorderTop"
-								style="padding-inline: 120px;">
-								<!-- 로그인했을시에만 글 작성 가능 --> <c:choose>
-									<c:when test="${supporter_id==null}">
-										<a href="login.jsp" class="btn btn-primary inputSubmit apply">로그인
-											후 작성가능</a>
-									</c:when>
-									<c:otherwise>
-										<a href="boardRequest.jsp"
-											class="btn btn-primary inputSubmit apply">글 작성하기</a>
-									</c:otherwise>
-								</c:choose> <!-- 검색 -->
+							<td class="removeBorderTop" colspan="2" align="left"
+								style="padding: 26px 12px 7px 12px;">
+								<h6>
+									ㆍ 정렬 :&nbsp; <a href="boardList.do">최신순</a>&nbsp;|&nbsp; <a
+										href="boardCategory.do?category=comment">댓글순</a>&nbsp;
+									<!-- 로그인이안돼있다면 숨김 -->
+									<c:if test="${supporter_id!=null}">
+										|&nbsp;<a href="boardCategory.do?category=mine">내글보기</a>&nbsp;
+									</c:if>
+									<span style="color: #5959597a;">&nbsp;&nbsp;[ ${totalCnt}개의 글 ]</span>
+								</h6>
+							</td>
+							<td class="removeBorderTop" colspan="2">
 								<form method="post" action="boardSearch.do"
 									style="float: right;">
 									<input type="text" name="keyword" class="searchKeyword">
 									<input type="submit" value="검색"
 										class="btn btn-primary inputSubmit searchButton">
 								</form>
-
 							</td>
-							<td class="removeBorderTop"></td>
 						</tr>
-
-						<tr>
-							<td class="removeBorderTop"></td>
-							<td colspan="2" class="removeBorderTop" style="float: right;"><h6>
-									정렬 :&nbsp; <a href="boardList.do">최신순</a>&nbsp;|&nbsp; <a
-										href="boardCategory.do?category=comment">댓글순</a>&nbsp;
-									<!-- 로그인이안돼있다면 숨김 -->
-									<c:if test="${supporter_id!=null}">
-										|&nbsp;<a href="boardCategory.do?category=mine">내글보기</a>&nbsp;
-									</c:if>
-								</h6></td>
-							<td class="removeBorderTop"></td>
-						</tr>
-
 						<tr class="boardHead">
 							<td style="width: 7em;">번호</td>
 							<td style="width: 28em;">제목</td>
@@ -150,6 +134,23 @@
 							</tbody>
 						</c:otherwise>
 					</c:choose>
+					<tr>
+						<td colspan="4" class="removeBorderTop"
+							style="padding: 21px 0 0 0;">
+							<!-- 로그인했을시에만 글 작성 가능 --> <c:choose>
+								<c:when test="${supporter_id==null}">
+									<a href="login.jsp" onclick="loginCheck()"
+										class="btn btn-primary inputSubmit apply board">글 작성하기</a>
+								</c:when>
+								<c:otherwise>
+									<a href="boardRequest.jsp"
+										class="btn btn-primary inputSubmit apply board">글 작성하기</a>
+								</c:otherwise>
+							</c:choose> <!-- 검색 -->
+
+
+						</td>
+					</tr>
 				</table>
 
 				<div>

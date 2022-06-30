@@ -9202,3 +9202,15 @@ button.btn.btn-primary.adVol {
     border-radius: 10px;
     background: #cbbd89;
 }
+a.btn.btn-primary.inputSubmit.apply.board, a.btn.btn-primary.inputSubmit.apply.board:focus, a.btn.btn-primary.inputSubmit.apply.board:active {
+    width: 148px;
+    float: right;
+	background: #cbbd89 !important;
+	color: #fff !important;
+}
+a.btn.btn-primary.inputSubmit.apply.board:hover {
+	cursor: pointer;
+	background: #978d67 !important;
+	outline: none;
+	color: #fff !important;
+}

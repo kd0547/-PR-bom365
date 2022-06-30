@@ -106,7 +106,7 @@ public class BoardDAO {
 		return boardList;
 	}
 
-	// 검색 글 개수
+	// 내 글 개수
 	public int selectMineCnt(BoardDTO data) {
 		return sqlsession.selectOne("BoardSQL.selectMineCnt", data);
 	}

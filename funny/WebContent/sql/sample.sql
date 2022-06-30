@@ -130,6 +130,49 @@ VALUES (
 	(select nvl(max(application_number),0)+1 from application),46,'didEhd','입양신청20','신청신청신청신청신청신청신청신청', to_char(sysdate, 'yyyy/mm/dd hh24:mi')
 );
 
+-- 정기후원 샘플--------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO support_regular
+VALUES (
+	(select nvl(max(regular_number),0)+1 from support_regular),'roEhd',10000,'신한','110214536987','10','2020/01/01','2021/01/01'
+);
+INSERT INTO support_regular
+VALUES (
+	(select nvl(max(regular_number),0)+1 from support_regular),'thEhd',30000,'신한','110214536987','10','2020/01/01','2021/01/01'
+);
+INSERT INTO support_regular
+VALUES (
+	(select nvl(max(regular_number),0)+1 from support_regular),'akfEhd',50000,'신한','110214536987','10','2020/01/01','2021/01/01'
+);
+INSERT INTO support_regular
+VALUES (
+	(select nvl(max(regular_number),0)+1 from support_regular),'wnlEhd',100000,'신한','110214536987','10','2020/01/01','2021/01/01'
+);
+INSERT INTO support_regular
+VALUES (
+	(select nvl(max(regular_number),0)+1 from support_regular),'ekfrEhd',150000,'신한','110214536987','10','2020/01/01','2021/01/01'
+);
+INSERT INTO support_regular
+VALUES (
+	(select nvl(max(regular_number),0)+1 from support_regular),'roEhd',200000,'신한','110214536987','10','2020/01/01',default
+);
+INSERT INTO support_regular
+VALUES (
+	(select nvl(max(regular_number),0)+1 from support_regular),'roEhd',250000,'신한','110214536987','10','2020/01/01',default
+);
+INSERT INTO support_regular
+VALUES (
+	(select nvl(max(regular_number),0)+1 from support_regular),'roEhd',300000,'신한','110214536987','10','2020/01/01',default
+);
+INSERT INTO support_regular
+VALUES (
+	(select nvl(max(regular_number),0)+1 from support_regular),'roEhd',250000,'신한','110214536987','10','2020/01/01',default
+);
+INSERT INTO support_regular
+VALUES (
+	(select nvl(max(regular_number),0)+1 from support_regular),'roEhd',30000,'신한','110214536987','10','2020/01/01',default
+);
+
+
 -- 일시후원 샘플--------------------------------------------------------------------------------------------------------------------------------
 INSERT INTO support_temporary
 VALUES (
@@ -147,9 +190,38 @@ INSERT INTO support_temporary
 VALUES (
 	(select nvl(max(temporary_number),0)+1 from support_temporary),'test',10000,to_char(sysdate, 'yyyy/mm/dd hh24:mi')
 );
-
-	
-
+INSERT INTO support_temporary
+VALUES (
+	(select nvl(max(temporary_number),0)+1 from support_temporary),'roEhd',10000,to_char(sysdate, 'yyyy/mm/dd hh24:mi')
+);
+INSERT INTO support_temporary
+VALUES (
+	(select nvl(max(temporary_number),0)+1 from support_temporary),'roEhd',10000,to_char(sysdate, 'yyyy/mm/dd hh24:mi')
+);
+INSERT INTO support_temporary
+VALUES (
+	(select nvl(max(temporary_number),0)+1 from support_temporary),'roEhd',10000,to_char(sysdate, 'yyyy/mm/dd hh24:mi')
+);
+INSERT INTO support_temporary
+VALUES (
+	(select nvl(max(temporary_number),0)+1 from support_temporary),'roEhd',10000,to_char(sysdate, 'yyyy/mm/dd hh24:mi')
+);
+INSERT INTO support_temporary
+VALUES (
+	(select nvl(max(temporary_number),0)+1 from support_temporary),'thEhd',30000,to_char(sysdate, 'yyyy/mm/dd hh24:mi')
+);
+INSERT INTO support_temporary
+VALUES (
+	(select nvl(max(temporary_number),0)+1 from support_temporary),'thEhd',50000,to_char(sysdate, 'yyyy/mm/dd hh24:mi')
+);
+INSERT INTO support_temporary
+VALUES (
+	(select nvl(max(temporary_number),0)+1 from support_temporary),'thEhd',100000,to_char(sysdate, 'yyyy/mm/dd hh24:mi')
+);
+INSERT INTO support_temporary
+VALUES (
+	(select nvl(max(temporary_number),0)+1 from support_temporary),'thEhd',150000,to_char(sysdate, 'yyyy/mm/dd hh24:mi')
+);
 
 -- 게시물 샘플--------------------------------------------------------------------------------------------------------------------------------
 INSERT INTO board
@@ -429,4 +501,40 @@ VALUES (
 INSERT INTO volunteer
 VALUES (
 	(select nvl(max(volunteer_number),0)+1 from volunteer),'test','2022/06/15','오후'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'test','2021/04/12','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'test','2021/05/19','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'test','2021/06/15','오후'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'test','2020/04/12','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'test','2020/05/19','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'test','2020/06/15','오후'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'test','2022/05/12','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'test','2022/05/19','오전'
+);
+INSERT INTO volunteer
+VALUES (
+	(select nvl(max(volunteer_number),0)+1 from volunteer),'test','2021/06/12','오후'
 );

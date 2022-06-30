@@ -49,7 +49,6 @@ public class AnimalListAction implements Action {
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 
-		request.setAttribute("totalCnt", totalCnt);
 		request.setAttribute("animalList", dao.selectAll(startRow, endRow));
 
 		// Action 값 지정

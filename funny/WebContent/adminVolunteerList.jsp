@@ -70,7 +70,7 @@
 
 		<h1 id="menuTitle">신청목록조회</h1>
 
-		<section style="margin-bottom: 7rem;">
+		<section style="margin-bottom: 7em;">
 			<div class="boardListFirstDiv" style="margin-bottom: 0;">
 				<div style="display: inline-block;">
 					<table class="calendar">
@@ -162,7 +162,7 @@
 				style="display: flex; justify-content: center;">
 				<input type="text"
 					class="woocommerce-Input woocommerce-Input--text input-text unique post"
-					name="keyword"><input type="submit"
+					name="search_id"><input type="submit"
 					style="width: 150px; font-size: 19px;" class="searchingPostcode"
 					value="아이디로 검색">
 			</form>
@@ -209,6 +209,33 @@
 								</table>
 							</c:otherwise>
 						</c:choose>
+					</div>
+				</div>
+				<!-- 페이징 처리 -->
+				<div style="margin-top: 2rem;">
+					<div class="col-md-12 text-center">
+						<div class="block-27">
+							<ul>
+								<c:if test="${nowPage > 1 }">
+									<li><a href="volunteerList.vt?search_id=${search_id}&page=${nowPage-1}"><i
+											class="ion-ios-arrow-back"></i></a></li>
+								</c:if>
+								<c:forEach var="i" begin="${startPage }" end="${endPage }">
+									<c:choose>
+										<c:when test="${i == nowPage }">
+											<li class="active"><span>${i }</span></li>
+										</c:when>
+										<c:otherwise>
+											<li><a href="volunteerList.vt?search_id=${search_id}&page=${i}">${i }</a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<c:if test="${nowPage < totalPage }">
+									<li><a href="volunteerList.vt?search_id=${search_id}&page=${nowPage+1}"><i
+											class="ion-ios-arrow-forward"></i></a></li>
+								</c:if>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</c:if>

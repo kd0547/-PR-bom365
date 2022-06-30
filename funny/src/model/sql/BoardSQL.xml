@@ -6,7 +6,9 @@
 		insert into board values ((select nvl(max(board_number),0)+1 from board),#{supporter_id},to_char(sysdate, 'yyyy/mm/dd hh24:mi'),#{board_title},#{board_content},#{category},default)
 	</insert>
 	<select id="selectSupporter" parameterType="hashmap" resultType="BoardDTO">
-		SELECT * FROM (SELECT rownum R, D.* FROM (SELECT * FROM BOARD where category='일반' ORDER BY BOARD_NUMBER DESC) D) B WHERE B.R BETWEEN #{startRow} AND #{endRow}
+		SELECT * FROM (SELECT rownum R, D.* FROM (
+		SELECT * FROM BOARD where category='일반' ORDER BY BOARD_NUMBER DESC
+		) D) B WHERE B.R BETWEEN #{startRow} AND #{endRow}
 	</select>
 	<select id="selectSupporterCnt" resultType="_int">
 		SELECT COUNT(*) FROM BOARD where category='일반'
@@ -21,19 +23,25 @@
 		select * from board where category='공지' order by board_number desc
 	</select>
 	<select id="selectSearch" parameterType="hashmap" resultType="BoardDTO">
-		SELECT * FROM (SELECT rownum R, D.* FROM (select * from board where category='일반' and (board_title like '%'||#{keyword}||'%' or board_content like '%'||#{keyword}||'%') order by board_number desc) D) B WHERE B.R BETWEEN #{startRow} AND #{endRow}
+		SELECT * FROM (SELECT rownum R, D.* FROM (
+		select * from board where category='일반' and (board_title like '%'||#{keyword}||'%' or board_content like '%'||#{keyword}||'%') order by board_number desc
+		) D) B WHERE B.R BETWEEN #{startRow} AND #{endRow}
 	</select>
 	<select id="selectSearchCnt" resultType="_int">
 		SELECT COUNT(*) FROM BOARD where category='일반' and (board_title like '%'||#{keyword}||'%' or board_content like '%'||#{keyword}||'%') order by board_number desc
 	</select>
 	<select id="selectMine" parameterType="hashmap" resultType="BoardDTO">
-		SELECT * FROM (SELECT rownum R, D.* FROM (select * from board where category='일반' and supporter_id=#{supporter_id} order by board_number desc) D) B WHERE B.R BETWEEN #{startRow} AND #{endRow}
+		SELECT * FROM (SELECT rownum R, D.* FROM (
+		select * from board where category='일반' and supporter_id=#{supporter_id} order by board_number desc
+		) D) B WHERE B.R BETWEEN #{startRow} AND #{endRow}
 	</select>
 	<select id="selectMineCnt" parameterType="BoardDTO" resultType="_int">
 		SELECT COUNT(*) FROM BOARD where category='일반' and supporter_id=#{supporter_id} order by board_number desc
 	</select>
 	<select id="selectComCnt" parameterType="hashmap" resultType="BoardDTO">
-		SELECT * FROM (SELECT rownum R, D.* FROM (select * from board where category='일반' order by board_commentCnt desc) D) B WHERE B.R BETWEEN #{startRow} AND #{endRow}
+		SELECT * FROM (SELECT rownum R, D.* FROM (
+		select * from board where category='일반' order by board_commentCnt desc
+		) D) B WHERE B.R BETWEEN #{startRow} AND #{endRow}
 	</select>
 	<update id="update" parameterType="BoardDTO">
 		update board set board_title=#{board_title}, board_content=#{board_content} where board_number=#{board_number}

@@ -13,9 +13,17 @@
 	<delete id="delete" parameterType="VolunteerDTO">
 		delete from volunteer where volunteer_number=#{volunteer_number}
 	</delete>
-   	<!-- mypage -->
-	<select id="selectSupporter" parameterType="SupporterDTO" resultType="VolunteerDTO">
+   	<!-- my page -->
+	<select id="mypage" parameterType="SupporterDTO" resultType="VolunteerDTO">
 		select * from volunteer where supporter_id=#{supporter_id} order by volunteer_date desc
 	</select>
-   	<!-- 관리자 페이지 -->
+	<!-- 관리자 페이지 -->
+	<select id="selectSearch" parameterType="hashmap" resultType="VolunteerDTO">
+		SELECT * FROM (SELECT rownum R, D.* FROM (
+		select * from volunteer where supporter_id=#{supporter_id} order by volunteer_date desc
+		) D) B WHERE B.R BETWEEN #{startRow} AND #{endRow}
+	</select>
+	<select id="selectSearchCnt" parameterType="SupporterDTO" resultType="_int">
+		SELECT COUNT(*) FROM volunteer where supporter_id=#{supporter_id} order by volunteer_date desc
+	</select>
 </mapper>

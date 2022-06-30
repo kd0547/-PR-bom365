@@ -15,6 +15,7 @@ import model.volunteer.VolunteerDTO;
 public class VolunteerDAO {
 	SqlSessionFactory factory = SqlMapConfig.getFactory();
 	SqlSession sqlsession;
+	HashMap<String, Object> datas = new HashMap<>();
 
 	public VolunteerDAO() {
 		// auto commit
@@ -38,19 +39,18 @@ public class VolunteerDAO {
 		
 		for (int i = 1; i <= volCal.getLastday(); i++) {
 			VolunteerCnt cnt = new VolunteerCnt();
-			HashMap<String, String> pram = new HashMap<String, String>();
 
 			String date = String.format("%02d", i);
 
-			pram.put("volunteer_date", volCal.getYear() + "/" + month  + "/" + date);
-			cnt.setYyyyMMdd(pram.get("volunteer_date"));
+			datas.put("volunteer_date", volCal.getYear() + "/" + month  + "/" + date);
+			cnt.setYyyyMMdd(""+datas.get("volunteer_date"));
 			cnt.setDate(String.format("%02d", i));
 
-			pram.put("volunteer_time", "오전");
-			cnt.setCntAM(sqlsession.selectList("VolunteerSQL.selectDate", pram).size());
+			datas.put("volunteer_time", "오전");
+			cnt.setCntAM(sqlsession.selectList("VolunteerSQL.selectDate", datas).size());
 
-			pram.replace("volunteer_time", "오후");
-			cnt.setCntPM(sqlsession.selectList("VolunteerSQL.selectDate", pram).size());
+			datas.replace("volunteer_time", "오후");
+			cnt.setCntPM(sqlsession.selectList("VolunteerSQL.selectDate", datas).size());
 
 				
 			if (cnt.getCntAM() >= 10 && cnt.getCntPM() >= 10) {
@@ -79,27 +79,40 @@ public class VolunteerDAO {
 		return result;
 	}
 	
+	// my page  ///////////////////////////////////////////////////////////////////////////////////////////////////////
+	public List<VolunteerDTO> mypage(SupporterDTO dto) {	// my page  겸용
+		List<VolunteerDTO> data = sqlsession.selectList("VolunteerSQL.mypage", dto);
+		return data;
+	}
+
 	// 관리자 페이지 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 	// 해당 봉사자의 봉사신청 리스트 조회
-	public List<VolunteerDTO> selectSupporter(SupporterDTO dto) {	// my page  겸용
-		List<VolunteerDTO> data = sqlsession.selectList("VolunteerSQL.selectSupporter", dto);
-		return data;
+	public List<VolunteerDTO> selectSearch(SupporterDTO dto, int startRow, int endRow) {
+		datas.put("supporter_id", dto.getSupporter_id());
+		datas.put("startRow", startRow);
+		datas.put("endRow", endRow);
+		
+		List<VolunteerDTO> volList = sqlsession.selectList("VolunteerSQL.selectSearch", datas);
+		return volList;
+	}
+	
+	// 검색 글 개수
+	public int selectSearchCnt(SupporterDTO dto) {
+		return sqlsession.selectOne("VolunteerSQL.selectSearchCnt", dto);
 	}
 	
 	// 날짜별 신청명단 보기 - AM
 	public List<VolunteerDTO> selectDateAM(String yyyyMMdd) {	
-		HashMap<String, String> pram = new HashMap<String, String>();
-		pram.put("volunteer_date", yyyyMMdd);
-		pram.put("volunteer_time", "오전");
-		return sqlsession.selectList("VolunteerSQL.selectDate", pram);
+		datas.put("volunteer_date", yyyyMMdd);
+		datas.put("volunteer_time", "오전");
+		return sqlsession.selectList("VolunteerSQL.selectDate", datas);
 	}
 	
 	// 날짜별 신청명단 보기 - PM
 	public List<VolunteerDTO> selectDatePM(String yyyyMMdd) {	
-		HashMap<String, String> pram = new HashMap<String, String>();
-		pram.put("volunteer_date", yyyyMMdd);
-		pram.put("volunteer_time", "오후");
-		return sqlsession.selectList("VolunteerSQL.selectDate", pram);
+		datas.put("volunteer_date", yyyyMMdd);
+		datas.put("volunteer_time", "오후");
+		return sqlsession.selectList("VolunteerSQL.selectDate", datas);
 	}
 	
 	

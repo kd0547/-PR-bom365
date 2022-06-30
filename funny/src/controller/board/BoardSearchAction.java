@@ -3,13 +3,11 @@ package controller.board;
 import controller.Action;
 import controller.ActionForward;
 import model.board.BoardDAO;
-import model.board.BoardDTO;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 public class BoardSearchAction implements Action {
 	@Override

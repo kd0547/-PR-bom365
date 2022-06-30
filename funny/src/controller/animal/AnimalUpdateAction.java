@@ -2,7 +2,6 @@ package controller.animal;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import controller.Action;
 import controller.ActionForward;
