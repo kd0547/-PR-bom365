@@ -273,10 +273,6 @@
 		 			
 		 			$('#signup').submit();
 				})
-				
-				
-				
-				
 			</script>
 		</div>
 
