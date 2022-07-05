@@ -23,7 +23,7 @@ public class BoardUpdateAction implements Action {
 		dao.update(vo); 
 
 		// 수정 후 상세게시물로 이동
-		forward.setPath("boardDetail.do?board_number=" + vo.getBoard_number());
+		forward.setPath("boardOne.do?board_number=" + vo.getBoard_number());
 		forward.setRedirect(true); // 넘겨줄 데이터 X
 		return forward;
 	}

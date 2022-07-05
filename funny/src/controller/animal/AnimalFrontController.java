@@ -41,6 +41,7 @@ public class AnimalFrontController extends HttpServlet {
 				forward = new AnimalListAction().execute(request, response);
 			} catch (Exception e) {
 				System.out.println("animalList.am 수행중 문제 발생");
+				e.printStackTrace();
 			}
 		}
 		
@@ -59,6 +60,18 @@ public class AnimalFrontController extends HttpServlet {
 				forward = new AnimalSearchAction().execute(request, response);
 			} catch (Exception e) {
 				System.out.println("animalSearch.am 수행중 문제 발생");
+				e.printStackTrace();
+			}
+		}
+
+		// 관리자 페이지 용 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+		// 입양 채택
+		else if (command.equals("animalUpdate")) {
+			try {
+				forward = new AnimalUpdateAction().execute(request, response);
+			} catch (Exception e) {
+				System.out.println("animalUpdate.am 수행중 문제 발생");
+				e.printStackTrace();
 			}
 		}
 		

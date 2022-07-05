@@ -8,8 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import controller.volunteer.component.VolunteerCal;
-import model.board.BoardDTO;
-import model.board.BoardSet;
 import model.mybatis.SqlMapConfig;
 import model.supporter.SupporterDTO;
 import model.volunteer.VolunteerDTO;
@@ -17,6 +15,7 @@ import model.volunteer.VolunteerDTO;
 public class VolunteerDAO {
 	SqlSessionFactory factory = SqlMapConfig.getFactory();
 	SqlSession sqlsession;
+	HashMap<String, Object> datas = new HashMap<>();
 
 	public VolunteerDAO() {
 		// auto commit
@@ -36,28 +35,22 @@ public class VolunteerDAO {
 	// 해당 날짜에 봉사 가능한지 확인
 	public ArrayList<VolunteerCnt> select(VolunteerCal volCal) {
 		ArrayList<VolunteerCnt> cnts = new ArrayList<VolunteerCnt>();
-		String month = "" + volCal.getMonth();
-		if (volCal.getMonth() < 10) {
-			month = "0" + month;
-		}
-
+		String month = String.format("%02d", volCal.getMonth());
+		
 		for (int i = 1; i <= volCal.getLastday(); i++) {
 			VolunteerCnt cnt = new VolunteerCnt();
-			HashMap<String, String> pram = new HashMap<String, String>();
 
-			String date = "" + i;
-			if (i < 10) {
-				date = "0" + date;
-			}
-			pram.put("volunteer_date", volCal.getYear() + "/" + month + "/" + date);
-			cnt.setYymmdd(pram.get("volunteer_date"));
-			cnt.setDate(date);
+			String date = String.format("%02d", i);
 
-			pram.put("volunteer_time", "오전");
-			cnt.setCntAM(sqlsession.selectOne("VolunteerSQL.selectIsFull", pram));
+			datas.put("volunteer_date", volCal.getYear() + "/" + month  + "/" + date);
+			cnt.setYyyyMMdd(""+datas.get("volunteer_date"));
+			cnt.setDate(String.format("%02d", i));
 
-			pram.replace("volunteer_time", "오후");
-			cnt.setCntPM(sqlsession.selectOne("VolunteerSQL.selectIsFull", pram));
+			datas.put("volunteer_time", "오전");
+			cnt.setCntAM(sqlsession.selectList("VolunteerSQL.selectDate", datas).size());
+
+			datas.replace("volunteer_time", "오후");
+			cnt.setCntPM(sqlsession.selectList("VolunteerSQL.selectDate", datas).size());
 
 				
 			if (cnt.getCntAM() >= 10 && cnt.getCntPM() >= 10) {
@@ -73,7 +66,7 @@ public class VolunteerDAO {
 	
 	// 신청 여부 확인
 	public VolunteerDTO selectSupporter(VolunteerDTO dto) {
-		VolunteerDTO data = sqlsession.selectOne("VolunteerSQL.selectSupporter", dto);
+		VolunteerDTO data = sqlsession.selectOne("VolunteerSQL.selectIsDone", dto);
 		return data;
 	}
 	
@@ -86,13 +79,43 @@ public class VolunteerDAO {
 		return result;
 	}
 	
-	// my page ///////////////////////////////////////////////////////////////////////////////////////////////////////
-	public List<VolunteerDTO> mypage(SupporterDTO dto) {
+	// my page  ///////////////////////////////////////////////////////////////////////////////////////////////////////
+	public List<VolunteerDTO> mypage(SupporterDTO dto) {	// my page  겸용
 		List<VolunteerDTO> data = sqlsession.selectList("VolunteerSQL.mypage", dto);
 		return data;
 	}
+
+	// 관리자 페이지 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+	// 해당 봉사자의 봉사신청 리스트 조회
+	public List<VolunteerDTO> selectSearch(SupporterDTO dto, int startRow, int endRow) {
+		datas.put("supporter_id", dto.getSupporter_id());
+		datas.put("startRow", startRow);
+		datas.put("endRow", endRow);
+		
+		List<VolunteerDTO> volList = sqlsession.selectList("VolunteerSQL.selectSearch", datas);
+		return volList;
+	}
 	
-	// 관리자 페이지 용 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+	// 검색 글 개수
+	public int selectSearchCnt(SupporterDTO dto) {
+		return sqlsession.selectOne("VolunteerSQL.selectSearchCnt", dto);
+	}
+	
+	// 날짜별 신청명단 보기 - AM
+	public List<VolunteerDTO> selectDateAM(String yyyyMMdd) {	
+		datas.put("volunteer_date", yyyyMMdd);
+		datas.put("volunteer_time", "오전");
+		return sqlsession.selectList("VolunteerSQL.selectDate", datas);
+	}
+	
+	// 날짜별 신청명단 보기 - PM
+	public List<VolunteerDTO> selectDatePM(String yyyyMMdd) {	
+		datas.put("volunteer_date", yyyyMMdd);
+		datas.put("volunteer_time", "오후");
+		return sqlsession.selectList("VolunteerSQL.selectDate", datas);
+	}
+	
+	
 	
 	
 	

@@ -57,6 +57,7 @@ public class BoardFrontController extends HttpServlet {
 				forward = new BoardCategoryAction().execute(request, response);
 			} catch (Exception e) {
 				System.out.println("boardCategory.do 수행중 문제 발생");
+				e.printStackTrace();
 			}
 		}
 		
@@ -66,6 +67,7 @@ public class BoardFrontController extends HttpServlet {
 				forward = new BoardSearchAction().execute(request, response);
 			} catch (Exception e) {
 				System.out.println("boardSearch.do 수행중 문제 발생");
+				e.printStackTrace();
 			}
 		}
 		

@@ -19,7 +19,7 @@ public class VolunteerRequestAction implements Action {
 		VolunteerCnt cnt = new VolunteerCnt();
 		VolunteerDAO dao = new VolunteerDAO();
 
-		cnt.setYymmdd(request.getParameter("yymmdd"));
+		cnt.setYyyyMMdd(request.getParameter("yyyyMMdd"));
 		cnt.setCntAM(Integer.parseInt(request.getParameter("cntAM")));
 		cnt.setCntPM(Integer.parseInt(request.getParameter("cntPM")));
 
@@ -28,7 +28,7 @@ public class VolunteerRequestAction implements Action {
 		HttpSession session = request.getSession();
 		VolunteerDTO dto = new VolunteerDTO();
 		dto.setSupporter_id((String) session.getAttribute("supporter_id"));
-		dto.setVolunteer_date(request.getParameter("yymmdd"));
+		dto.setVolunteer_date(cnt.getYyyyMMdd());
 		
 		dto.setVolunteer_time("오전");
 		request.setAttribute("checkAM", dao.selectSupporter(dto));

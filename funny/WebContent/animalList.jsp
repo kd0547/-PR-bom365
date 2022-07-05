@@ -170,16 +170,21 @@
 			</c:when>
 			<c:otherwise>
 				<!-- animals list -->
-				<div class="row animals-photos" style="margin-bottom: 15em;">
-					<!-- 페이지네이션 구현하면 margin=bottom 삭제 -->
+				<div class="row animals-photos">
 					<c:forEach var="v" items="${animalList}">
 						<div
 							class="col-md-3 col-lg-3 mb-4 text-center animals-photos-text">
 							<div class="product-entry border">
 								<a href="animalOne.am?animal_number=${v.animal_number}"
 									class="prod-img"> <img src="${v.animal_image}"
-									class="img-fluid animals" alt="Free html5 bootstrap 4 template">
+									class="img-fluid animals"
+									alt="${v.animal_number}(${v.animal_name})"> <c:if
+										test="${v.isAdoption == 'true'}">
+										<img src="images/adoptionDone.png" class="img-fluid animals"
+											alt="Free html5 bootstrap 4 template">
+									</c:if>
 								</a>
+
 								<div class="desc">
 									<h2>
 										<a href="animalOne.am?animal_number=${v.animal_number}">${v.animal_name}</a>
@@ -193,24 +198,64 @@
 						</div>
 					</c:forEach>
 				</div>
-<!-- 페이지네이션 구현한다면 유지//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-				<!-- 		<div class="pagenation">
-			<div class="col-md-12 text-center">
-				<div class="block-27">
-					<ul>
-						<li><a href="#"><i class="ion-ios-arrow-back"></i></a></li>
-						<li class="active"><span>1</span></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#"><i class="ion-ios-arrow-forward"></i></a></li>
-					</ul>
+
+				<!-- 페이징 처리 -->
+				<div style="margin: 3rem 0 7em 0;">
+					<div class="col-md-12 text-center">
+						<div class="block-27">
+							<ul>
+								<c:if test="${nowPage > 1 }">
+									<li><c:choose>
+											<c:when test="${seach != null}">
+												<a
+													href="animalSearch.am?animal_name=${animal_name}&animal_species=${animal_species}&animal_gender=${animal_gender}&animal_weight=${animal_weight}&animal_age=${animal_age}&page=${nowPage-1}"><i
+													class="ion-ios-arrow-back"></i></a>
+											</c:when>
+											<c:otherwise>
+												<a href="animalList.am?page=${nowPage-1}"><i
+													class="ion-ios-arrow-back"></i></a>
+											</c:otherwise>
+										</c:choose></li>
+								</c:if>
+								<c:forEach var="i" begin="${startPage }" end="${endPage }">
+									<c:choose>
+										<c:when test="${i == nowPage }">
+											<li class="active"><span>${i }</span></li>
+										</c:when>
+										<c:otherwise>
+											<li><c:choose>
+													<c:when test="${seach != null}">
+														<a
+															href="animalSearch.am?animal_name=${animal_name}&animal_species=${animal_species}&animal_gender=${animal_gender}&animal_weight=${animal_weight}&animal_age=${animal_age}&page=${i}">${i }</a>
+													</c:when>
+													<c:otherwise>
+														<a href="animalList.am?page=${i}">${i }</a>
+													</c:otherwise>
+												</c:choose></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<c:if test="${nowPage < totalPage }">
+									<li><c:choose>
+											<c:when test="${seach != null}">
+												<a
+													href="animalSearch.am?animal_name=${animal_name}&animal_species=${animal_species}&animal_gender=${animal_gender}&animal_weight=${animal_weight}&animal_age=${animal_age}&page=${nowPage+1}"><i
+													class="ion-ios-arrow-forward"></i></a>
+											</c:when>
+											<c:otherwise>
+												<a href="animalList.am?page=${nowPage+1}"><i
+													class="ion-ios-arrow-forward"></i></a>
+											</c:otherwise>
+										</c:choose></li>
+								</c:if>
+							</ul>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div> -->
 			</c:otherwise>
 		</c:choose>
+
+
 
 		<!-- Page Footer-->
 		<mytag:pageFooter />
@@ -220,7 +265,7 @@
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
-	
+
 	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>

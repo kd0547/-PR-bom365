@@ -15,6 +15,14 @@ public class AnimalSearchAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AnimalDAO anidao = new AnimalDAO();
+		AnimalDTO animal = new AnimalDTO();
+		request.setAttribute("seach", "seach");
+		request.setAttribute("animal_species", request.getParameter("animal_species"));
+		request.setAttribute("animal_gender", request.getParameter("animal_gender"));
+		request.setAttribute("animal_weight", request.getParameter("animal_weight"));
+		request.setAttribute("animal_age", request.getParameter("animal_age"));
+		request.setAttribute("animal_name", request.getParameter("animal_name"));
+
 		String animal_species="";
 		if(request.getParameter("animal_species").equals("dog")) {
 			animal_species = "개";
@@ -37,7 +45,6 @@ public class AnimalSearchAction implements Action {
 		String animal_name = request.getParameter("animal_name");
 		System.out.println(animal_name);
 
-		AnimalDTO animal = new AnimalDTO();
 		animal.setAnimal_name(animal_name);
 		animal.setAnimal_species(animal_species);
 		animal.setAnimal_gender(animal_gender);
@@ -46,7 +53,39 @@ public class AnimalSearchAction implements Action {
 		animal.setAnimal_age_more(animal_age_more);
 		animal.setAnimal_age_less(animal_age_less);
 		
-		List<AnimalDTO> animalList = anidao.selectSearch(animal);
+		// 전체 게시글 개수
+		int totalCnt = anidao.selectSearchCnt(animal);
+
+		// 페이징 처리
+		// 현재 넘겨받은 페이지
+		String temp = request.getParameter("page");
+		int page = 0;
+
+		page = temp == null ? 1 : Integer.parseInt(temp);
+
+		// 페이지 처리 [1][2]...[10] : 10개씩
+		int pageSize = 10;
+
+		// 1페이지 endRow = 12, 4 페이지 endRow = 48
+		int endRow = page * 12;
+		// 1페이지 startRow = 1, 4 페이지 startRow = 37
+		int startRow = endRow - 11;
+
+		// [1][2]...[10] : [1], [11][12]..[20] : [11]
+		int startPage = (page - 1) / pageSize * pageSize + 1;
+
+		// [1][2]...[10] : [10], [11][12]..[20] : [20]
+		int endPage = startPage + pageSize - 1;
+		int totalPage = (totalCnt - 1) / (endRow - startRow + 1) + 1;
+
+		endPage = endPage > totalPage ? totalPage : endPage;
+
+		request.setAttribute("totalPage", totalPage);
+		request.setAttribute("nowPage", page);
+		request.setAttribute("startPage", startPage);
+		request.setAttribute("endPage", endPage);
+
+		List<AnimalDTO> animalList = anidao.selectSearch(animal, startRow, endRow);
 		request.setAttribute("animalList", animalList);
 		// Action 값 지정
 		ActionForward forward = new ActionForward();
