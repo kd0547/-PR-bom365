@@ -63,6 +63,7 @@ public class SupporterFrontController extends HttpServlet {
 			try {
 				forward = new LogInAction().execute(request, response);
 			} catch (Exception e) {
+				e.printStackTrace();
 				System.out.println("login.me 수행중 문제 발생");
 			}
 		}
@@ -114,6 +115,30 @@ public class SupporterFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("userUpdate.me 수행중 문제 발생");
+			}
+		} else if(command.equals("regInfo")) {
+			try {
+				forward = new REGInfoAction().execute(request, response);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("regInfo.me 수행중 문제 발생");
+			}
+		} else if(command.equals("tempInfo")) {
+			try {
+				forward = new TEMPInfoAction().execute(request, response);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("tempInfo.me 수행중 문제 발생");
+			}
+		} else if(command.equals("volunInfo")) {
+			try {
+				forward = new VolunInfoAction().execute(request, response);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("volunInfo.me 수행중 문제 발생");
 			}
 		}
 

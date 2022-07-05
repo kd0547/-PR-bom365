@@ -1,6 +1,6 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib tagdir="/WEB-INF/tags" prefix="mytag"%>
 <script type="text/javascript">
 	function end(com, loc) {
 		var ans = confirm(com);
@@ -11,7 +11,7 @@
 		}
 	}
 </script>
-
+<script type="text/javascript" src="js/mypage-mytable.js"></script>
 <div class="colorlib-featured">
 	<div class="container table">
 		<div class="row">
@@ -44,11 +44,13 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach var="spList" items="${MypageREGList}">
+									<!-- Ajax 위치 -->
 									<tr>
 										<td>${spList.regular_bank }</td>
 										<td>${spList.regular_account }</td>
 										<td>${spList.regular_amount }</td>
 									</tr>
+									<!-- Ajax 위치 -->
 									<tr>
 										<c:choose>
 											<c:when test="${spList.regular_end=='중'}">
@@ -107,11 +109,13 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach var="spList" items="${MypageTEMList}">
+								<!-- Ajax 위치 -->
 									<tr>
 										<td>${spList.temporary_amount }</td>
 										<td>${spList.temporary_date }</td>
 									</tr>
 								</c:forEach>
+								<!-- Ajax 위치 -->
 								</tbody>
 								</table>
 							</c:otherwise>
@@ -153,8 +157,10 @@
 								<c:forEach var="vtList" items="${mypageVolList}">
 									<c:set var="volEnd" value="volEnd${vtList.volunteer_number}" />
 									<tr id="volEndTr${vtList.volunteer_number}">
+									<!-- Ajax 위치 -->
 										<td>${vtList.volunteer_date}</td>
 										<td>${vtList.volunteer_time}</td>
+									<!-- Ajax 위치 -->
 										<td><c:if test="${today lt vtList.volunteer_date}">
 												<a href="#" id="volEnd${vtList.volunteer_number}"
 													class="volEnd"

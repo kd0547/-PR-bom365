@@ -20,7 +20,10 @@ public class SupportREGDAO {
 	// 정기후원 중 중복 신청 불가
 	public List<SupportREGDTO> supportREGEndCheck(String supporter_id) {
 		System.out.println("정기후원여부확인 메서드 입장성공");
-		return sqlsession.selectList("SupportSQL.SupportREGEndCheck", supporter_id);
+		System.out.println("id"+supporter_id);
+		List<SupportREGDTO> list = sqlsession.selectList("SupportSQL.SupportREGEndCheck", supporter_id);
+		
+		return list;
 	}
 
 	// 정기후원 신청

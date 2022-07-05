@@ -43,7 +43,7 @@ public class MyPageAction implements Action{
 
 		dto = dao.SupporterIdInfo(dto);
 		request.setAttribute("userInfo", dto);
-		
+		/*
 		// 후원 내역 불러오기 //////////////////////////////////////////////////////////////////////////////
 		SupportREGDAO regdao = new SupportREGDAO();
 		SupportTEMDAO temdao = new SupportTEMDAO();
@@ -77,7 +77,7 @@ public class MyPageAction implements Action{
 		
 		String today = new Today().today();
 		request.setAttribute("today", today);
-		
+		*/
 
 		// 문제 없으면 실행
 

@@ -53,6 +53,8 @@ public class LogInAction implements Action {
 			String previousURL = (String) session.getAttribute("PREVIOUS");
 			System.out.println("test: " + previousURL);
 			forward = new ActionForward();
+			
+			
 			if (previousURL != null) {
 				forward.setPath(previousURL);
 			} else {
@@ -67,7 +69,8 @@ public class LogInAction implements Action {
 			// forward가 null 일때는 front controller 가 끝나고 난뒤 이 문항을 실행한다
 			out.println("<script>alert('해당 아이디는 존재하지 않습니다!');history.go(-1);</script>");
 		}
-
+		
+		
 		// 정기후원 종료일 조회
 		// ///////////////////////////////////////////////////////////////////////////////////////////////////////
 		// 정기후원 중 중복신청 불가능
@@ -86,7 +89,7 @@ public class LogInAction implements Action {
 			System.out.println("종료일 = " + session.getAttribute("regular_end"));
 
 		}
-
+		
 		return forward;
 	}
 }
