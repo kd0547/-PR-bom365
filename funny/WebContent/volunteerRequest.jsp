@@ -46,16 +46,16 @@
 	<div class="volReqFirstDiv">
 		<div style="display: inline-block;">
 			<form action="volunteerInsert.vt" method="post" target="main">
-				<input type="hidden" name="volunteer_date" value="${volCnt.yymmdd}">
+				<input type="hidden" name="volunteer_date" value="${volCnt.yyyyMMdd}">
 				<table style="font-size: 18px">
 					<tr>
 						<c:choose>
 							<c:when test="${checkAM != null}">
-								<td colspan="2">🌼 ${volCnt.yymmdd} 오전 신청 완료 🌼</td>
+								<td colspan="2">🌼 ${volCnt.yyyyMMdd} 오전 신청 완료 🌼</td>
 							</c:when>
 							<c:when test="${volCnt.cntAM ge 10}">
 								<td colspan="2" style="color: #5959597a;">🐶
-									${volCnt.yymmdd} 오전 봉사 마감 🐱</td>
+									${volCnt.yyyyMMdd} 오전 봉사 마감 🐱</td>
 							</c:when>
 							<c:otherwise>
 								<td><input type="radio" name="volunteer_time" value="오전"
@@ -68,11 +68,11 @@
 					<tr>
 						<c:choose>
 							<c:when test="${checkPM != null}">
-								<td colspan="2">🌼 ${volCnt.yymmdd} 오후 신청 완료 🌼</td>
+								<td colspan="2">🌼 ${volCnt.yyyyMMdd} 오후 신청 완료 🌼</td>
 							</c:when>
 							<c:when test="${volCnt.cntPM ge 10}">
 								<td colspan="2" style="color: #5959597a;">🐱
-									${volCnt.yymmdd} 오후 봉사 마감 🐶</td>
+									${volCnt.yyyyMMdd} 오후 봉사 마감 🐶</td>
 							</c:when>
 							<c:otherwise>
 								<td><input type="radio" name="volunteer_time" value="오후"

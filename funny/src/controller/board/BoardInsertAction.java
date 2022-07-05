@@ -24,8 +24,6 @@ public class BoardInsertAction implements Action {
 		dto.setSupporter_id((String) session.getAttribute("supporter_id"));
 		dto.setBoard_title(request.getParameter("board_title"));
 		dto.setBoard_content(request.getParameter("board_content"));
-		
-		System.out.println("to: " + dto.getBoard_content());
 		System.out.println("현재 dto: " + dto);
 		dao.insert(dto);
 		forward.setPath("boardDone.jsp");

@@ -1,25 +1,11 @@
 package model.supporter;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import model.mybatis.SqlMapConfig;
 
-import model.common.JDBCUtil;
-
 public class SupporterDAO {
-	/*
-	 * supporter ㆍ c : insert - 회원가입 ㆍ c : selectLogin - 로그인
-	 */
-
-
-
-
 
 	SqlSessionFactory factory = SqlMapConfig.getFactory();
 	SqlSession sqlsession;
@@ -50,7 +36,7 @@ public class SupporterDAO {
 		SupporterDTO data = sqlsession.selectOne("SupporterSQL.selectSupporterCheck", dto);
 		// rs에 데이터 없으면 로그인페이지 이동(아이디 없음)
 		// pw비교 O→ 로그인완료 X→로그인페이지로 이동(패스워드 틀림)
-		if(data == null) {
+		if (data == null) {
 			return null;
 		} else if (dto.getSupporter_password().equals(data.getSupporter_password())) {
 			return data;
@@ -63,7 +49,7 @@ public class SupporterDAO {
 	 * 
 	 * param 중복 검사할 ID return true - 유저 있음, false - 유저 없음
 	 */
-	public boolean SupporterIdCheck(String supporter_id) {
+	public boolean idCheck(String supporter_id) {
 		boolean result = false;
 		SupporterDTO data = new SupporterDTO();
 		data.setSupporter_id(supporter_id);
@@ -71,22 +57,9 @@ public class SupporterDAO {
 		/*
 		 * 	DB에 값이 없으면 NULL 반환 
 		 */
+		data = sqlsession.selectOne("SupporterSQL.selectSupporterCheck", data);
 		
-		try {
-			data = sqlsession.selectOne("SupporterSQL.selectSupporterCheck", data);
-			
-			
-			
-		} catch(NullPointerException nuex) {
-			data.setSupporter_id(" ");
-			if(data.getSupporter_id().equals(supporter_id)) {
-				result = false;
-			}
-			
-			
-		}
-		
-		if(data.getSupporter_id().equals(supporter_id)) {
+		if(data != null ) {
 			result = true;
 		}
 		
@@ -112,7 +85,7 @@ public class SupporterDAO {
 	}
 
 	// 회원 탈퇴
-	public boolean SupporterDelete(SupporterDTO dto) {
+	public boolean delete(SupporterDTO dto) {
 		String input_id = dto.getSupporter_id();
 		String input_pwd = dto.getSupporter_password();
 		String result_id = null;

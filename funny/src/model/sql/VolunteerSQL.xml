@@ -4,19 +4,26 @@
 	<insert id="insert" parameterType="VolunteerDTO">
 		insert into volunteer values((select nvl(max(volunteer_number),0)+1 from volunteer),#{supporter_id},#{volunteer_date},#{volunteer_time})
 	</insert>
-	<select id="selectIsFull" parameterType="hashmap" resultType="_int">
-		select count(*) cnt from volunteer where volunteer_date=#{volunteer_date} and volunteer_time=#{volunteer_time}
+	<select id="selectDate" parameterType="hashmap" resultType="VolunteerDTO">
+		select * from volunteer where volunteer_date=#{volunteer_date} and volunteer_time=#{volunteer_time}
 	</select>
-	<select id="selectSupporter" parameterType="VolunteerDTO" resultType="VolunteerDTO">
+	<select id="selectIsDone" parameterType="VolunteerDTO" resultType="VolunteerDTO">
 		select * from volunteer where supporter_id=#{supporter_id} and volunteer_date=#{volunteer_date} and volunteer_time=#{volunteer_time}
 	</select>
 	<delete id="delete" parameterType="VolunteerDTO">
 		delete from volunteer where volunteer_number=#{volunteer_number}
 	</delete>
-
-   	<!-- mypage -->
+   	<!-- my page -->
 	<select id="mypage" parameterType="SupporterDTO" resultType="VolunteerDTO">
 		select * from volunteer where supporter_id=#{supporter_id} order by volunteer_date desc
 	</select>
-   	<!-- 관리자 페이지 -->
+	<!-- 관리자 페이지 -->
+	<select id="selectSearch" parameterType="hashmap" resultType="VolunteerDTO">
+		SELECT * FROM (SELECT rownum R, D.* FROM (
+		select * from volunteer where supporter_id=#{supporter_id} order by volunteer_date desc
+		) D) B WHERE B.R BETWEEN #{startRow} AND #{endRow}
+	</select>
+	<select id="selectSearchCnt" parameterType="SupporterDTO" resultType="_int">
+		SELECT COUNT(*) FROM volunteer where supporter_id=#{supporter_id} order by volunteer_date desc
+	</select>
 </mapper>

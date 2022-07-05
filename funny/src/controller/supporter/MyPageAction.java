@@ -1,7 +1,6 @@
 package controller.supporter;
 
 import java.io.IOException;
-
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -12,27 +11,23 @@ import javax.servlet.http.HttpSession;
 
 import controller.Action;
 import controller.ActionForward;
-
 import controller.component.Today;
 import model.support.SupportREGDAO;
 import model.support.SupportREGDTO;
 import model.support.SupportTEMDAO;
 import model.support.SupportTEMDTO;
-
 import model.supporter.SupporterDAO;
 import model.supporter.SupporterDTO;
 import model.volunteer.VolunteerDAO;
 import model.volunteer.VolunteerDTO;
 
-public class MyPageAction implements Action{
+public class MyPageAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ActionForward forward = new ActionForward();
-
 		HttpSession session = request.getSession(); // spring 식 session 을 받는법
 		// 회원 정보 불러오기 //////////////////////////////////////////////////////////////////////////////
-
 		SupporterDAO dao = new SupporterDAO();
 		SupporterDTO dto = new SupporterDTO();
 
@@ -43,7 +38,7 @@ public class MyPageAction implements Action{
 
 		dto = dao.SupporterIdInfo(dto);
 		request.setAttribute("userInfo", dto);
-		/*
+
 		// 후원 내역 불러오기 //////////////////////////////////////////////////////////////////////////////
 		SupportREGDAO regdao = new SupportREGDAO();
 		SupportTEMDAO temdao = new SupportTEMDAO();
@@ -77,16 +72,13 @@ public class MyPageAction implements Action{
 		
 		String today = new Today().today();
 		request.setAttribute("today", today);
-		*/
+		
 
 		// 문제 없으면 실행
-
 		forward.setPath("mypage.jsp");
 		forward.setRedirect(false);
-	
+
 		return forward;
 	}
-	
-	
 
 }

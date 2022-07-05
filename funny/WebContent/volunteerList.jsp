@@ -174,7 +174,7 @@
 												</c:when>
 												<c:otherwise>
 													<button
-														onclick="openPopup('volunteerRequest.vt?yymmdd=${v.yymmdd}&cntAM=${v.cntAM}&cntPM=${v.cntPM}')"
+														onclick="openPopup('volunteerRequest.vt?yyyyMMdd=${v.yyyyMMdd}&cntAM=${v.cntAM}&cntPM=${v.cntPM}')"
 														style="color: ${color}">${v.date}</button>
 												</c:otherwise>
 											</c:choose></td>

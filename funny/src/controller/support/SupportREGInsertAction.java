@@ -46,12 +46,12 @@ public class SupportREGInsertAction implements Action {
 		int thisM = cal.get(Calendar.MONTH) + 1;
 		int thisD = cal.get(Calendar.DATE);
 		if (thisD < Integer.parseInt(regular_paymentDate)) {
-			regular_date = thisY + "/" + String.format("%02d", thisM) + regular_paymentDate;
+			regular_date = thisY + "/" + String.format("%02d", thisM) + "/" + regular_paymentDate;
 		} else {
 			if (thisM == 12) {
-				regular_date = (thisY + 1) + "/" + "01" + regular_paymentDate;
+				regular_date = (thisY + 1) + "/" + "01" + "/" + regular_paymentDate;
 			} else {
-				regular_date = thisY + "/" + String.format("%02d", thisM+1) + regular_paymentDate;
+				regular_date = thisY + "/" + String.format("%02d", thisM+1) + "/" + regular_paymentDate;
 			}
 		}
 

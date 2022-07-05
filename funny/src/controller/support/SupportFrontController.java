@@ -45,7 +45,6 @@ public class SupportFrontController extends HttpServlet {
 				forward = new SupportREGInsertAction().execute(request, response);
 			} catch (Exception e) {
 				System.out.println("supportREGInsert.sp수행중 문제 발생");
-				e.printStackTrace();
 			}
 		}
 
@@ -67,10 +66,52 @@ public class SupportFrontController extends HttpServlet {
 			} catch (Exception e) {
 				System.out.println("supportREGEnd.sp 수행중 문제 발생");
 			}
-		} 
-		
-		// 관리자 페이지 용 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-		
+		}
+
+		// 관리자 페이지 용 /////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// 관리자 정기후원내역조회
+		else if (command.equals("adminSupportREGList")) {
+			try {
+				System.out.println("adminSupportREGList.sp 경로 ok");
+				forward = new AdminSupportREGListAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("adminSupportREGList.sp 수행중 문제 발생");
+			}
+		}
+
+		// 관리자 일시후원내역조회
+		else if (command.equals("adminSupportTEMList")) {
+			try {
+				System.out.println("adminSupportTEMList.sp 경로 ok");
+				forward = new AdminSupportTEMListAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("adminSupportTEMList.sp 수행중 문제 발생");
+			}
+		}
+
+		// 정기후원 정렬기능 REG
+		else if (command.equals("adminREGCategory")) {
+			try {
+				System.out.println("adminREGCategory.sp 경로ok");
+				forward = new AdminSupportREGCategoryAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("adminREGCategory.sp 수행중 문제 발생");
+			}
+		}
+
+		// 정기후원 정렬기능 TEM
+		else if (command.equals("adminTEMCategory")) {
+			try {
+				System.out.println("adminTEMCategory.sp 경로ok");
+				forward = new AdminSupportTEMCategoryAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("adminTEMCategory.sp 수행중 문제 발생");
+			}
+		}
 
 		// 만약 forward 가 null 이라면 null pointer exception 이 발생하기 떄문에 대비
 		if (forward != null) {

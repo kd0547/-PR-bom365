@@ -227,16 +227,20 @@
 					e.preventDefault();
 					
 					var formValues = $('#signup').serializeArray();
+					var check = false;
 					formValues.forEach((e)=>{
 						console.log(e);
 						if(!checkNullCheck(e.value) 
 							|| e.value === "") {
-							console.log(e);
-							alert("비어있는 값이 있습니다.");
-							return false;
+							check = true;
 						}
 		 			})
 		 			
+		 			if(check){
+						console.log(e);
+						alert("비어있는 값이 있습니다.");
+						return false;
+		 			}
 					
 		 			if(!koreanCheckReg(formValues[0].value)) {
 		 				alert("이름에 숫자 또는 영어는 사용할 수 없습니다");
@@ -270,12 +274,6 @@
 		 			}
 		 			
 		 			$('#signup').submit();
-				})
-				
-				
-				
-				
-
 			</script>
 		</div>
 		

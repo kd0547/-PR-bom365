@@ -1,5 +1,6 @@
 package model.board;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -17,7 +18,8 @@ public class BoardDAO {
 
 	SqlSessionFactory factory = SqlMapConfig.getFactory();
 	SqlSession sqlsession;
-
+	HashMap<String, Object> datas = new HashMap<>();
+	
 	public BoardDAO() {
 		// auto commit
 		sqlsession = factory.openSession(true);
@@ -45,16 +47,24 @@ public class BoardDAO {
 	}
 
 	// 전체 게시글 조회
-	public List<BoardDTO> selectAll() {
-		List<BoardDTO> datas = sqlsession.selectList("BoardSQL.selectAdmin");
-		List<BoardDTO> datasSupporter = sqlsession.selectList("BoardSQL.selectSupporter");
+	public List<BoardDTO> selectAll(int startRow, int endRow) {
+		datas.put("startRow", startRow);
+		datas.put("endRow", endRow);
+		
+		List<BoardDTO> boardList = sqlsession.selectList("BoardSQL.selectAdmin");
+		List<BoardDTO> boardListPaging = sqlsession.selectList("BoardSQL.selectSupporter", datas);
 
-		for (BoardDTO v : datasSupporter) {
-			datas.add(v);
+		for (BoardDTO v : boardListPaging) {
+			boardList.add(v);
 		}
-		return datas;
+		return boardList;
 	}
-
+	
+	// 전체 글 개수
+	public int selectCnt() {
+		return sqlsession.selectOne("BoardSQL.selectSupporterCnt");
+	}
+	
 	// 게시글 상세보기
 	public BoardSet selectOne(BoardDTO data) {
 		BoardSet bs = new BoardSet();
@@ -64,33 +74,55 @@ public class BoardDAO {
 	}
 
 	// 키워드 검색 결과 조회
-	public List<BoardDTO> selectSearch(String keyword) {
-		List<BoardDTO> datas = sqlsession.selectList("BoardSQL.selectAdmin");
-		List<BoardDTO> datasSearch = sqlsession.selectList("BoardSQL.selectSearch", keyword);
+	public List<BoardDTO> selectSearch(String keyword, int startRow, int endRow) {
+		datas.put("keyword", keyword);
+		datas.put("startRow", startRow);
+		datas.put("endRow", endRow);
+		
+		List<BoardDTO> boardList = sqlsession.selectList("BoardSQL.selectAdmin");
+		List<BoardDTO> datasSearch = sqlsession.selectList("BoardSQL.selectSearch", datas);
 		for (BoardDTO v : datasSearch) {
-			datas.add(v);
+			boardList.add(v);
 		}
-		return datas;
+		return boardList;
+	}
+
+	// 검색 글 개수
+	public int selectSearchCnt(String keyword) {
+		return sqlsession.selectOne("BoardSQL.selectSearchCnt", keyword);
 	}
 
 	// 내가 작성한 글 조회
-	public List<BoardDTO> selectMine(BoardDTO data) {
-		List<BoardDTO> datas = sqlsession.selectList("BoardSQL.selectAdmin");
-		List<BoardDTO> datasMine = sqlsession.selectList("BoardSQL.selectMine", data);
+	public List<BoardDTO> selectMine(BoardDTO data, int startRow, int endRow) {
+		datas.put("supporter_id", data.getSupporter_id());
+		datas.put("startRow", startRow);
+		datas.put("endRow", endRow);
+		
+		List<BoardDTO> boardList = sqlsession.selectList("BoardSQL.selectAdmin");
+		List<BoardDTO> datasMine = sqlsession.selectList("BoardSQL.selectMine", datas);
 		for (BoardDTO v : datasMine) {
-			datas.add(v);
+			boardList.add(v);
 		}
-		return datas;
+		return boardList;
 	}
 
+	// 내 글 개수
+	public int selectMineCnt(BoardDTO data) {
+		return sqlsession.selectOne("BoardSQL.selectMineCnt", data);
+	}
+	
 	// 댓글 순으로 결과 조회
-	public List<BoardDTO> selectComCnt() {
-		List<BoardDTO> datas = sqlsession.selectList("BoardSQL.selectAdmin");
-		List<BoardDTO> datasComCnt = sqlsession.selectList("BoardSQL.selectComCnt");
+	public List<BoardDTO> selectComCnt(int startRow, int endRow) {
+		datas.put("startRow", startRow);
+		datas.put("endRow", endRow);
+		
+		List<BoardDTO> boardList = sqlsession.selectList("BoardSQL.selectAdmin");
+		List<BoardDTO> datasComCnt = sqlsession.selectList("BoardSQL.selectComCnt", datas);
+		
 		for (BoardDTO v : datasComCnt) {
-			datas.add(v);
+			boardList.add(v);
 		}
-		return datas;
+		return boardList;
 	}
 
 	// 게시글 수정
@@ -110,4 +142,6 @@ public class BoardDAO {
 		}
 		return result;
 	}
+	
+
 }

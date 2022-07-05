@@ -1,6 +1,6 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="mytag"%>
+
 <script type="text/javascript">
 	function end(com, loc) {
 		var ans = confirm(com);
@@ -11,7 +11,7 @@
 		}
 	}
 </script>
-<script type="text/javascript" src="js/mypage-mytable.js"></script>
+
 <div class="colorlib-featured">
 	<div class="container table">
 		<div class="row">
@@ -44,24 +44,22 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach var="spList" items="${MypageREGList}">
-									<!-- Ajax 위치 -->
 									<tr>
 										<td>${spList.regular_bank }</td>
 										<td>${spList.regular_account }</td>
 										<td>${spList.regular_amount }</td>
 									</tr>
-									<!-- Ajax 위치 -->
 									<tr>
 										<c:choose>
 											<c:when test="${spList.regular_end=='중'}">
-												<td colspan="3" class="startSup">출금 :
-													매달 ${spList.regular_paymentDate }일&nbsp;&nbsp;|&nbsp;&nbsp;시작 :
-													${spList.regular_date }</td>
+												<td colspan="3" class="startSup">출금 : 매달
+													${spList.regular_paymentDate }일&nbsp;&nbsp;|&nbsp;&nbsp;시작
+													: ${spList.regular_date }</td>
 											</c:when>
 											<c:otherwise>
-												<td colspan="3" class="startSup">출금 :
-													매달 ${spList.regular_paymentDate }일&nbsp;&nbsp;|&nbsp;&nbsp;시작 :
-													${spList.regular_date }&nbsp;&nbsp;|&nbsp;&nbsp;종료 :
+												<td colspan="3" class="startSup">출금 : 매달
+													${spList.regular_paymentDate }일&nbsp;&nbsp;|&nbsp;&nbsp;시작
+													: ${spList.regular_date }&nbsp;&nbsp;|&nbsp;&nbsp;종료 :
 													${spList.regular_end }</td>
 											</c:otherwise>
 										</c:choose>
@@ -109,13 +107,11 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach var="spList" items="${MypageTEMList}">
-								<!-- Ajax 위치 -->
 									<tr>
 										<td>${spList.temporary_amount }</td>
 										<td>${spList.temporary_date }</td>
 									</tr>
 								</c:forEach>
-								<!-- Ajax 위치 -->
 								</tbody>
 								</table>
 							</c:otherwise>
@@ -156,18 +152,20 @@
 							<c:otherwise>
 								<c:forEach var="vtList" items="${mypageVolList}">
 									<c:set var="volEnd" value="volEnd${vtList.volunteer_number}" />
-									<tr id="volEndTr${vtList.volunteer_number}">
-									<!-- Ajax 위치 -->
+									<tr>
 										<td>${vtList.volunteer_date}</td>
 										<td>${vtList.volunteer_time}</td>
-									<!-- Ajax 위치 -->
-										<td><c:if test="${today lt vtList.volunteer_date}">
-												<a href="#" id="volEnd${vtList.volunteer_number}"
-													class="volEnd"
-													onmouseenter="document.getElementById('${volEnd}').innerHTML = '취소';"
-													onmouseleave="document.getElementById('${volEnd}').innerHTML = '예정';"
-													onclick="end('봉사신청을 취소하시겠습니까?', 'volunteerDelete.vt?volunteer_number=${vtList.volunteer_number}')">예정</a>
-											</c:if></td>
+										<td><c:choose>
+												<c:when test="${today lt vtList.volunteer_date}">
+													<a href="#" id="volEnd${vtList.volunteer_number}"
+														class="volEnd"
+														onmouseenter="document.getElementById('${volEnd}').innerHTML = '취소';"
+														onmouseleave="document.getElementById('${volEnd}').innerHTML = '예정';"
+														onclick="end('봉사신청을 취소하시겠습니까?', 'volunteerDelete.vt?volunteer_number=${vtList.volunteer_number}')">예정</a>
+												</c:when>
+												<c:otherwise>🌼
+												</c:otherwise>
+											</c:choose></td>
 									</tr>
 								</c:forEach>
 								</tbody>
@@ -182,3 +180,4 @@
 		</div>
 	</div>
 </div>
+>>>>>>> refs/remotes/origin/main

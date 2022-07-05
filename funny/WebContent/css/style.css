@@ -9118,12 +9118,12 @@ button.volFull:hover, button.volFull:active {
 	outline: none;
 }
 
-input.btn.btn-primary.vol {
+.btn.btn-primary.vol {
     width: 77%;
     margin-top: 2em;
     margin-right: 0;
 }
-input.btn.btn-primary.vol:hover {
+.btn.btn-primary.vol:hover {
     background: #978d67 !important;
 }
 small.volBack {
@@ -9169,4 +9169,52 @@ td.startSup {
     font-size: 13px;
     padding: 0;
 }
+<<<<<<< HEAD
 
+=======
+a.btn.btn-primary.adopt.done {
+    color: #fff;
+    cursor: default;
+}
+h3.adVolyyyyMMdd {
+    background-color: #cbbd89;
+    color: white;
+}
+.row.adVol {
+    width: 50em;
+    padding: 31px 45px 0 45px;
+	display: flex;
+    justify-content: center;
+}
+td.adVolTitle {
+    border-top: 0;
+    font-size: 30px;
+    padding-top: 0;
+}
+td.adVolTd {
+    border-block: 1px solid #dee2e6;
+}
+h3.back {
+    background-color: #cbbd89;
+    color: white;
+    margin: 0
+}
+button.btn.btn-primary.adVol {
+    margin: 34px 0 0 0;
+    width: 244px;
+    border-radius: 10px;
+    background: #cbbd89;
+}
+a.btn.btn-primary.inputSubmit.apply.board, a.btn.btn-primary.inputSubmit.apply.board:focus, a.btn.btn-primary.inputSubmit.apply.board:active {
+    width: 148px;
+    float: right;
+	background: #cbbd89 !important;
+	color: #fff !important;
+}
+a.btn.btn-primary.inputSubmit.apply.board:hover {
+	cursor: pointer;
+	background: #978d67 !important;
+	outline: none;
+	color: #fff !important;
+}
+>>>>>>> refs/remotes/origin/main

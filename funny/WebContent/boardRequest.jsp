@@ -76,8 +76,6 @@
 				</div>
 			</div>
 		</div>
-		<h1 id="menuTitle">봉사신청</h1>
-		<hr>
 
 		<div style="text-align: center; margin-top: 2em; margin-bottom: 7em;">
 			<div class="col-sm-4 text-left total writeForm"

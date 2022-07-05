@@ -1,7 +1,6 @@
 package controller.animal;
 
 import controller.ActionForward;
-import controller.MainAction;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -42,15 +41,16 @@ public class AnimalFrontController extends HttpServlet {
 				forward = new AnimalListAction().execute(request, response);
 			} catch (Exception e) {
 				System.out.println("animalList.am 수행중 문제 발생");
+				e.printStackTrace();
 			}
 		}
 		
 		// 상세 페이지
-		else if (command.equals("animalDetail")) {
+		else if (command.equals("animalOne")) {
 			try {
-				forward = new AnimalDetailAction().execute(request, response);
+				forward = new AnimalOneAction().execute(request, response);
 			} catch (Exception e) {
-				System.out.println("animalDetail.am 수행중 문제 발생");
+				System.out.println("animalOne.am 수행중 문제 발생");
 			}
 		}
 		
@@ -60,6 +60,18 @@ public class AnimalFrontController extends HttpServlet {
 				forward = new AnimalSearchAction().execute(request, response);
 			} catch (Exception e) {
 				System.out.println("animalSearch.am 수행중 문제 발생");
+				e.printStackTrace();
+			}
+		}
+
+		// 관리자 페이지 용 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+		// 입양 채택
+		else if (command.equals("animalUpdate")) {
+			try {
+				forward = new AnimalUpdateAction().execute(request, response);
+			} catch (Exception e) {
+				System.out.println("animalUpdate.am 수행중 문제 발생");
+				e.printStackTrace();
 			}
 		}
 		

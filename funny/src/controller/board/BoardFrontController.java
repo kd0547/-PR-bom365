@@ -38,7 +38,6 @@ public class BoardFrontController extends HttpServlet {
 			try {
 				forward = new MainAction().execute(request, response);
 			} catch (Exception e) {
-				e.printStackTrace();
 				System.out.println("main.do 수행중 문제 발생");
 			}
 		}
@@ -48,7 +47,6 @@ public class BoardFrontController extends HttpServlet {
 			try {
 				forward = new BoardListAction().execute(request, response);
 			} catch (Exception e) {
-				e.printStackTrace();
 				System.out.println("boardList.do 수행중 문제 발생");
 			}
 		}
@@ -58,8 +56,8 @@ public class BoardFrontController extends HttpServlet {
 			try {
 				forward = new BoardCategoryAction().execute(request, response);
 			} catch (Exception e) {
-				e.printStackTrace();
 				System.out.println("boardCategory.do 수행중 문제 발생");
+				e.printStackTrace();
 			}
 		}
 		
@@ -68,18 +66,17 @@ public class BoardFrontController extends HttpServlet {
 			try {
 				forward = new BoardSearchAction().execute(request, response);
 			} catch (Exception e) {
-				e.printStackTrace();
 				System.out.println("boardSearch.do 수행중 문제 발생");
+				e.printStackTrace();
 			}
 		}
 		
 		// 상세글 보기
-		else if (command.equals("boardDetail")) {
+		else if (command.equals("boardOne")) {
 			try {
-				forward = new BoardDetailAction().execute(request, response);
+				forward = new BoardOneAction().execute(request, response);
 			} catch (Exception e) {
-				e.printStackTrace();
-				System.out.println("boardDetail.do 수행중 문제 발생");
+				System.out.println("boardOne.do 수행중 문제 발생");
 			}
 		}
 		
@@ -88,7 +85,6 @@ public class BoardFrontController extends HttpServlet {
 			try {
 				forward = new BoardDeleteAction().execute(request, response);
 			} catch (Exception e) {
-				e.printStackTrace();
 				System.out.println("boardDelete.do 수행중 문제 발생");
 			}
 		} 
@@ -107,7 +103,6 @@ public class BoardFrontController extends HttpServlet {
 			try {
 				forward = new BoardInsertAction().execute(request, response);
 			} catch (Exception e) {
-				e.printStackTrace();
 				System.out.println("boardInsert.do 수행중 문제 발생");
 			}
 		} 
@@ -117,7 +112,6 @@ public class BoardFrontController extends HttpServlet {
 			try {
 				forward = new CommentInsertAction().execute(request, response);
 			} catch (Exception e) {
-				e.printStackTrace();
 				System.out.println("commentInsert.do 수행중 문제 발생");
 			}
 		} 
@@ -127,7 +121,6 @@ public class BoardFrontController extends HttpServlet {
 			try {
 				forward = new BoardUpdatePageAction().execute(request, response);
 			} catch (Exception e) {
-				e.printStackTrace();
 				System.out.println("boardUpdatePage.do 수행중 문제 발생");
 			}
 		}
@@ -137,10 +130,9 @@ public class BoardFrontController extends HttpServlet {
 			try {
 				forward = new BoardUpdateAction().execute(request, response);
 			} catch (Exception e) {
-				e.printStackTrace();
 				System.out.println("boardUpdate.do 수행중 문제 발생");
 			}
-		} 
+		}
 
 		// 만약 forward 가 null 이라면 null pointer exception 이 발생하기 떄문에 대비
 		if (forward != null) {
